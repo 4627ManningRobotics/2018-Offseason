@@ -19,6 +19,14 @@ public class OI {
 	// number it is.
 	Joystick driver = new Joystick(RobotMap.DRIVER_CONTROLLER);
 	Button buttonA = new JoystickButton(driver, RobotMap.BUTTON_A);
+	
+	
+	public double getLeftStickY() {
+		return driver.getRawAxis(RobotMap.LEFT_STICK_Y);
+	}
+	public double getRightStickY() {
+		return driver.getRawAxis(RobotMap.RIGHT_STICK_Y);
+	}
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to

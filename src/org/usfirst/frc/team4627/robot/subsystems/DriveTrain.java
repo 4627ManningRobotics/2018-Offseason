@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4627.robot.subsystems;
 
+import org.usfirst.frc.team4627.robot.OI;
 import org.usfirst.frc.team4627.robot.RobotMap;
+import org.usfirst.frc.team4627.robot.commands.TankDrive;
 
 import com.ctre.CANTalon;
 
@@ -19,9 +21,9 @@ public class DriveTrain extends Subsystem {
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new TankDrive());
     }
-    
+        
     public void setLeftMotor(double motorSetting) {
     	leftMotor1.set(motorSetting);
     	leftMotor2.set(motorSetting);
