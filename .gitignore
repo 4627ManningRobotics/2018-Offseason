@@ -1,4 +1,7 @@
+\settings
+
 \bin
+.classpath
 
 *.class
 # Windows image file caches
