@@ -39,7 +39,7 @@ public class OI {
 	// Start the command when the button is pressed and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	public OI () {
-	buttonA.whenPressed(new DriveForward(0.5, 10));
+	buttonA.whenPressed(new DriveForward(0.5, 3));
 	}
 
 	// Run the command while the button is being held down and interrupt it once
