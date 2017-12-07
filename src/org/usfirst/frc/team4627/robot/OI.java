@@ -39,7 +39,7 @@ public class OI {
 	// Start the command when the button is pressed and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	public OI () {
-		buttonA.whenInactive(new TankDrive());
+	
 	}
 
 	// Run the command while the button is being held down and interrupt it once

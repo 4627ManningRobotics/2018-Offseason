@@ -8,14 +8,30 @@ package org.usfirst.frc.team4627.robot;
  */
 public class RobotMap {
 
-	public static final int LEFT_MOTOR_1 = 0;
-	public static final int LEFT_MOTOR_2 = 1;
+	public static final int LEFT_MOTOR_1 = 4;
+	public static final int LEFT_MOTOR_2 = 5;
 	public static final int RIGHT_MOTOR_1 = 2;
 	public static final int RIGHT_MOTOR_2 = 3;
 	public static final int DRIVER_CONTROLLER = 0;
-	public static final int BUTTON_A = 0;
-	public static final int LEFT_STICK_Y = 5;
-	public static final int RIGHT_STICK_Y = 6;
+
+	public static final int BUTTON_A = 1;
+	public static final int BUTTON_B = 2;
+	public static final int BUTTON_X = 3;
+	public static final int BUTTON_Y = 4;
+	public static final int LEFT_BUMPER = 5;
+	public static final int RIGHT_BUMPER = 6;
+	public static final int BACK_BUTTON = 7;
+	public static final int START_BUTTON = 8;
+	public static final int LEFT_STICK_BUTTON = 9;
+	public static final int RIGHT_STICK_BUTTON = 10;
+	
+	public static final int LEFT_STICK_X = 0;
+	public static final int LEFT_STICK_Y = 1;
+	public static final int RIGHT_STICK_Y = 5;
+	public static final int RIGHT_STICK_X = 4;
+	
+	public static final int LEFT_TRIGGER = 2;
+	public static final int RIGHT_TRIGGER = 3;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
