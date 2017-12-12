@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import org.usfirst.frc.team4627.robot.commands.DriveForward;
+//import org.usfirst.frc.team4627.robot.commands.*;
 
 
 /**
@@ -22,10 +22,10 @@ public class OI {
 	
 	
 	public double getLeftStickY() {
-		return driver.getRawAxis(RobotMap.LEFT_STICK_Y);
+		return driver.getRawAxis(RobotMap.LEFT_TRIGGER);
 	}
 	public double getRightStickY() {
-		return driver.getRawAxis(RobotMap.RIGHT_STICK_Y);
+		return driver.getRawAxis(RobotMap.RIGHT_TRIGGER);
 	}
 
 	// There are a few additional built in buttons you can use. Additionally,
@@ -39,7 +39,7 @@ public class OI {
 	// Start the command when the button is pressed and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	public OI () {
-	buttonA.whenPressed(new DriveForward(0.5, 3));
+	
 	}
 
 	// Run the command while the button is being held down and interrupt it once
