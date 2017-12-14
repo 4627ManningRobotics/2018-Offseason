@@ -33,6 +33,7 @@ public class RobotMap {
 	public static final int LEFT_TRIGGER = 2;
 	public static final int RIGHT_TRIGGER = 3;
 
+	public static double FRICTION_COEFFICIENT = 1; // <= 1
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
