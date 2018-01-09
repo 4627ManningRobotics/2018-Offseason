@@ -1,8 +1,11 @@
 package org.usfirst.frc.team4627.robot;
 
+import org.usfirst.frc.team4627.robot.commands.DriveForward;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 //import org.usfirst.frc.team4627.robot.commands.*;
 
@@ -19,7 +22,11 @@ public class OI {
 	// number it is.
 	Joystick driver = new Joystick(RobotMap.DRIVER_CONTROLLER);
 	Button buttonA = new JoystickButton(driver, RobotMap.BUTTON_A);
+	Joystick  rightTrigger = new Joystick(driver, RobotMap.RIGHT_TRIGGER);
 	
+	public double getRightTrigger() {
+		return rightTrigger.getRawAxis(RobotMap.RIGHT_TRIGGER));
+	}
 	
 	public double getLeftStickY() {
 		return driver.getRawAxis(RobotMap.LEFT_TRIGGER);
@@ -27,7 +34,6 @@ public class OI {
 	public double getRightStickY() {
 		return driver.getRawAxis(RobotMap.RIGHT_TRIGGER);
 	}
-
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
 	// commands the same as any other Button.
@@ -39,7 +45,6 @@ public class OI {
 	// Start the command when the button is pressed and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	public OI () {
-	
 	}
 
 	// Run the command while the button is being held down and interrupt it once
