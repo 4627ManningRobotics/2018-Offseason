@@ -13,7 +13,7 @@ public class DriveForward extends Command {
 	String direction = "";
     public DriveForward(double leftSpeed, double rightSpeed, double time) {
     	this.leftM_speed = leftSpeed;
-    	this.rigthM_speed = rightSpeed;
+    	this.rightM_speed = rightSpeed;
     	this.m_time=time;
         // Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);

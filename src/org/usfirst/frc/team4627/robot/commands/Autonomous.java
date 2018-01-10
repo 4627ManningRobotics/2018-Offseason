@@ -5,6 +5,7 @@ import org.usfirst.frc.team4627.robot.RobotMap;
 import org.usfirst.frc.team4627.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class Autonomous extends Command {
@@ -23,16 +24,30 @@ public class Autonomous extends Command {
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	public double angle = Robot.driveTrain.getGyroAngle();
-	    	if (angle < 45) {
-	    		Robot.driveTrain.setLeftMotor(-0.4);
-	    		Robot.driveTrain.setRightMotor(0.4);
-	    	} else if(angle == 45) {
-	    		Robot.driveTrain.setLeftMotor(0.4);
-	    		Robot.driveTrain.setLeftMotor(0.4);
+	    	double angle = Robot.driveTrain.getGyroAngle();
+	    	String gameData = "LRL";
+	    	if(gameData.charAt(0) == 'L') {
+	    		if (angle < 45) {
+	    			Robot.driveTrain.setLeftMotor(-0.4);
+	    			Robot.driveTrain.setRightMotor(0.4);
+	    		} else if(angle == 45) {
+	    			Robot.driveTrain.setLeftMotor(0.4);
+	    			Robot.driveTrain.setLeftMotor(0.4);
+	    		} else {
+	    			Robot.driveTrain.setLeftMotor(0.4);
+	    			Robot.driveTrain.setRightMotor(-0.4);
+	    		}
 	    	} else {
-	    		Robot.driveTrain.setLeftMotor(0.4);
-	    		Robot.driveTrain.setRightMotor(-0.4);
+	    		if (angle > 315) {
+	    			Robot.driveTrain.setLeftMotor(0.4);
+	    			Robot.driveTrain.setRightMotor(-0.4);
+	    		} else if(angle == 315) {
+	    			Robot.driveTrain.setLeftMotor(0.4);
+	    			Robot.driveTrain.setLeftMotor(0.4);
+	    		} else {
+	    			Robot.driveTrain.setLeftMotor(-0.4);
+	    			Robot.driveTrain.setRightMotor(0.4);
+	    		}
 	    	}
 	    	
 	    }
