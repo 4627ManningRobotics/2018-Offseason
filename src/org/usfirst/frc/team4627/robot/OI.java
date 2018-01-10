@@ -2,7 +2,9 @@ package org.usfirst.frc.team4627.robot;
 
 import org.usfirst.frc.team4627.robot.commands.DriveForward;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,10 +24,14 @@ public class OI {
 	// number it is.
 	Joystick driver = new Joystick(RobotMap.DRIVER_CONTROLLER);
 	Button buttonA = new JoystickButton(driver, RobotMap.BUTTON_A);
-	Joystick  rightTrigger = new Joystick(driver, RobotMap.RIGHT_TRIGGER);
+	XboxController xboxController = new XboxController(RobotMap.DRIVER_CONTROLLER);
 	
 	public double getRightTrigger() {
-		return rightTrigger.getRawAxis(RobotMap.RIGHT_TRIGGER));
+		return xboxController.getTriggerAxis(GenericHID.Hand.kRight);
+	}
+	
+	public boolean getControllerBButton() {
+		return xboxController.getBButton();
 	}
 	
 	public double getLeftStickY() {
