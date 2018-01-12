@@ -6,8 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-
-
+import org.usfirst.frc.team4627.robot.commands.Autonomous;
 import org.usfirst.frc.team4627.robot.subsystems.*;
 
 /**
@@ -60,7 +59,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = null;
+		autonomousCommand = new Autonomous();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
