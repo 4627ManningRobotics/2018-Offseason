@@ -9,18 +9,20 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveForward extends Command {
 
-	double m_speed, m_time;
-    public DriveForward(double speed, double time) {
-    	m_speed=speed;
-    	m_time=time;
+	double leftM_speed, rightM_speed, m_time;
+	String direction = "";
+    public DriveForward(double leftSpeed, double rightSpeed, double time) {
+    	this.leftM_speed = leftSpeed;
+    	this.rightM_speed = rightSpeed;
+    	this.m_time=time;
         // Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.setLeftMotor(m_speed);
-    	Robot.driveTrain.setRightMotor(m_speed);
+    	Robot.driveTrain.setLeftMotor(leftM_speed);
+    	Robot.driveTrain.setRightMotor(rightM_speed);
     	setTimeout(m_time);
     }
 

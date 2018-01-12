@@ -2,7 +2,9 @@ package org.usfirst.frc.team4627.robot;
 
 import org.usfirst.frc.team4627.robot.commands.DriveForward;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,17 +24,30 @@ public class OI {
 	// number it is.
 	Joystick driver = new Joystick(RobotMap.DRIVER_CONTROLLER);
 	Button buttonA = new JoystickButton(driver, RobotMap.BUTTON_A);
+<<<<<<< HEAD
 	Joystick  rightTrigger = new Joystick(RobotMap.RIGHT_TRIGGER);
 	
 	public double getRightTrigger() {
 		return rightTrigger.getRawAxis(RobotMap.RIGHT_TRIGGER);
+=======
+	XboxController xboxController = new XboxController(RobotMap.DRIVER_CONTROLLER);
+	
+	public double getRightTrigger() {
+		return xboxController.getTriggerAxis(GenericHID.Hand.kRight);
+	}
+	
+	public boolean getControllerBButton() {
+		return xboxController.getBButton();
+>>>>>>> Autonomous
 	}
 	
 	public double getLeftStickY() {
-		return driver.getRawAxis(RobotMap.LEFT_TRIGGER);
+		//return driver.getRawAxis(RobotMap.LEFT_TRIGGER);
+		return -(driver.getRawAxis(RobotMap.LEFT_STICK_Y));
 	}
 	public double getRightStickY() {
-		return driver.getRawAxis(RobotMap.RIGHT_TRIGGER);
+		//return driver.getRawAxis(RobotMap.RIGHT_TRIGGER);
+		return -(driver.getRawAxis(RobotMap.RIGHT_STICK_Y));
 	}
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
