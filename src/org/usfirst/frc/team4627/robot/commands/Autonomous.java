@@ -24,34 +24,30 @@ public class Autonomous extends Command {
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	//double angle = Robot.driveTrain.getGyroAngle();
+	    	double angle = Robot.driveTrain.getGyroAngle();
 	    	String gameData = DriverStation.getInstance().getGameSpecificMessage();
 	    	if(gameData.charAt(0) == 'L') {
-	    		Robot.driveTrain.setLeftMotor(-0.4);
-    			Robot.driveTrain.setRightMotor(0.4);
-	    		/*if (angle < 45) {
+	    		if (angle < 43) {
 	    			Robot.driveTrain.setLeftMotor(-0.4);
 	    			Robot.driveTrain.setRightMotor(0.4);
-	    		} else if(angle == 45) {
+	    		} else if(angle > 43 && angle < 47) {
 	    			Robot.driveTrain.setLeftMotor(0.4);
 	    			Robot.driveTrain.setLeftMotor(0.4);
 	    		} else {
 	    			Robot.driveTrain.setLeftMotor(0.4);
 	    			Robot.driveTrain.setRightMotor(-0.4);
-	    		}*/
+	    		}
 	    	} else {
-	    		Robot.driveTrain.setLeftMotor(0.4);
-    			Robot.driveTrain.setRightMotor(-0.4);
-	    		/*if (angle > 315) {
+	    		if (angle > 317) {
 	    			Robot.driveTrain.setLeftMotor(0.4);
 	    			Robot.driveTrain.setRightMotor(-0.4);
-	    		} else if(angle == 315) {
+	    		} else if(angle > 313 && angle < 317) {
 	    			Robot.driveTrain.setLeftMotor(0.4);
 	    			Robot.driveTrain.setLeftMotor(0.4);
 	    		} else {
 	    			Robot.driveTrain.setLeftMotor(-0.4);
 	    			Robot.driveTrain.setRightMotor(0.4);
-	    		}*/
+	    		}
 	    	}
 	    	
 	    }
@@ -59,7 +55,7 @@ public class Autonomous extends Command {
 
 	    // Make this return true when this Command no longer needs to run execute()
 	    protected boolean isFinished() {
-	    	if(timeSinceInitialized() >= 6) {
+	    	if(timeSinceInitialized() >= 2) {
 	    		return true;
 	    	} else if(Robot.oi.getControllerBButton()) {
 	    		return true;

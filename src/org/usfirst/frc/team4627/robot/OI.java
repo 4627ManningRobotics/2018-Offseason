@@ -24,21 +24,23 @@ public class OI {
 	// number it is.
 	Joystick driver = new Joystick(RobotMap.DRIVER_CONTROLLER);
 	Button buttonA = new JoystickButton(driver, RobotMap.BUTTON_A);
-<<<<<<< HEAD
 	Joystick  rightTrigger = new Joystick(RobotMap.RIGHT_TRIGGER);
-	
-	public double getRightTrigger() {
-		return rightTrigger.getRawAxis(RobotMap.RIGHT_TRIGGER);
-=======
 	XboxController xboxController = new XboxController(RobotMap.DRIVER_CONTROLLER);
 	
 	public double getRightTrigger() {
 		return xboxController.getTriggerAxis(GenericHID.Hand.kRight);
 	}
 	
+	public double getLeftTrigger() {
+		return xboxController.getTriggerAxis(GenericHID.Hand.kLeft);
+	}
+	
+	public double getLeftStickX() {
+		return xboxController.getRawAxis(RobotMap.LEFT_STICK_X);
+	}
+	
 	public boolean getControllerBButton() {
 		return xboxController.getBButton();
->>>>>>> Autonomous
 	}
 	
 	public double getLeftStickY() {

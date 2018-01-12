@@ -19,11 +19,11 @@ public class DriveTrain extends Subsystem {
 	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
 	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
 	
-	//public static ADXRS450_Gyro gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
+	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
 	
-	/*public double getGyroAngle() {
+	public double getGyroAngle() {
 		return gyro.getAngle();
-	}*/
+	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
