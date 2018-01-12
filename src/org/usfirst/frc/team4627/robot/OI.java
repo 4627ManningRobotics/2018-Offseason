@@ -22,10 +22,10 @@ public class OI {
 	// number it is.
 	Joystick driver = new Joystick(RobotMap.DRIVER_CONTROLLER);
 	Button buttonA = new JoystickButton(driver, RobotMap.BUTTON_A);
-	Joystick  rightTrigger = new Joystick(driver, RobotMap.RIGHT_TRIGGER);
+	Joystick  rightTrigger = new Joystick(RobotMap.RIGHT_TRIGGER);
 	
 	public double getRightTrigger() {
-		return rightTrigger.getRawAxis(RobotMap.RIGHT_TRIGGER));
+		return rightTrigger.getRawAxis(RobotMap.RIGHT_TRIGGER);
 	}
 	
 	public double getLeftStickY() {

@@ -3,8 +3,7 @@ package org.usfirst.frc.team4627.robot.subsystems;
 import org.usfirst.frc.team4627.robot.RobotMap;
 import org.usfirst.frc.team4627.robot.commands.TankDrive;
 
-import com.ctre.CANTalon;
-
+import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -13,10 +12,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveTrain extends Subsystem {
 
 	//instantiate motor controllers
-	CANTalon leftMotor1 = new CANTalon(RobotMap.LEFT_MOTOR_1);
-	CANTalon leftMotor2 = new CANTalon(RobotMap.LEFT_MOTOR_2);
-	CANTalon rightMotor1 = new CANTalon(RobotMap.RIGHT_MOTOR_1);
-	CANTalon rightMotor2 = new CANTalon(RobotMap.RIGHT_MOTOR_2);
+	TalonSRX leftMotor1 = new TalonSRX(RobotMap.LEFT_MOTOR_1);
+	TalonSRX leftMotor2 = new TalonSRX(RobotMap.LEFT_MOTOR_2);
+	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
+	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
