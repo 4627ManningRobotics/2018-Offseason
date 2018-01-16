@@ -7,7 +7,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4627.robot.commands.Autonomous;
+import org.usfirst.frc.team4627.robot.commands.Auto;
+import org.usfirst.frc.team4627.robot.commands.DriveForward;
 import org.usfirst.frc.team4627.robot.subsystems.*;
 
 /**
@@ -60,8 +61,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = new Autonomous();
-
+		autonomousCommand = new Auto();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -70,8 +70,10 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
+		if ( autonomousCommand != null) {
 			autonomousCommand.start();
+			
+		}
 	}
 
 	/**

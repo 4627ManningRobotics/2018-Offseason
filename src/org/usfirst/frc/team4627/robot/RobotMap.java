@@ -32,6 +32,9 @@ public class RobotMap {
 	
 	public static final int LEFT_TRIGGER = 2;
 	public static final int RIGHT_TRIGGER = 3;
+	
+	public static final int MAX_TURN_ANGLE = 50;
+	public static final int MIN_TURN_ANGLE = 40;
 
 	public static double FRICTION_COEFFICIENT = 1; // <= 1
 	// If you are using multiple modules, make sure to define both the port
