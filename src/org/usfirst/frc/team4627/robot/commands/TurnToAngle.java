@@ -15,11 +15,17 @@ public class TurnToAngle extends Command {
 		public double angleWanted;
 		public double threshHold;
 		public double speed;
+		public boolean isDone;
 	    public TurnToAngle(double wantedAngle, double speed, double threshHold) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
 	    	this.speed = speed;
+	    	this.isDone = false;
+	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
 	    	this.angleWanted = wantedAngle;
+	    	if(fmsData.charAt(0) == 'L') {
+	    		this.angleWanted *= -1;
+	    	}
 	    	this.threshHold = threshHold;
 	    	requires(Robot.driveTrain);
 	    }
@@ -39,29 +45,29 @@ public class TurnToAngle extends Command {
 	    	double maxAngle = this.angleWanted + this.threshHold;
 	    	System.out.println(angle);
 	    	if(this.angleWanted < 0) {
-	    		System.out.println("Running Left Code");
-	    		if(angle > (maxAngle)) {
-	    			Robot.driveTrain.setLeftMotor(-this.speed);
-	    			Robot.driveTrain.setRightMotor(this.speed);
-	    		} else if(maxAngle > angle  || angle < minAngle) { //Broken Here
+	    		/*if(angle < maxAngle && angle > minAngle) {///////////////////////////
 	    			Robot.driveTrain.setLeftMotor(0);
 	    			Robot.driveTrain.setRightMotor(0);
+	    		}*/ if(angle > (this.angleWanted)) {
+	    			Robot.driveTrain.setLeftMotor(-this.speed);
+	    			Robot.driveTrain.setRightMotor(this.speed);
 	    		} else {
-	    			Robot.driveTrain.setLeftMotor(this.speed);
-	    			Robot.driveTrain.setRightMotor(-this.speed);
+	    			Robot.driveTrain.setLeftMotor(0);
+	    			Robot.driveTrain.setRightMotor(0);
+	    			this.isDone = true;
 	    		}
 	    	} else if(this.angleWanted > 0) {
-	    		System.out.println("Running Right Code");
-	    		if(angle < (maxAngle)) {
-	    			Robot.driveTrain.setLeftMotor(this.speed);
-	    			Robot.driveTrain.setRightMotor(-this.speed);
-	    		} else if(angle < maxAngle || angle > minAngle) { //Broken Here
-	    			System.out.println("hi");
+	    		/*if(angle < maxAngle && angle > minAngle) {//////////////////////////
 	    			Robot.driveTrain.setLeftMotor(0);
 	    			Robot.driveTrain.setRightMotor(0);
+	    		}*/ if(angle < (this.angleWanted)) {
+	    			Robot.driveTrain.setLeftMotor(this.speed);
+	    			Robot.driveTrain.setRightMotor(-this.speed);
 	    		} else {
-	    			Robot.driveTrain.setLeftMotor(-this.speed);
-	    			Robot.driveTrain.setRightMotor(this.speed);
+	    			Robot.driveTrain.setLeftMotor(0);
+	    			Robot.driveTrain.setRightMotor(0);
+	    			this.isDone = true;
+	    			
 	    		}
 	    	}
 	    	
@@ -70,7 +76,7 @@ public class TurnToAngle extends Command {
 
 	    // Make this return true when this Command no longer needs to run execute()
 	    protected boolean isFinished() {
-	    	return isTimedOut();
+	    	return this.isDone;
 	    }
 
 	    // Called once after isFinished returns true
