@@ -49,8 +49,8 @@ public class TurnToAngle extends Command {
 	    			Robot.driveTrain.setLeftMotor(0);
 	    			Robot.driveTrain.setRightMotor(0);
 	    		}*/ if(angle > (this.angleWanted)) {
-	    			Robot.driveTrain.setLeftMotor(-this.speed);
-	    			Robot.driveTrain.setRightMotor(this.speed);
+	    			Robot.driveTrain.setLeftMotor(this.speed);
+	    			Robot.driveTrain.setRightMotor(this.speed + 0.5);
 	    		} else {
 	    			Robot.driveTrain.setLeftMotor(0);
 	    			Robot.driveTrain.setRightMotor(0);
@@ -61,8 +61,8 @@ public class TurnToAngle extends Command {
 	    			Robot.driveTrain.setLeftMotor(0);
 	    			Robot.driveTrain.setRightMotor(0);
 	    		}*/ if(angle < (this.angleWanted)) {
-	    			Robot.driveTrain.setLeftMotor(this.speed);
-	    			Robot.driveTrain.setRightMotor(-this.speed);
+	    			Robot.driveTrain.setLeftMotor(this.speed + 0.5);
+	    			Robot.driveTrain.setRightMotor(this.speed);
 	    		} else {
 	    			Robot.driveTrain.setLeftMotor(0);
 	    			Robot.driveTrain.setRightMotor(0);
