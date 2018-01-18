@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4627.robot.commands.Auto;
+import org.usfirst.frc.team4627.robot.commands.DriveForward;
+import org.usfirst.frc.team4627.robot.commands.PlanB;
 import org.usfirst.frc.team4627.robot.subsystems.*;
 
 /**
@@ -23,7 +25,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static OI oi;
 	Command autonomousCommand;
-	SendableChooser<Auto> autoChooser;
+	SendableChooser autoChooser;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -32,8 +34,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		autoChooser = new SendableChooser<Auto>();
+		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Default Auto: ", new Auto());
+		autoChooser.addObject("Plan B: ", new PlanB());
 		SmartDashboard.putData("Auto Chooser: ", autoChooser);
 		
 	}
@@ -110,7 +113,6 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during test mode
 	 */
-	@SuppressWarnings("deprecation")
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
