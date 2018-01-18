@@ -1,15 +1,10 @@
 package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
-import org.usfirst.frc.team4627.robot.RobotMap;
-import org.usfirst.frc.team4627.robot.subsystems.DriveTrain;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import java.util.Scanner;
 public class TurnToAngle extends Command {
 	
 		public double angleWanted;
