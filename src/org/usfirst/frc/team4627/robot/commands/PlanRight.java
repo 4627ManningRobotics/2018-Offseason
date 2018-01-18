@@ -5,11 +5,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class PlanB extends CommandGroup {
+public class PlanRight extends CommandGroup {
 
-    public PlanB() {
+    public PlanRight() {
+    	addSequential(new DriveForward(0.9, 0.9, 3));
+    	addSequential(new TurnToAngle(0, -0.25, false));
     	addSequential(new DriveForward(0.5, 0.5, 5));
-    	addSequential(new TurnToAngle(0, -0.25, true));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

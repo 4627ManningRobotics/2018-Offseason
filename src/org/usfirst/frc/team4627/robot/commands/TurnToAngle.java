@@ -29,8 +29,14 @@ public class TurnToAngle extends Command {
 	    	this.isDone = false;
 	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
 	    	this.angleWanted = wantedAngle;
-	    	if(fmsData.charAt(0) == 'R') {
-	    		this.angleWanted += 90;
+	    	if(planB) {
+	    		if(fmsData.charAt(0) == 'R') {
+	    			this.angleWanted += 80;
+	    		}
+	    	} else {
+	    		if(fmsData.charAt(0) == 'L') {
+		    		this.angleWanted -= 80;
+		    	}
 	    	}
 	    	requires(Robot.driveTrain);
 	    }

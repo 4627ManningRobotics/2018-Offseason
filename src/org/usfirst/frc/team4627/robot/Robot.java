@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4627.robot.commands.Auto;
 import org.usfirst.frc.team4627.robot.commands.DriveForward;
-import org.usfirst.frc.team4627.robot.commands.PlanB;
+import org.usfirst.frc.team4627.robot.commands.PlanLeft;
+import org.usfirst.frc.team4627.robot.commands.PlanRight;
 import org.usfirst.frc.team4627.robot.subsystems.*;
 
 /**
@@ -36,7 +37,8 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Default Auto: ", new Auto());
-		autoChooser.addObject("Plan B: ", new PlanB());
+		autoChooser.addDefault("Plan Left: ", new PlanLeft());
+		autoChooser.addDefault("Plan Right: ", new PlanRight());
 		SmartDashboard.putData("Auto Chooser: ", autoChooser);
 		
 	}
