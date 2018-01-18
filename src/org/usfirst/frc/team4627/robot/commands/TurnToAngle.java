@@ -41,8 +41,6 @@ public class TurnToAngle extends Command {
 	    protected void execute() {
 	    	double angle = Robot.driveTrain.getGyroAngle();
 	    	//String gameData = DriverStation.getInstance().getGameSpecificMessage();
-	    	double minAngle = this.angleWanted - this.threshHold;
-	    	double maxAngle = this.angleWanted + this.threshHold;
 	    	System.out.println(angle);
 	    	if(this.angleWanted < 0) {
 	    		/*if(angle < maxAngle && angle > minAngle) {///////////////////////////
@@ -69,6 +67,8 @@ public class TurnToAngle extends Command {
 	    			this.isDone = true;
 	    			
 	    		}
+	    	} else {
+	    		this.isDone = true;
 	    	}
 	    	
 	    }
