@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4627.robot.commands;
 
+import java.io.File;
+
 import org.usfirst.frc.team4627.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -45,7 +47,7 @@ public class TurnAndAddData extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	NN.addTrainDataToFile(new double[] {50.0}, new double[] {0.475}, "C:\\Users\\Lucas Brown\\Documents\\GitHub\\2018-Offseason\\src\\NeuralNetworks\\frictionSetSave1.txt");
+    	NN.addTrainDataToFile(new double[] {50.0}, new double[] {0.475}, new File("").getAbsolutePath() + "\\src\\Neuralnetworks\\frictionSetSave1.txt");
     }
 
     // Called when another command which requires one or more of the same

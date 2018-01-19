@@ -59,6 +59,7 @@ public class NN {
     	
     	Scanner sc = null;
     	try {
+    		System.out.println(new File("").getAbsolutePath());
     		sc = new Scanner(new File(file));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
