@@ -47,7 +47,7 @@ public class TurnAndAddData extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	NN.addTrainDataToFile(new double[] {50.0}, new double[] {0.475}, new File("").getAbsolutePath() + "\\src\\Neuralnetworks\\frictionSetSave1.txt");
+    	NN.addTrainDataToFile(new double[] {50.0}, new double[] {0.475}, "/home/lvuser/frictionSetSave1.txt");
     }
 
     // Called when another command which requires one or more of the same
