@@ -2,6 +2,7 @@ package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -16,6 +17,22 @@ public class DriveForward extends Command {
     	this.rightM_speed = rightSpeed;
     	this.m_time=time;
         // Use requires() here to declare subsystem dependencies
+        requires(Robot.driveTrain);
+    }
+    
+    public DriveForward(double leftSpeed, double rightSpeed, double time, boolean PlanB) {
+    	this.m_time=time;
+    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
+    	if (PlanB) {
+    		if(fmsData.charAt(0) == 'L') {
+    			this.leftM_speed = 0;
+    			this.rightM_speed = 0;
+    		} else if(fmsData.charAt(0) == 'R') {
+    			this.leftM_speed = leftSpeed;
+    	    	this.rightM_speed = rightSpeed;
+    		}
+    	}
+    	// Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
     }
 

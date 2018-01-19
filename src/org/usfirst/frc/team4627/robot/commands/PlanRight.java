@@ -10,7 +10,7 @@ public class PlanRight extends CommandGroup {
     public PlanRight() {
     	addSequential(new DriveForward(0.9, 0.9, 3));
     	addSequential(new TurnToAngle(0, -0.25, false));
-    	addSequential(new DriveForward(0.5, 0.5, 5));
+    	addSequential(new DriveForward(0.5, 0.5, 5, false));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
