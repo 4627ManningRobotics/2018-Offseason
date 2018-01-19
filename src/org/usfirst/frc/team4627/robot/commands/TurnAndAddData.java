@@ -12,20 +12,19 @@ import fullyconnectednetwork.NN;
 public class TurnAndAddData extends Command {
 	
 	private boolean isLeft;
-	private float time;
-	private final long StartTime;
+	private int time;
 	
-    public TurnAndAddData(float time, boolean isLeft) {
+    public TurnAndAddData(int time, boolean isLeft) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	this.isLeft =  isLeft;
     	this.time = time;
-    	this.StartTime = System.currentTimeMillis();
     	requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setTimeout(this.time);
     	if(this.isLeft) {
     		Robot.driveTrain.setLeftMotor(-0.98);
     		Robot.driveTrain.setRightMotor(0.98);
@@ -41,7 +40,7 @@ public class TurnAndAddData extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return this.StartTime + this.time >= System.currentTimeMillis();
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
