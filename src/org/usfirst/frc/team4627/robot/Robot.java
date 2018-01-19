@@ -24,6 +24,7 @@ import org.usfirst.frc.team4627.robot.subsystems.*;
 public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final String RobotMap = null;
 	public static OI oi;
 	Command autonomousCommand;
 	SendableChooser autoChooser;

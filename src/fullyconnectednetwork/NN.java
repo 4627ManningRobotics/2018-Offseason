@@ -1,5 +1,12 @@
 package fullyconnectednetwork;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import TrainSet.TrainSet;
@@ -45,5 +52,30 @@ public class NN {
     
     public double[] calculate(double[] input){
         return this.net.calculate(input);
+    }
+    
+    public static void addTrainDataToFile(double[] input, double[] expected, String file) {
+    	String currentData = "";
+    	
+    	Scanner sc = null;
+    	try {
+    		sc = new Scanner(new File(file));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	while(sc.hasNext()) {
+    		currentData += sc.nextLine();
+    	}
+    		
+    	PrintWriter pw = null;
+    	try {
+			pw = new PrintWriter(new FileWriter(new File(file)));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	pw.print(currentData + "\n");
+    	pw.println(Arrays.toString(input) + ", " + Arrays.toString(expected) + ", \n");
     }
 }

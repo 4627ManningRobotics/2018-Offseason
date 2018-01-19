@@ -167,13 +167,13 @@ public class Network{
     }
 
     public static void main(String[] args){
-    	NN network = RobotMap.frictionExample;
+    	//NN network = RobotMap.frictionExample;
     	//try {
 			//network.saveNet(new File("").getAbsolutePath() + "\\NeuralNetworks\\saves\\frictionNetSave1.txt");
 		//} catch (Exception e) {
 			//e.printStackTrace();
 		//}
-    	network.trainAndSave(1000000, 20000, new File("").getAbsolutePath() + "\\NeuralNetworks\\saves\\frictionNetSave1.txt");;
+    	//network.trainAndSave(1000000, 20000, new File("").getAbsolutePath() + "\\NeuralNetworks\\saves\\frictionNetSave1.txt");;
     }
 
     public void saveNetwork(String fileName) throws Exception {
