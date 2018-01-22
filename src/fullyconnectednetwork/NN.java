@@ -16,8 +16,8 @@ public class NN {
     public Network net;
     public TrainSet set;
 
-    public NN(int... NETWORK_LAYER_SIZES) {
-        this.net = new Network(NETWORK_LAYER_SIZES);
+    public NN(int ActivationFunction, int... NETWORK_LAYER_SIZES) {
+        this.net = new Network(ActivationFunction, NETWORK_LAYER_SIZES);
         this.set = new TrainSet(this.net.INPUT_SIZE, this.net.OUTPUT_SIZE);
     }
 
@@ -28,6 +28,18 @@ public class NN {
         } catch (Exception ex) {
             Logger.getLogger(NN.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static void main(String[] args) {
+    	NN theNet = new NN(Network.ZERO_OR_ONE, new int[] {4,4,1}) ;
+    	theNet.addData(new double[] {5, -5, 5, -5}, new double[] {1});
+    	theNet.addData(new double[] {-5, 5, -5, 5}, new double[] {0});
+    	theNet.addData(new double[] {6, -5, 5, -5}, new double[] {1});
+    	theNet.addData(new double[] {-6, 5, -5, 5}, new double[] {0});
+    	theNet.trainAndSave(1000000, 500000, new File("").getAbsolutePath() + "\\src\\NeuralNetworks\\frictionNetSave1.txt");
+    	for(int i = 0; i < theNet.set.size(); i++) {
+    		System.out.println(Arrays.toString(theNet.calculate(theNet.set.getInput(i))) + " yes");
+    	}
     }
     
     public void train(int loops){
