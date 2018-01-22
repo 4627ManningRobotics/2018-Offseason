@@ -35,6 +35,10 @@ public class RobotMap {
 	
 	public static final int MAX_TURN_ANGLE = 50;
 	public static final int MIN_TURN_ANGLE = 40;
+	
+	public static final int ENCODER_PULSES_PER_REVOLUTION = 1440;
+	public static final int WHEEL_DIAMETER = 6;
+	public static final int ENCODER_GEAR_RATIO = 3;
 
 	public static double FRICTION_COEFFICIENT = 1; // <= 1
 	// If you are using multiple modules, make sure to define both the port
