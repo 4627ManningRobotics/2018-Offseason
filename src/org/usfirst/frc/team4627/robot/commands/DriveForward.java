@@ -66,8 +66,8 @@ public class DriveForward extends Command {
     	//Robot.driveTrain.setLeftMotor(leftM_speed);
     	//Robot.driveTrain.setRightMotor(rightM_speed);
     	//setTimeout(m_time);
-    	Robot.driveTrain.initEncoders();
     	Robot.driveTrain.resetEncoders();
+    	Robot.driveTrain.initEncoders();
     	Robot.driveTrain.setLeftMotor(this.leftM_speed);
     	Robot.driveTrain.setRightMotor(this.rightM_speed);
     }
