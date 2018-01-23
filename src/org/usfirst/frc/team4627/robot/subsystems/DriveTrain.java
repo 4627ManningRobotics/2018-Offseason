@@ -22,8 +22,7 @@ public class DriveTrain extends Subsystem {
 	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
 	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
 	
-	Solenoid leftSolenoid = new Solenoid(RobotMap.LEFT_SOLENOID);
-	Solenoid rightSolenoid = new Solenoid(RobotMap.RIGHT_SOLENOID);
+	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
 	
 	public static AHRS gyro = new AHRS(I2C.Port.kOnboard);
@@ -69,8 +68,7 @@ public class DriveTrain extends Subsystem {
     
     public void setHighGear(boolean isHigh) {
     	this.isInHighGear = isHigh;
-    	this.leftSolenoid.set(this.isInHighGear);
-    	this.rightSolenoid.set(this.isInHighGear);
+    	this.theSolenoid.set(this.isInHighGear);
     }
     //public double getLeftMotorRotation() {
     	
