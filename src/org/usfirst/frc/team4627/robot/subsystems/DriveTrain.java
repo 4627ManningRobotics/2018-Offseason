@@ -8,6 +8,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -20,6 +21,10 @@ public class DriveTrain extends Subsystem {
 	TalonSRX leftMotor2 = new TalonSRX(RobotMap.LEFT_MOTOR_2);
 	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
 	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
+	
+	Solenoid leftSolenoid = new Solenoid(RobotMap.LEFT_SOLENOID);
+	Solenoid rightSolenoid = new Solenoid(RobotMap.RIGHT_SOLENOID);
+	public boolean isInHighGear = false;
 	
 	public static AHRS gyro = new AHRS(I2C.Port.kOnboard);
 	
@@ -56,13 +61,19 @@ public class DriveTrain extends Subsystem {
     	leftMotor1.set(leftMotor1.getControlMode(), motorSetting);
     	leftMotor2.set(leftMotor2.getControlMode(), motorSetting);
     }
+    
     public void setRightMotor(double motorSetting) {
     	rightMotor1.set(rightMotor1.getControlMode(), -motorSetting); //reverse setting 
     	rightMotor2.set(rightMotor2.getControlMode(), -motorSetting);
     }
     
-    public double getLeftMotorRotation() {
-    	
+    public void setHighGear(boolean isHigh) {
+    	this.isInHighGear = isHigh;
+    	this.leftSolenoid.set(this.isInHighGear);
+    	this.rightSolenoid.set(this.isInHighGear);
     }
+    //public double getLeftMotorRotation() {
+    	
+    //}
 }
 
