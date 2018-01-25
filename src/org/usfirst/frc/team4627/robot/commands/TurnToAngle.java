@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 public class TurnToAngle extends Command {
 	
-		public double angleWanted, speed, threshold;
 		public double angleWanted, speed, threshold, startAngle;
 		public boolean isDone;
 		
@@ -48,9 +47,7 @@ public class TurnToAngle extends Command {
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
 	    	this.startAngle = DriveTrain.gyro.getAngle();
-
 	    	Robot.driveTrain.gyro.reset();
-	    	DriveTrain.gyro.reset();
 	    	DriveTrain.gyro.zeroYaw();
 	    }
 
@@ -58,8 +55,6 @@ public class TurnToAngle extends Command {
 	    protected void execute() {
 	    	double angle = Robot.driveTrain.getGyroAngle();
 	    	System.out.println(angle);
-	    	double maxAngle = this.angleWanted + this.threshold;
-	    	double minAngle = this.angleWanted - this.threshold;
 	    	double maxAngle = this.startAngle + this.angleWanted + this.threshold;
 	    	double minAngle = this.startAngle + this.angleWanted - this.threshold;
 	    	if(this.angleWanted > 0) {
