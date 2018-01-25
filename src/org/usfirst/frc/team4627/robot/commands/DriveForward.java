@@ -20,11 +20,12 @@ public class DriveForward extends Command {
         requires(Robot.driveTrain);
     }*/
     
-    public DriveForward(double leftSpeed, double rightSpeed, double distance) {
+    public DriveForward(double leftSpeed, double rightSpeed, double time) {
     	this.isDone = false;
-    	this.leftM_speed = this.leftM_speed;
-    	this.rightM_speed = this.rightM_speed;
-    	this.distance = distance;
+    	this.leftM_speed = leftSpeed;
+    	this.rightM_speed = rightSpeed;
+    	this.m_time = time;
+    	setTimeout(time);
     	requires(Robot.driveTrain);
     }
     
@@ -44,9 +45,9 @@ public class DriveForward extends Command {
         requires(Robot.driveTrain);
     }*/
     
-    public DriveForward(double leftSpeed, double rightSpeed, double distance, boolean PlanB) {
+    public DriveForward(double leftSpeed, double rightSpeed, double time, boolean PlanB) {
     	this.isDone = false;
-    	this.distance = distance;
+    	this.m_time = time;
     	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
     	if (PlanB) {
     		if(fmsData.charAt(0) == 'L') {
@@ -57,6 +58,7 @@ public class DriveForward extends Command {
     	    	this.rightM_speed = rightSpeed;
     		}
     	}
+    	setTimeout(this.m_time);
     	// Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
     }
@@ -66,25 +68,27 @@ public class DriveForward extends Command {
     	//Robot.driveTrain.setLeftMotor(leftM_speed);
     	//Robot.driveTrain.setRightMotor(rightM_speed);
     	//setTimeout(m_time);
-    	Robot.driveTrain.resetEncoders();
-    	Robot.driveTrain.initEncoders();
+    	//Robot.driveTrain.resetEncoders();
+    	//Robot.driveTrain.initEncoders();
     	Robot.driveTrain.setLeftMotor(this.leftM_speed);
     	Robot.driveTrain.setRightMotor(this.rightM_speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println(Robot.driveTrain.getDistance());
+    	/*System.out.println(Robot.driveTrain.getDistance());
     	if(Robot.driveTrain.getDistance() > this.distance) {
     		Robot.driveTrain.setLeftMotor(0);
     		Robot.driveTrain.setRightMotor(0);
     		this.isDone = true;
     	}
+    	*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return this.isDone;
+        //return this.isDone;
+    	return isTimedOut();
     }
 
     // Called once after isFinished returns true

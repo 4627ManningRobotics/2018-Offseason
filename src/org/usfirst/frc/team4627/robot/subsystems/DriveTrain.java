@@ -60,9 +60,5 @@ public class DriveTrain extends Subsystem {
     	rightMotor1.set(rightMotor1.getControlMode(), -motorSetting); //reverse setting 
     	rightMotor2.set(rightMotor2.getControlMode(), -motorSetting);
     }
-    
-    public double getLeftMotorRotation() {
-    	
-    }
 }
 

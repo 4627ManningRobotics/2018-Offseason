@@ -19,7 +19,7 @@ public class Auto extends CommandGroup {
     	addSequential(new TurnToAngle(-36, 0.1));
     	addSequential(new DriveForward(0.17, 0.17, 1));
     	*/
-    	addSequential(new DriveForward(0.2, 0.2, 6));
+    	addSequential(new DriveForward(0.2, 0.2, 1));
     	addSequential(new TurnToAngle(45, 0.1, 5));
     	addSequential(new DriveForward(0.4, 0.4, 48));
     	addSequential(new TurnToAngle(-45, 0.1, 5));
