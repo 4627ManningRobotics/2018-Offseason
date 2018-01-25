@@ -22,8 +22,6 @@ public class DriveTrain extends Subsystem {
 	TalonSRX leftMotor2 = new TalonSRX(RobotMap.LEFT_MOTOR_2);
 	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
 	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
-	
-	public static AHRS gyro = new AHRS(I2C.Port.kOnboard);
 	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
 	
