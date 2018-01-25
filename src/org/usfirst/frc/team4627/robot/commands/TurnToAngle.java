@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
+import org.usfirst.frc.team4627.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
@@ -14,7 +15,6 @@ public class TurnToAngle extends Command {
 	    	this.speed = speed;
 	    	this.isDone = false;
 	    	this.threshold = threshold;
-	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
 	    	this.angleWanted = wantedAngle;
 	    	requires(Robot.driveTrain);
 	    }
@@ -45,7 +45,6 @@ public class TurnToAngle extends Command {
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
 	    	Robot.driveTrain.gyro.reset();
-	    	
 	    }
 
 	    // Called repeatedly when this Command is scheduled to run
@@ -114,6 +113,7 @@ public class TurnToAngle extends Command {
 	    protected void end() {
 	    	Robot.driveTrain.setLeftMotor(0);
 	    	Robot.driveTrain.setRightMotor(0);
+	    	Robot.driveTrain.gyro.reset();
 	    }
 
 	    // Called when another command which requires one or more of the same

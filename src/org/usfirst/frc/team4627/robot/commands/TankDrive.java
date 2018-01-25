@@ -22,8 +22,6 @@ public class TankDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.driveTrain.setLeftMotor(Robot.oi.getRightTrigger() - Robot.oi.getLeftTrigger() + Robot.oi.getLeftStickX());
-    	//Robot.driveTrain.setLeftMotor(Robot.oi.getRightTrigger() - Robot.oi.getLeftTrigger() - Robot.oi.getLeftStickX());
     		double triggerVal = Robot.oi.getRightTrigger() - Robot.oi.getLeftTrigger();
     		double stick = Robot.oi.getLeftStickX() * RobotMap.TURNING_RATE;
     		Robot.driveTrain.setLeftMotor( triggerVal + stick);

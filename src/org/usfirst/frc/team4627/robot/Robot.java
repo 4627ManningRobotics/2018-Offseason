@@ -36,15 +36,14 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		DriveTrain.gyro.reset();
-		DriveTrain.gyro.zeroYaw();;
-		this.autonomousCommand = (Command) new Auto();
-		this.autoChooser = new SendableChooser();
-		this.autoChooser.addDefault("Default Auto: ", new Auto());
-		this.autoChooser.addDefault("Plan Left: ", new PlanLeft());
-		this.autoChooser.addDefault("Plan Right: ", new PlanRight());
-		this.autoChooser.addDefault("Auto Training: ", new NNtraining());
+		this.autonomousCommand = new Auto();
+		//this.autoChooser = new SendableChooser();
+		/*this.autoChooser.addDefault("Default Auto: ", new Auto());
+		this.autoChooser.addObject("Plan Left: ", new PlanLeft());
+		this.autoChooser.addObject("Plan Right: ", new PlanRight());
+		this.autoChooser.addObject("Auto Training: ", new NNtraining());
 		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);
+		*/
 		
 	}
 
@@ -82,7 +81,7 @@ public class Robot extends IterativeRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-
+		//this.autonomousCommand = (Command) autoChooser.getSelected();
 		// schedule the autonomous command (example)
 		if ( autonomousCommand != null) {
 			autonomousCommand.start();
