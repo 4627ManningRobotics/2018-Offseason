@@ -37,13 +37,12 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		this.autonomousCommand = new Auto();
-		//this.autoChooser = new SendableChooser();
-		/*this.autoChooser.addDefault("Default Auto: ", new Auto());
+		this.autoChooser = new SendableChooser();
+		this.autoChooser.addDefault("Default Auto: ", new Auto());
 		this.autoChooser.addObject("Plan Left: ", new PlanLeft());
 		this.autoChooser.addObject("Plan Right: ", new PlanRight());
 		this.autoChooser.addObject("Auto Training: ", new NNtraining());
-		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);
-		*/
+		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);		
 		
 	}
 
