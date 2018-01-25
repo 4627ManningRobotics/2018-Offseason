@@ -30,12 +30,10 @@ public class TurnToAngle extends Command {
 	    	this.angleWanted = wantedAngle;
 	    	if(planB) {
 	    		if(fmsData.charAt(0) == 'R') {
-	    			//this.angleWanted += 80;
 	    			this.angleWanted += 90;
 	    		}
 	    	} else {
 	    		if(fmsData.charAt(0) == 'L') {
-		    		//this.angleWanted -= 80;
 	    			this.angleWanted -= 90;
 		    	}
 	    	}
@@ -46,65 +44,29 @@ public class TurnToAngle extends Command {
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
-	    	this.startAngle = DriveTrain.gyro.getAngle();
-	    	Robot.driveTrain.gyro.reset();
-	    	DriveTrain.gyro.zeroYaw();
+	    	this.startAngle = Robot.driveTrain.gyro.getAngle();
+	    	
 	    }
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	double angle = Robot.driveTrain.getGyroAngle();
+	    	double angle = Robot.driveTrain.gyro.getAngle();
 	    	System.out.println(angle);
-	    	double maxAngle = this.startAngle + this.angleWanted + this.threshold;
-	    	double minAngle = this.startAngle + this.angleWanted - this.threshold;
 	    	if(this.angleWanted > 0) {
-	    	if(angle < minAngle) {
-	    		Robot.driveTrain.setLeftMotor(this.speed + 0.5);
-	    		Robot.driveTrain.setRightMotor(this.speed);
-	    	} else if(angle > maxAngle) {
-	   			Robot.driveTrain.setLeftMotor(this.speed);
-	   			Robot.driveTrain.setRightMotor(this.speed + 0.5);
-	   		} else {
-	   			Robot.driveTrain.setLeftMotor(0);
-	   			Robot.driveTrain.setRightMotor(0);
-	   			this.isDone = true;
-	   		} 
-	    	} else {
-	    		if(angle < maxAngle) {
-		    		Robot.driveTrain.setLeftMotor(this.speed + 0.5);
-		    		Robot.driveTrain.setRightMotor(this.speed);
-		    	} else if(angle > minAngle) {
-		   			Robot.driveTrain.setLeftMotor(this.speed);
-		   			Robot.driveTrain.setRightMotor(this.speed + 0.5);
-		   		} else {
-		   			Robot.driveTrain.setLeftMotor(0);
-		   			Robot.driveTrain.setRightMotor(0);
-		   			this.isDone = true;
-		   		}
-	    	}
-	    	/*if(this.angleWanted < 0) {
-	    		if(angle > (this.angleWanted)) {
-	    			Robot.driveTrain.setLeftMotor(this.speed);
-	    			Robot.driveTrain.setRightMotor(this.speed + 0.5);
-	    		} else {
-	    			Robot.driveTrain.setLeftMotor(0);
-	    			Robot.driveTrain.setRightMotor(0);
-	    			this.isDone = true;
-	    		}
-	    	} else if(this.angleWanted > 0) {
-	    		if(angle < (this.angleWanted)) {
+	    		if(angle < (this.angleWanted + this.startAngle)) {
 	    			Robot.driveTrain.setLeftMotor(this.speed + 0.5);
 	    			Robot.driveTrain.setRightMotor(this.speed);
 	    		} else {
-	    			Robot.driveTrain.setLeftMotor(0);
-	    			Robot.driveTrain.setRightMotor(0);
 	    			this.isDone = true;
-	    			
 	    		}
 	    	} else {
-	    		this.isDone = true;
-	    	}*/
-	    	
+	    		if(angle > (this.angleWanted - this.startAngle)) {
+	    			Robot.driveTrain.setLeftMotor(this.speed);
+	    			Robot.driveTrain.setRightMotor(this.speed + 0.5);
+	    		} else {
+	    			this.isDone = true;
+	    		}
+	    	}
 	    }
 	    
 
@@ -117,6 +79,7 @@ public class TurnToAngle extends Command {
 	    protected void end() {
 	    	Robot.driveTrain.setLeftMotor(0);
 	    	Robot.driveTrain.setRightMotor(0);
+	    	this.isDone = false;
 	    }
 
 	    // Called when another command which requires one or more of the same
