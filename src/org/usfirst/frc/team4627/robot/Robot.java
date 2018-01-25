@@ -46,7 +46,7 @@ public class Robot extends IterativeRobot {
 		this.autoChooser.addObject("Plan Right: ", new PlanRight());
 		this.autoChooser.addObject("Auto Training: ", new NNtraining());
 		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);		
-		
+		*/
 	}
 
 	/**

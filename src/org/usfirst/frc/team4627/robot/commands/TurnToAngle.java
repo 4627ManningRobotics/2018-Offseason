@@ -117,8 +117,6 @@ public class TurnToAngle extends Command {
 	    protected void end() {
 	    	Robot.driveTrain.setLeftMotor(0);
 	    	Robot.driveTrain.setRightMotor(0);
-	    	DriveTrain.gyro.reset();
-	    	DriveTrain.gyro.zeroYaw();
 	    }
 
 	    // Called when another command which requires one or more of the same
