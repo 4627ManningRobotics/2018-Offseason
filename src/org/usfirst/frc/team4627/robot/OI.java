@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4627.robot;
 
+import org.usfirst.frc.team4627.robot.commands.ChangeGears;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -14,6 +16,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
@@ -59,6 +62,7 @@ public class OI {
 	// Start the command when the button is pressed and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	public OI () {
+		buttonA.whenPressed(new ChangeGears());
 	}
 
 	// Run the command while the button is being held down and interrupt it once

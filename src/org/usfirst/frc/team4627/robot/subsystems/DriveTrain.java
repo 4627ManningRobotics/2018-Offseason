@@ -8,6 +8,8 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -22,6 +24,10 @@ public class DriveTrain extends Subsystem {
 	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
 	
 	public static AHRS gyro = new AHRS(I2C.Port.kOnboard);
+	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
+	public boolean isInHighGear = false;
+	
+	public static AHRS gyro = new AHRS(SerialPort.Port.kUSB);
 	
 	public static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
@@ -29,7 +35,6 @@ public class DriveTrain extends Subsystem {
 	
 	public double getGyroAngle() {
 		return gyro.getAngle();
-		
 	}
 	
 	public void initEncoders() {
@@ -56,9 +61,18 @@ public class DriveTrain extends Subsystem {
     	leftMotor1.set(leftMotor1.getControlMode(), motorSetting);
     	leftMotor2.set(leftMotor2.getControlMode(), motorSetting);
     }
+    
     public void setRightMotor(double motorSetting) {
     	rightMotor1.set(rightMotor1.getControlMode(), -motorSetting); //reverse setting 
     	rightMotor2.set(rightMotor2.getControlMode(), -motorSetting);
     }
+    
+    public void setHighGear(boolean isHigh) {
+    	this.isInHighGear = isHigh;
+    	this.theSolenoid.set(this.isInHighGear);
+    }
+    //public double getLeftMotorRotation() {
+    	
+    //}
 }
 
