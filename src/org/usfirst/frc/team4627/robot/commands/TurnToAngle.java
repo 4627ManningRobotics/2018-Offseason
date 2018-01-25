@@ -7,8 +7,9 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 public class TurnToAngle extends Command {
 	
-		public double angleWanted, speed, threshold;
+		public double angleWanted, speed, threshold, startAngle;
 		public boolean isDone;
+		
 	    public TurnToAngle(double wantedAngle, double speed, double threshold) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
@@ -38,22 +39,23 @@ public class TurnToAngle extends Command {
 	    			this.angleWanted -= 90;
 		    	}
 	    	}
+
 	    	requires(Robot.driveTrain);
 	    }
 	    
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
-	    	DriveTrain.gyro.reset();
-	    	DriveTrain.gyro.zeroYaw();
+	    	this.startAngle = DriveTrain.gyro.getAngle();
+
 	    }
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
 	    	double angle = Robot.driveTrain.getGyroAngle();
 	    	System.out.println(angle);
-	    	double maxAngle = this.angleWanted + this.threshold;
-	    	double minAngle = this.angleWanted - this.threshold;
+	    	double maxAngle = this.startAngle + this.angleWanted + this.threshold;
+	    	double minAngle = this.startAngle + this.angleWanted - this.threshold;
 	    	if(this.angleWanted > 0) {
 	    	if(angle < minAngle) {
 	    		Robot.driveTrain.setLeftMotor(this.speed + 0.5);
@@ -114,8 +116,6 @@ public class TurnToAngle extends Command {
 	    protected void end() {
 	    	Robot.driveTrain.setLeftMotor(0);
 	    	Robot.driveTrain.setRightMotor(0);
-	    	DriveTrain.gyro.reset();
-	    	DriveTrain.gyro.zeroYaw();
 	    }
 
 	    // Called when another command which requires one or more of the same
