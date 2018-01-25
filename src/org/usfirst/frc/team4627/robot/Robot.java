@@ -9,11 +9,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4627.robot.commands.Auto;
-import org.usfirst.frc.team4627.robot.commands.DriveForward;
 import org.usfirst.frc.team4627.robot.commands.NNtraining;
 import org.usfirst.frc.team4627.robot.commands.PlanLeft;
 import org.usfirst.frc.team4627.robot.commands.PlanRight;
-import org.usfirst.frc.team4627.robot.commands.turnTestCommand;
 import org.usfirst.frc.team4627.robot.subsystems.*;
 
 /**
@@ -77,7 +75,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = (Command) new turnTestCommand();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
