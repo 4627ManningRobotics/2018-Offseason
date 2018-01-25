@@ -16,11 +16,9 @@ public class TurnToAngle extends Command {
 	    	this.threshold = threshold;
 	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
 	    	this.angleWanted = wantedAngle;
-	    	if(fmsData.charAt(0) == 'L') {
-	    		this.angleWanted *= -1;
-	    	}
 	    	requires(Robot.driveTrain);
 	    }
+	    
 	    
 	    public TurnToAngle(double wantedAngle, double speed, double threshold, boolean planB) {
 	        // Use requires() here to declare subsystem dependencies

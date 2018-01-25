@@ -7,7 +7,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -25,7 +25,7 @@ public class DriveTrain extends Subsystem {
 	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
 	
-	public static AHRS gyro = new AHRS(I2C.Port.kOnboard);
+	public static AHRS gyro = new AHRS(SerialPort.Port.kUSB);
 	
 	public static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
@@ -33,7 +33,6 @@ public class DriveTrain extends Subsystem {
 	
 	public double getGyroAngle() {
 		return gyro.getAngle();
-		
 	}
 	
 	public void initEncoders() {

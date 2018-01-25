@@ -13,6 +13,7 @@ import org.usfirst.frc.team4627.robot.commands.DriveForward;
 import org.usfirst.frc.team4627.robot.commands.NNtraining;
 import org.usfirst.frc.team4627.robot.commands.PlanLeft;
 import org.usfirst.frc.team4627.robot.commands.PlanRight;
+import org.usfirst.frc.team4627.robot.commands.turnTestCommand;
 import org.usfirst.frc.team4627.robot.subsystems.*;
 
 /**
@@ -37,6 +38,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+		DriveTrain.gyro.reset();
+		DriveTrain.gyro.zeroYaw();;
 		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Default Auto: ", new Auto());
 		autoChooser.addDefault("Plan Left: ", new PlanLeft());
@@ -74,7 +77,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = (Command) autoChooser.getSelected();
+		autonomousCommand = (Command) new turnTestCommand();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
