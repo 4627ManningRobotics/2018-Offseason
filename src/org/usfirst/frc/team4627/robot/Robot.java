@@ -37,10 +37,8 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		this.autonomousCommand = new Auto();
-<<<<<<< HEAD
 		this.autoChooser = new SendableChooser();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
-=======
     	DriveTrain.gyro.reset();
     	DriveTrain.gyro.zeroYaw();
 		//this.autoChooser = new SendableChooser();
@@ -50,7 +48,7 @@ public class Robot extends IterativeRobot {
 		this.autoChooser.addObject("Plan Right: ", new PlanRight());
 		this.autoChooser.addObject("Auto Training: ", new NNtraining());
 		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);		
-		
+		*/
 	}
 
 	/**
