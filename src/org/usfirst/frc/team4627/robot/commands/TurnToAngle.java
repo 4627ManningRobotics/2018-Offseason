@@ -46,14 +46,7 @@ public class TurnToAngle extends Command {
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
-<<<<<<< HEAD
 	    	this.startAngle = DriveTrain.gyro.getAngle();
-
-=======
-	    	Robot.driveTrain.gyro.reset();
-	    	DriveTrain.gyro.reset();
-	    	DriveTrain.gyro.zeroYaw();
->>>>>>> 68e11b7defe06af9ad6731ba0918957841ad5b71
 	    }
 
 	    // Called repeatedly when this Command is scheduled to run
@@ -122,14 +115,6 @@ public class TurnToAngle extends Command {
 	    protected void end() {
 	    	Robot.driveTrain.setLeftMotor(0);
 	    	Robot.driveTrain.setRightMotor(0);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-	    	DriveTrain.gyro.reset();
-	    	DriveTrain.gyro.zeroYaw();
->>>>>>> 53da0fd8639c274f2469d94fbe4b11081ff8e5f6
->>>>>>> 68e11b7defe06af9ad6731ba0918957841ad5b71
 	    }
 
 	    // Called when another command which requires one or more of the same
