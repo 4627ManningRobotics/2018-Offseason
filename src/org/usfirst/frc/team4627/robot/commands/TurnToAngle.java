@@ -46,9 +46,11 @@ public class TurnToAngle extends Command {
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
+<<<<<<< HEAD
 	    	this.startAngle = DriveTrain.gyro.getAngle();
 
 =======
+	    	Robot.driveTrain.gyro.reset();
 	    	DriveTrain.gyro.reset();
 	    	DriveTrain.gyro.zeroYaw();
 >>>>>>> 68e11b7defe06af9ad6731ba0918957841ad5b71
