@@ -50,7 +50,7 @@ public class TurnToAngle extends Command {
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	double angle = 0;//Robot.driveTrain.gyro.getAngle();
+	    	double angle = Robot.driveTrain.gyro.getAngle();
 	    	System.out.println(angle);
 	    	if(this.angleWanted > 0) {
 	    		if(angle < (this.angleWanted + this.startAngle)) {
