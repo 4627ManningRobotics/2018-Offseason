@@ -24,7 +24,7 @@ public class NNtraining extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new TurnAndAddData(1, true));
+    	addSequential(new TurnAndAddData());
     	
     }
 }
