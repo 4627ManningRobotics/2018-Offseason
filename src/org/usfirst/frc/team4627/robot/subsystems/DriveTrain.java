@@ -45,7 +45,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public double getDistance() {
-		double distance = (leftEncoder.getDistance() + rightEncoder.getDistance()/2);
+		double distance = ((leftEncoder.getDistance() + rightEncoder.getDistance())/2);
 		return distance;
 	}
 	

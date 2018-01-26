@@ -12,6 +12,7 @@ public class ChangeGears extends Command {
     public ChangeGears() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	System.out.println("switch to: " + Robot.driveTrain.isInHighGear);
     	Robot.driveTrain.setHighGear(!Robot.driveTrain.isInHighGear);
     }
 

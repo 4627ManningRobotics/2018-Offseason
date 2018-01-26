@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4627.robot.commands.Auto;
+import org.usfirst.frc.team4627.robot.commands.ChangeGears;
 import org.usfirst.frc.team4627.robot.commands.NNtraining;
 import org.usfirst.frc.team4627.robot.commands.PlanLeft;
 import org.usfirst.frc.team4627.robot.commands.PlanRight;
@@ -82,7 +83,7 @@ public class Robot extends IterativeRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-
+		autonomousCommand = (Command) autoChooser.getSelected();
 		// schedule the autonomous command (example)
 		if ( this.autonomousCommand != null) {
 			this.autonomousCommand.start();
@@ -113,6 +114,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+
+		if(Robot.oi.xboxController.getAButtonPressed()) {
+			new ChangeGears();
+		}
+		
 		Scheduler.getInstance().run();
 	}
 
