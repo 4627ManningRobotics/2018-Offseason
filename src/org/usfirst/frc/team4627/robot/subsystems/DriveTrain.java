@@ -2,7 +2,10 @@ package org.usfirst.frc.team4627.robot.subsystems;
 
 import org.usfirst.frc.team4627.robot.RobotMap;
 import org.usfirst.frc.team4627.robot.commands.TankDrive;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -17,9 +20,9 @@ public class DriveTrain extends Subsystem {
 
 	//instantiate motor controllers
 	TalonSRX leftMotor1 = new TalonSRX(RobotMap.LEFT_MOTOR_1);
-	TalonSRX leftMotor2 = new TalonSRX(RobotMap.LEFT_MOTOR_2);
+	VictorSPX leftMotor2 = new VictorSPX(RobotMap.LEFT_MOTOR_2);
 	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
-	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
+	VictorSPX rightMotor2 = new VictorSPX(RobotMap.RIGHT_MOTOR_2);
 	
 	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
@@ -56,12 +59,12 @@ public class DriveTrain extends Subsystem {
         
     public void setLeftMotor(double motorSetting) {
     	leftMotor1.set(leftMotor1.getControlMode(), motorSetting);
-    	leftMotor2.set(leftMotor2.getControlMode(), motorSetting);
+    	leftMotor2.set(ControlMode.Follower, leftMotor1.getMotorOutputPercent());
     }
     
     public void setRightMotor(double motorSetting) {
     	rightMotor1.set(rightMotor1.getControlMode(), -motorSetting); //reverse setting 
-    	rightMotor2.set(rightMotor2.getControlMode(), -motorSetting);
+    	rightMotor2.set(ControlMode.Follower, leftMotor1.getMotorOutputPercent());
     }
     
     public void setHighGear(boolean isHigh) {
