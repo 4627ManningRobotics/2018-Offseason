@@ -16,6 +16,11 @@ public class NN {
     public Network net;
     public TrainSet set;
 
+    public NN(int ActivationFunction, double Multiplier, int... NETWORK_LAYER_SIZES) {
+        this.net = new Network(ActivationFunction, Multiplier, NETWORK_LAYER_SIZES);
+        this.set = new TrainSet(this.net.INPUT_SIZE, this.net.OUTPUT_SIZE);
+    }
+    
     public NN(int ActivationFunction, int... NETWORK_LAYER_SIZES) {
         this.net = new Network(ActivationFunction, NETWORK_LAYER_SIZES);
         this.set = new TrainSet(this.net.INPUT_SIZE, this.net.OUTPUT_SIZE);

@@ -1,5 +1,8 @@
 package org.usfirst.frc.team4627.robot;
 
+import fullyconnectednetwork.NN;
+import fullyconnectednetwork.Network;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -42,7 +45,7 @@ public class RobotMap {
 	public static final int WHEEL_DIAMETER = 6;
 	public static final int ENCODER_GEAR_RATIO = 3;
 
-	public static double FRICTION_COEFFICIENT = 1; // <= 1
+	public static final NN TURNING_NETWORK = new NN("net path here", "set path here"); 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
