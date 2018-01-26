@@ -50,7 +50,7 @@ public class TurnToAngle extends Command {
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	double angle = 0;//Robot.driveTrain.getGyroAngle();
+	    	double angle = Robot.driveTrain.getGyroAngle();
 	    	System.out.println(angle);
 	    	double maxAngle = this.angleWanted + this.threshold;
 	    	double minAngle = this.angleWanted - this.threshold;
@@ -58,10 +58,10 @@ public class TurnToAngle extends Command {
 	    	if(angle < minAngle) {
 	    		Robot.driveTrain.setLeftMotor(this.speed);
 	    		Robot.driveTrain.setRightMotor(-this.speed);
-	    	}/* else if(angle > maxAngle) {
+	    	} else if(angle > maxAngle) {
 	   			Robot.driveTrain.setLeftMotor(this.speed);
 	   			Robot.driveTrain.setRightMotor(this.speed + 0.5);
-	   		} */else {
+	   		} else {
 	   			Robot.driveTrain.setLeftMotor(0);
 	   			Robot.driveTrain.setRightMotor(0);
 	   			this.isDone = true;
@@ -70,10 +70,10 @@ public class TurnToAngle extends Command {
 	    		if(angle < maxAngle) {
 		    		Robot.driveTrain.setLeftMotor(-this.speed);
 		    		Robot.driveTrain.setRightMotor(this.speed);
-		    	}/* else if(angle > minAngle) {
+		    	} else if(angle > minAngle) {
 		   			Robot.driveTrain.setLeftMotor(this.speed);
 		   			Robot.driveTrain.setRightMotor(this.speed + 0.5);
-		   		}*/ else {
+		   		} else {
 		   			Robot.driveTrain.setLeftMotor(0);
 		   			Robot.driveTrain.setRightMotor(0);
 		   			this.isDone = true;
