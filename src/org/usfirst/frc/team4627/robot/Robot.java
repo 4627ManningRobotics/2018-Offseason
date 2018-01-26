@@ -38,17 +38,14 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		this.autonomousCommand = new Auto();
 		this.autoChooser = new SendableChooser();
+    	Robot.driveTrain.gyro.reset();
+    	Robot.driveTrain.gyro.zeroYaw();
+		this.autoChooser = new SendableChooser();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
-    	DriveTrain.gyro.reset();
-    	DriveTrain.gyro.zeroYaw();
-		//this.autoChooser = new SendableChooser();
-		/*this.autoChooser.addDefault("Default Auto: ", new Auto());
->>>>>>> acb31e8bf2895c657a47b6a0407b7f4dbe660fb3
 		this.autoChooser.addObject("Plan Left: ", new PlanLeft());
 		this.autoChooser.addObject("Plan Right: ", new PlanRight());
 		this.autoChooser.addObject("Auto Training: ", new NNtraining());
 		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);		
-		*/
 	}
 
 	/**

@@ -23,7 +23,7 @@ public class DriveTrain extends Subsystem {
 	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
 	
-	public static AHRS gyro = new AHRS(SerialPort.Port.kUSB);
+	public AHRS gyro = new AHRS(SerialPort.Port.kUSB);
 	
 	public static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
