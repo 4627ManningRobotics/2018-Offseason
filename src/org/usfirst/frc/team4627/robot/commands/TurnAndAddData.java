@@ -40,7 +40,13 @@ public class TurnAndAddData extends Command {
     	}
     		
     	for(int i = 0; i < out.length; i++) {
-    		NN.addTrainDataToFile(in[i], new double[] {out[i]}, "/home/lvuser/turnSetSaveTest.txt");
+    		try {
+				this.theNet.saveNet("/home/lvuser/Saves/turnNetSaveTest.txt");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}//create a network save for later
+    		NN.addTrainDataToFile(in[i], new double[] {out[i]}, "/home/lvuser/Saves/turnSetSaveTest.txt");
     	}
     	
     	this.isFin = true;
