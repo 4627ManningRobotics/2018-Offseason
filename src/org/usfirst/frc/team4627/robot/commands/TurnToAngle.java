@@ -50,19 +50,19 @@ public class TurnToAngle extends Command {
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	double angle = Robot.driveTrain.gyro.getAngle();
+	    	double angle = 0;//Robot.driveTrain.gyro.getAngle();
 	    	System.out.println(angle);
 	    	if(this.angleWanted > 0) {
 	    		if(angle < (this.angleWanted + this.startAngle)) {
-	    			Robot.driveTrain.setLeftMotor(this.speed + 0.5);
-	    			Robot.driveTrain.setRightMotor(this.speed);
+	    			Robot.driveTrain.setLeftMotor(this.speed);
+	    			Robot.driveTrain.setRightMotor(-this.speed);
 	    		} else {
 	    			this.isDone = true;
 	    		}
 	    	} else {
 	    		if(angle > (this.angleWanted - this.startAngle)) {
-	    			Robot.driveTrain.setLeftMotor(this.speed);
-	    			Robot.driveTrain.setRightMotor(this.speed + 0.5);
+	    			Robot.driveTrain.setLeftMotor(-this.speed);
+	    			Robot.driveTrain.setRightMotor(this.speed);
 	    		} else {
 	    			this.isDone = true;
 	    		}
