@@ -3,6 +3,7 @@ package org.usfirst.frc.team4627.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -27,7 +28,7 @@ public class Robot extends IterativeRobot {
 	public static final String RobotMap = null;
 	public static OI oi;
 	Command autonomousCommand;
-	SendableChooser autoChooser;
+	SendableChooser<CommandGroup> autoChooser;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -38,12 +39,12 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		DriveTrain.gyro.reset();
 		DriveTrain.gyro.zeroYaw();;
-		autoChooser = new SendableChooser();
-		autoChooser.addDefault("Default Auto: ", new Auto());
-		autoChooser.addDefault("Plan Left: ", new PlanLeft());
-		autoChooser.addDefault("Plan Right: ", new PlanRight());
-		autoChooser.addDefault("Auto Training: ", new NNtraining());
-		SmartDashboard.putData("Auto Chooser: ", autoChooser);
+		this.autoChooser = new SendableChooser<CommandGroup>();
+		this.autoChooser.addDefault("Default Auto: ", new Auto());
+		this.autoChooser.addDefault("Plan Left: ", new PlanLeft());
+		this.autoChooser.addDefault("Plan Right: ", new PlanRight());
+		this.autoChooser.addDefault("Auto Training: ", new NNtraining());
+		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);
 		
 	}
 
@@ -83,8 +84,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if ( autonomousCommand != null) {
-			autonomousCommand.start();
+		if ( this.autonomousCommand != null) {
+			this.autonomousCommand.start();
 			
 		}
 	}
@@ -103,8 +104,8 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand != null)
-			autonomousCommand.cancel();
+		if (this.autonomousCommand != null)
+			this.autonomousCommand.cancel();
 	}
 
 	/**
@@ -118,6 +119,7 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during test mode
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
