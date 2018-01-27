@@ -51,7 +51,7 @@ public class TurnToAngle extends Command {
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
 	    	double angle = Robot.driveTrain.getGyroAngle();
-	    	System.out.println(angle);
+	    	//System.out.println(angle);
 	    	double maxAngle = this.angleWanted + this.threshold;
 	    	double minAngle = this.angleWanted - this.threshold;
 	    	if(this.angleWanted > 0) {

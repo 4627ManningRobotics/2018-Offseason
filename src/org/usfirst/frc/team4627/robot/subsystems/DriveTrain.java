@@ -31,15 +31,19 @@ public class DriveTrain extends Subsystem {
 	
 	public static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
-	private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
+	private double distancePerPulse = (RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
 	
 	public double getGyroAngle() {
 		return gyro.getAngle();
 	}
 	
 	public void initEncoders() {
-		leftEncoder.setDistancePerPulse(this.distancePerPulse);
-		rightEncoder.setDistancePerPulse(this.distancePerPulse);
+		leftEncoder.setDistancePerPulse(0.0125);
+		rightEncoder.setDistancePerPulse(0.0125);
+		leftEncoder.setMinRate(10);
+		rightEncoder.setMinRate(10);
+		leftEncoder.setMaxPeriod(1);
+		rightEncoder.setMaxPeriod(1);
 	}
 	
 	public void resetEncoders() {
@@ -48,7 +52,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public double getDistance() {
-		double distance = ((leftEncoder.getDistance() + rightEncoder.getDistance())/2);
+		double distance = leftEncoder.getDistance();//((leftEncoder.getDistance() + rightEncoder.getDistance()) /2);
 		return distance;
 	}
 	

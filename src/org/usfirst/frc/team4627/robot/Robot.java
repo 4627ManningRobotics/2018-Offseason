@@ -39,7 +39,8 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		DriveTrain.gyro.reset();
-		DriveTrain.gyro.zeroYaw();;
+		DriveTrain.gyro.zeroYaw();
+		
 		this.autoChooser = new SendableChooser<CommandGroup>();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
 		this.autoChooser.addDefault("Plan Left: ", new PlanLeft());
