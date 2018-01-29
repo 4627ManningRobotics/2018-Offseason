@@ -33,17 +33,22 @@ public class DriveTrain extends Subsystem {
 	public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 	private double distancePerPulse = (RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
 	
+	
 	public double getGyroAngle() {
 		return gyro.getAngle();
 	}
 	
 	public void initEncoders() {
-		leftEncoder.setDistancePerPulse(0.0125);
-		rightEncoder.setDistancePerPulse(0.0125);
+		leftEncoder.setMaxPeriod(0.1);
+		rightEncoder.setMaxPeriod(0.1);
 		leftEncoder.setMinRate(10);
 		rightEncoder.setMinRate(10);
-		leftEncoder.setMaxPeriod(1);
-		rightEncoder.setMaxPeriod(1);
+		leftEncoder.setDistancePerPulse(this.distancePerPulse);
+		rightEncoder.setDistancePerPulse(this.distancePerPulse);
+		leftEncoder.setReverseDirection(true);
+		rightEncoder.setReverseDirection(true);
+		leftEncoder.setSamplesToAverage(7);
+		rightEncoder.setSamplesToAverage(7);
 	}
 	
 	public void resetEncoders() {
