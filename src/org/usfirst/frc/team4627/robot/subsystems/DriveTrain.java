@@ -59,12 +59,12 @@ public class DriveTrain extends Subsystem {
         
     public void setLeftMotor(double motorSetting) {
     	leftMotor1.set(leftMotor1.getControlMode(), motorSetting);
-    	leftMotor2.set(ControlMode.Follower, leftMotor1.getMotorOutputPercent());
+    	leftMotor2.set(leftMotor2.getControlMode(), motorSetting);
     }
     
     public void setRightMotor(double motorSetting) {
     	rightMotor1.set(rightMotor1.getControlMode(), -motorSetting); //reverse setting 
-    	rightMotor2.set(ControlMode.Follower, leftMotor1.getMotorOutputPercent());
+    	rightMotor2.set(rightMotor2.getControlMode(), -motorSetting);
     }
     
     public void setHighGear(boolean isHigh) {
