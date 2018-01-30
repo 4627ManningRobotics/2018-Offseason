@@ -31,7 +31,7 @@ public class DriveTrain extends Subsystem {
 	
 	public static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
-	private double distancePerPulse = (RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
+	//private double distancePerPulse = 0.039269908169872;// Hard code numbers
 	
 	
 	public double getGyroAngle() {
@@ -39,17 +39,12 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void initEncoders() {
-		leftEncoder.setMaxPeriod(0.1);
-		rightEncoder.setMaxPeriod(0.1);
+		/*leftEncoder.setMaxPeriod(0.1);
 		leftEncoder.setMinRate(10);
-		rightEncoder.setMinRate(10);
-		leftEncoder.setDistancePerPulse(this.distancePerPulse);
-		rightEncoder.setDistancePerPulse(this.distancePerPulse);
+		leftEncoder.setDistancePerPulse(this.distancePerPulse);*/
 		leftEncoder.setReverseDirection(true);
-		rightEncoder.setReverseDirection(true);
-		leftEncoder.setSamplesToAverage(7);
-		rightEncoder.setSamplesToAverage(7);
-	}
+		leftEncoder.setDistancePerPulse(0.0393);
+		}
 	
 	public void resetEncoders() {
 		leftEncoder.reset();
@@ -57,7 +52,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public double getDistance() {
-		double distance = leftEncoder.getDistance();//((leftEncoder.getDistance() + rightEncoder.getDistance()) /2);
+		double distance = leftEncoder.getDistance();//((leftEncoder.getDistance() + rightEncoder.getDistance())/2);
 		return distance;
 	}
 	
@@ -68,12 +63,12 @@ public class DriveTrain extends Subsystem {
         
     public void setLeftMotor(double motorSetting) {
     	leftMotor1.set(leftMotor1.getControlMode(), motorSetting);
-    	leftMotor2.set(ControlMode.Follower, leftMotor1.getMotorOutputPercent());
+    	leftMotor2.set(leftMotor2.getControlMode(), motorSetting);//(ControlMode.Follower, leftMotor1.getMotorOutputPercent());
     }
     
     public void setRightMotor(double motorSetting) {
     	rightMotor1.set(rightMotor1.getControlMode(), -motorSetting); //reverse setting 
-    	rightMotor2.set(ControlMode.Follower, leftMotor1.getMotorOutputPercent());
+    	rightMotor2.set(leftMotor2.getControlMode(), -motorSetting);//(ControlMode.Follower, rightMotor1.getMotorOutputPercent());
     }
     
     public void setHighGear(boolean isHigh) {

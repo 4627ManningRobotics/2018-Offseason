@@ -13,20 +13,40 @@ public class DriveForward extends Command {
 
 	double leftM_speed, rightM_speed, m_time, distance;
 	boolean isDone;
+    /*public DriveForward(double leftSpeed, double rightSpeed, double time) {
+    	this.leftM_speed = leftSpeed;
+    	this.rightM_speed = rightSpeed;
+    	this.m_time=time;
+        // Use requires() here to declare subsystem dependencies
+        requires(Robot.driveTrain);
+    }*/
     
     public DriveForward(double leftSpeed, double rightSpeed, double distance) {
     	this.isDone = false;
     	this.leftM_speed = leftSpeed;
     	this.rightM_speed = rightSpeed;
     	this.distance = distance;
-    	//this.m_time = time;
-    	//setTimeout(time);
     	requires(Robot.driveTrain);
     }
     
+    /*public DriveForward(double leftSpeed, double rightSpeed, double time, boolean PlanB) {
+    	this.m_time=time;
+    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
+    	if (PlanB) {
+    		if(fmsData.charAt(0) == 'L') {
+    			this.leftM_speed = 0;
+    			this.rightM_speed = 0;
+    		} else if(fmsData.charAt(0) == 'R') {
+    			this.leftM_speed = leftSpeed;
+    	    	this.rightM_speed = rightSpeed;
+    		}
+    	}
+    	// Use requires() here to declare subsystem dependencies
+        requires(Robot.driveTrain);
+    }*/
+    
     public DriveForward(double leftSpeed, double rightSpeed, double distance, boolean PlanB) {
     	this.isDone = false;
-    	//this.m_time = time;
     	this.distance = distance;
     	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
     	if (PlanB) {
@@ -38,7 +58,6 @@ public class DriveForward extends Command {
     	    	this.rightM_speed = rightSpeed;
     		}
     	}
-    	//setTimeout(this.m_time);
     	// Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
     }
@@ -60,12 +79,13 @@ public class DriveForward extends Command {
     		Robot.driveTrain.setRightMotor(0);
     		this.isDone = true;
     	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return this.isDone;
-    	//return isTimedOut();
+        //return this.isDone;
+    	return isTimedOut();
     }
 
     // Called once after isFinished returns true
