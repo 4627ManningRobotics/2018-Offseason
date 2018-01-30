@@ -1,8 +1,10 @@
 package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
+import org.usfirst.frc.team4627.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import fullyconnectednetwork.NN;
 
 /**
  *
@@ -61,13 +63,18 @@ public class DriveDistance extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrain.setLeftMotor(0);
-    	Robot.driveTrain.setRightMotor(0);
+    	if(this.setSavePath == null) {
+    		Robot.driveTrain.setLeftMotor(0);
+    		Robot.driveTrain.setRightMotor(0);
+    	}else {
+    		NN.addTrainDataToFile(new double[] {this.speed, Robot.driveTrain.getDistance()}, new double[] {this.distance}, this.setSavePath);
+    	}
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	this.end();
+		Robot.driveTrain.setLeftMotor(0);
+		Robot.driveTrain.setRightMotor(0);
     }
 }
