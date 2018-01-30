@@ -45,6 +45,10 @@ public class RobotMap {
 	public static final int ENCODER_GEAR_RATIO = 3;
 
 	public static final NN TURNING_NETWORK = new NN("/home/lvuser/Saves/turnNetSaveTest.txt", "/home/lvuser/Saves/turnSetSaveTest.txt"); 
+	public static final NN DISTANCE_NETWORK = new NN("/home/lvuser/Saves/distanceNetSaveTest.txt", "/home/lvuser/Saves/distanceSetSaveTest.txt");
+	
+	public static final double[] DISTANCES = new double[]{1,2,3,4,5,7,8,10,15,20,25,30,35,40,45,50,60,65,70,75,80,85,90,95,100,120,140,160,180,200,220,240,260,280,300,320,324}; //324
+	public static int distanceIndex = 0;
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;

@@ -28,7 +28,6 @@ public class DriveForward extends Command {
     	setTimeout(time);
     	requires(Robot.driveTrain);
     }
-    
     /*public DriveForward(double leftSpeed, double rightSpeed, double time, boolean PlanB) {
     	this.m_time=time;
     	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
