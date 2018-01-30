@@ -25,22 +25,27 @@ public class DriveTrain extends Subsystem {
 	VictorSPX rightMotor2 = new VictorSPX(RobotMap.RIGHT_MOTOR_2);
 	
 	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
+	//Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
 	
 	public static AHRS gyro = new AHRS(SerialPort.Port.kUSB);
 	
 	public static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
-	private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
+	//private double distancePerPulse = 0.039269908169872;// Hard code numbers
+	
 	
 	public double getGyroAngle() {
 		return gyro.getAngle();
 	}
 	
 	public void initEncoders() {
-		leftEncoder.setDistancePerPulse(this.distancePerPulse);
-		rightEncoder.setDistancePerPulse(this.distancePerPulse);
-	}
+		/*leftEncoder.setMaxPeriod(0.1);
+		leftEncoder.setMinRate(10);
+		leftEncoder.setDistancePerPulse(this.distancePerPulse);*/
+		leftEncoder.setReverseDirection(true);
+		leftEncoder.setDistancePerPulse(0.1571);
+		}
 	
 	public void resetEncoders() {
 		leftEncoder.reset();
@@ -48,7 +53,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public double getDistance() {
-		double distance = ((leftEncoder.getDistance() + rightEncoder.getDistance())/2);
+		double distance = leftEncoder.getDistance();//((leftEncoder.getDistance() + rightEncoder.getDistance())/2);
 		return distance;
 	}
 	
@@ -59,17 +64,25 @@ public class DriveTrain extends Subsystem {
         
     public void setLeftMotor(double motorSetting) {
     	leftMotor1.set(leftMotor1.getControlMode(), motorSetting);
+<<<<<<< HEAD
     	leftMotor2.set(leftMotor2.getControlMode(), motorSetting);
+=======
+    	leftMotor2.set(leftMotor2.getControlMode(), motorSetting);//(ControlMode.Follower, leftMotor1.getMotorOutputPercent());
+>>>>>>> Encoder-testing
     }
     
     public void setRightMotor(double motorSetting) {
     	rightMotor1.set(rightMotor1.getControlMode(), -motorSetting); //reverse setting 
+<<<<<<< HEAD
     	rightMotor2.set(rightMotor2.getControlMode(), -motorSetting);
+=======
+    	rightMotor2.set(leftMotor2.getControlMode(), -motorSetting);//(ControlMode.Follower, rightMotor1.getMotorOutputPercent());
+>>>>>>> Encoder-testing
     }
     
     public void setHighGear(boolean isHigh) {
     	this.isInHighGear = isHigh;
-    	this.theSolenoid.set(this.isInHighGear);
+    	//this.theSolenoid.set(this.isInHighGear);
     }
     //public double getLeftMotorRotation() {
     	

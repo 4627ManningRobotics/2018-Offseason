@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
+import org.usfirst.frc.team4627.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
@@ -20,12 +21,11 @@ public class DriveForward extends Command {
         requires(Robot.driveTrain);
     }*/
     
-    public DriveForward(double leftSpeed, double rightSpeed, double time) {
+    public DriveForward(double leftSpeed, double rightSpeed, double distance) {
     	this.isDone = false;
     	this.leftM_speed = leftSpeed;
     	this.rightM_speed = rightSpeed;
-    	this.m_time = time;
-    	setTimeout(time);
+    	this.distance = distance;
     	requires(Robot.driveTrain);
     }
     
@@ -45,9 +45,9 @@ public class DriveForward extends Command {
         requires(Robot.driveTrain);
     }*/
     
-    public DriveForward(double leftSpeed, double rightSpeed, double time, boolean PlanB) {
+    public DriveForward(double leftSpeed, double rightSpeed, double distance, boolean PlanB) {
     	this.isDone = false;
-    	this.m_time = time;
+    	this.distance = distance;
     	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
     	if (PlanB) {
     		if(fmsData.charAt(0) == 'L') {
@@ -58,7 +58,6 @@ public class DriveForward extends Command {
     	    	this.rightM_speed = rightSpeed;
     		}
     	}
-    	setTimeout(this.m_time);
     	// Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
     }
@@ -74,13 +73,13 @@ public class DriveForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	/*System.out.println(Robot.driveTrain.getDistance());
+    	System.out.println(Robot.driveTrain.getDistance());
     	if(Robot.driveTrain.getDistance() > this.distance) {
     		Robot.driveTrain.setLeftMotor(0);
     		Robot.driveTrain.setRightMotor(0);
     		this.isDone = true;
     	}
-    	*/
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
