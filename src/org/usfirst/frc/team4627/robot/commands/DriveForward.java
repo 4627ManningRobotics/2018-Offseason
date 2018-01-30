@@ -54,8 +54,7 @@ public class DriveForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//System.out.println(Robot.driveTrain.getDistance());
-    	System.out.println(DriveTrain.leftEncoder.getDistance());
+    	System.out.println(Robot.driveTrain.getDistance());
     	if(Robot.driveTrain.getDistance() > this.distance) {
     		Robot.driveTrain.setLeftMotor(0);
     		Robot.driveTrain.setRightMotor(0);
