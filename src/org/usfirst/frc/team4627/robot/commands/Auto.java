@@ -9,8 +9,8 @@ public class Auto extends CommandGroup {
 
     public Auto() {
     	
-    	addSequential(new DriveForward(0.25, 0.25, 2));
-    	//addSequential(new TurnToAngle(45, 0.35, 2));
+    	//addSequential(new DriveForward(0.25, 0.25, 110));
+    	addSequential(new TurnToAngle(45, 0.2, 2));
     	//addSequential(new DriveForward(0.4, 0.4, 1.92));
     	//addSequential(new TurnToAngle(-45, 0.35, 5));
     	//addSequential(new DriveForward(0.4, 0.4, 1));

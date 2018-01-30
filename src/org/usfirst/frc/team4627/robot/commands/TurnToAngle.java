@@ -46,6 +46,7 @@ public class TurnToAngle extends Command {
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
 	    	DriveTrain.gyro.reset();
+	    	DriveTrain.gyro.zeroYaw();
 	    }
 
 	    // Called repeatedly when this Command is scheduled to run
@@ -59,8 +60,8 @@ public class TurnToAngle extends Command {
 	    		Robot.driveTrain.setLeftMotor(this.speed);
 	    		Robot.driveTrain.setRightMotor(-this.speed);
 	    	} else if(angle > maxAngle) {
-	   			Robot.driveTrain.setLeftMotor(this.speed);
-	   			Robot.driveTrain.setRightMotor(this.speed + 0.5);
+	   			Robot.driveTrain.setLeftMotor(-this.speed);
+	   			Robot.driveTrain.setRightMotor(this.speed);
 	   		} else {
 	   			Robot.driveTrain.setLeftMotor(0);
 	   			Robot.driveTrain.setRightMotor(0);
@@ -68,11 +69,11 @@ public class TurnToAngle extends Command {
 	   		} 
 	    	} else {
 	    		if(angle < maxAngle) {
-		    		Robot.driveTrain.setLeftMotor(-this.speed);
-		    		Robot.driveTrain.setRightMotor(this.speed);
+		    		Robot.driveTrain.setLeftMotor(this.speed);
+		    		Robot.driveTrain.setRightMotor(-this.speed);
 		    	} else if(angle > minAngle) {
-		   			Robot.driveTrain.setLeftMotor(this.speed);
-		   			Robot.driveTrain.setRightMotor(this.speed + 0.5);
+		   			Robot.driveTrain.setLeftMotor(-this.speed);
+		   			Robot.driveTrain.setRightMotor(this.speed);
 		   		} else {
 		   			Robot.driveTrain.setLeftMotor(0);
 		   			Robot.driveTrain.setRightMotor(0);

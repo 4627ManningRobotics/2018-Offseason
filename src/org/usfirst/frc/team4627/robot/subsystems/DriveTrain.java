@@ -43,7 +43,7 @@ public class DriveTrain extends Subsystem {
 		leftEncoder.setMinRate(10);
 		leftEncoder.setDistancePerPulse(this.distancePerPulse);*/
 		leftEncoder.setReverseDirection(true);
-		leftEncoder.setDistancePerPulse(0.0393);
+		leftEncoder.setDistancePerPulse(0.1571);
 		}
 	
 	public void resetEncoders() {
