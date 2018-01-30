@@ -24,7 +24,7 @@ public class Network{
     public static final int NEGATIVE_ONE_TO_ONE = 3;
     public static final int ZERO_JUMP_X = 4;
     public static final int NEGATIVE_X_JUMP_X = 5;
-    public static final int RECTIFIER = 6;
+    public static final int RECTIFIER = 6; // 0 - infinity
     
     public final int ACTIVATION_FUNCTION;
     public final double multiplier;
