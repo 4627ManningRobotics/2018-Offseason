@@ -24,6 +24,7 @@ public class Network{
     public static final int NEGATIVE_ONE_TO_ONE = 3;
     public static final int ZERO_JUMP_X = 4;
     public static final int NEGATIVE_X_JUMP_X = 5;
+    public static final int RECTIFIER = 6;
     
     public final int ACTIVATION_FUNCTION;
     public final double multiplier;
@@ -131,8 +132,12 @@ public class Network{
                 	output[layer][neuron] = this.jumpSignum(sum);
                 	output_derivative[layer][neuron] = output[layer][neuron];
                 	break;
-                }
+                case 6:
+                    output[layer][neuron] = this.rectifier(sum);
+                    output_derivative[layer][neuron] = output[layer][neuron];
+                    break;
                 //System.out.println(output_derivative[layer][neuron]);
+                }
             }
         }
         return output[NETWORK_SIZE-1];
@@ -273,6 +278,10 @@ public class Network{
     	}else {
     		return Math.round(x);
     	}
+    }
+    
+    private double rectifier(double x) {
+        return Math.log(1 + Math.exp(x));
     }
     
     public static void main(String[] args){
