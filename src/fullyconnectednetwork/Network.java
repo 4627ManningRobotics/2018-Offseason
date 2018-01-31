@@ -285,13 +285,10 @@ public class Network{
     }
     
     public static void main(String[] args){
-    	//NN network = new NN();
-    	//try {
-			//network.saveNet(new File("").getAbsolutePath() + "\\NeuralNetworks\\saves\\frictionNetSave1.txt");
-		//} catch (Exception e) {
-			//e.printStackTrace();
-		//}
-    	//network.trainAndSave(1000000, 20000, new File("").getAbsolutePath() + "\\NeuralNetworks\\saves\\frictionNetSave1.txt");;
+    	NN turningN = new NN("net path", "set path");
+    	NN distanceN = new NN("net path", "set path");
+    	turningN.trainAndSave(10000000, 500000, "net path");
+    	distanceN.trainAndSave(10000000, 500000, "net path");
     }
 
     public void saveNetwork(String fileName) throws Exception {
