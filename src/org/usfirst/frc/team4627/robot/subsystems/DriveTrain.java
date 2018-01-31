@@ -70,7 +70,7 @@ public class DriveTrain extends Subsystem {
     
     public void setHighGear(boolean isHigh) {
     	this.isInHighGear = isHigh;
-    	//this.theSolenoid.set(this.isInHighGear);
+    	this.theSolenoid.set(this.isInHighGear);
     }
     //public double getLeftMotorRotation() {
     	
