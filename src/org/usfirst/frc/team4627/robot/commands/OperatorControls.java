@@ -1,19 +1,18 @@
 package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
-import org.usfirst.frc.team4627.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class TankDrive extends Command {
+public class OperatorControls extends Command {
 
-    public TankDrive() {
+    public OperatorControls() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.driveTrain);
+    	requires(Robot.clamp);
     }
 
     // Called just before this Command runs the first time
@@ -22,12 +21,16 @@ public class TankDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		double triggerVal = Robot.oi.getDriverRightTrigger() - Robot.oi.getDriverLeftTrigger();
-    		double stick = Robot.oi.getDriverLeftStickX() * RobotMap.TURNING_RATE;
-    		Robot.driveTrain.setLeftMotor(triggerVal + stick);
-    		Robot.driveTrain.setRightMotor(triggerVal - stick);
+    	Robot.clamp.setLeftMotor(Robot.oi.getOperatorRightTrigger() - Robot.oi.getOperatorLeftTrigger() + Robot.oi.getOperatorLeftStickX());
+    	Robot.clamp.setRightMotor(Robot.oi.getOperatorRightTrigger() - Robot.oi.getOperatorLeftTrigger() - Robot.oi.getOperatorLeftStickX());
+    	if(Robot.oi.getOperatorRightBumper()) {
+    		Robot.clamp.setLiftingMotor(0.5);
+    	} else if(Robot.oi.getOperatorLeftBumper()) {
+    		Robot.clamp.setLiftingMotor(-0.5);
+    	} else {
+    		Robot.clamp.setLiftingMotor(0);
+    	}
     }
-    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

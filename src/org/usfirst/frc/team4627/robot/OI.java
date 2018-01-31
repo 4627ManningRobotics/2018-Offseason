@@ -25,31 +25,50 @@ public class OI {
 	Joystick driver = new Joystick(RobotMap.DRIVER_CONTROLLER);
 	//Button buttonA = new JoystickButton(driver, RobotMap.BUTTON_A);
 	Joystick  rightTrigger = new Joystick(RobotMap.RIGHT_TRIGGER);
-	XboxController xboxController = new XboxController(RobotMap.DRIVER_CONTROLLER);
+	XboxController driverController = new XboxController(RobotMap.DRIVER_CONTROLLER);
+	XboxController operatorController = new XboxController(RobotMap.OPERATOR_CONTROLLER);
 	
-	public double getRightTrigger() {
-		return xboxController.getTriggerAxis(GenericHID.Hand.kRight);
+	public double getDriverRightTrigger() {
+		return driverController.getTriggerAxis(GenericHID.Hand.kRight);
 	}
 	
-	public double getLeftTrigger() {
-		return xboxController.getTriggerAxis(GenericHID.Hand.kLeft);
+	public double getDriverLeftTrigger() {
+		return driverController.getTriggerAxis(GenericHID.Hand.kLeft);
 	}
 	
-	public double getLeftStickX() {
-		return xboxController.getRawAxis(RobotMap.LEFT_STICK_X);
+	public double getDriverLeftStickX() {
+		return driverController.getRawAxis(RobotMap.LEFT_STICK_X);
 	}
 	
 	public boolean getControllerBButton() {
-		return xboxController.getBButton();
+		return driverController.getBButton();
 	}
 	
-	public double getLeftStickY() {
-		//return driver.getRawAxis(RobotMap.LEFT_TRIGGER);
+	public double getDriverLeftStickY() {
 		return -(driver.getRawAxis(RobotMap.LEFT_STICK_Y));
 	}
-	public double getRightStickY() {
-		//return driver.getRawAxis(RobotMap.RIGHT_TRIGGER);
+	public double getDriverRightStickY() {
 		return -(driver.getRawAxis(RobotMap.RIGHT_STICK_Y));
+	}
+	
+	public double getOperatorRightTrigger() {
+		return operatorController.getTriggerAxis(GenericHID.Hand.kRight);
+	}
+	
+	public double getOperatorLeftTrigger() {
+		return operatorController.getTriggerAxis(GenericHID.Hand.kLeft);
+	}
+	
+	public double getOperatorLeftStickX() {
+		return operatorController.getRawAxis(RobotMap.LEFT_STICK_X);
+	}
+	
+	public boolean getOperatorRightBumper() {
+		return operatorController.getBumper(GenericHID.Hand.kRight);
+	}
+	
+	public boolean getOperatorLeftBumper() {
+		return operatorController.getBumper(GenericHID.Hand.kLeft);
 	}
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to

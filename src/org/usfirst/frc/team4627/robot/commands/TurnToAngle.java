@@ -15,8 +15,11 @@ public class TurnToAngle extends Command {
 	    	this.speed = speed;
 	    	this.isDone = false;
 	    	this.threshold = threshold;
-	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
 	    	this.angleWanted = wantedAngle;
+	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
+	    	if(fmsData.charAt(0) == 'L') {
+	    		this.angleWanted *= -1;
+	    	}
 	    	requires(Robot.driveTrain);
 	    }
 	    
@@ -30,12 +33,10 @@ public class TurnToAngle extends Command {
 	    	this.angleWanted = wantedAngle;
 	    	if(planB) {
 	    		if(fmsData.charAt(0) == 'R') {
-	    			//this.angleWanted += 80;
 	    			this.angleWanted += 90;
 	    		}
 	    	} else {
 	    		if(fmsData.charAt(0) == 'L') {
-		    		//this.angleWanted -= 80;
 	    			this.angleWanted -= 90;
 		    	}
 	    	}
@@ -68,12 +69,12 @@ public class TurnToAngle extends Command {
 	   			this.isDone = true;
 	   		} 
 	    	} else {
-	    		if(angle < maxAngle) {
-		    		Robot.driveTrain.setLeftMotor(this.speed);
-		    		Robot.driveTrain.setRightMotor(-this.speed);
-		    	} else if(angle > minAngle) {
-		   			Robot.driveTrain.setLeftMotor(-this.speed);
-		   			Robot.driveTrain.setRightMotor(this.speed);
+	    		if(angle > maxAngle) {
+		    		Robot.driveTrain.setLeftMotor(-this.speed);
+		    		Robot.driveTrain.setRightMotor(this.speed);
+		    	} else if(angle < minAngle) {
+		   			Robot.driveTrain.setLeftMotor(this.speed);
+		   			Robot.driveTrain.setRightMotor(-this.speed);
 		   		} else {
 		   			Robot.driveTrain.setLeftMotor(0);
 		   			Robot.driveTrain.setRightMotor(0);

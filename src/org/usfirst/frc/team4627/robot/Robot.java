@@ -26,6 +26,7 @@ import org.usfirst.frc.team4627.robot.subsystems.*;
 public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final Clamp clamp = new Clamp();
 	public static final String RobotMap = null;
 	public static OI oi;
 	Command autonomousCommand;
@@ -39,7 +40,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		DriveTrain.gyro.reset();
-		DriveTrain.gyro.zeroYaw();;
+		DriveTrain.gyro.zeroYaw();
 		this.autoChooser = new SendableChooser<CommandGroup>();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
 		this.autoChooser.addDefault("Plan Left: ", new PlanLeft());
@@ -115,7 +116,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 
-		if(Robot.oi.xboxController.getAButtonPressed()) {
+		if(Robot.oi.driverController.getAButtonPressed()) {
 			new ChangeGears();
 		}
 		
