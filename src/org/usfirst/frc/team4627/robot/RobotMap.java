@@ -12,11 +12,12 @@ public class RobotMap {
 
 	public static final int LEFT_MOTOR_1 = 4;
 	public static final int LEFT_MOTOR_2 = 5;
-	public static final int LEFT_MOTOR_3 = 2; ////////////////
+	public static final int LEFT_CLAMP_MOTOR = 2; ////////////////
 	public static final int RIGHT_MOTOR_1 = 6;
 	public static final int RIGHT_MOTOR_2 = 3;
-	public static final int RIGHT_MOTOR_3 = 4; ///////////////
-	public static final int LIFTING_MOTOR = 5; ////////////////////
+	public static final int RIGHT_CLAMP_MOTOR = 4; ///////////////
+	public static final int LEFT_LIFTING_MOTOR = 5; ////////////////////
+	public static final int RIGHT_LIFTING_MOTOR = 6; ////////////////////
 	public static final int DRIVER_CONTROLLER = 0;
 	public static final int OPERATOR_CONTROLLER = 1;
 	public static final int SOLENOID = 0;

@@ -11,14 +11,13 @@ public class Clamp extends Subsystem {
 
 	private double leftMotorSpeed;
 	private double rightMotorSpeed;
-	private double liftingSpeed;
+	
     public void initDefaultCommand() {
     	setDefaultCommand(new OperatorControls());
     }
     
-    TalonSRX leftMotor3 = new TalonSRX(RobotMap.LEFT_MOTOR_3);
-    TalonSRX rightMotor3 = new TalonSRX(RobotMap.RIGHT_MOTOR_3);
-    TalonSRX liftingMotor = new TalonSRX(RobotMap.LIFTING_MOTOR);
+    TalonSRX leftMotor3 = new TalonSRX(RobotMap.LEFT_CLAMP_MOTOR);
+    TalonSRX rightMotor3 = new TalonSRX(RobotMap.RIGHT_CLAMP_MOTOR);
     
     public void setLeftMotor(double motorSpeed) {
     	this.leftMotorSpeed = motorSpeed;
@@ -26,9 +25,6 @@ public class Clamp extends Subsystem {
     }
     public void setRightMotor(double motorSpeed) {
     	this.rightMotorSpeed = -motorSpeed;
-    }
-    public void setLiftingMotor(double motorSpeed) {
-    	this.liftingSpeed = motorSpeed;
     }
 }
 
