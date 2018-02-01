@@ -70,6 +70,10 @@ public class OI {
 	public boolean getOperatorLeftBumper() {
 		return operatorController.getBumper(GenericHID.Hand.kLeft);
 	}
+	
+	public boolean getAButtonPressed() {
+		return driverController.getAButton();
+	}
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
 	// commands the same as any other Button.

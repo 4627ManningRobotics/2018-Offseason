@@ -16,7 +16,7 @@ public class TurnToAngle extends Command {
 	    	this.isDone = false;
 	    	this.threshold = threshold;
 	    	this.angleWanted = wantedAngle;
-	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
+	    	String fmsData = "L";//DriverStation.getInstance().getGameSpecificMessage();
 	    	if(fmsData.charAt(0) == 'L') {
 	    		this.angleWanted *= -1;
 	    	}
@@ -29,7 +29,7 @@ public class TurnToAngle extends Command {
 	        // eg. requires(chassis);
 	    	this.speed = speed;
 	    	this.isDone = false;
-	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
+	    	String fmsData = "L";//DriverStation.getInstance().getGameSpecificMessage();
 	    	this.angleWanted = wantedAngle;
 	    	if(planB) {
 	    		if(fmsData.charAt(0) == 'R') {

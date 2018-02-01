@@ -116,7 +116,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 
-		if(Robot.oi.driverController.getAButtonPressed()) {
+		if(Robot.oi.getAButtonPressed()) {
 			new ChangeGears();
 		}
 		
