@@ -27,6 +27,7 @@ public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Clamp clamp = new Clamp();
+	public static final Arm arm = new Arm();
 	public static final String RobotMap = null;
 	public static OI oi;
 	Command autonomousCommand;

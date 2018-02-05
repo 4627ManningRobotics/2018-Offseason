@@ -22,9 +22,7 @@ public class OI {
 	//// joystick.
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
-	Joystick driver = new Joystick(RobotMap.DRIVER_CONTROLLER);
 	//Button buttonA = new JoystickButton(driver, RobotMap.BUTTON_A);
-	Joystick  rightTrigger = new Joystick(RobotMap.RIGHT_TRIGGER);
 	XboxController driverController = new XboxController(RobotMap.DRIVER_CONTROLLER);
 	XboxController operatorController = new XboxController(RobotMap.OPERATOR_CONTROLLER);
 	
@@ -45,10 +43,10 @@ public class OI {
 	}
 	
 	public double getDriverLeftStickY() {
-		return -(driver.getRawAxis(RobotMap.LEFT_STICK_Y));
+		return -(driverController.getRawAxis(RobotMap.LEFT_STICK_Y));
 	}
 	public double getDriverRightStickY() {
-		return -(driver.getRawAxis(RobotMap.RIGHT_STICK_Y));
+		return -(driverController.getRawAxis(RobotMap.RIGHT_STICK_Y));
 	}
 	
 	public double getOperatorRightTrigger() {
