@@ -2,10 +2,7 @@ package org.usfirst.frc.team4627.robot.subsystems;
 
 import org.usfirst.frc.team4627.robot.RobotMap;
 import org.usfirst.frc.team4627.robot.commands.TankDrive;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -23,7 +20,6 @@ public class DriveTrain extends Subsystem {
 	TalonSRX leftMotor2 = new TalonSRX(RobotMap.LEFT_MOTOR_2);
 	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
 	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
-	
 	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
 	
@@ -31,25 +27,24 @@ public class DriveTrain extends Subsystem {
 	
 	public static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
-	//private double distancePerPulse = 0.039269908169872;// Hard code numbers + make sure to change distancePerPulse based on current gear
-	
+	private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
 	
 	public double getGyroAngle() {
 		return gyro.getAngle();
 	}
 	
 	public void initEncoders() {
-		leftEncoder.setReverseDirection(true);
-		leftEncoder.setDistancePerPulse(0.1571);
-		}
+		leftEncoder.setDistancePerPulse(this.distancePerPulse);
+		rightEncoder.setDistancePerPulse(this.distancePerPulse);
+	}
 	
 	public void resetEncoders() {
 		leftEncoder.reset();
-		//rightEncoder.reset();
+		rightEncoder.reset();
 	}
 	
 	public double getDistance() {
-		double distance = leftEncoder.getDistance();//((leftEncoder.getDistance() + rightEncoder.getDistance())/2);
+		double distance = (leftEncoder.getDistance() + rightEncoder.getDistance()/2);
 		return distance;
 	}
 	
