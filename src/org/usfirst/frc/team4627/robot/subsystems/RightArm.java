@@ -25,7 +25,7 @@ public class RightArm extends PIDSubsystem {
 	}
 
 	public TalonSRX liftingMotor = new TalonSRX(RobotMap.RIGHT_LIFTING_MOTOR);
-    public AnalogInput potentiometer = new AnalogInput(0);
+    public AnalogInput potentiometer = new AnalogInput(1);
     
 
     public void initDefaultCommand() {
