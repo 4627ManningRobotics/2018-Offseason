@@ -26,8 +26,8 @@ public class TankDrive extends Command {
     		double stick = Robot.oi.getDriverLeftStickX() * RobotMap.TURNING_RATE;
     		Robot.driveTrain.setLeftMotor(triggerVal + stick);
     		Robot.driveTrain.setRightMotor(triggerVal - stick);
-    		//System.out.println(Robot.leftArm.getRightVoltage());
-    		//Robot.leftArm.rightLiftingMotor.set(Robot.leftArm.rightLiftingMotor.getControlMode(), Robot.oi.getOperatorRightTrigger() - Robot.oi.getOperatorLeftTrigger());
+    		//System.out.println(Robot.leftArm.getVoltage());
+    		Robot.leftArm.liftingMotor.set(Robot.oi.getOperatorRightTrigger() - Robot.oi.getOperatorLeftTrigger());
     }
     
 
