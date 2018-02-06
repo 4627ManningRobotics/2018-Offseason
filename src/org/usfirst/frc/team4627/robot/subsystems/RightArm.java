@@ -21,22 +21,18 @@ public class RightArm extends PIDSubsystem {
 		super("RightArm", p, i, d);
 		getPIDController().setAbsoluteTolerance(0.05);
 		getPIDController().setContinuous(false); // does not wrap
-		// TODO Auto-generated constructor stub
+		getPIDController().setOutputRange(-1, 1);
 	}
 
-	public PWMTalonSRX liftingMotor = new PWMTalonSRX(RobotMap.RIGHT_LIFTING_MOTOR);
-    public AnalogInput potentiometer = new AnalogInput(0);
+	public TalonSRX liftingMotor = new TalonSRX(RobotMap.RIGHT_LIFTING_MOTOR);
+    public AnalogInput potentiometer = new AnalogInput(1);
     
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    
-    public double getVoltage() {
-    	return this.potentiometer.getVoltage();
-    }
-
+   
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub
@@ -46,7 +42,7 @@ public class RightArm extends PIDSubsystem {
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		this.liftingMotor.pidWrite(output);
+		this.liftingMotor.set(liftingMotor.getControlMode(), output);
 	}
 }
 
