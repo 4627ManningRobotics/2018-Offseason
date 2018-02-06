@@ -7,16 +7,21 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 public class TurnToAngle extends Command {
 	
-		public double angleWanted, speed, threshold, startAngle;
+		public double angleWanted, speed, threshold;
 		public boolean isDone;
 		
 	    public TurnToAngle(double wantedAngle, double speed, double threshold) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
+	    	String fmsData = "L";//  DriverStation.getInstance().getGameSpecificMessage();
+	    	if(fmsData.charAt(0) == 'L') {
+	    		this.angleWanted = -wantedAngle;
+	    	} else {
+	    		this.angleWanted = wantedAngle;
+	    	}
 	    	this.speed = speed;
 	    	this.isDone = false;
 	    	this.threshold = threshold;
-	    	this.angleWanted = wantedAngle;
 	    	requires(Robot.driveTrain);
 	    }
 	    
@@ -44,26 +49,24 @@ public class TurnToAngle extends Command {
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
-	    	this.startAngle = Robot.driveTrain.gyro.getAngle();
-	    	
+	    	Robot.driveTrain.gyro.reset();
+	    	Robot.driveTrain.gyro.zeroYaw();
 	    }
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
 	    	double angle = Robot.driveTrain.gyro.getAngle();
+	    	double minAngle = this.angleWanted - this.threshold;
+	    	double maxAngle = this.angleWanted + this.threshold;
 	    	System.out.println(angle);
 	    	if(this.angleWanted > 0) {
-	    		if(angle < (this.angleWanted + this.startAngle)) {
+	    		if(angle <= minAngle) {
 	    			Robot.driveTrain.setLeftMotor(this.speed);
 	    			Robot.driveTrain.setRightMotor(-this.speed);
-	    		} else {
-	    			this.isDone = true;
-	    		}
-	    	} else {
-	    		if(angle > (this.angleWanted - this.startAngle)) {
+	    		} else if(angle > maxAngle) {
 	    			Robot.driveTrain.setLeftMotor(-this.speed);
 	    			Robot.driveTrain.setRightMotor(this.speed);
-	    		} else {
+	    		}else {
 	    			this.isDone = true;
 	    		}
 	    	}
