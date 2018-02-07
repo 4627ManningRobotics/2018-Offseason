@@ -50,7 +50,6 @@ public class LeftArm extends PIDSubsystem {
 		}else {
 			this.liftingMotor.set(liftingMotor.getControlMode(), output);
 		}
-		SmartDashboard.putNumber("left position", this.calculatePosition());
 		System.out.println(this.calculatePosition());
 	}
 	
