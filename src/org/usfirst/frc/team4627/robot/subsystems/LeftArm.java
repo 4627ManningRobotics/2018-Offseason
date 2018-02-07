@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -36,19 +37,25 @@ public class LeftArm extends PIDSubsystem {
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub
-		return this.potentiometer.getAverageVoltage() * -71.611 + 330.78;
+		return this.calculatePosition();
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		if(output < 0.1) {
-			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0.1);
-		}else if(output > 15.5) {
-			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0.1);
+		if(this.calculatePosition() < 15 && output < 0) {
+			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
+		}else if(this.calculatePosition() > 150 && output > 0) {
+			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
 		}else {
 			this.liftingMotor.set(liftingMotor.getControlMode(), output);
 		}
+		SmartDashboard.putNumber("left position", this.calculatePosition());
+		System.out.println(this.calculatePosition());
+	}
+	
+	public double calculatePosition() {
+		return this.potentiometer.getAverageVoltage() * 71.611 - 17 /*+ 330.78*/;
 	}
 }
 

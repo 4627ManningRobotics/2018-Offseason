@@ -28,7 +28,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Clamp clamp = new Clamp();
 	public static final LeftArm leftArm = new LeftArm(0, 0, 0);
-	public static final RightArm rightArm = new RightArm(0, 0, 0);
+	//public static final RightArm rightArm = new RightArm(0, 0, 0);
 	public static final String RobotMap = null;
 	public static OI oi;
 	Command autonomousCommand;
@@ -99,6 +99,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		SmartDashboard.putNumber("left position", leftArm.calculatePosition());
 		Scheduler.getInstance().run();
 	}
 
@@ -118,6 +119,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 
+		SmartDashboard.putNumber("left position", leftArm.calculatePosition());
 		if(Robot.oi.driverController.getAButtonPressed()) {
 			new ChangeGears();
 		}
@@ -131,6 +133,7 @@ public class Robot extends IterativeRobot {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void testPeriodic() {
-		LiveWindow.run();
+		SmartDashboard.putNumber("left position", leftArm.calculatePosition());
+		System.out.println(leftArm.calculatePosition());
 	}
 }
