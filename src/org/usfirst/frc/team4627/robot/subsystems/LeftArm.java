@@ -42,7 +42,13 @@ public class LeftArm extends PIDSubsystem {
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		this.liftingMotor.set(liftingMotor.getControlMode(), output);
+		if(output < 0.1) {
+			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0.1);
+		}else if(output > 15.5) {
+			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0.1);
+		}else {
+			this.liftingMotor.set(liftingMotor.getControlMode(), output);
+		}
 	}
 }
 
