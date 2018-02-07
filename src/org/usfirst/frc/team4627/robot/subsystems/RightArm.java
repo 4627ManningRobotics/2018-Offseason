@@ -22,6 +22,7 @@ public class RightArm extends PIDSubsystem {
 		getPIDController().setAbsoluteTolerance(0.05);
 		getPIDController().setContinuous(false); // does not wrap
 		getPIDController().setOutputRange(-1, 1);
+		getPIDController().setSetpoint(7);
 	}
 
 	public TalonSRX liftingMotor = new TalonSRX(RobotMap.RIGHT_LIFTING_MOTOR);
@@ -36,13 +37,19 @@ public class RightArm extends PIDSubsystem {
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub
-		return this.potentiometer.getAverageVoltage();
+		return this.potentiometer.getAverageVoltage() * -71.4995 + 332.6181;
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		this.liftingMotor.set(liftingMotor.getControlMode(), output);
+		if(output < 0.1) {
+			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0.1);
+		}else if(output > 15.5) {
+			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0.1);
+		}else {
+			this.liftingMotor.set(liftingMotor.getControlMode(), output);
+		}
 	}
 }
 

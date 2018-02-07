@@ -36,7 +36,7 @@ public class LeftArm extends PIDSubsystem {
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub
-		return this.potentiometer.getAverageVoltage();
+		return this.potentiometer.getAverageVoltage() * -71.611 + 330.78;
 	}
 
 	@Override
