@@ -21,14 +21,15 @@ public class OperatorControls extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.clamp.setLeftMotor(Robot.oi.getOperatorRightTrigger() - Robot.oi.getOperatorLeftTrigger() + Robot.oi.getOperatorLeftStickX());
-    	Robot.clamp.setRightMotor(Robot.oi.getOperatorRightTrigger() - Robot.oi.getOperatorLeftTrigger() - Robot.oi.getOperatorLeftStickX());
     	if(Robot.oi.getOperatorRightBumper()) {
-    		Robot.clamp.setLiftingMotor(0.5);
+    		Robot.clamp.setLeftMotor(0.5);
+    		Robot.clamp.setRightMotor(0.5);
     	} else if(Robot.oi.getOperatorLeftBumper()) {
-    		Robot.clamp.setLiftingMotor(-0.5);
+    		Robot.clamp.setLeftMotor(-0.5);
+    		Robot.clamp.setRightMotor(-0.5);
     	} else {
-    		Robot.clamp.setLiftingMotor(0);
+        	Robot.clamp.setLeftMotor(Robot.oi.getOperatorRightTrigger() - Robot.oi.getOperatorLeftTrigger() + Robot.oi.getOperatorLeftStickX());
+        	Robot.clamp.setRightMotor(Robot.oi.getOperatorRightTrigger() - Robot.oi.getOperatorLeftTrigger() - Robot.oi.getOperatorLeftStickX());
     	}
     }
 

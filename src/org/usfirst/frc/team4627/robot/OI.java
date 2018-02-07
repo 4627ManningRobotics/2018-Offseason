@@ -29,11 +29,11 @@ public class OI {
 	XboxController operatorController = new XboxController(RobotMap.OPERATOR_CONTROLLER);
 	
 	public double getDriverRightTrigger() {
-		return driverController.getTriggerAxis(GenericHID.Hand.kRight);
+		return driverController.getRawAxis(RobotMap.RIGHT_TRIGGER);
 	}
 	
 	public double getDriverLeftTrigger() {
-		return driverController.getTriggerAxis(GenericHID.Hand.kLeft);
+		return driverController.getRawAxis(RobotMap.LEFT_TRIGGER);
 	}
 	
 	public double getDriverLeftStickX() {
@@ -41,7 +41,7 @@ public class OI {
 	}
 	
 	public boolean getControllerBButton() {
-		return driverController.getBButton();
+		return driverController.getRawButton(RobotMap.BUTTON_B);
 	}
 	
 	public double getDriverLeftStickY() {
@@ -52,11 +52,11 @@ public class OI {
 	}
 	
 	public double getOperatorRightTrigger() {
-		return operatorController.getTriggerAxis(GenericHID.Hand.kRight);
+		return operatorController.getRawAxis(RobotMap.RIGHT_TRIGGER);
 	}
 	
 	public double getOperatorLeftTrigger() {
-		return operatorController.getTriggerAxis(GenericHID.Hand.kLeft);
+		return operatorController.getRawAxis(RobotMap.LEFT_TRIGGER);
 	}
 	
 	public double getOperatorLeftStickX() {
@@ -64,11 +64,11 @@ public class OI {
 	}
 	
 	public boolean getOperatorRightBumper() {
-		return operatorController.getBumper(GenericHID.Hand.kRight);
+		return operatorController.getRawButton(RobotMap.RIGHT_BUMPER);
 	}
 	
 	public boolean getOperatorLeftBumper() {
-		return operatorController.getBumper(GenericHID.Hand.kLeft);
+		return operatorController.getRawButton(RobotMap.LEFT_BUMPER);
 	}
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
