@@ -35,7 +35,7 @@ public class TurnAndAddData extends Command {
     			while(time + timeInterval > System.currentTimeMillis()) {
     				//wait
     			}
-    		out[speed * 36 - (36 - degree)] = Robot.driveTrain.getGyroAngle();
+    		//out[speed * 36 - (36 - degree)] = Robot.driveTrain.getGyroAngle();
     		}
     	}
     		

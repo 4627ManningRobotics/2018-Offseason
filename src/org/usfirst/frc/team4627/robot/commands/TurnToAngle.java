@@ -9,19 +9,13 @@ public class TurnToAngle extends Command {
 	
 		public double angleWanted, speed, threshold;
 		public boolean isDone;
-		
 	    public TurnToAngle(double wantedAngle, double speed, double threshold) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
-	    	String fmsData = "L";//  DriverStation.getInstance().getGameSpecificMessage();
-	    	if(fmsData.charAt(0) == 'L') {
-	    		this.angleWanted = -wantedAngle;
-	    	} else {
-	    		this.angleWanted = wantedAngle;
-	    	}
 	    	this.speed = speed;
 	    	this.isDone = false;
 	    	this.threshold = threshold;
+	    	this.angleWanted = wantedAngle;
 	    	requires(Robot.driveTrain);
 	    }
 	    
@@ -42,34 +36,73 @@ public class TurnToAngle extends Command {
 	    			this.angleWanted -= 90;
 		    	}
 	    	}
-
 	    	requires(Robot.driveTrain);
 	    }
 	    
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
-	    	Robot.driveTrain.gyro.reset();
-	    	Robot.driveTrain.gyro.zeroYaw();
+	    	//Robot.driveTrain.gyro.reset();
+	    	//Robot.driveTrain.gyro.zeroYaw();
+	    	if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') {
+	    		this.angleWanted*=-1;
+	    	}
 	    }
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	double angle = Robot.driveTrain.gyro.getAngle();
-	    	double minAngle = this.angleWanted - this.threshold;
+	    	double angle = 0;//;Robot.driveTrain.getGyroAngle();
+	    	//System.out.println(angle);
 	    	double maxAngle = this.angleWanted + this.threshold;
-	    	System.out.println(angle);
+	    	double minAngle = this.angleWanted - this.threshold;
 	    	if(this.angleWanted > 0) {
-	    		if(angle <= minAngle) {
+	    	if(angle < minAngle) {
+	    		Robot.driveTrain.setLeftMotor(this.speed);
+	    		Robot.driveTrain.setRightMotor(-this.speed);
+	    	} else if(angle > maxAngle) {
+	   			Robot.driveTrain.setLeftMotor(-this.speed);
+	   			Robot.driveTrain.setRightMotor(this.speed);
+	   		} else {
+	   			Robot.driveTrain.setLeftMotor(0);
+	   			Robot.driveTrain.setRightMotor(0);
+	   			this.isDone = true;
+	   		} 
+	    	} else {
+	    		if(angle > maxAngle) {
+		    		Robot.driveTrain.setLeftMotor(-this.speed);
+		    		Robot.driveTrain.setRightMotor(this.speed);
+		    	} else if(angle < minAngle) {
+		   			Robot.driveTrain.setLeftMotor(this.speed);
+		   			Robot.driveTrain.setRightMotor(-this.speed);
+		   		} else {
+		   			Robot.driveTrain.setLeftMotor(0);
+		   			Robot.driveTrain.setRightMotor(0);
+		   			this.isDone = true;
+		   		}
+	    	}
+	    	/*if(this.angleWanted < 0) {
+	    		if(angle > (this.angleWanted)) {
 	    			Robot.driveTrain.setLeftMotor(this.speed);
-	    			Robot.driveTrain.setRightMotor(-this.speed);
-	    		} else if(angle > maxAngle) {
-	    			Robot.driveTrain.setLeftMotor(-this.speed);
-	    			Robot.driveTrain.setRightMotor(this.speed);
-	    		}else {
+	    			Robot.driveTrain.setRightMotor(this.speed + 0.5);
+	    		} else {
+	    			Robot.driveTrain.setLeftMotor(0);
+	    			Robot.driveTrain.setRightMotor(0);
 	    			this.isDone = true;
 	    		}
-	    	}
+	    	} else if(this.angleWanted > 0) {
+	    		if(angle < (this.angleWanted)) {
+	    			Robot.driveTrain.setLeftMotor(this.speed + 0.5);
+	    			Robot.driveTrain.setRightMotor(this.speed);
+	    		} else {
+	    			Robot.driveTrain.setLeftMotor(0);
+	    			Robot.driveTrain.setRightMotor(0);
+	    			this.isDone = true;
+	    			
+	    		}
+	    	} else {
+	    		this.isDone = true;
+	    	}*/
+	    	
 	    }
 	    
 
@@ -82,16 +115,12 @@ public class TurnToAngle extends Command {
 	    protected void end() {
 	    	Robot.driveTrain.setLeftMotor(0);
 	    	Robot.driveTrain.setRightMotor(0);
-	    	this.isDone = false;
 	    }
 
 	    // Called when another command which requires one or more of the same
-	    //whoever finds this line...Good Job! :D
+	    //whoever finds this code...Good Job! :D
 	    // subsystems is scheduled to run
 	    protected void interrupted() {
-	    	this.end();
+	    	end();
 	    }
 	}
-
-
-
