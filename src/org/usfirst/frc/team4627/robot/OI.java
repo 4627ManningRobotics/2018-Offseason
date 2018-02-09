@@ -23,6 +23,7 @@ public class OI {
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
 	//Button buttonA = new JoystickButton(driver, RobotMap.BUTTON_A);
+	
 	XboxController driverController = new XboxController(RobotMap.DRIVER_CONTROLLER);
 	XboxController operatorController = new XboxController(RobotMap.OPERATOR_CONTROLLER);
 	
