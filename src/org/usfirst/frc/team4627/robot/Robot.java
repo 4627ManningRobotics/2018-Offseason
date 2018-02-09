@@ -26,8 +26,8 @@ import org.usfirst.frc.team4627.robot.subsystems.*;
  */
 public class Robot extends IterativeRobot {
 	
-	private static final double P = 0.05;
-	private static final double I = 0.00;
+	private static final double P = 0.1;
+	private static final double I = 0.02;
 	private static final double D = 0.0;
 
 	public static final DriveTrain driveTrain = new DriveTrain();
