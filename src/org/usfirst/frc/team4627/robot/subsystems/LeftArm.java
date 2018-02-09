@@ -5,6 +5,7 @@ import org.usfirst.frc.team4627.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -50,11 +51,11 @@ public class LeftArm extends PIDSubsystem {
 		}else {
 			this.liftingMotor.set(liftingMotor.getControlMode(), output);
 		}
-		//System.out.println(this.calculatePosition());
+		System.out.println(this.calculatePosition());
 	}
 	
 	public double calculatePosition() {
-		return this.potentiometer.getAverageVoltage() * -71.37707998 + 327.8480424 /*-73.3003967 + 334.6257*/; // A
+		return this.potentiometer.getVoltage() * -72.53217414 + 340.55633; // A
 	}
 }
 

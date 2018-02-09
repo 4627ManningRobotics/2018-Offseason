@@ -3,6 +3,7 @@ package org.usfirst.frc.team4627.robot.commands;
 import org.usfirst.frc.team4627.robot.Robot;
 import org.usfirst.frc.team4627.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -26,7 +27,8 @@ public class TankDrive extends Command {
     		double stick = Robot.oi.getDriverLeftStickX() * RobotMap.TURNING_RATE;
     		Robot.driveTrain.setLeftMotor(triggerVal + stick);
     		Robot.driveTrain.setRightMotor(triggerVal - stick);
-    		//System.out.println(Robot.rightArm.calculatePosition());
+    		
+    		System.out.println(Robot.rightArm.calculatePosition());
     		Robot.rightArm.liftingMotor.set(Robot.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRightTrigger() - Robot.oi.getOperatorLeftTrigger());
     }
     
