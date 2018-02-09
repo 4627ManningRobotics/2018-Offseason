@@ -43,17 +43,18 @@ public class RightArm extends PIDSubsystem {
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		if(this.calculatePosition() < 0.1 && -output < 0) {
+		if(this.calculatePosition() < 15 && output < 0) {
 			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
-		}else if(this.calculatePosition() > 15.5 && -output > 0) {
+		}else if(this.calculatePosition() > 150 && output > 0) {
 			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
 		}else {
-			this.liftingMotor.set(liftingMotor.getControlMode(), -output);
+			this.liftingMotor.set(liftingMotor.getControlMode(), output);
 		}
+		System.out.println(this.calculatePosition());
 	}
 	
-	private double calculatePosition() {
-		return this.potentiometer.getAverageVoltage() * -71.611 + 330.78;
+	public double calculatePosition() {
+		return this.potentiometer.getAverageVoltage() * -73.3003967 + 334.6257 /*-71.37707998 + 327.8480424*/; // B
 	}
 }
 

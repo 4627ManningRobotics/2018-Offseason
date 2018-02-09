@@ -50,11 +50,11 @@ public class LeftArm extends PIDSubsystem {
 		}else {
 			this.liftingMotor.set(liftingMotor.getControlMode(), output);
 		}
-		System.out.println(this.calculatePosition());
+		//System.out.println(this.calculatePosition());
 	}
 	
 	public double calculatePosition() {
-		return this.potentiometer.getAverageVoltage() * 71.611 - 17 /*+ 330.78*/;
+		return this.potentiometer.getAverageVoltage() * -71.37707998 + 327.8480424 /*-73.3003967 + 334.6257*/; // A
 	}
 }
 
