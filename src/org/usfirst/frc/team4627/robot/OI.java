@@ -23,11 +23,11 @@ public class OI {
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
 	Joystick driver = new Joystick(RobotMap.DRIVER_CONTROLLER);
-	//Button buttonA = new JoystickButton(driver, RobotMap.BUTTON_A);
 	Joystick  rightTrigger = new Joystick(RobotMap.RIGHT_TRIGGER);
 	XboxController driverController = new XboxController(RobotMap.DRIVER_CONTROLLER);
 	XboxController operatorController = new XboxController(RobotMap.OPERATOR_CONTROLLER);
 	
+	/*
 	public double getDriverRightTrigger() {
 		return driverController.getRawAxis(RobotMap.RIGHT_TRIGGER);
 	}
@@ -62,14 +62,24 @@ public class OI {
 	public double getOperatorLeftStickX() {
 		return operatorController.getRawAxis(RobotMap.LEFT_STICK_X);
 	}
+	*/
 	
-	public boolean getOperatorRightBumper() {
-		return operatorController.getRawButton(RobotMap.RIGHT_BUMPER);
+	public boolean getOperatorBumper(int axis) {
+		return this.operatorController.getRawButton(RobotMap.RIGHT_BUMPER);
 	}
 	
-	public boolean getOperatorLeftBumper() {
-		return operatorController.getRawButton(RobotMap.LEFT_BUMPER);
+	public boolean getDriverBumper(int axis) {
+		return this.driverController.getRawButton(RobotMap.LEFT_BUMPER);
 	}
+	
+	public double getOperatorRawAxis(int axis) {
+		return this.operatorController.getRawAxis(axis);
+	}
+	
+	public double getDriverRawAxis(int axis) {
+		return this.driverController.getRawAxis(axis);
+	}
+	
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
 	// commands the same as any other Button.

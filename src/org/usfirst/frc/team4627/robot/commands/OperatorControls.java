@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
+import org.usfirst.frc.team4627.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,10 +22,10 @@ public class OperatorControls extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.getOperatorRightBumper()) {
+    	if(Robot.oi.getOperatorBumper(RobotMap.RIGHT_BUMPER)) {
     		Robot.clamp.setLeftMotor(0.5);
     		Robot.clamp.setRightMotor(0.5);
-    	} else if(Robot.oi.getOperatorLeftBumper()) {
+    	} else if(Robot.oi.getOperatorBumper(RobotMap.LEFT_BUMPER)) {
     		Robot.clamp.setLeftMotor(-0.5);
     		Robot.clamp.setRightMotor(-0.5);
     	} else {
