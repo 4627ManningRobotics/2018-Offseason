@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4627.robot.subsystems;
 
+import org.usfirst.frc.team4627.robot.Robot;
 import org.usfirst.frc.team4627.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -28,7 +29,6 @@ public class LeftArm extends PIDSubsystem {
 
 	public TalonSRX liftingMotor = new TalonSRX(RobotMap.LEFT_LIFTING_MOTOR);
     public AnalogInput potentiometer = new AnalogInput(0);
-    
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -57,5 +57,21 @@ public class LeftArm extends PIDSubsystem {
 	public double calculatePosition() {
 		return this.potentiometer.getVoltage() * -72.53217414 + 340.55633; // A
 	}
-}
+
+/*
+	public void Wrist(double motorSetting) {
+		double liftSpeed = liftingMotor.getMotorOutputPercent();
+		if (liftSpeed >= 0.3) {
+			motorSetting = 0.3;
+		} else if (liftSpeed < 0.3) {
+			motorSetting = liftSpeed;
+		}
+		*/
+		
+	}
+
+
+	
+
+
 
