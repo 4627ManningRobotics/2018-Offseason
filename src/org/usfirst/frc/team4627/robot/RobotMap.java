@@ -11,7 +11,7 @@ public class RobotMap {
 	public static final int LEFT_MOTOR_1 = 4;
 	public static final int LEFT_MOTOR_2 = 5;
 	public static final int RIGHT_MOTOR_1 = 3;
-	public static final int RIGHT_MOTOR_2 = 2;
+	public static final int RIGHT_MOTOR_2 = 1;
 	public static final int DRIVER_CONTROLLER = 0;
 	public static final int SOLENOID = 2;
 	public static double TURNING_RATE = 0.5;
