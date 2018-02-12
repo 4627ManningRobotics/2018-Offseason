@@ -23,7 +23,7 @@ public class TankDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     		double triggerVal = Robot.oi.getDriverRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getDriverRawAxis(RobotMap.LEFT_TRIGGER);
-    		double stick = Robot.oi.getDriverLeftStickX() * RobotMap.TURNING_RATE;
+    		double stick = Robot.oi.getDriverRawAxis(RobotMap.LEFT_STICK_X) * RobotMap.TURNING_RATE;
     		Robot.driveTrain.setLeftMotor(triggerVal + stick);
     		Robot.driveTrain.setRightMotor(triggerVal - stick);
     }

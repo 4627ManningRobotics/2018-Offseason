@@ -29,8 +29,10 @@ public class OperatorControls extends Command {
     		Robot.clamp.setLeftMotor(-0.5);
     		Robot.clamp.setRightMotor(-0.5);
     	} else {
-        	Robot.clamp.setLeftMotor(Robot.oi.getOperatorRightTrigger() - Robot.oi.getOperatorLeftTrigger() + Robot.oi.getOperatorLeftStickX());
-        	Robot.clamp.setRightMotor(Robot.oi.getOperatorRightTrigger() - Robot.oi.getOperatorLeftTrigger() - Robot.oi.getOperatorLeftStickX());
+    		double triggerVal = Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER);
+    		double stick = Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_X) * RobotMap.TURNING_RATE;
+        	Robot.clamp.setLeftMotor(triggerVal + stick);
+        	Robot.clamp.setRightMotor(triggerVal - stick);
     	}
     }
 
