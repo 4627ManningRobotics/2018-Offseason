@@ -20,17 +20,19 @@ public class DriveTrain extends Subsystem {
 	TalonSRX leftMotor2 = new TalonSRX(RobotMap.LEFT_MOTOR_2);
 	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
 	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
+	
 	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
 	
-	public static AHRS gyro = new AHRS(SerialPort.Port.kUSB);
+	//public static AHRS gyro = new AHRS(SerialPort.Port.kUSB);
 	
 	public static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 	private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
 	
 	public double getGyroAngle() {
-		return gyro.getAngle();
+		//return gyro.getAngle();
+		return 0.0;
 	}
 	
 	public void initEncoders() {
@@ -67,8 +69,5 @@ public class DriveTrain extends Subsystem {
     	this.isInHighGear = isHigh;
     	this.theSolenoid.set(this.isInHighGear);
     }
-    //public double getLeftMotorRotation() {
-    	
-    //}
 }
 

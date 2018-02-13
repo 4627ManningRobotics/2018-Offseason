@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4627.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -24,9 +25,15 @@ import org.usfirst.frc.team4627.robot.subsystems.*;
  * directory.
  */
 public class Robot extends IterativeRobot {
+	
+	private static final double P = 0.1;
+	private static final double I = 0.02;
+	private static final double D = 0.0;
 
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Clamp clamp = new Clamp();
+	public static final LeftArm leftArm = new LeftArm(P, I, D);
+	public static final RightArm rightArm = new RightArm(P, I, D);
 	public static final String RobotMap = null;
 	public static OI oi;
 	Command autonomousCommand;
@@ -39,8 +46,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		DriveTrain.gyro.reset();
-		DriveTrain.gyro.zeroYaw();
+		//DriveTrain.gyro.reset();
+		//DriveTrain.gyro.zeroYaw();
 		this.autoChooser = new SendableChooser<CommandGroup>();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
 		this.autoChooser.addDefault("Plan Left: ", new PlanLeft());
@@ -97,17 +104,23 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		SmartDashboard.putNumber("left position", leftArm.calculatePosition());
 		Scheduler.getInstance().run();
 	}
 
 	@Override
 	public void teleopInit() {
+		//Robot.rightArm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
+		//Robot.leftArm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
+		//Robot.leftArm.enable();
+		//Robot.rightArm.enable();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (this.autonomousCommand != null)
+		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
+		}
 	}
 
 	/**
@@ -116,6 +129,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 
+		//SmartDashboard.putNumber("left position", leftArm.calculatePosition());
 		if(Robot.oi.driverController.getAButtonPressed()) {
 			new ChangeGears();
 		}
@@ -129,6 +143,6 @@ public class Robot extends IterativeRobot {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void testPeriodic() {
-		LiveWindow.run();
+		//SmartDashboard.putNumber("left position", leftArm.calculatePosition());
 	}
 }
