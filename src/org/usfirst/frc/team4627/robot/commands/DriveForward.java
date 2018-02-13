@@ -2,6 +2,7 @@ package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -27,7 +28,6 @@ public class DriveForward extends Command {
     	setTimeout(time);
     	requires(Robot.driveTrain);
     }
-<<<<<<< HEAD
     
     /*public DriveForward(double leftSpeed, double rightSpeed, double time, boolean PlanB) {
     	this.m_time=time;
@@ -62,8 +62,7 @@ public class DriveForward extends Command {
     	// Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
     }
-=======
->>>>>>> parent of f33bdb9... Adjusted Plan Left and Right
+
 
     // Called just before this Command runs the first time
     protected void initialize() {

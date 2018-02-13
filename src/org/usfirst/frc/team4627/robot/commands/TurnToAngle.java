@@ -9,12 +9,12 @@ public class TurnToAngle extends Command {
 	
 		public double angleWanted, speed, threshold;
 		public boolean isDone;
-	    public TurnToAngle(double wantedAngle, double speed, double threshold) {
+	    public TurnToAngle(double wantedAngle, double speed, double i) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
 	    	this.speed = speed;
 	    	this.isDone = false;
-	    	this.threshold = threshold;
+	    	this.threshold = i;
 	    	this.angleWanted = wantedAngle;
 	    	requires(Robot.driveTrain);
 	    }
