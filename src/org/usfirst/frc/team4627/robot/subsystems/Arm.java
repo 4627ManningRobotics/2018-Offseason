@@ -7,12 +7,12 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
 public class Arm extends PIDSubsystem {
+	
 	public final Clamp clamp = new Clamp();
 	
 	public final VictorSPX wrist = new VictorSPX(RobotMap.WRIST_MOTOR);
