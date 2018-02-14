@@ -3,11 +3,13 @@ package org.usfirst.frc.team4627.robot.subsystems;
 import org.usfirst.frc.team4627.robot.RobotMap;
 import org.usfirst.frc.team4627.robot.commands.TankDrive;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -19,7 +21,7 @@ public class DriveTrain extends Subsystem {
 	TalonSRX leftMotor1 = new TalonSRX(RobotMap.LEFT_MOTOR_1);
 	TalonSRX leftMotor2 = new TalonSRX(RobotMap.LEFT_MOTOR_2);
 	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
-	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
+	VictorSPX rightMotor2 = new VictorSPX(RobotMap.RIGHT_MOTOR_2);
 	
 	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
