@@ -10,15 +10,16 @@ import fullyconnectednetwork.NN;
  */
 public class RobotMap {
 
-	public static final int LEFT_MOTOR_1 = 4;
-	public static final int LEFT_MOTOR_2 = 1;
-	public static final int LEFT_CLAMP_MOTOR = 2; ////////////////
-	public static final int RIGHT_MOTOR_1 = 6;
-	public static final int RIGHT_MOTOR_2 = 3;
-	public static final int RIGHT_CLAMP_MOTOR = 4; ///////////////
-	public static final int LEFT_LIFTING_MOTOR = 7; ////////////////////
-	public static final int RIGHT_LIFTING_MOTOR = 5; ////////////////////
-	public static final int WRIST_MOTOR = 8;
+	//0,1,2 victors
+	public static final int LEFT_MOTOR_1 = 3;
+	public static final int LEFT_MOTOR_2 = 0;
+	public static final int LEFT_CLAMP_MOTOR = 5;
+	public static final int RIGHT_MOTOR_1 = 4;
+	public static final int RIGHT_MOTOR_2 = 1;
+	public static final int RIGHT_CLAMP_MOTOR = 6;
+	public static final int LEFT_LIFTING_MOTOR = 7;
+	public static final int RIGHT_LIFTING_MOTOR = 8;
+	public static final int WRIST_MOTOR = 2;
 	
 	public static final int DRIVER_CONTROLLER = 0;
 	public static final int OPERATOR_CONTROLLER = 1;

@@ -2,7 +2,7 @@ package org.usfirst.frc.team4627.robot.subsystems;
 
 import org.usfirst.frc.team4627.robot.RobotMap;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -19,7 +19,7 @@ public class Arm extends Subsystem {
 	private final RightArm rightArm = new RightArm(P, I, D);
 	public final Clamp clamp = new Clamp();
 	
-	public final TalonSRX wrist = new TalonSRX(RobotMap.WRIST_MOTOR);
+	public final VictorSPX wrist = new VictorSPX(RobotMap.WRIST_MOTOR);
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
