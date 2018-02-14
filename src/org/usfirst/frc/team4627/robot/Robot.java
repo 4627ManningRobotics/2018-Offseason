@@ -40,8 +40,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		//DriveTrain.gyro.reset();
-		//DriveTrain.gyro.zeroYaw();
+		DriveTrain.gyro.reset();
+		DriveTrain.gyro.zeroYaw();
 		this.autoChooser = new SendableChooser<CommandGroup>();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
 		this.autoChooser.addDefault("Plan Left: ", new PlanLeft());
@@ -79,6 +79,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+    	DriveTrain.gyro.zeroYaw();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -104,6 +105,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
+    	DriveTrain.gyro.zeroYaw();
 		//Robot.rightArm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
 		//Robot.leftArm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
 		//Robot.leftArm.enable();
