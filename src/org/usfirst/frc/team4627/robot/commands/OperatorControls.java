@@ -13,7 +13,7 @@ public class OperatorControls extends Command {
     public OperatorControls() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.clamp);
+    	requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
@@ -22,18 +22,22 @@ public class OperatorControls extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//clamp controls
     	if(Robot.oi.getOperatorBumper(RobotMap.RIGHT_BUMPER)) {
-    		Robot.clamp.setLeftMotor(0.5);
-    		Robot.clamp.setRightMotor(0.5);
+    		Robot.arm.clamp.setLeftMotor(RobotMap.CLAMP_MAX_SPEED);
+    		Robot.arm.clamp.setRightMotor(RobotMap.CLAMP_MAX_SPEED);
     	} else if(Robot.oi.getOperatorBumper(RobotMap.LEFT_BUMPER)) {
-    		Robot.clamp.setLeftMotor(-0.5);
-    		Robot.clamp.setRightMotor(-0.5);
+    		Robot.arm.clamp.setLeftMotor(-RobotMap.CLAMP_MAX_SPEED);
+    		Robot.arm.clamp.setRightMotor(-RobotMap.CLAMP_MAX_SPEED);
     	} else {
     		double triggerVal = Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER);
     		double stick = Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_X) * RobotMap.TURNING_RATE;
-        	Robot.clamp.setLeftMotor(triggerVal + stick);
-        	Robot.clamp.setRightMotor(triggerVal - stick);
+        	Robot.arm.clamp.setLeftMotor((triggerVal + stick) * RobotMap.CLAMP_MAX_SPEED);
+        	Robot.arm.clamp.setRightMotor((triggerVal - stick) * RobotMap.CLAMP_MAX_SPEED);
     	}
+    	
+    	//wrist controls
+    	Robot.arm.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y));
     }
 
     // Make this return true when this Command no longer needs to run execute()
