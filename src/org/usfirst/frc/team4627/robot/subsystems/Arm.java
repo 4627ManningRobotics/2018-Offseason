@@ -32,12 +32,7 @@ public class Arm extends Subsystem {
     }
 
 	public void setWrist(double motorSetting) {
-		if(motorSetting > RobotMap.WRIST_MAX_SPEED) {
-			motorSetting = RobotMap.WRIST_MAX_SPEED;
-		}else if(motorSetting < -RobotMap.WRIST_MAX_SPEED) {
-			motorSetting = -RobotMap.WRIST_MAX_SPEED;
-		}
-		this.wrist.set(this.wrist.getControlMode(), motorSetting);
+		this.wrist.set(this.wrist.getControlMode(), motorSetting * RobotMap.WRIST_MAX_SPEED);
 	}
 }
 

@@ -12,6 +12,9 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class LeftArm extends PIDSubsystem {
 
+	public TalonSRX liftingMotor = new TalonSRX(RobotMap.LEFT_LIFTING_MOTOR);
+    public AnalogInput potentiometer = new AnalogInput(0);
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
@@ -21,10 +24,6 @@ public class LeftArm extends PIDSubsystem {
 		getPIDController().setContinuous(false); // does not wrap
 		getPIDController().setOutputRange(-1, 1);
 	}
-
-	public TalonSRX liftingMotor = new TalonSRX(RobotMap.LEFT_LIFTING_MOTOR);
-    public AnalogInput potentiometer = new AnalogInput(0);
-
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -39,7 +38,7 @@ public class LeftArm extends PIDSubsystem {
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		if(this.calculatePosition() < 15 && output < 0) {
+		if(this.calculatePosition() < 10 && output < 0) {
 			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
 		}else if(this.calculatePosition() > 150 && output > 0) {
 			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
