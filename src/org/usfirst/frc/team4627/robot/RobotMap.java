@@ -23,7 +23,7 @@ public class RobotMap {
 	public static final int DRIVER_CONTROLLER = 0;
 	public static final int OPERATOR_CONTROLLER = 1;
 	public static final int SOLENOID = 0;
-	public static final double WRIST_MAX_SPEED = 0.9;
+	public static final double WRIST_MAX_SPEED = 0.5;
 	public static final double CLAMP_MAX_SPEED = 0.9;
 	public static double TURNING_RATE = 0.5;
 	
