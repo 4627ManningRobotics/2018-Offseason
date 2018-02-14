@@ -26,8 +26,12 @@ import org.usfirst.frc.team4627.robot.subsystems.*;
  */
 public class Robot extends IterativeRobot {
 
+	private static final double P = 0.1;
+	private static final double I = 0.02;
+	private static final double D = 0.0;
+	
 	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final Arm arm = new Arm();
+	public static final Arm arm = new Arm(P, I, D);
 	public static final String RobotMap = null;
 	public static OI oi;
 	Command autonomousCommand;
