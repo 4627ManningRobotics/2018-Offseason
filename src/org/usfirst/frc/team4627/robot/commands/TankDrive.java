@@ -28,13 +28,6 @@ public class TankDrive extends Command {
     		Robot.driveTrain.setLeftMotor(triggerVal + stick);
     		Robot.driveTrain.setRightMotor(triggerVal - stick);
     		
-    		if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') {
-        		System.out.println(Robot.leftArm.calculatePosition());
-        		Robot.leftArm.liftingMotor.set(Robot.leftArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
-    		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R') {
-        		System.out.println(Robot.rightArm.calculatePosition());
-        		Robot.rightArm.liftingMotor.set(Robot.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
-    		}
     }
     
 
