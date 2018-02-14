@@ -23,10 +23,10 @@ public class OperatorControls extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//clamp controls
-    	if(Robot.oi.getOperatorBumper(RobotMap.RIGHT_BUMPER)) {
+    	if(Robot.oi.getOperatorButton(RobotMap.RIGHT_BUMPER)) {
     		Robot.arm.clamp.setLeftMotor(RobotMap.CLAMP_MAX_SPEED);
     		Robot.arm.clamp.setRightMotor(RobotMap.CLAMP_MAX_SPEED);
-    	} else if(Robot.oi.getOperatorBumper(RobotMap.LEFT_BUMPER)) {
+    	} else if(Robot.oi.getOperatorButton(RobotMap.LEFT_BUMPER)) {
     		Robot.arm.clamp.setLeftMotor(-RobotMap.CLAMP_MAX_SPEED);
     		Robot.arm.clamp.setRightMotor(-RobotMap.CLAMP_MAX_SPEED);
     	} else {

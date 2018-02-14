@@ -62,11 +62,11 @@ public class OI {
 	}
 	*/
 	
-	public boolean getOperatorBumper(int axis) {
+	public boolean getOperatorButton(int axis) {
 		return this.operatorController.getRawButton(RobotMap.RIGHT_BUMPER);
 	}
 	
-	public boolean getDriverBumper(int axis) {
+	public boolean getDriverButton(int axis) {
 		return this.driverController.getRawButton(RobotMap.LEFT_BUMPER);
 	}
 	

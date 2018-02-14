@@ -15,8 +15,8 @@ public class Arm extends Subsystem {
 	private static final double I = 0.02;
 	private static final double D = 0.0;
 
-	public final LeftArm leftArm = new LeftArm(P, I, D);
-	public final RightArm rightArm = new RightArm(P, I, D);
+	private final LeftArm leftArm = new LeftArm(P, I, D);
+	private final RightArm rightArm = new RightArm(P, I, D);
 	public final Clamp clamp = new Clamp();
 	
 	public final TalonSRX wrist = new TalonSRX(RobotMap.WRIST_MOTOR);
