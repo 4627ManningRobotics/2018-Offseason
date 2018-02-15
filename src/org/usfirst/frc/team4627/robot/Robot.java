@@ -111,7 +111,7 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
     	DriveTrain.gyro.zeroYaw();
     	//Robot.arm.setSetpoint(70);
-		//Robot.arm.enable();
+    	//Robot.arm.enable();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -131,7 +131,7 @@ public class Robot extends IterativeRobot {
 		if(Robot.oi.driverController.getAButtonPressed()) {
 			new ChangeGears();
 		}
-		
+		System.out.println(Robot.arm.potentiometer.getVoltage());
 		Scheduler.getInstance().run();
 	}
 

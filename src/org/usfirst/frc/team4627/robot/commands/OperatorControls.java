@@ -36,10 +36,12 @@ public class OperatorControls extends Command {
         	Robot.arm.clamp.setRightMotor((triggerVal - stick) * RobotMap.CLAMP_MAX_SPEED);
     	}
     	if(Robot.oi.getOperatorAButton()) {
-    		Robot.arm.leftLiftingMotor.set(Robot.arm.leftLiftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER)-Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
-    		Robot.arm.rightLiftingMotor.set(Robot.arm.leftLiftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER)-Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
-    		
+    		//Robot.arm.setSetpoint(70);
+    		//Robot.arm.enable();
     	}
+    	//Robot.arm.rightLiftingMotor.set(Robot.arm.leftLiftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
+    	//Robot.arm.leftLiftingMotor.set(Robot.arm.rightLiftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
+    	
     	
     	//wrist controls
     	//Robot.arm.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y));
