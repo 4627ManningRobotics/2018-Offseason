@@ -15,9 +15,9 @@ public class Arm extends PIDSubsystem {
 	
 	public final Clamp clamp = new Clamp();
 	
-	public final VictorSPX wrist = new VictorSPX(RobotMap.WRIST_MOTOR);
+	public final TalonSRX wrist = new TalonSRX(RobotMap.WRIST_MOTOR);
 	public TalonSRX leftLiftingMotor = new TalonSRX(RobotMap.LEFT_LIFTING_MOTOR);
-	public TalonSRX rightLiftingMotor = new TalonSRX(RobotMap.LEFT_LIFTING_MOTOR);
+	public TalonSRX rightLiftingMotor = new TalonSRX(RobotMap.RIGHT_LIFTING_MOTOR);
 	
     public AnalogInput potentiometer = new AnalogInput(0);
 

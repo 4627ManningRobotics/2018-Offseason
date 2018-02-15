@@ -35,9 +35,13 @@ public class OperatorControls extends Command {
         	Robot.arm.clamp.setLeftMotor((triggerVal + stick) * RobotMap.CLAMP_MAX_SPEED);
         	Robot.arm.clamp.setRightMotor((triggerVal - stick) * RobotMap.CLAMP_MAX_SPEED);
     	}
+    	if(Robot.oi.getOperatorAButton()) {
+    		Robot.arm.setSetpoint(70);
+    		Robot.arm.enable();
+    	}
     	
     	//wrist controls
-    	Robot.arm.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y));
+    	//Robot.arm.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y));
     }
 
     // Make this return true when this Command no longer needs to run execute()
