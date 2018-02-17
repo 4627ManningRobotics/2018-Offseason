@@ -27,11 +27,7 @@ import org.usfirst.frc.team4627.robot.subsystems.*;
 public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
-	//public static final Arm arm = new Arm();
-
-	//public static final DriveTrain driveTrain = null;
-	public static final Arm arm = null;
-	
+	public static final Arm arm = new Arm();
 	public static final String RobotMap = null;
 	public static OI oi;
 	Command autonomousCommand;
@@ -44,14 +40,14 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		//DriveTrain.gyro.reset();
-		//DriveTrain.gyro.zeroYaw();
-		//this.autoChooser = new SendableChooser<CommandGroup>();
-		//this.autoChooser.addDefault("Default Auto: ", new Auto());
-		//this.autoChooser.addDefault("Plan Left: ", new PlanLeft());
-		//this.autoChooser.addDefault("Plan Right: ", new PlanRight());
-		//this.autoChooser.addDefault("Auto Training: ", new NNtraining());
-		//SmartDashboard.putData("Auto Chooser: ", this.autoChooser);
+		DriveTrain.gyro.reset();
+		DriveTrain.gyro.zeroYaw();
+		this.autoChooser = new SendableChooser<CommandGroup>();
+		this.autoChooser.addDefault("Default Auto: ", new Auto());
+		this.autoChooser.addDefault("Plan Left: ", new PlanLeft());
+		this.autoChooser.addDefault("Plan Right: ", new PlanRight());
+		this.autoChooser.addDefault("Auto Training: ", new NNtraining());
+		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);
 		
 	}
 
@@ -110,7 +106,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
     	DriveTrain.gyro.zeroYaw();
-		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
+		//Robot.rightArm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
+		//Robot.leftArm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
+		//Robot.leftArm.enable();
+		//Robot.rightArm.enable();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove

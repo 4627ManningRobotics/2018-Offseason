@@ -17,10 +17,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveTrain extends Subsystem {
 
 	//instantiate motor controllers
-	VictorSPX leftMotor1 = new VictorSPX(0);
-	//VictorSPX leftMotor2 = new VictorSPX(RobotMap.LEFT_MOTOR_2);
-	//TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
-	//VictorSPX rightMotor2 = new VictorSPX(RobotMap.RIGHT_MOTOR_2);
+	TalonSRX leftMotor1 = new TalonSRX(RobotMap.LEFT_MOTOR_1);
+	VictorSPX leftMotor2 = new VictorSPX(RobotMap.LEFT_MOTOR_2);
+	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
+	VictorSPX rightMotor2 = new VictorSPX(RobotMap.RIGHT_MOTOR_2);
 	
 	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
@@ -58,12 +58,12 @@ public class DriveTrain extends Subsystem {
         
     public void setLeftMotor(double motorSetting) {
     	leftMotor1.set(leftMotor1.getControlMode(), motorSetting);
-    	//leftMotor2.set(leftMotor2.getControlMode(), motorSetting);
+    	leftMotor2.set(leftMotor2.getControlMode(), motorSetting);
     }
     
     public void setRightMotor(double motorSetting) {
-    	//rightMotor1.set(rightMotor1.getControlMode(), -motorSetting); //reverse setting 
-    	//rightMotor2.set(rightMotor2.getControlMode(), -motorSetting);
+    	rightMotor1.set(rightMotor1.getControlMode(), -motorSetting); //reverse setting 
+    	rightMotor2.set(rightMotor2.getControlMode(), -motorSetting);
     }
     
     public void setHighGear(boolean isHigh) {

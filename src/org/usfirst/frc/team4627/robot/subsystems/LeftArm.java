@@ -3,7 +3,6 @@ package org.usfirst.frc.team4627.robot.subsystems;
 import org.usfirst.frc.team4627.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -13,7 +12,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class LeftArm extends PIDSubsystem {
 
-	public VictorSPX liftingMotor = new VictorSPX(RobotMap.LEFT_LIFTING_MOTOR);
+	public TalonSRX liftingMotor = new TalonSRX(RobotMap.LEFT_LIFTING_MOTOR);
     public AnalogInput potentiometer = new AnalogInput(0);
 
     // Put methods for controlling this subsystem
@@ -50,7 +49,7 @@ public class LeftArm extends PIDSubsystem {
 	}
 	
 	public double calculatePosition() {
-		return this.potentiometer.getVoltage() * -72.53217414 + 340.55633; // B
+		return this.potentiometer.getVoltage() * -72.53217414 + 340.55633; // A
 	}
 
 /*

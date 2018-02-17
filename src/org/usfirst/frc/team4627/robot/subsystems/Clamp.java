@@ -12,7 +12,7 @@ public class Clamp extends Subsystem {
     TalonSRX rightMotor = new TalonSRX(RobotMap.RIGHT_CLAMP_MOTOR);
 
     public void initDefaultCommand() {
-    	//setDefaultCommand(new OperatorControls());
+    	setDefaultCommand(new OperatorControls());
     }
     
     public void setLeftMotor(double motorSpeed) {
