@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4627.robot.subsystems;
 
+import org.usfirst.frc.team4627.robot.Robot;
 import org.usfirst.frc.team4627.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -35,6 +36,7 @@ public class RightArm extends PIDSubsystem {
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub
+		Robot.arm.leftArm.setSetpoint(this.calculatePosition());
 		return this.calculatePosition();
 	}
 

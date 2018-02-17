@@ -38,6 +38,9 @@ public class OperatorControls extends Command {
     	
     	//wrist controls
     	Robot.arm.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y));
+    	
+    	System.out.println(Robot.arm.rightArm.potentiometer.getVoltage());
+    	System.out.println(Robot.arm.leftArm.potentiometer.getVoltage());
     }
 
     // Make this return true when this Command no longer needs to run execute()

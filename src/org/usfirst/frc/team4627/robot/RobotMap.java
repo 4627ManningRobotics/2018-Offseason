@@ -10,16 +10,16 @@ import fullyconnectednetwork.NN;
  */
 public class RobotMap {
 
-	//0,1,2 victors
-	public static final int LEFT_MOTOR_1 = 3;
-	public static final int LEFT_MOTOR_2 = 0;
-	public static final int LEFT_CLAMP_MOTOR = 5;
-	public static final int RIGHT_MOTOR_1 = 4;
-	public static final int RIGHT_MOTOR_2 = 1;
-	public static final int RIGHT_CLAMP_MOTOR = 6;
-	public static final int LEFT_LIFTING_MOTOR = 7;
-	public static final int RIGHT_LIFTING_MOTOR = 8;
-	public static final int WRIST_MOTOR = 2;
+	//0,7,8 victors
+	public static final int LEFT_MOTOR_1 = 5;
+	public static final int LEFT_MOTOR_2 = 6;
+	public static final int LEFT_CLAMP_MOTOR = 7;
+	public static final int RIGHT_MOTOR_1 = 3;
+	public static final int RIGHT_MOTOR_2 = 4;
+	public static final int RIGHT_CLAMP_MOTOR = 8;
+	public static final int LEFT_LIFTING_MOTOR = 2;
+	public static final int RIGHT_LIFTING_MOTOR = 1;
+	public static final int WRIST_MOTOR = 0;
 	
 	public static final int DRIVER_CONTROLLER = 0;
 	public static final int OPERATOR_CONTROLLER = 1;
@@ -54,7 +54,7 @@ public class RobotMap {
 	public static final int WHEEL_DIAMETER = 6;
 	public static final int ENCODER_GEAR_RATIO = 3;
 
-	public static final NN TURNING_NETWORK = new NN("/home/lvuser/Saves/turnNetSaveTest.txt", "/home/lvuser/Saves/turnSetSaveTest.txt"); 
+	//public static final NN TURNING_NETWORK = new NN("/home/lvuser/Saves/turnNetSaveTest.txt", "/home/lvuser/Saves/turnSetSaveTest.txt"); 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;

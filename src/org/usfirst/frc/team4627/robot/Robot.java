@@ -136,7 +136,6 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during test mode
 	 */
-	@SuppressWarnings("deprecation")
 	@Override
 	public void testPeriodic() {
 		//SmartDashboard.putNumber("left position", leftArm.calculatePosition());
