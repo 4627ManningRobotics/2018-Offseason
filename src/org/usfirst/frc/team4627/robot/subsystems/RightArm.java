@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4627.robot.subsystems;
 
+import org.usfirst.frc.team4627.robot.Robot;
 import org.usfirst.frc.team4627.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -35,6 +36,7 @@ public class RightArm extends PIDSubsystem {
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub
+		Robot.arm.leftArm.setSetpoint(this.calculatePosition()); // set the position of the left motor to the current position of the right
 		return this.calculatePosition();
 	}
 
@@ -52,7 +54,7 @@ public class RightArm extends PIDSubsystem {
 	}
 	
 	public double calculatePosition() {
-		return this.potentiometer.getVoltage() * -71.43831687 + 329.1775997; // B
+		return this.potentiometer.getVoltage() * -71.43831687 + 329.1775997; // A
 	}
 }
 
