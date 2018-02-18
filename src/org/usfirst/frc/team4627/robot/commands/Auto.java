@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4627.robot.commands;
 
-import org.usfirst.frc.team4627.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -10,11 +8,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Auto extends CommandGroup {
 
     public Auto() {
+<<<<<<< HEAD
     	addSequential(new DriveForward(0.2, 0.2, 1));
     	addSequential(new TurnToAngle(45, RobotMap.TURN_SPEED, 2));
     	addSequential(new DriveForward(0.4, 0.4, 1));
     	addSequential(new TurnToAngle(-47, 0.2, 5));
     	addSequential(new DriveForward(0.3, 0.3, 1.47));
+=======
+    	//addSequential(new DriveForward(0.2, 0.2, 1));
+    	addSequential(new TurnToAngle(45, 0.3, 2));
+    	//addSequential(new DriveForward(0.4, 0.4, 1));
+    	//addSequential(new TurnToAngle(-45, 0.35, 2));
+    	//addSequential(new DriveForward(0.17, 0.17, 1));
+>>>>>>> 24cc9becd8d2d692c7be0e0f35654cf4ba31d064
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
