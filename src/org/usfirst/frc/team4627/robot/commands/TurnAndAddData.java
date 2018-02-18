@@ -22,6 +22,7 @@ public class TurnAndAddData extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("initialized");
     	this.theNet = new NN(2,3,1);
     	int timeInterval = 300; // time interval in milliseconds, 3/10 seconds
     	double[][] in = new double[180][2]; // 36-5 degree intervals * 5 speeds
@@ -29,6 +30,8 @@ public class TurnAndAddData extends Command {
     	
     	for(int speed = 1; speed <= 5; speed++) {
     		for(int degree = 1; degree <= 36; degree++) {
+
+    	    	System.out.println("speed: " + speed + " degree: " + degree);
     			in[speed * 36 - (36 - degree)] = new double[] {degree, speed};
     			new TurnToAngle(degree, speed, 0);
     			long time = System.currentTimeMillis();
