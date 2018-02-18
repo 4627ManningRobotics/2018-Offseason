@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4627.robot.commands;
 
-import org.usfirst.frc.team4627.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -10,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Auto extends CommandGroup {
 
     public Auto() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -37,6 +36,13 @@ public class Auto extends CommandGroup {
 >>>>>>> parent of 8bd672d... Works better now
 =======
 >>>>>>> 970e8a65d29d2b22fbb8723e7b274fe633cf92c6
+=======
+    	//addSequential(new DriveForward(0.2, 0.2, 1));
+    	addSequential(new TurnToAngle(45, 0.3, 2));
+    	//addSequential(new DriveForward(0.4, 0.4, 1));
+    	//addSequential(new TurnToAngle(-45, 0.35, 2));
+    	//addSequential(new DriveForward(0.17, 0.17, 1));
+>>>>>>> parent of 8bd672d... Works better now
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
