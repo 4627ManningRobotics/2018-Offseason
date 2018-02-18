@@ -13,6 +13,7 @@ public class TurnToAngle extends Command {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
 	    	this.speed = speed;
+	    	this.isDone = false;
 	    	this.threshold = i;
 	    	this.angleWanted = wantedAngle;
 	    	requires(Robot.driveTrain);
@@ -41,22 +42,20 @@ public class TurnToAngle extends Command {
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
-	    	this.isDone  = false;
-	    	Robot.driveTrain.gyro.zeroYaw();
-	    	while(Robot.driveTrain.getGyroAngle() < -0.02 || Robot.driveTrain.getGyroAngle() > 0.02) {
-	    		
-	    	}
+	    	//Robot.driveTrain.gyro.reset();
+	    	//Robot.driveTrain.gyro.zeroYaw();
 	    	if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') {
-	    		this.angleWanted *= -1;
+	    		this.angleWanted*=-1;
 	    	}
 	    }
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	double angle = Robot.driveTrain.getGyroAngle();
-	    	System.out.println(angle);
+	    	double angle = 0;//;Robot.driveTrain.getGyroAngle();
+	    	//System.out.println(angle);
 	    	double maxAngle = this.angleWanted + this.threshold;
 	    	double minAngle = this.angleWanted - this.threshold;
+	    	if(this.angleWanted > 0) {
 	    	if(angle < minAngle) {
 	    		Robot.driveTrain.setLeftMotor(this.speed);
 	    		Robot.driveTrain.setRightMotor(-this.speed);
@@ -66,9 +65,21 @@ public class TurnToAngle extends Command {
 	   		} else {
 	   			Robot.driveTrain.setLeftMotor(0);
 	   			Robot.driveTrain.setRightMotor(0);
-	   			this.isDone = true; 
+	   			this.isDone = true;
+	   		} 
+	    	} else {
+	    		if(angle > maxAngle) {
+		    		Robot.driveTrain.setLeftMotor(-this.speed);
+		    		Robot.driveTrain.setRightMotor(this.speed);
+		    	} else if(angle < minAngle) {
+		   			Robot.driveTrain.setLeftMotor(this.speed);
+		   			Robot.driveTrain.setRightMotor(-this.speed);
+		   		} else {
+		   			Robot.driveTrain.setLeftMotor(0);
+		   			Robot.driveTrain.setRightMotor(0);
+		   			this.isDone = true;
+		   		}
 	    	}
-	    	
 	    	/*if(this.angleWanted < 0) {
 	    		if(angle > (this.angleWanted)) {
 	    			Robot.driveTrain.setLeftMotor(this.speed);
