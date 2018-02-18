@@ -22,13 +22,13 @@ public class TurnAndAddData extends Command {
     protected void initialize() {
     	this.theNet = new NN(2,3,1);
     	int timeInterval = 300; // time interval in milliseconds, 3/10 seconds
-    	double[][] in = new double[180][2]; // 36-5 degree intervals * 5 speeds
+    	double[][] in = new double[180][2]; // 36-10 degree intervals * 5 speeds
     	double[] out = new double[180];
     	
     	for(int speed = 1; speed <= 5; speed++) {
     		for(int degree = 1; degree <= 36; degree++) {
-    			in[speed * 36 - (36 - degree)] = new double[] {degree, speed};
-    			new TurnToAngle(degree, speed, 0);
+    			in[speed * 36 - (36 - degree)] = new double[] {degree * 10, speed / 5};
+    			new TurnToAngle(degree * 10, speed / 5, 0);
     			long time = System.currentTimeMillis();
     			while(time + timeInterval > System.currentTimeMillis()) {
     				//wait
