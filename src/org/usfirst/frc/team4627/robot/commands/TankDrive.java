@@ -2,6 +2,8 @@ package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
 import org.usfirst.frc.team4627.robot.RobotMap;
+import org.usfirst.frc.team4627.robot.subsystems.Arm;
+import org.usfirst.frc.team4627.robot.subsystems.RightArm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -22,8 +24,10 @@ public class TankDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		double triggerVal = Robot.oi.getRightTrigger() - Robot.oi.getLeftTrigger();
-    		double stick = Robot.oi.getLeftStickX() * RobotMap.TURNING_RATE;
+    		System.out.println(Robot.arm.rightArm.calculatePosition());
+    		System.out.println(Robot.arm.leftArm.calculatePosition());
+    		double triggerVal = Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER);
+    		double stick = Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_X) * RobotMap.TURNING_RATE;
     		Robot.driveTrain.setLeftMotor(triggerVal + stick);
     		Robot.driveTrain.setRightMotor(triggerVal - stick);
     }

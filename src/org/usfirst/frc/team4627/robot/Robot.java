@@ -106,8 +106,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
     	DriveTrain.gyro.zeroYaw();
-		Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
-		Robot.arm.enable();
+		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
+		//Robot.arm.enable();
 
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to

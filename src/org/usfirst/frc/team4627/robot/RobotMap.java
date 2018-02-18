@@ -27,6 +27,7 @@ public class RobotMap {
 	public static final double WRIST_MAX_SPEED = 0.5;
 	public static final double CLAMP_MAX_SPEED = 0.9;
 	public static double TURNING_RATE = 0.5;
+	public static final double ARM_SPEED = 0.3;
 	
 	public static final int BUTTON_A = 1;
 	public static final int BUTTON_B = 2;
