@@ -15,6 +15,10 @@ public class RobotMap {
 	public static final int DRIVER_CONTROLLER = 0;
 	public static final int SOLENOID = 2;
 	public static double TURNING_RATE = 0.5;
+<<<<<<< HEAD
+=======
+	public static final double TURN_SPEED = 0.2;
+>>>>>>> 970e8a65d29d2b22fbb8723e7b274fe633cf92c6
 	
 	public static final int BUTTON_A = 1;
 	public static final int BUTTON_B = 2;
