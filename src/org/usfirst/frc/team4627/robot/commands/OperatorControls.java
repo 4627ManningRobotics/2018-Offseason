@@ -35,8 +35,8 @@ public class OperatorControls extends Command {
         	Robot.clamp.setLeftMotor(triggerVal + stick);
         	Robot.clamp.setRightMotor(triggerVal - stick);
     	}
-    		Robot.leftArm.liftingMotor.set(Robot.leftArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
-    		Robot.rightArm.liftingMotor.set(Robot.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
+    		Robot.leftArm.setMotors(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
+    		
     }
 
     // Make this return true when this Command no longer needs to run execute()
