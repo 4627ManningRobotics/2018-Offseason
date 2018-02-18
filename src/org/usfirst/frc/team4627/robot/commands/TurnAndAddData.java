@@ -5,6 +5,7 @@ import org.usfirst.frc.team4627.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 import fullyconnectednetwork.NN;
+import fullyconnectednetwork.Network;
 
 /**
  *
@@ -16,37 +17,37 @@ public class TurnAndAddData extends Command {
 	
     public TurnAndAddData() {
     	this.isFin = false;
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	this.theNet = new NN(2,3,1);
-    	int timeInterval = 300; // time interval in milliseconds, 3/10 seconds
-    	double[][] in = new double[180][2]; // 36-10 degree intervals * 5 speeds
+    	this.theNet = new NN(Network.ZERO_TO_ONE, 180.0, new int[] {2,3,1});
+		try {
+			this.theNet.saveNet("/home/lvuser/Saves/turnNetSaveTest.txt");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//create a network save for later
+    	int timeInterval = 300; // time interval in milliseconds, 3/10 of a seconds
+    	double[][] in = new double[180][2]; // 36-5 degree intervals * 5 speeds
     	double[] out = new double[180];
     	
     	for(int speed = 1; speed <= 5; speed++) {
     		for(int degree = 1; degree <= 36; degree++) {
-    			in[speed * 36 - (36 - degree)] = new double[] {degree * 10, speed / 5};
-    			new TurnToAngle(degree * 10, speed / 5, 0);
+    			
+    			int index = (speed - 1) * 36 + (degree - 1);
+    			
+    			new TurnToAngle(degree * 5, speed / 5, 2.5);
     			long time = System.currentTimeMillis();
     			while(time + timeInterval > System.currentTimeMillis()) {
     				//wait
     			}
-    		out[speed * 36 - (36 - degree)] = Robot.driveTrain.getGyroAngle();
+    			in[index] = new double[] {Robot.driveTrain.getGyroAngle(), speed / 5};
+    			out[index] = degree * 5;
+    			NN.addTrainDataToFile(in[index], new double[] {out[index]}, "/home/lvuser/Saves/turnSetSaveTest.txt");
     		}
     	}
-    		
-    	for(int i = 0; i < out.length; i++) {
-    		try {
-				this.theNet.saveNet("/home/lvuser/Saves/turnNetSaveTest.txt");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}//create a network save for later
-    		NN.addTrainDataToFile(in[i], new double[] {out[i]}, "/home/lvuser/Saves/turnSetSaveTest.txt");
-    	}
-    	
     	this.isFin = true;
     }
 
