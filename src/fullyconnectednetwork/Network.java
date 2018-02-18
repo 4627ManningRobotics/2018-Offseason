@@ -19,11 +19,15 @@ public class Network{
     public static final double LEARNING_RATE = 0.3; // this is a well tested number.
     
     public static final int ZERO_OR_ONE = 0;
-    public static final int _ONE_OR_ONE = 1;
+    public static final int NEGATIVE_ONE_OR_ONE = 1;
     public static final int ZERO_TO_ONE = 2;
-    public static final int _ONE_TO_ONE = 3;
+    public static final int NEGATIVE_ONE_TO_ONE = 3;
+    public static final int ZERO_JUMP_X = 4;
+    public static final int NEGATIVE_X_JUMP_X = 5;
+    public static final int RECTIFIER = 6; // 0 - infinity
     
     public final int ACTIVATION_FUNCTION;
+    public final double multiplier;
     
     private double[][] output;
     private double[][][] weights;
@@ -38,6 +42,35 @@ public class Network{
     public final int   NETWORK_SIZE;
 
     public Network(int ActivationFunction, int... NETWORK_LAYER_SIZES) {
+    	this.multiplier = 1;
+    	this.ACTIVATION_FUNCTION = ActivationFunction;
+        this.NETWORK_LAYER_SIZES = NETWORK_LAYER_SIZES;
+        this.INPUT_SIZE = NETWORK_LAYER_SIZES[0];
+        this.NETWORK_SIZE = NETWORK_LAYER_SIZES.length;
+        this.OUTPUT_SIZE = NETWORK_LAYER_SIZES[NETWORK_SIZE-1];
+
+        this.output = new double[NETWORK_SIZE][];
+        this.weights = new double[NETWORK_SIZE][][];
+        this.bias = new double[NETWORK_SIZE][];
+
+        this.error_signal = new double[NETWORK_SIZE][];
+        this.output_derivative = new double[NETWORK_SIZE][];
+
+        for(int i = 0; i < NETWORK_SIZE; i++) {
+            this.output[i] = new double[NETWORK_LAYER_SIZES[i]];
+            this.error_signal[i] = new double[NETWORK_LAYER_SIZES[i]];
+            this.output_derivative[i] = new double[NETWORK_LAYER_SIZES[i]];
+
+            this.bias[i] = NetworkTools.createRandomArray(NETWORK_LAYER_SIZES[i], -1, 1);
+
+            if(i > 0) {
+                weights[i] = NetworkTools.createRandomArray(NETWORK_LAYER_SIZES[i],NETWORK_LAYER_SIZES[i-1], -1, 1);
+            }
+        }
+    }
+    
+    public Network(int ActivationFunction, double multiplier, int... NETWORK_LAYER_SIZES) {
+    	this.multiplier = multiplier;
     	this.ACTIVATION_FUNCTION = ActivationFunction;
         this.NETWORK_LAYER_SIZES = NETWORK_LAYER_SIZES;
         this.INPUT_SIZE = NETWORK_LAYER_SIZES[0];
@@ -85,14 +118,26 @@ public class Network{
                 	break;
                 case 2:
                 	output[layer][neuron] = this.sigmoid(sum);
-                    output_derivative[layer][neuron] = output[layer][neuron] * (1 - output[layer][neuron]);
+                    output_derivative[layer][neuron] = (this.multiplier * Math.exp(-sum)) / Math.pow(1 + Math.exp(-sum), 2);
                 	break;
                 case 3:
                 	output[layer][neuron] = this.hyperbolicTangent(sum);
-                    output_derivative[layer][neuron] = Math.exp(2 * output[layer][neuron] - 1) / Math.exp(2 * output[layer][neuron] + 1);
+                    output_derivative[layer][neuron] = this.multiplier * ((Math.exp(2 * sum / this.multiplier) - 1) / (Math.exp(2 * sum / this.multiplier) + 1));
                 	break;
-                }
+                case 4:
+                	output[layer][neuron] = this.jumpStep(sum);
+                	output_derivative[layer][neuron] = output[layer][neuron];
+                	break;
+                case 5:
+                	output[layer][neuron] = this.jumpSignum(sum);
+                	output_derivative[layer][neuron] = output[layer][neuron];
+                	break;
+                case 6:
+                    output[layer][neuron] = this.rectifier(sum);
+                    output_derivative[layer][neuron] = output[layer][neuron];
+                    break;
                 //System.out.println(output_derivative[layer][neuron]);
+                }
             }
         }
         return output[NETWORK_SIZE-1];
@@ -188,27 +233,55 @@ public class Network{
     }
 
     private double sigmoid( double x) {// 0 - 1
-        return 1d / ( 1 + Math.exp(-x));
+        return this.multiplier / ( 1 + Math.exp(-x));
     }
     
     public double hyperbolicTangent(double x) { // -1 - 1
-    	return (Math.exp(x) - Math.exp(-x)) / (Math.exp(x) + Math.exp(-x));
+    	return this.multiplier * ((Math.exp(x / this.multiplier) - Math.exp(-x / this.multiplier)) / (Math.exp(x / this.multiplier) + Math.exp(-x / this.multiplier)));
     }
 
     private double unitStep(double x) {// 1 or 0
-        if(x > 0){
+        if(x > this.multiplier / 2){
             return 1;
-        }else{
+        }else if(x < this.multiplier / 2){
             return 0;
+        }else {
+        	return 0.5;
         }
     }
 
     private double signum(double x) {//values -1 or 1
-        if(x > 0){
+    	if(x > this.multiplier / 2){
             return 1;
-        }else{
+        }else if(x < this.multiplier / 2){
             return -1;
+        }else {
+        	return 0;
         }
+    }
+    
+    private double jumpStep(double x) {
+    	if(x > this.multiplier) {
+    		return this.multiplier;
+    	}else if(x < 0) {
+    		return 0;
+    	}else {
+    		return Math.round(x);
+    	}
+    }
+    
+    private double jumpSignum(double x) {
+    	if(x > this.multiplier) {
+    		return this.multiplier;
+    	}else if(x < -this.multiplier) {
+    		return -this.multiplier;
+    	}else {
+    		return Math.round(x);
+    	}
+    }
+    
+    private double rectifier(double x) {
+        return Math.log(1 + Math.exp(x));
     }
     
     public static void main(String[] args){
@@ -228,6 +301,7 @@ public class Network{
         Node netw = new Node("Network");
         Node ly = new Node("Layers");
         netw.addAttribute(new Attribute ("Activation Function", Integer.toString(this.ACTIVATION_FUNCTION)));
+        netw.addAttribute(new Attribute ("Multiplier", Double.toString(this.multiplier)));
         netw.addAttribute(new Attribute("sizes", Arrays.toString(this.NETWORK_LAYER_SIZES)));
         netw.addChild(ly);
         root.addChild(netw);
@@ -256,9 +330,10 @@ public class Network{
 
             p.load(fileName);
             int af = Integer.parseInt(p.getValue(new String[]{"Network"}, "Activation Function"));
+            int Multiplyer = Integer.parseInt(p.getValue(new String[]{"Network"}, "Multiplier"));
             String sizes = p.getValue(new String[] { "Network" }, "sizes");
             int[] si = ParserTools.parseIntArray(sizes);
-            Network ne = new Network(af, si);
+            Network ne = new Network(af, Multiplyer, si);
 
             for (int i = 1; i < ne.NETWORK_SIZE; i++) {
                 String biases = p.getValue(new String[] { "Network", "Layers", new String(i + ""), "biases" }, "values");
