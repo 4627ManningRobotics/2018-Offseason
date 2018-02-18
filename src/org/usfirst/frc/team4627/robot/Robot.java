@@ -36,6 +36,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+		Robot.driveTrain.gyro.reset();
 		this.autonomousCommand = new Auto();
 		this.autoChooser = new SendableChooser();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
@@ -73,6 +74,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		Robot.driveTrain.gyro.zeroYaw();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
