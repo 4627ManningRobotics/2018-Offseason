@@ -15,7 +15,7 @@ public class Auto extends CommandGroup {
     	addSequential(new TurnToAngle(true, 45, RobotMap.TURN_SPEED, 2));
     	addSequential(new DriveForward(0.4, 0.4, 1));
     	addSequential(new TurnToAngle(true, -47, 0.2, 2));
-    	addSequential(new DriveForward(0.3, 0.3, 1.2)); //1.47
+    	addSequential(new DriveForward(0.3, 0.3, 1.1)); //1.47
     	
     	//addSequential(new TurnAndAddData());
     	

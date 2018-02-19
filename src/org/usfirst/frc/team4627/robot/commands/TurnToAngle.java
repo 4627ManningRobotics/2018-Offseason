@@ -20,7 +20,7 @@ public class TurnToAngle extends Command {
 	    }
 	    
 	    
-	    public TurnToAngle(double wantedAngle, double speed, double threshold, boolean planB) {
+	    /*public TurnToAngle(double wantedAngle, double speed, double threshold, boolean planB) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
 	    	this.speed = speed;
@@ -37,7 +37,7 @@ public class TurnToAngle extends Command {
 		    	}
 	    	}
 	    	requires(Robot.driveTrain);
-	    }
+	    }*/
 	    
 	    public TurnToAngle(boolean isDefaultAuto, double wantedAngle, double speed, double threshold) {
 	        // Use requires() here to declare subsystem dependencies
@@ -60,15 +60,11 @@ public class TurnToAngle extends Command {
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
 	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
-	    	if(this.isDefaultAuto) {
-	    		if(fmsData.charAt(0) == 'L') {
-	    			this.angleWanted -= 90;
-	    		}
-	    	}else {
-		    	if(fmsData.charAt(0) == 'L') {
+	    	
+		    	if(fmsData.charAt(0) == 'L' && this.isDefaultAuto) {
 		    		this.angleWanted *= -1;
 		    	}
-	    	}
+	    
 	    	this.isDone  = false;
 	    	Robot.driveTrain.gyro.zeroYaw();
 	    	while(Robot.driveTrain.getGyroAngle() < -0.02 || Robot.driveTrain.getGyroAngle() > 0.02) {
