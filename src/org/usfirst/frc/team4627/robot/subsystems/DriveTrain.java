@@ -28,26 +28,27 @@ public class DriveTrain extends Subsystem {
 	
 	public AHRS gyro = new AHRS(SerialPort.Port.kUSB);
 	
-	public static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-	public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
-	private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
+	//public static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+	//public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+	//private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
 	public double getGyroAngle() {
 		return gyro.getAngle();
 	}
 	
 	public void initEncoders() {
-		leftEncoder.setDistancePerPulse(this.distancePerPulse);
-		rightEncoder.setDistancePerPulse(this.distancePerPulse);
+		//leftEncoder.setDistancePerPulse(this.distancePerPulse);
+		//rightEncoder.setDistancePerPulse(this.distancePerPulse);
 	}
 	
 	public void resetEncoders() {
-		leftEncoder.reset();
-		rightEncoder.reset();
+		//leftEncoder.reset();
+		//rightEncoder.reset();
 	}
 	
 	public double getDistance() {
-		double distance = (leftEncoder.getDistance() + rightEncoder.getDistance()/2);
-		return distance;
+		//double distance = (leftEncoder.getDistance() + rightEncoder.getDistance()/2);
+		//return distance;
+		return 0.0;
 	}
 	
     public void initDefaultCommand() {

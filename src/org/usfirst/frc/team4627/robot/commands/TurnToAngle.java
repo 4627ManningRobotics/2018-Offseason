@@ -38,6 +38,26 @@ public class TurnToAngle extends Command {
 	    	requires(Robot.driveTrain);
 	    }
 	    
+	    public TurnToAngle(boolean isDefaultAuto, double wantedAngle, double speed, double threshold) {
+	        // Use requires() here to declare subsystem dependencies
+	        // eg. requires(chassis);
+	    	if(!isDefaultAuto) {
+	    		new TurnToAngle(wantedAngle, speed, threshold);
+	    	}else{
+	    	
+	    	this.speed = speed;
+	    	this.isDone = false;
+	    	this.angleWanted = wantedAngle;
+	    	this.threshold = threshold;
+	    	
+	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
+	    		if(fmsData.charAt(0) == 'L') {
+	    			this.angleWanted -= 90;
+	    		}
+	    	}
+	    	requires(Robot.driveTrain);
+	    }
+	    
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {

@@ -24,7 +24,7 @@ public class TurnAndAddData extends Command {
     protected void initialize() {
     	this.theNet = new NN(Network.ZERO_TO_ONE, 180.0, new int[] {2,3,1});
 		try {
-			this.theNet.saveNet("/home/lvuser/Saves/turnNetSaveTest.txt");
+			this.theNet.saveNet("/home/lvuser/turnNetSaveTest.txt");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,7 +45,7 @@ public class TurnAndAddData extends Command {
     			}
     			in[index] = new double[] {Robot.driveTrain.getGyroAngle(), speed / 5};
     			out[index] = degree * 5;
-    			NN.addTrainDataToFile(in[index], new double[] {out[index]}, "/home/lvuser/Saves/turnSetSaveTest.txt");
+    			NN.addTrainDataToFile(in[index], new double[] {out[index]}, "/home/lvuser/turnSetSaveTest.txt");
     		}
     	}
     	this.isFin = true;
