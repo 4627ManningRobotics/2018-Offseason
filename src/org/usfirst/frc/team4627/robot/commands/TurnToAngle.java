@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TurnToAngle extends Command {
 	
 		public double angleWanted, speed, threshold;
-		public boolean isDone;
+		public boolean isDone, isDefaultAuto;
+		
 	    public TurnToAngle(double wantedAngle, double speed, double i) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
@@ -49,25 +50,29 @@ public class TurnToAngle extends Command {
 	    	this.isDone = false;
 	    	this.angleWanted = wantedAngle;
 	    	this.threshold = threshold;
-	    	
-	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
-	    		if(fmsData.charAt(0) == 'L') {
-	    			this.angleWanted -= 90;
-	    		}
-	    	}
+	    	this.isDefaultAuto = isDefaultAuto;
+	    		
 	    	requires(Robot.driveTrain);
+	    	}
 	    }
 	    
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
+	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
+	    	if(this.isDefaultAuto) {
+	    		if(fmsData.charAt(0) == 'L') {
+	    			this.angleWanted -= 90;
+	    		}
+	    	}else {
+		    	if(fmsData.charAt(0) == 'L') {
+		    		this.angleWanted *= -1;
+		    	}
+	    	}
 	    	this.isDone  = false;
 	    	Robot.driveTrain.gyro.zeroYaw();
 	    	while(Robot.driveTrain.getGyroAngle() < -0.02 || Robot.driveTrain.getGyroAngle() > 0.02) {
 	    		
-	    	}
-	    	if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') {
-	    		this.angleWanted *= -1;
 	    	}
 	    }
 
