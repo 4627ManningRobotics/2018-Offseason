@@ -8,23 +8,21 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TurnToAngle extends Command {
 	
 		public double angleWanted, speed, threshold;
-		public boolean isDone;
-	    public TurnToAngle(double wantedAngle, double speed, double threshold) {
+		public boolean isDone, isDefaultAuto, isNetworkTraining;
+		
+	    public TurnToAngle(double wantedAngle, double speed, double i) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
 	    	this.speed = speed;
-	    	this.isDone = false;
-	    	this.threshold = threshold;
+	    	this.threshold = i;
 	    	this.angleWanted = wantedAngle;
-	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
-	    	if(fmsData.charAt(0) == 'L') {
-	    		this.angleWanted *= -1;
-	    	}
+	    	this.isDefaultAuto = false;
+	    	this.isNetworkTraining = false;
 	    	requires(Robot.driveTrain);
 	    }
 	    
 	    
-	    public TurnToAngle(double wantedAngle, double speed, double threshold, boolean planB) {
+	    /*public TurnToAngle(double wantedAngle, double speed, double threshold, boolean planB) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
 	    	this.speed = speed;
@@ -41,12 +39,56 @@ public class TurnToAngle extends Command {
 		    	}
 	    	}
 	    	requires(Robot.driveTrain);
+	    }*/
+	    
+	    public TurnToAngle(boolean isDefaultAuto, double wantedAngle, double speed, double threshold) {
+	        // Use requires() here to declare subsystem dependencies
+	        // eg. requires(chassis);
+	    	if(!isDefaultAuto) {
+	    		new TurnToAngle(wantedAngle, speed, threshold);
+	    	}else{
+	    	
+	    	this.speed = speed;
+	    	this.angleWanted = wantedAngle;
+	    	this.threshold = threshold;
+	    	this.isDefaultAuto = isDefaultAuto;
+	    	this.isNetworkTraining = false;
+	    		
+	    	requires(Robot.driveTrain);
+	    	}
+	    }
+	    
+	    public TurnToAngle(double wantedAngle, double speed, double threshold, boolean isNetworkTraining) {
+	        // Use requires() here to declare subsystem dependencies
+	        // eg. requires(chassis);
+	    	if(!isDefaultAuto) {
+	    		new TurnToAngle(wantedAngle, speed, threshold);
+	    	}else{
+	    	
+	    	this.speed = speed;
+	    	this.angleWanted = wantedAngle;
+	    	this.threshold = threshold;
+	    	this.isDefaultAuto = false;
+	    	this.isNetworkTraining = isNetworkTraining;
+	    		
+	    	requires(Robot.driveTrain);
+	    	}
 	    }
 	    
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
-	    	DriveTrain.gyro.zeroYaw();
+	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
+	    	
+		    	if(fmsData.charAt(0) == 'L' && this.isDefaultAuto) {
+		    		this.angleWanted *= -1;
+		    	}
+	    
+	    	this.isDone  = false;
+	    	Robot.driveTrain.gyro.zeroYaw();
+	    	while(Robot.driveTrain.getGyroAngle() < -0.02 || Robot.driveTrain.getGyroAngle() > 0.02) {
+	    		
+	    	}
 	    }
 
 	    // Called repeatedly when this Command is scheduled to run
@@ -55,7 +97,6 @@ public class TurnToAngle extends Command {
 	    	System.out.println(angle);
 	    	double maxAngle = this.angleWanted + this.threshold;
 	    	double minAngle = this.angleWanted - this.threshold;
-	    	if(this.angleWanted > 0) {
 	    	if(angle < minAngle) {
 	    		Robot.driveTrain.setLeftMotor(this.speed);
 	    		Robot.driveTrain.setRightMotor(-this.speed);
@@ -65,21 +106,9 @@ public class TurnToAngle extends Command {
 	   		} else {
 	   			Robot.driveTrain.setLeftMotor(0);
 	   			Robot.driveTrain.setRightMotor(0);
-	   			this.isDone = true;
-	   		} 
-	    	} else {
-	    		if(angle > maxAngle) {
-		    		Robot.driveTrain.setLeftMotor(-this.speed);
-		    		Robot.driveTrain.setRightMotor(this.speed);
-		    	} else if(angle < minAngle) {
-		   			Robot.driveTrain.setLeftMotor(this.speed);
-		   			Robot.driveTrain.setRightMotor(-this.speed);
-		   		} else {
-		   			Robot.driveTrain.setLeftMotor(0);
-		   			Robot.driveTrain.setRightMotor(0);
-		   			this.isDone = true;
-		   		}
+	   			this.isDone = true; 
 	    	}
+	    	
 	    	/*if(this.angleWanted < 0) {
 	    		if(angle > (this.angleWanted)) {
 	    			Robot.driveTrain.setLeftMotor(this.speed);
