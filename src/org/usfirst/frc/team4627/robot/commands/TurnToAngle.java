@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TurnToAngle extends Command {
 	
 		public double angleWanted, speed, threshold;
-		public boolean isDone, isDefaultAuto;
+		public boolean isDone, isDefaultAuto, isNetworkTraining;
 		
 	    public TurnToAngle(double wantedAngle, double speed, double i) {
 	        // Use requires() here to declare subsystem dependencies
@@ -16,6 +16,8 @@ public class TurnToAngle extends Command {
 	    	this.speed = speed;
 	    	this.threshold = i;
 	    	this.angleWanted = wantedAngle;
+	    	this.isDefaultAuto = false;
+	    	this.isNetworkTraining = false;
 	    	requires(Robot.driveTrain);
 	    }
 	    
@@ -47,10 +49,27 @@ public class TurnToAngle extends Command {
 	    	}else{
 	    	
 	    	this.speed = speed;
-	    	this.isDone = false;
 	    	this.angleWanted = wantedAngle;
 	    	this.threshold = threshold;
 	    	this.isDefaultAuto = isDefaultAuto;
+	    	this.isNetworkTraining = false;
+	    		
+	    	requires(Robot.driveTrain);
+	    	}
+	    }
+	    
+	    public TurnToAngle(double wantedAngle, double speed, double threshold, boolean isNetworkTraining) {
+	        // Use requires() here to declare subsystem dependencies
+	        // eg. requires(chassis);
+	    	if(!isDefaultAuto) {
+	    		new TurnToAngle(wantedAngle, speed, threshold);
+	    	}else{
+	    	
+	    	this.speed = speed;
+	    	this.angleWanted = wantedAngle;
+	    	this.threshold = threshold;
+	    	this.isDefaultAuto = false;
+	    	this.isNetworkTraining = isNetworkTraining;
 	    		
 	    	requires(Robot.driveTrain);
 	    	}
