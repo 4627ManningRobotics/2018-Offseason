@@ -39,5 +39,13 @@ public class Arm extends Subsystem {
 	public void setWrist(double motorSetting) {
 		this.wrist.set(this.wrist.getControlMode(), motorSetting * RobotMap.WRIST_MAX_SPEED);
 	}
+	
+	public boolean isOnTarget() {
+		return this.leftArm.onTarget() && this.rightArm.onTarget();
+	}
+	
+	public double getHeight() {
+		return (this.leftArm.getPosition() + this.rightArm.getPosition()) / 2;
+	}
 }
 

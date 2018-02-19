@@ -85,7 +85,7 @@ public class TurnToAngle extends Command {
 		    	}
 	    
 	    	this.isDone  = false;
-	    	Robot.driveTrain.gyro.zeroYaw();
+	    	DriveTrain.gyro.zeroYaw();
 	    	while(Robot.driveTrain.getGyroAngle() < -0.02 || Robot.driveTrain.getGyroAngle() > 0.02) {
 	    		
 	    	}
@@ -95,20 +95,30 @@ public class TurnToAngle extends Command {
 	    protected void execute() {
 	    	double angle = Robot.driveTrain.getGyroAngle();
 	    	System.out.println(angle);
-	    	double maxAngle = this.angleWanted + this.threshold;
-	    	double minAngle = this.angleWanted - this.threshold;
-	    	if(angle < minAngle) {
-	    		Robot.driveTrain.setLeftMotor(this.speed);
-	    		Robot.driveTrain.setRightMotor(-this.speed);
-	    	} else if(angle > maxAngle) {
-	   			Robot.driveTrain.setLeftMotor(-this.speed);
-	   			Robot.driveTrain.setRightMotor(this.speed);
-	   		} else {
-	   			Robot.driveTrain.setLeftMotor(0);
-	   			Robot.driveTrain.setRightMotor(0);
-	   			this.isDone = true; 
+	    	if(this.isNetworkTraining) {
+	    		if(angle < this.angleWanted) {
+		    		Robot.driveTrain.setLeftMotor(this.speed);
+		    		Robot.driveTrain.setRightMotor(-this.speed);
+		   		} else {
+		   			Robot.driveTrain.setLeftMotor(0);
+		   			Robot.driveTrain.setRightMotor(0);
+		   			this.isDone = true; 
+		    	}
+	    	}else {
+	    		double maxAngle = this.angleWanted + this.threshold;
+	    		double minAngle = this.angleWanted - this.threshold;
+	    		if(angle < minAngle) {
+	    			Robot.driveTrain.setLeftMotor(this.speed);
+	    			Robot.driveTrain.setRightMotor(-this.speed);
+	    		} else if(angle > maxAngle) {
+	   				Robot.driveTrain.setLeftMotor(-this.speed);
+	   				Robot.driveTrain.setRightMotor(this.speed);
+	   			} else {
+	   				Robot.driveTrain.setLeftMotor(0);
+	   				Robot.driveTrain.setRightMotor(0);
+	   				this.isDone = true; 
+	   			}
 	    	}
-	    	
 	    	/*if(this.angleWanted < 0) {
 	    		if(angle > (this.angleWanted)) {
 	    			Robot.driveTrain.setLeftMotor(this.speed);

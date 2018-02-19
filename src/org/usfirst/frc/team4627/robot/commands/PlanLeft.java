@@ -14,7 +14,8 @@ public class PlanLeft extends CommandGroup {
     	//addSequential(new DriveForward(0.9, 0.9, 3));
     	//addSequential(new TurnToAngle(0, -0.25, 5, true));
     	//addSequential(new DriveForward(0.5, 0.5, 5));
-    	
+
+    	new ArmHeights(ArmHeights.GROUND); // to run along side the sequential
     	addSequential(new DriveForward(0.9, 0.9, 100));
     	
         // Add Commands here:

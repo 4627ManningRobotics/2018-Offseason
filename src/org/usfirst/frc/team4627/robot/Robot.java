@@ -58,7 +58,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		Robot.arm.disable();
 	}
 
 	@Override
@@ -80,6 +79,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
     	DriveTrain.gyro.zeroYaw();
+		Robot.arm.setSetpoint(75);
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -106,8 +106,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
     	DriveTrain.gyro.zeroYaw();
-		Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
-		Robot.arm.enable();
+		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
 
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
@@ -127,6 +126,9 @@ public class Robot extends IterativeRobot {
 		//SmartDashboard.putNumber("left position", leftArm.calculatePosition());
 		if(Robot.oi.driverController.getAButtonPressed()) {
 			new ChangeGears();
+		}
+		if(Robot.oi.operatorController.getAButtonPressed()) {
+			Robot.arm.clamp.openClamp();
 		}
 		
 		Scheduler.getInstance().run();
