@@ -11,7 +11,7 @@ public class Auto extends CommandGroup {
 
     public Auto() {
     	
-    	new ArmHeights(ArmHeights.SWITCH); // to run along side the sequential
+    	addParallel(new ArmHeights(ArmHeights.SWITCH)); // to run along side the sequential
     	addSequential(new DriveForward(0.2, 0.2, 1));
     	addSequential(new TurnToAngle(true, 45, RobotMap.TURN_SPEED, 2));
     	addSequential(new DriveForward(0.4, 0.4, 1));
