@@ -43,9 +43,7 @@ public class RightArm extends PIDSubsystem {
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		if(this.calculatePosition() < 15 && output < 0) {
-			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
-		}else if(this.calculatePosition() > 150 && output > 0) {
+		if((this.calculatePosition() < 10 && output < 0) || (this.calculatePosition() > 150 && output > 0)) {
 			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
 		}else {
 			this.liftingMotor.set(liftingMotor.getControlMode(), output);
