@@ -58,6 +58,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
+		Robot.arm.disable();
 	}
 
 	@Override
