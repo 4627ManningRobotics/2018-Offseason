@@ -28,6 +28,7 @@ public class RobotMap {
 	public static final int RIGHT_MUSCLE = 2;
 	public static final double WRIST_MAX_SPEED = 0.5;
 	public static final double CLAMP_MAX_SPEED = 0.9;
+	public static final double LIFTING_MAX_SPEED = 0.5;
 	public static double TURNING_RATE = 0.5;
 	public static final double TURN_SPEED = 0.2;
 	
