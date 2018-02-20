@@ -24,7 +24,6 @@ public class RightArm extends PIDSubsystem {
 		getPIDController().setAbsoluteTolerance(0.05);
 		getPIDController().setContinuous(false); // does not wrap
 		getPIDController().setOutputRange(-1, 1);
-		getPIDController().setSetpoint(7);
 	}
     
 

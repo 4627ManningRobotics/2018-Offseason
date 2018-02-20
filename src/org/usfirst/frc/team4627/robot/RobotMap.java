@@ -24,13 +24,18 @@ public class RobotMap {
 	public static final int DRIVER_CONTROLLER = 0;
 	public static final int OPERATOR_CONTROLLER = 1;
 	public static final int SOLENOID = 0;
-	public static final int LEFT_MUSCLE = 1;
-	public static final int RIGHT_MUSCLE = 2;
+	public static final int MUSCLE = 1;
 	public static final double WRIST_MAX_SPEED = 0.5;
 	public static final double CLAMP_MAX_SPEED = 0.9;
 	public static final double LIFTING_MAX_SPEED = 0.5;
 	public static double TURNING_RATE = 0.5;
 	public static final double TURN_SPEED = 0.2;
+	
+	public static final double SCALE_HIGH = 140; //all are subject to change
+	public static final double SCALE_MEDIUM = 110;
+	public static final double SCALE_LOW = 80;
+	public static final double SWITCH = 50;
+	public static final double GROUND = 15;
 	
 	public static final int BUTTON_A = 1;
 	public static final int BUTTON_B = 2;

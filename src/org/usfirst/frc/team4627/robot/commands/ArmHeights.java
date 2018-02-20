@@ -8,12 +8,6 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ArmHeights extends Command {
-
-	public static final double SCALE_HIGH = 140; //all are subject to change
-	public static final double SCALE_MEDIUM = 110;
-	public static final double SCALE_LOW = 80;
-	public static final double SWITCH = 50;
-	public static final double GROUND = 15;
 	
 	private double targetHeight = 0;
 	private double startHeight = 0;
