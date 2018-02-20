@@ -15,8 +15,8 @@ public class RobotMap {
 	public static final int RIGHT_MOTOR_1 = 3;
 	public static final int RIGHT_MOTOR_2 = 4;
 	public static final int RIGHT_CLAMP_MOTOR = 8;
-	public static final int LEFT_LIFTING_MOTOR = 2;
-	public static final int RIGHT_LIFTING_MOTOR = 1;
+	public static final int LEFT_LIFTING_MOTOR = 2; // Analog input 0
+	public static final int RIGHT_LIFTING_MOTOR = 1;// Analog input 1
 	public static final int WRIST_MOTOR = 0;
 	
 	public static final int DRIVER_CONTROLLER = 0;
