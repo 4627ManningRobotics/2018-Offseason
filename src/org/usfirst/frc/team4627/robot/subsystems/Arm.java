@@ -24,7 +24,10 @@ public class Arm extends Subsystem {
     public void setSetpoint(double setpoint) { // only to be used in testing
     	this.rightArm.setSetpoint(setpoint);
     }
-    
+
+    public void setSetpointRelative(double setpoint) { // only to be used in testing
+    	this.rightArm.setSetpointRelative(setpoint);
+    }
     public void enable() {
     	this.leftArm.enable();
     	this.rightArm.enable();

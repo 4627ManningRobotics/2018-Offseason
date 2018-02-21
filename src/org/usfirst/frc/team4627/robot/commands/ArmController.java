@@ -25,11 +25,23 @@ public class ArmController extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	if(this.isInDeadzone()) {
+        	this.wasInDeadZone = true;
     		if(this.isWristStowed()) {
-    			Robot.arm.wrist.setSetpoint(Robot.arm.getHeight()); // do not move inside the deadzone
+    			Robot.arm.wrist.setSetpointRelative(0); // do not move wrist inside the deadzone
     		}else {
     			this.chooseWristStore(); // if it is in the deadzone go to the proper wrist storing position
     		}
+    		switch(this.target) { // continue moving to target position
+			case 0:
+				Robot.arm.setSetpoint(RobotMap.ARMS_GROUND);
+				break;
+			case 1:
+				Robot.arm.setSetpoint(RobotMap.ARMS_SWITCH);
+				break;
+			case 2:
+				Robot.arm.setSetpoint(RobotMap.ARMS_SCALE);
+				break;
+		}
     	}else{
     		chooseStartMovment();
     	}
@@ -38,6 +50,7 @@ public class ArmController extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(this.isInDeadzone()) {
+        	this.wasInDeadZone = true;
     		Robot.arm.setSetpoint(Robot.arm.getHeight()); // stop moving
     		this.chooseWristStore(); // store wrist
     	}else{
@@ -65,15 +78,18 @@ public class ArmController extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.arm.setSetpointRelative(0); // stop all movement
+    	Robot.arm.wrist.setSetpointRelative(0);
+    	RobotMap.CURRENT_POSITION = this.target;
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	this.end();
     }
     
     private boolean isInDeadzone() {
-    	this.wasInDeadZone = true;
     	return Robot.arm.getHeight() >= RobotMap.ARMS_DEADZONE_MIN && Robot.arm.getHeight() <= RobotMap.ARMS_DEADZONE_MAX;
     }
     
