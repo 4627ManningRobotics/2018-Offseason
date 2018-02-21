@@ -28,6 +28,7 @@ public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Arm arm = new Arm();
+	public static final Clamp clamp = new Clamp();
 	public static final String RobotMap = null;
 	public static OI oi;
 	Command autonomousCommand;
@@ -129,7 +130,7 @@ public class Robot extends IterativeRobot {
 			new ChangeGears();
 		}
 		if(Robot.oi.operatorController.getAButtonPressed()) {
-			Robot.arm.clamp.openClamp();
+			Robot.clamp.openClamp();
 		}
 		
 		Scheduler.getInstance().run();

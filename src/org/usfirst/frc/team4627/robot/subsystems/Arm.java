@@ -15,24 +15,26 @@ public class Arm extends Subsystem {
 
 	protected final LeftArm leftArm = new LeftArm(0.1, 0.02, 0);
 	protected final RightArm rightArm = new RightArm(0.1, 0.02, 0);
-	private final Clamp clamp = new Clamp();
+	public final Wrist wrist = new Wrist(0, 0, 0);
 	
     public void initDefaultCommand() {
     	setDefaultCommand(new OperatorControls());
     }
     
-    public void setSetpoint(double setpoint) {
+    public void setSetpoint(double setpoint) { // only to be used in testing
     	this.rightArm.setSetpoint(setpoint);
     }
     
     public void enable() {
     	this.leftArm.enable();
     	this.rightArm.enable();
+    	this.wrist.enable();
     }
     
     public void disable() {
     	this.leftArm.disable();
     	this.rightArm.disable();
+    	this.wrist.disable();
     }
 	
 	public boolean isOnTarget() {
