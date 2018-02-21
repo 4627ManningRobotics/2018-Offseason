@@ -13,17 +13,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Arm extends Subsystem {
 
-<<<<<<< HEAD
-	public final LeftArm leftArm = new LeftArm(0.1, 0.02, 0);
-	public final RightArm rightArm = new RightArm(0.1, 0.02, 0);
 	public final Clamp clamp = new Clamp();
 	
-	public final VictorSPX wrist = new VictorSPX(RobotMap.WRIST_MOTOR);
-=======
 	/*protected*/ public final LeftArm leftArm = new LeftArm(0.1, 0.02, 0);
 	/*protected*/ public final RightArm rightArm = new RightArm(0.1, 0.02, 0);
 	public final Wrist wrist = new Wrist(0, 0, 0);
->>>>>>> 60d9ad36dc7c374edf2ad9f7a090ce1db404e6ac
+
 	
     public void initDefaultCommand() {
     	setDefaultCommand(new OperatorControls());

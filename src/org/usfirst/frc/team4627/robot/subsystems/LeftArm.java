@@ -42,10 +42,8 @@ public class LeftArm extends PIDSubsystem {
 		if((this.calculatePosition() < 15 && output < 0) || (this.calculatePosition() > 145 && output > 0)) {
 			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
 		}else {
-<<<<<<< HEAD
 			this.liftingMotor.set(liftingMotor.getControlMode(), output * RobotMap.ARM_SPEED);
 			
-=======
 			if(output > RobotMap.LIFTING_MAX_SPEED) {
 				this.liftingMotor.set(liftingMotor.getControlMode(), RobotMap.LIFTING_MAX_SPEED);
 			}else if(output < -RobotMap.LIFTING_MAX_SPEED) {
@@ -53,7 +51,6 @@ public class LeftArm extends PIDSubsystem {
 			}else {
 				this.liftingMotor.set(liftingMotor.getControlMode(), output);
 			}
->>>>>>> 60d9ad36dc7c374edf2ad9f7a090ce1db404e6ac
 		}
 		//System.out.println(this.calculatePosition());
 	}

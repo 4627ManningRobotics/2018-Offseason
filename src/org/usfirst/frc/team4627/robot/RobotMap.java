@@ -29,9 +29,8 @@ public class RobotMap {
 	public static final double CLAMP_MAX_SPEED = 0.9;
 	public static final double LIFTING_MAX_SPEED = 0.5;
 	public static double TURNING_RATE = 0.5;
-<<<<<<< HEAD
 	public static final double ARM_SPEED = 0.3;
-=======
+
 	public static final double TURN_SPEED = 0.2;
 	
 	public static short CURRENT_POSITION = 0;
@@ -51,7 +50,7 @@ public class RobotMap {
 	public static final double ARMS_SCALE = 120;
 	public static final double ARMS_DEADZONE_MIN = 70;
 	public static final double ARMS_DEADZONE_MAX = 90;
->>>>>>> 60d9ad36dc7c374edf2ad9f7a090ce1db404e6ac
+
 	
 	public static final int BUTTON_A = 1;
 	public static final int BUTTON_B = 2;
