@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4627.robot.commands.ArmController;
 import org.usfirst.frc.team4627.robot.commands.Auto;
 import org.usfirst.frc.team4627.robot.commands.ChangeGears;
 import org.usfirst.frc.team4627.robot.commands.NNtraining;
@@ -29,7 +30,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Arm arm = new Arm();
 	public static final Clamp clamp = new Clamp();
-	public static final String RobotMap = null;
+	//public static final String RobotMap = null;
 	public static OI oi;
 	Command autonomousCommand;
 	SendableChooser<CommandGroup> autoChooser;
@@ -40,7 +41,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
+		Robot.oi = new OI();
 		DriveTrain.gyro.reset();
 		DriveTrain.gyro.zeroYaw();
 		this.autoChooser = new SendableChooser<CommandGroup>();
@@ -126,11 +127,16 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 
 		//SmartDashboard.putNumber("left position", leftArm.calculatePosition());
-		if(Robot.oi.driverController.getAButtonPressed()) {
+		if(Robot.oi.driverController.getAButtonPressed()) { // change gears
 			new ChangeGears();
 		}
-		if(Robot.oi.operatorController.getAButtonPressed()) {
+		
+		if(Robot.oi.operatorController.getAButtonPressed()) { // open claw
 			Robot.clamp.openClamp();
+		}
+		
+		if(Robot.oi.operatorController.getRawButtonPressed(2/*?*/)) { // someone needs to add the directional pad id's to the RobotMap
+			new ArmController(RobotMap.SWITCH);
 		}
 		
 		Scheduler.getInstance().run();

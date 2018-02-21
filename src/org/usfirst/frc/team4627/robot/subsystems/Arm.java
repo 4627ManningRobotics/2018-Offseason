@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Arm extends Subsystem {
 
-	protected final LeftArm leftArm = new LeftArm(0.1, 0.02, 0);
-	protected final RightArm rightArm = new RightArm(0.1, 0.02, 0);
+	/*protected*/ public final LeftArm leftArm = new LeftArm(0.1, 0.02, 0);
+	/*protected*/ public final RightArm rightArm = new RightArm(0.1, 0.02, 0);
 	public final Wrist wrist = new Wrist(0, 0, 0);
 	
     public void initDefaultCommand() {
@@ -28,13 +28,13 @@ public class Arm extends Subsystem {
     public void enable() {
     	this.leftArm.enable();
     	this.rightArm.enable();
-    	this.wrist.enable();
+    	//this.wrist.enable();
     }
     
     public void disable() {
     	this.leftArm.disable();
     	this.rightArm.disable();
-    	this.wrist.disable();
+    	//this.wrist.disable();
     }
 	
 	public boolean isOnTarget() {

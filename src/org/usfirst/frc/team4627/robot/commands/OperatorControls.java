@@ -3,6 +3,7 @@ package org.usfirst.frc.team4627.robot.commands;
 import org.usfirst.frc.team4627.robot.Robot;
 import org.usfirst.frc.team4627.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -36,8 +37,21 @@ public class OperatorControls extends Command {
         	Robot.clamp.setRightMotor((triggerVal - stick) * RobotMap.CLAMP_MAX_SPEED);
     	}
     	
+
+    	
+    	if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') { // control of the arm using the left stick
+    		System.out.println(Robot.arm.leftArm.calculatePosition());
+    		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), Robot.oi.getDriverRawAxis(RobotMap.LEFT_STICK_Y));
+		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R') {
+    		System.out.println(Robot.arm.rightArm.calculatePosition());
+    		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
+		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'B') {
+    		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
+    		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
+		}
+    	
     	//wrist controls
-    	//Robot.arm.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y) - 0.3); // temporary 
+    	Robot.arm.wrist.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y) - 0.3); // temporary 
     	
     	//System.out.println(Robot.arm.rightArm.potentiometer.getVoltage());
     	//System.out.println(Robot.arm.leftArm.potentiometer.getVoltage());

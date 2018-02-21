@@ -40,4 +40,8 @@ public class Wrist extends PIDSubsystem {
     protected void usePIDOutput(double output) {
     	this.wrist.set(this.wrist.getControlMode(), output);
     }
+    
+    public void setWrist(double speed) {
+    	this.wrist.set(this.wrist.getControlMode(), speed);
+    }
 }
