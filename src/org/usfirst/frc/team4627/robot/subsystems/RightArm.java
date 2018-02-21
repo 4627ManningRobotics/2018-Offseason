@@ -24,7 +24,10 @@ public class RightArm extends PIDSubsystem {
 		getPIDController().setAbsoluteTolerance(0.05);
 		getPIDController().setContinuous(false); // does not wrap
 		getPIDController().setOutputRange(-1, 1);
+<<<<<<< HEAD
 		//getPIDController().setSetpoint(7);
+=======
+>>>>>>> 60d9ad36dc7c374edf2ad9f7a090ce1db404e6ac
 	}
     
 
@@ -43,19 +46,31 @@ public class RightArm extends PIDSubsystem {
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		if(this.calculatePosition() < 15 && output < 0) {
-			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
-		}else if(this.calculatePosition() > 150 && output > 0) {
+		if((this.calculatePosition() < 15 && output < 0) || (this.calculatePosition() > 145 && output > 0)) {
 			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
 		}else {
+<<<<<<< HEAD
 			this.liftingMotor.set(liftingMotor.getControlMode(), output * RobotMap.ARM_SPEED);
 			
+=======
+			if(output > RobotMap.LIFTING_MAX_SPEED) {
+				this.liftingMotor.set(liftingMotor.getControlMode(), RobotMap.LIFTING_MAX_SPEED);
+			}else if(output < -RobotMap.LIFTING_MAX_SPEED) {
+				this.liftingMotor.set(liftingMotor.getControlMode(), -RobotMap.LIFTING_MAX_SPEED);
+			}else {
+				this.liftingMotor.set(liftingMotor.getControlMode(), output);
+			}
+>>>>>>> 60d9ad36dc7c374edf2ad9f7a090ce1db404e6ac
 		}
 		//System.out.println(this.calculatePosition());
 	}
 	
 	public double calculatePosition() {
+<<<<<<< HEAD
 		return this.potentiometer.getVoltage(); //* 159.31 - 278.42; // A
+=======
+		return this.potentiometer.getVoltage() * 72.906 + 3.1875;//72.353 + 0.4914; // A
+>>>>>>> 60d9ad36dc7c374edf2ad9f7a090ce1db404e6ac
 	}
 }
 
