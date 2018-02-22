@@ -23,6 +23,8 @@ public class OperatorControls extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+
+		System.out.println(Robot.arm.getHeight()); //print out avg height
     	//clamp controls
     	if(Robot.oi.getOperatorButton(RobotMap.RIGHT_BUMPER)) {
     		Robot.clamp.setLeftMotor(RobotMap.CLAMP_MAX_SPEED);

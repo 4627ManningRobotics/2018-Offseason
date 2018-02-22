@@ -33,8 +33,8 @@ public class Wrist extends PIDSubsystem {
 			absolutePosition *= -1;
 		}
 		/* set the quadrature (relative) sensor to match absolute */
-		this.wrist.setSelectedSensorPosition(absolutePosition, 0, 10); // if your getting error look to the 0's <<<<<<<<<<<<<<<<<<<<<<
-    	// Use these to get going:
+		this.wrist.setSelectedSensorPosition(absolutePosition, 0, 10); 
+		// Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
@@ -45,7 +45,7 @@ public class Wrist extends PIDSubsystem {
     }
 
     protected double returnPIDInput() {
-        return (this.wrist.getSelectedSensorPosition(0) / 1024) * 360;
+        return this.calculateAngle();
     }
 
     protected void usePIDOutput(double output) {
@@ -54,5 +54,9 @@ public class Wrist extends PIDSubsystem {
     
     public void setWrist(double speed) {
     	this.wrist.set(this.wrist.getControlMode(), speed);
+    }
+    
+    public double calculateAngle() {
+    	return (this.wrist.getSelectedSensorPosition(0) / 1024) * 360;
     }
 }
