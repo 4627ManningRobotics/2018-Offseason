@@ -22,7 +22,7 @@ public class DriveTrain extends Subsystem {
 	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
 	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
 	
-	Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
+	public Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
 	
 	public static AHRS gyro = new AHRS(SerialPort.Port.kUSB);
@@ -54,7 +54,7 @@ public class DriveTrain extends Subsystem {
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new TankDrive());
+    	super.setDefaultCommand(new TankDrive());
     }
         
     public void setLeftMotor(double motorSetting) {
@@ -67,8 +67,9 @@ public class DriveTrain extends Subsystem {
     	rightMotor2.set(rightMotor2.getControlMode(), -motorSetting);
     }
     
-    public void setHighGear(boolean isHigh) {
-    	this.isInHighGear = isHigh;
+    public void changeGears() {
+
+    	this.isInHighGear = !this.isInHighGear;
     	this.theSolenoid.set(this.isInHighGear);
     }
 }

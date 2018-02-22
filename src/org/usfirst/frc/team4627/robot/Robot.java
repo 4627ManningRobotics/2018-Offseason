@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4627.robot.commands.ArmController;
 import org.usfirst.frc.team4627.robot.commands.Auto;
-import org.usfirst.frc.team4627.robot.commands.ChangeGears;
 import org.usfirst.frc.team4627.robot.commands.NNtraining;
 import org.usfirst.frc.team4627.robot.commands.PlanLeft;
 import org.usfirst.frc.team4627.robot.commands.PlanRight;
@@ -82,6 +81,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
     	DriveTrain.gyro.zeroYaw();
+		Robot.arm.enable();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -127,11 +127,11 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 
 		//SmartDashboard.putNumber("left position", leftArm.calculatePosition());
-		if(Robot.oi.driverController.getAButtonPressed()) { // change gears
-			new ChangeGears();
+		if(Robot.oi.getDriverButton(RobotMap.BUTTON_A)) { // change gears
+			Robot.driveTrain.theSolenoid.set(Robot.driveTrain.isInHighGear);
 		}
 		
-		if(Robot.oi.operatorController.getAButtonPressed()) { // open claw
+		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_A)) { // open claw
 			Robot.clamp.openClamp();
 		}
 		

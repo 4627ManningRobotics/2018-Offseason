@@ -1,12 +1,6 @@
 package org.usfirst.frc.team4627.robot;
 
-import org.usfirst.frc.team4627.robot.commands.ChangeGears;
-
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 //import org.usfirst.frc.team4627.robot.commands.*;
 
