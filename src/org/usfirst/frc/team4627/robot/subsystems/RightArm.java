@@ -25,8 +25,8 @@ public class RightArm extends PIDSubsystem {
 		getPIDController().setContinuous(false); // does not wrap
 		getPIDController().setOutputRange(-1, 1);
 
-		//getPIDController().setSetpoint(7);
-	}
+		//getPIDController().setSetpoint(7);	
+		}
     
 
     public void initDefaultCommand() {
