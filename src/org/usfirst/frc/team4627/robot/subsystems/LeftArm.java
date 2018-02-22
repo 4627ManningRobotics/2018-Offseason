@@ -42,6 +42,8 @@ public class LeftArm extends PIDSubsystem {
 		if((this.calculatePosition() < 15 && output < 0) || (this.calculatePosition() > 145 && output > 0)) {
 			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
 		}else {
+			this.liftingMotor.set(liftingMotor.getControlMode(), output * RobotMap.ARM_SPEED);
+			
 			if(output > RobotMap.LIFTING_MAX_SPEED) {
 				this.liftingMotor.set(this.liftingMotor.getControlMode(), RobotMap.LIFTING_MAX_SPEED);
 			}else if(output < -RobotMap.LIFTING_MAX_SPEED) {
@@ -50,23 +52,13 @@ public class LeftArm extends PIDSubsystem {
 				this.liftingMotor.set(this.liftingMotor.getControlMode(), output);
 			}
 		}
-		System.out.println(this.calculatePosition());
+		//System.out.println(this.calculatePosition());
 	}
 	
 	public double calculatePosition() {
 		return this.potentiometer.getVoltage() * 71.469 - 7.7851;//-72.53217414 + 340.55633; // B
 	}
 
-/*
-	public void Wrist(double motorSetting) {
-		double liftSpeed = liftingMotor.getMotorOutputPercent();
-		if (liftSpeed >= 0.3) {
-			motorSetting = 0.3;
-		} else if (liftSpeed < 0.3) {
-			motorSetting = liftSpeed;
-		}
-		*/
-		
 }
 
 

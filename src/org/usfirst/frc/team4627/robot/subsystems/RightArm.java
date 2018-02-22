@@ -45,6 +45,10 @@ public class RightArm extends PIDSubsystem {
 		if((this.calculatePosition() < 15 && output < 0) || (this.calculatePosition() > 145 && output > 0)) {
 			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
 		}else {
+
+			this.liftingMotor.set(liftingMotor.getControlMode(), output * RobotMap.ARM_SPEED);
+			
+
 			if(output > RobotMap.LIFTING_MAX_SPEED) {
 				this.liftingMotor.set(this.liftingMotor.getControlMode(), RobotMap.LIFTING_MAX_SPEED);
 			}else if(output < -RobotMap.LIFTING_MAX_SPEED) {
@@ -52,12 +56,17 @@ public class RightArm extends PIDSubsystem {
 			}else {
 				this.liftingMotor.set(this.liftingMotor.getControlMode(), output);
 			}
+
 		}
-		System.out.println(this.calculatePosition());
+		//System.out.println(this.calculatePosition());
 	}
 	
 	public double calculatePosition() {
+
+		//return this.potentiometer.getVoltage(); //* 159.31 - 278.42; // A
+
 		return this.potentiometer.getVoltage() * 72.906 + 3.1875;//72.353 + 0.4914; // A
+
 	}
 }
 
