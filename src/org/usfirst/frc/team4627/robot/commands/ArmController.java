@@ -31,17 +31,7 @@ public class ArmController extends Command {
     		}else {
     			this.chooseWristStore(); // if it is in the deadzone go to the proper wrist storing position
     		}
-    		switch(this.target) { // continue moving to target position
-			case 0:
-				Robot.arm.setSetpoint(RobotMap.ARMS_GROUND);
-				break;
-			case 1:
-				Robot.arm.setSetpoint(RobotMap.ARMS_SWITCH);
-				break;
-			case 2:
-				Robot.arm.setSetpoint(RobotMap.ARMS_SCALE);
-				break;
-		}
+    		this.setPosition(this.target);
     	}else{
     		chooseStartMovment();
     	}
@@ -56,17 +46,7 @@ public class ArmController extends Command {
     	}else{
     		if(this.wasInDeadZone) { // only runs once, after leaving the dead zone
     		    this.wasInDeadZone = false;
-    			switch(this.target) {
-    				case 0:
-    					Robot.arm.wrist.setSetpoint(RobotMap.ARMS_GROUND);
-    					break;
-    				case 1:
-    					Robot.arm.wrist.setSetpoint(RobotMap.ARMS_SWITCH);
-    					break;
-    				case 2:
-    					Robot.arm.wrist.setSetpoint(RobotMap.ARMS_SCALE);
-    					break;
-    			}
+    		    this.setPosition(this.target);
     		}
     	}
     }
@@ -224,4 +204,17 @@ public class ArmController extends Command {
 		}
     }
     
+    private void setPosition(short target) {
+    	switch(target) {
+			case 0:
+				Robot.arm.wrist.setSetpoint(RobotMap.ARMS_GROUND);
+				break;
+			case 1:
+				Robot.arm.wrist.setSetpoint(RobotMap.ARMS_SWITCH);
+				break;
+			case 2:
+				Robot.arm.wrist.setSetpoint(RobotMap.ARMS_SCALE);
+				break;
+    	}
+    }
 }

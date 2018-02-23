@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Arm extends Subsystem {
 
-	protected final LeftArm leftArm = new LeftArm(0.1, 0.02, 0);
-	protected final RightArm rightArm = new RightArm(0.1, 0.02, 0);
+	public final LeftArm leftArm = new LeftArm(0.1, 0.02, 0);
+	public final RightArm rightArm = new RightArm(0.1, 0.02, 0);
 
 	public final Clamp clamp = new Clamp();
 	public final Wrist wrist = new Wrist(0, 0, 0);

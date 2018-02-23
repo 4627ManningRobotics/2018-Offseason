@@ -24,7 +24,8 @@ public class OperatorControls extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 
-		System.out.println(Robot.arm.getHeight()); //print out avg height
+		//System.out.println(Robot.arm.getHeight()); //print out avg height
+    	System.out.println(Robot.arm.wrist.calculateAngle());
     	//clamp controls
     	if(Robot.oi.getOperatorButton(RobotMap.RIGHT_BUMPER)) {
     		Robot.clamp.setLeftMotor(RobotMap.CLAMP_MAX_SPEED);
@@ -40,20 +41,20 @@ public class OperatorControls extends Command {
     	}
     	
 
-    	/*
+    	
     	if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') { // control of the arm using the left stick
     		System.out.println(Robot.arm.leftArm.calculatePosition());
-    		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), Robot.oi.getDriverRawAxis(-RobotMap.LEFT_STICK_Y));
+    		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), -Robot.oi.getDriverRawAxis(RobotMap.LEFT_STICK_Y));
 		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R') {
     		System.out.println(Robot.arm.rightArm.calculatePosition());
-    		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(-RobotMap.LEFT_STICK_Y));
+    		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
 		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'B') {
-    		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(-RobotMap.LEFT_STICK_Y));
-    		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(-RobotMap.LEFT_STICK_Y));
+    		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
+    		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
 		}
-    	*/
+    	
     	//wrist controls
-    	//Robot.arm.wrist.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y) - 0.3); // temporary 
+    	Robot.arm.wrist.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y)); // temporary 
     	
     	//System.out.println(Robot.arm.rightArm.potentiometer.getVoltage());
     	//System.out.println(Robot.arm.leftArm.potentiometer.getVoltage());

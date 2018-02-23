@@ -29,7 +29,7 @@ public class Wrist extends PIDSubsystem {
 		
 		//if (Constants.kSensorPhase)
 			//absolutePosition *= -1;
-		if (this.wrist.getInverted()) {
+		if (true) {
 			absolutePosition *= -1;
 		}
 		/* set the quadrature (relative) sensor to match absolute */
@@ -57,6 +57,6 @@ public class Wrist extends PIDSubsystem {
     }
     
     public double calculateAngle() {
-    	return (this.wrist.getSelectedSensorPosition(0) / 1024) * 360;
+    	return this.wrist.getSelectedSensorPosition(0) / 10;/*/ 1024d) /** 360*/
     }
 }

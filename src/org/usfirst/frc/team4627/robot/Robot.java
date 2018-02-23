@@ -135,9 +135,9 @@ public class Robot extends IterativeRobot {
 			Robot.clamp.openClamp();
 		}
 		
-		if(Robot.oi.operatorController.getRawButtonPressed(2/*?*/)) { // someone needs to add the directional pad id's to the RobotMap
-			new ArmController(RobotMap.SWITCH);
-		}
+		//if(Robot.oi.operatorController.getPOV() == 0) { // someone needs to add the directional pad id's to the RobotMap
+			//new ArmController(RobotMap.SWITCH);
+		//}
 		
 		Scheduler.getInstance().run();
 	}
