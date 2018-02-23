@@ -20,6 +20,7 @@ public class RobotMap {
 	public static final int LEFT_LIFTING_MOTOR = 2;
 	public static final int RIGHT_LIFTING_MOTOR = 1;
 	public static final int WRIST_MOTOR = 0;
+	public static final int SPARE_VICTOR = 9;
 	
 	public static final int DRIVER_CONTROLLER = 0;
 	public static final int OPERATOR_CONTROLLER = 1;
@@ -29,7 +30,7 @@ public class RobotMap {
 	public static final double CLAMP_MAX_SPEED = 0.9;
 	public static final double LIFTING_MAX_SPEED = 0.5;
 	public static double TURNING_RATE = 0.5;
-	public static final double ARM_SPEED = 0.3;
+	public static final double ARM_SPEED = .75; // .75 minimum to go up from ground
 
 	public static final double TURN_SPEED = 0.2;
 	
@@ -45,7 +46,7 @@ public class RobotMap {
 	public static final double WRIST_SCALE = 320;
 	public static final double WRIST_TOLERANCE_LEVEL = 0.5;
 	
-	public static final double ARMS_GROUND = 10;
+	public static final double ARMS_GROUND = 5;
 	public static final double ARMS_SWITCH = 50;
 	public static final double ARMS_SCALE = 120;
 	public static final double ARMS_DEADZONE_MIN = 70;

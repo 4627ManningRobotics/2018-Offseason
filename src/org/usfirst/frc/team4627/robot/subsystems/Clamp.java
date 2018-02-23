@@ -17,7 +17,7 @@ public class Clamp extends Subsystem {
     
 	@Override
 	protected void initDefaultCommand() {
-		
+    	super.setDefaultCommand(new OperatorControls());
 	}
 	
     public void setLeftMotor(double motorSpeed) {

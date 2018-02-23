@@ -28,7 +28,6 @@ public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Arm arm = new Arm();
-	public static final Clamp clamp = new Clamp();
 	//public static final String RobotMap = null;
 	public static OI oi;
 	Command autonomousCommand;
@@ -109,7 +108,7 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
     	DriveTrain.gyro.zeroYaw();
 		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
-		//Robot.arm.enable();
+		Robot.arm.enable();
 
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
@@ -131,13 +130,21 @@ public class Robot extends IterativeRobot {
 			Robot.driveTrain.theSolenoid.set(Robot.driveTrain.isInHighGear);
 		}
 		
-		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_A)) { // open claw
-			Robot.clamp.openClamp();
+		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) { // open claw
+			Robot.arm.clamp.openClamp();
 		}
 		
-		//if(Robot.oi.operatorController.getPOV() == 0) { // someone needs to add the directional pad id's to the RobotMap
-			//new ArmController(RobotMap.SWITCH);
-		//}
+		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_B)) { // someone needs to add the directional pad id's to the RobotMap
+			Command c = (Command) new ArmController(RobotMap.SWITCH);
+			c.start();
+			//Robot.arm.setSetpoint(100);
+		}
+		
+		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_A)) { // someone needs to add the directional pad id's to the RobotMap
+			Command c = (Command) new ArmController(RobotMap.GROUND);
+			c.start();
+			//Robot.arm.setSetpoint(100);
+		}
 		
 		Scheduler.getInstance().run();
 	}
