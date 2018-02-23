@@ -57,11 +57,11 @@ public class OI {
 	*/
 	
 	public boolean getOperatorButton(int axis) {
-		return this.operatorController.getRawButton(axis);
+		return this.operatorController.getRawButtonPressed(axis);
 	}
 	
 	public boolean getDriverButton(int axis) {
-		return this.driverController.getRawButton(axis);
+		return this.driverController.getRawButtonPressed(axis);
 	}
 	
 	public double getOperatorRawAxis(int axis) {

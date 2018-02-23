@@ -21,7 +21,6 @@ public class Arm extends Subsystem {
 
 	
     public void initDefaultCommand() {
-    	super.setDefaultCommand(new OperatorControls());
     }
     
     public void setSetpoint(double setpoint) { // only to be used in testing

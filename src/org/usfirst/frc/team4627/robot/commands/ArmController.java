@@ -25,14 +25,17 @@ public class ArmController extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	if(this.isInDeadzone()) {
+    		System.out.println("dead");
         	this.wasInDeadZone = true;
     		if(this.isWristStowed()) {
     			Robot.arm.wrist.setSetpointRelative(0); // do not move wrist inside the deadzone
+    			this.setPosition(this.target);
     		}else {
     			this.chooseWristStore(); // if it is in the deadzone go to the proper wrist storing position
     		}
-    		this.setPosition(this.target);
+    		
     	}else{
+    		System.out.println("alive");
     		chooseStartMovment();
     	}
     }
@@ -40,10 +43,12 @@ public class ArmController extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(this.isInDeadzone()) {
+    		//System.out.println("dead");
         	this.wasInDeadZone = true;
     		Robot.arm.setSetpoint(Robot.arm.getHeight()); // stop moving
     		this.chooseWristStore(); // store wrist
     	}else{
+    		//System.out.println("alive");
     		if(this.wasInDeadZone) { // only runs once, after leaving the dead zone
     		    this.wasInDeadZone = false;
     		    this.setPosition(this.target);
@@ -53,7 +58,7 @@ public class ArmController extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.arm.isOnTarget() && Robot.arm.wrist.onTarget();
     }
 
     // Called once after isFinished returns true
@@ -152,6 +157,7 @@ public class ArmController extends Command {
     
     private void chooseStartMovment() {
 
+		//System.out.println(RobotMap.CURRENT_POSITION + " " + this.target);
 		switch(RobotMap.CURRENT_POSITION){
 			case 0: // at ground
 				switch(this.target) {

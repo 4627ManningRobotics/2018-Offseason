@@ -25,15 +25,15 @@ public class Wrist extends PIDSubsystem {
 		
         int absolutePosition = this.wrist.getSensorCollection().getPulseWidthPosition();
 		/* mask out overflows, keep bottom 12 bits */
-		absolutePosition &= 0xFFF;
+		absolutePosition &= 0xFFF; // mask/bitwise operator, filters out unnecessary data
 		
 		//if (Constants.kSensorPhase)
 			//absolutePosition *= -1;
-		if (true) {
 			absolutePosition *= -1;
-		}
 		/* set the quadrature (relative) sensor to match absolute */
-		this.wrist.setSelectedSensorPosition(absolutePosition, 0, 10); 
+		this.wrist.setSelectedSensorPosition(absolutePosition, 0, 10); //absolute position is the start position of the potentiometer
+		//																 2nd parameter is index (don't change it)
+		//																 3rd parameter is time in milliseconds for the calculation to be completed
 		// Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
@@ -57,6 +57,6 @@ public class Wrist extends PIDSubsystem {
     }
     
     public double calculateAngle() {
-    	return this.wrist.getSelectedSensorPosition(0) / 10;/*/ 1024d) /** 360*/
+    	return -this.wrist.getSelectedSensorPosition(0) / 10d;
     }
 }

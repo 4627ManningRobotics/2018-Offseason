@@ -35,7 +35,7 @@ public class RightArm extends PIDSubsystem {
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub
-		Robot.arm.leftArm.setSetpoint(this.calculatePosition());
+		//Robot.arm.leftArm.setSetpoint(this.calculatePosition());
 		return this.calculatePosition();
 	}
 
