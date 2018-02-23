@@ -41,7 +41,7 @@ public class RobotMap {
 	public static final double WRIST_DOWN_STOW = 0; // degree positions
 	public static final double WRIST_UP_STOW = 300;
 	public static final double WRIST_GROUND = 200;
-	public static final double WRIST_SWITCH = 110;
+	public static final double WRIST_SWITCH = 278;
 	public static final double WRIST_SCALE = 320;
 	public static final double WRIST_TOLERANCE_LEVEL = 0.5;
 	

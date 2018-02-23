@@ -29,9 +29,9 @@ public class Wrist extends PIDSubsystem {
 		
 		//if (Constants.kSensorPhase)
 			//absolutePosition *= -1;
-		if (true) {
-			absolutePosition *= -1;
-		}
+		//if (true) {
+			//absolutePosition *= -1;
+		//}
 		/* set the quadrature (relative) sensor to match absolute */
 		this.wrist.setSelectedSensorPosition(absolutePosition, 0, 10); 
 		// Use these to get going:
