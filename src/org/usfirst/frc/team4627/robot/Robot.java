@@ -140,6 +140,12 @@ public class Robot extends IterativeRobot {
 			//Robot.arm.setSetpoint(100);
 		}
 		
+		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_A)) { // someone needs to add the directional pad id's to the RobotMap
+			Command c = (Command) new ArmController(RobotMap.GROUND);
+			c.start();
+			//Robot.arm.setSetpoint(100);
+		}
+		
 		Scheduler.getInstance().run();
 	}
 
