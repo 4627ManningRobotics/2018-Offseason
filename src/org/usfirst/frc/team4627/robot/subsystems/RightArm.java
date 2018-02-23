@@ -3,29 +3,32 @@ package org.usfirst.frc.team4627.robot.subsystems;
 import org.usfirst.frc.team4627.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
-public class LeftArm extends PIDSubsystem {
-
-	public TalonSRX liftingMotor = new TalonSRX(RobotMap.LEFT_LIFTING_MOTOR);
-    public AnalogInput potentiometer = new AnalogInput(0);
+public class RightArm extends PIDSubsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-    public LeftArm(double p, double i, double d) {
-		super("LeftArm", p, i, d);
+    public RightArm(double p, double i, double d) {
+		super("RightArm", p, i, d);
 		getPIDController().setAbsoluteTolerance(0.05);
 		getPIDController().setContinuous(false); // does not wrap
 		getPIDController().setOutputRange(-1, 1);
+		getPIDController().setSetpoint(7);
 	}
+
+	public TalonSRX liftingMotor = new TalonSRX(RobotMap.RIGHT_LIFTING_MOTOR);
+    public AnalogInput potentiometer = new AnalogInput(1);
     
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -42,34 +45,14 @@ public class LeftArm extends PIDSubsystem {
 		// TODO Auto-generated method stub
 		if((this.calculatePosition() < 15 && output < 0) || (this.calculatePosition() > 145 && output > 0)) {
 			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
-		}else{
+		}else {
 			this.liftingMotor.set(liftingMotor.getControlMode(), output);
 		}
-		System.out.println(this.calculatePosition());
+		//System.out.println(this.calculatePosition());
 	}
 	
 	public double calculatePosition() {
-		return this.potentiometer.getVoltage() * 71.469 - 7.7851;//-72.53217414 + 340.55633; // B
+		return this.potentiometer.getVoltage() * 72.906 + 3.1875;//72.353 + 0.4914; // A
 	}
-	
-	public void setMotors(double input) {
-		this.liftingMotor.set(this.liftingMotor.getControlMode(), input);
-	}
-
-/*
-	public void Wrist(double motorSetting) {
-		double liftSpeed = leftLiftingMotor.getMotorOutputPercent();
-		if (liftSpeed >= 0.3) {
-			motorSetting = 0.3;
-		} else if (liftSpeed < 0.3) {
-			motorSetting = liftSpeed;
-		}
-		*/
-		
 }
-
-
-	
-
-
 
