@@ -158,6 +158,9 @@ public class ArmController extends Command {
     private void chooseStartMovment() {
 
 		//System.out.println(RobotMap.CURRENT_POSITION + " " + this.target);
+    	this.chooseWristPos(RobotMap.CURRENT_POSITION, this.target);
+    	this.setPosition(this.target);
+    	/*
 		switch(RobotMap.CURRENT_POSITION){
 			case 0: // at ground
 				switch(this.target) {
@@ -171,7 +174,7 @@ public class ArmController extends Command {
 						break;
 					case 2: // wants to go to scale
 						this.chooseWristPos((short)0, (short)2);
-						Robot.arm.setSetpoint(RobotMap.ARMS_GROUND);
+						Robot.arm.setSetpoint(RobotMap.ARMS_SCALE);
 						break;
 				}
 				break;
@@ -187,7 +190,7 @@ public class ArmController extends Command {
 						break;
 					case 2: // wants to go to scale
 						this.chooseWristPos((short)1, (short)2);
-						Robot.arm.setSetpoint(RobotMap.ARMS_GROUND);
+						Robot.arm.setSetpoint(RobotMap.ARMS_SCALE);
 						break;
 				}
 				break;
@@ -203,11 +206,11 @@ public class ArmController extends Command {
 						break;
 					case 2: // wants to go to scale
 						this.chooseWristPos((short)2, (short)2);
-						Robot.arm.setSetpoint(RobotMap.ARMS_GROUND);
+						Robot.arm.setSetpoint(RobotMap.ARMS_SCALE);
 						break;
 				}
 				break;
-		}
+		}*/
     }
     
     private void setPosition(short target) {

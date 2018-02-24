@@ -29,15 +29,9 @@ public class Wrist extends PIDSubsystem {
 		
 		//if (Constants.kSensorPhase)
 			//absolutePosition *= -1;
-<<<<<<< HEAD
-		//if (true) {
 			//absolutePosition *= -1;
-		//}
-=======
-			absolutePosition *= -1;
->>>>>>> 7a80a12c8c891d1a53923a61f41d220d18199396
 		/* set the quadrature (relative) sensor to match absolute */
-		this.wrist.setSelectedSensorPosition(absolutePosition, 0, 10); //absolute position is the start position of the potentiometer
+		this.wrist.setSelectedSensorPosition(-absolutePosition, 0, 10); //absolute position is the start position of the potentiometer
 		//																 2nd parameter is index (don't change it)
 		//																 3rd parameter is time in milliseconds for the calculation to be completed
 		// Use these to get going:
