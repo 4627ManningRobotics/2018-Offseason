@@ -48,7 +48,6 @@ public class ArmController extends Command {
     		Robot.arm.setSetpoint(Robot.arm.getHeight()); // stop moving
     		this.chooseWristStore(); // store wrist
     	}else{
-    		//System.out.println("alive");
     		if(this.wasInDeadZone) { // only runs once, after leaving the dead zone
     		    this.wasInDeadZone = false;
     		    this.setPosition(this.target);
