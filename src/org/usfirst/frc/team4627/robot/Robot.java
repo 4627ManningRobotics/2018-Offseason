@@ -147,7 +147,7 @@ public class Robot extends IterativeRobot {
 		}
 		
 		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) {
-    		Robot.arm.wrist.setSetpoint(65);
+    		
     		
     	}
 		
