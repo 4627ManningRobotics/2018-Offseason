@@ -49,7 +49,7 @@ public class Wrist extends PIDSubsystem {
     }
 
     protected void usePIDOutput(double output) {
-    	this.wrist.set(this.wrist.getControlMode(), output);
+    	this.wrist.set(this.wrist.getControlMode(), output * RobotMap.WRIST_MAX_SPEED);
     }
     
     public void setWrist(double speed) {

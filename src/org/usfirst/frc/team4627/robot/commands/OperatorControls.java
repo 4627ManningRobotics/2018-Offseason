@@ -40,7 +40,7 @@ public class OperatorControls extends Command {
         	Robot.arm.clamp.setRightMotor((triggerVal - stick) * RobotMap.CLAMP_MAX_SPEED);
     	}
     	
-
+    	Robot.arm.wrist.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_X)*RobotMap.WRIST_MAX_SPEED);
     	/*
     	if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') { // control of the arm using the left stick
     		System.out.println(Robot.arm.leftArm.calculatePosition());

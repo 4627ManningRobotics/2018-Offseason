@@ -130,10 +130,10 @@ public class Robot extends IterativeRobot {
 			Robot.driveTrain.theSolenoid.set(Robot.driveTrain.isInHighGear);
 		}
 		
-		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) { // open claw
+		/*if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) { // open claw
 			Robot.arm.clamp.openClamp();
 		}
-		
+		*/
 		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_B)) { // someone needs to add the directional pad id's to the RobotMap
 			Command c = (Command) new ArmController(RobotMap.SWITCH);
 			c.start();
@@ -145,6 +145,10 @@ public class Robot extends IterativeRobot {
 			c.start();
 			//Robot.arm.setSetpoint(100);
 		}
+		
+		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) {
+    		Robot.arm.wrist.setSetpoint(65);
+    	}
 		
 		Scheduler.getInstance().run();
 	}
