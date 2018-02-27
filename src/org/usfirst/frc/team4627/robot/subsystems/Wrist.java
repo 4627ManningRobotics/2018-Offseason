@@ -20,7 +20,7 @@ public class Wrist extends PIDSubsystem {
 		
 		super.getPIDController().setAbsoluteTolerance(0.05);
 		super.getPIDController().setContinuous(false); // does not wrap
-		super.getPIDController().setOutputRange(-1, 1); // CBW- can use this to set min max motor speed?
+		super.getPIDController().setOutputRange(-0.5), 0.7); // CBW- can use this to set min max motor speed?
 		super.getPIDController().setInputRange(0, 360);
 		
         int absolutePosition = this.wrist.getSensorCollection().getPulseWidthPosition();
@@ -49,7 +49,7 @@ public class Wrist extends PIDSubsystem {
     }
 
     protected void usePIDOutput(double output) {
-    	this.wrist.set(this.wrist.getControlMode(), output * RobotMap.WRIST_MAX_SPEED);
+    	this.wrist.set(this.wrist.getControlMode(), output);
     }
     
     public void setWrist(double speed) {
