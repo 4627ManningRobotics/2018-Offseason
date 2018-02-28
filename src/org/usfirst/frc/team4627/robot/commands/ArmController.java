@@ -42,6 +42,7 @@ public class ArmController extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println(this.isInDeadzone());
     	if(this.isInDeadzone()) {
     		//System.out.println("dead");
         	this.wasInDeadZone = true;
