@@ -41,16 +41,15 @@ public class OperatorControls extends Command {
     	}
     	
     	Robot.arm.wrist.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_X)*RobotMap.WRIST_MAX_SPEED);
-    	/*
     	if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') { // control of the arm using the left stick
     		System.out.println(Robot.arm.leftArm.calculatePosition());
     		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
 		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R') {
     		System.out.println(Robot.arm.rightArm.calculatePosition());
     		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
-		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'B') {
-    		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
-    		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
+		}else {//if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'B') {
+    		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
+    		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
 		}
     	
     	//wrist controls
