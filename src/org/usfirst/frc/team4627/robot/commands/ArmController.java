@@ -28,7 +28,7 @@ public class ArmController extends Command {
     		System.out.println("dead");
         	this.wasInDeadZone = true;
     		if(this.isWristStowed()) {
-    			Robot.arm.wrist.setSetpointRelative(0); // do not move wrist inside the deadzone
+    			//Robot.arm.wrist.setSetpointRelative(0); // do not move wrist inside the deadzone
     			this.setPosition(this.target);
     		}else {
     			this.chooseWristStore(); // if it is in the deadzone go to the proper wrist storing position
@@ -42,7 +42,6 @@ public class ArmController extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println(this.isInDeadzone());
     	if(this.isInDeadzone()) {
     		//System.out.println("dead");
         	this.wasInDeadZone = true;
@@ -64,7 +63,7 @@ public class ArmController extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.arm.setSetpointRelative(0); // stop all movement
-    	Robot.arm.wrist.setSetpointRelative(0);
+    	//Robot.arm.wrist.setSetpointRelative(0);
     	RobotMap.CURRENT_POSITION = this.target;
     }
 
@@ -79,10 +78,10 @@ public class ArmController extends Command {
     }
     
     private boolean isWristStowed() {
-    	return (RobotMap.WRIST_DOWN_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL &&
+    	return false; /*(RobotMap.WRIST_DOWN_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL &&
     			RobotMap.WRIST_DOWN_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL) || 
     		   (RobotMap.WRIST_UP_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL && 
-    			RobotMap.WRIST_UP_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL);
+    			RobotMap.WRIST_UP_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL);*/
     }
     
     private void chooseWristStore() {

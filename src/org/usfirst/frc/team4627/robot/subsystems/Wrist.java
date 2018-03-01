@@ -10,14 +10,14 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 /**
  *
  */
+
 public class Wrist extends PIDSubsystem {
 
 	private final TalonSRX wrist = new TalonSRX(RobotMap.WRIST_MOTOR); //ppr = 1024
 	
     public Wrist(double P, double I, double D) {
         super("Wrist", P, I, D);
-        this.wrist.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
-		
+        //this.wrist.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 		super.getPIDController().setAbsoluteTolerance(0.05);
 		super.getPIDController().setContinuous(false); // does not wrap
 		super.getPIDController().setOutputRange(-1, 1); // CBW- can use this to set min max motor speed?
@@ -39,6 +39,10 @@ public class Wrist extends PIDSubsystem {
         //                  to
         // enable() - Enables the PID controller.
     }
+    
+    public double wristAmperage() {
+    	return this.wrist.getOutputCurrent();
+    }
 
     public void initDefaultCommand() {
     	// not needed
@@ -46,7 +50,7 @@ public class Wrist extends PIDSubsystem {
     
     @Override
     protected double returnPIDInput() {
-        return this.calculateAngle();
+        return 0;//this.calculateAngle();
     }
     @Override
     protected void usePIDOutput(double output) {
@@ -56,8 +60,7 @@ public class Wrist extends PIDSubsystem {
     public void setWrist(double speed) {
     	this.wrist.set(this.wrist.getControlMode(), speed);
     }
-    
-    public double calculateAngle() {
+    /*public double calculateAngle() {
     	return -this.wrist.getSelectedSensorPosition(0) / 10d;
-    }
+    }*/
 }

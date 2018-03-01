@@ -19,13 +19,14 @@ public class OperatorControls extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.arm.wrist.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 
 		//System.out.println(Robot.arm.getHeight()); //print out avg height
-    	System.out.println(Robot.arm.wrist.calculateAngle());
+    	//System.out.println(Robot.arm.wrist.calculateAngle());
     	//clamp controls
     	if(Robot.oi.getOperatorButton(RobotMap.RIGHT_BUMPER)) {
     		Robot.arm.clamp.setLeftMotor(RobotMap.CLAMP_MAX_SPEED);
@@ -39,8 +40,10 @@ public class OperatorControls extends Command {
         	//Robot.arm.clamp.setLeftMotor((triggerVal + stick) * RobotMap.CLAMP_MAX_SPEED);
         	//Robot.arm.clamp.setRightMotor((triggerVal - stick) * RobotMap.CLAMP_MAX_SPEED);
     	}
-    	
+    	System.out.println(Robot.arm.wrist.getPIDOutput());
+		Robot.arm.wrist.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
     	Robot.arm.wrist.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_X)*RobotMap.WRIST_MAX_SPEED);
+    	System.out.println(Robot.arm.wrist.wristAmperage());
     	/*if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') { // control of the arm using the left stick
     		System.out.println(Robot.arm.leftArm.calculatePosition());
     		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));

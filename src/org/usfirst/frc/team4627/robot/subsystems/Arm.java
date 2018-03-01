@@ -17,7 +17,7 @@ public class Arm extends Subsystem {
 	public final RightArm rightArm = new RightArm(0.1, 0.02, 0);
 
 	public final Clamp clamp = new Clamp();
-	public final Wrist wrist = new Wrist(0.007, 0, 0);
+	public final WristV2 wrist = new WristV2(0.1, 0, 0);
 
 	
     public void initDefaultCommand() {
