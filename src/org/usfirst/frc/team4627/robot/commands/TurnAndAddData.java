@@ -17,7 +17,7 @@ public class TurnAndAddData extends Command {
 	
     public TurnAndAddData() {
     	this.isFin = false;
-    	
+    	// having any requirements might conflict with the code
     }
 
     // Called just before this Command runs the first time
@@ -29,6 +29,12 @@ public class TurnAndAddData extends Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}//create a network save for later
+    	
+    }
+
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+    	Command c;
     	int timeInterval = 300; // time interval in milliseconds, 3/10 of a seconds
     	double[][] in = new double[180][2]; // 36-5 degree intervals * 5 speeds
     	double[] out = new double[180];
@@ -38,7 +44,12 @@ public class TurnAndAddData extends Command {
     			
     			int index = (speed - 1) * 36 + (degree - 1);
     			
-    			new TurnToAngle(degree * 5, speed / 5, 0, true);
+    			c = (Command) new TurnToAngle(degree * 5, speed / 5, 0, true); // start turning
+    			c.start();
+    			while(c.isRunning()) {
+    				
+    			}
+    			
     			long time = System.currentTimeMillis();
     			while(time + timeInterval > System.currentTimeMillis()) {
     				//wait
@@ -49,10 +60,7 @@ public class TurnAndAddData extends Command {
     		}
     	}
     	this.isFin = true;
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -67,6 +75,6 @@ public class TurnAndAddData extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    
+    	System.out.println("you done goofed");
     }
 }

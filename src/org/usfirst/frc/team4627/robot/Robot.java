@@ -108,7 +108,7 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
     	DriveTrain.gyro.zeroYaw();
 		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
-		Robot.arm.enable();
+		//Robot.arm.enable();
 
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
@@ -130,9 +130,11 @@ public class Robot extends IterativeRobot {
 			Robot.driveTrain.theSolenoid.set(Robot.driveTrain.isInHighGear);
 		}
 		
-		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) { // open claw
+		/*if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) { // open claw
 			Robot.arm.clamp.openClamp();
 		}
+		*/
+		//Robot.arm.wrist.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
 		
 		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_B)) { // someone needs to add the directional pad id's to the RobotMap
 			Command c = (Command) new ArmController(RobotMap.SWITCH);
@@ -145,6 +147,11 @@ public class Robot extends IterativeRobot {
 			c.start();
 			//Robot.arm.setSetpoint(100);
 		}
+		
+		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) {
+    		
+    		
+    	}
 		
 		Scheduler.getInstance().run();
 	}
