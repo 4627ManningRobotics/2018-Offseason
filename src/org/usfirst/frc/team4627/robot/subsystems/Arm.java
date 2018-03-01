@@ -17,11 +17,7 @@ public class Arm extends Subsystem {
 	public final RightArm rightArm = new RightArm(0.1, 0.02, 0);
 
 	public final Clamp clamp = new Clamp();
-<<<<<<< HEAD
-	public final Wrist wrist = new Wrist(0, 0, 0); // testing needed for the PID values
-=======
 	public final Wrist wrist = new Wrist(0.007, 0, 0);
->>>>>>> 6308b77934596016aa92e8d018ab557b23633666
 
 	
     public void initDefaultCommand() {

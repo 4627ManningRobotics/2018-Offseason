@@ -25,7 +25,7 @@ public class Wrist extends PIDSubsystem {
 		
         int absolutePosition = this.wrist.getSensorCollection().getPulseWidthPosition();
 		/* mask out overflows, keep bottom 12 bits */
-		absolutePosition &= 0xFFF; // mask/bitwise operator, filters out unnecessary data
+		//absolutePosition &= 0xFFF; // mask/bitwise operator, filters out unnecessary data
 		
 		//if (Constants.kSensorPhase)
 			//absolutePosition *= -1;
