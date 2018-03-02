@@ -38,13 +38,13 @@ public class OperatorControls extends Command {
     	
     	if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') { // control of the arm using the left stick
     		System.out.println(Robot.leftArm.calculatePosition());
-    		Robot.leftArm.liftingMotor.set(Robot.leftArm.liftingMotor.getControlMode(), Robot.oi.getDriverRawAxis(RobotMap.LEFT_STICK_Y));
+    		Robot.leftArm.liftingMotor.set(Robot.leftArm.liftingMotor.getControlMode(), -Robot.oi.getDriverRawAxis(RobotMap.LEFT_STICK_Y));
 		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R') {
     		System.out.println(Robot.rightArm.calculatePosition());
-    		Robot.rightArm.liftingMotor.set(Robot.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
-		}else {//if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'B') {
-    		Robot.rightArm.liftingMotor.set(Robot.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
-    		Robot.leftArm.liftingMotor.set(Robot.leftArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
+    		Robot.rightArm.liftingMotor.set(Robot.rightArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
+		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'B') {
+    		Robot.rightArm.liftingMotor.set(Robot.rightArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
+    		Robot.leftArm.liftingMotor.set(Robot.leftArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
 		}
     }
 
