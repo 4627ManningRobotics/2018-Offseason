@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Arm extends Subsystem {
 
+	// no modifies on the arms so that its only accessible by the class and subclasses of the package
 	public final LeftArm leftArm = new LeftArm(0.1, 0.02, 0);
 	public final RightArm rightArm = new RightArm(0.1, 0.02, 0);
 
@@ -28,11 +29,13 @@ public class Arm extends Subsystem {
     public void enable() {
     	this.leftArm.enable();
     	this.rightArm.enable();
+    	//this.wrist.enable();
     }
     
     public void disable() {
     	this.leftArm.disable();
     	this.rightArm.disable();
+    	//this.wrist.disable();
     }
 	
 	public boolean isOnTarget() {
