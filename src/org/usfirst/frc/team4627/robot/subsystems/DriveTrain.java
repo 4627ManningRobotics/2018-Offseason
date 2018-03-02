@@ -17,18 +17,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveTrain extends Subsystem {
 
 	//instantiate motor controllers
-	TalonSRX leftMotor1 = new TalonSRX(RobotMap.LEFT_MOTOR_1);
-	TalonSRX leftMotor2 = new TalonSRX(RobotMap.LEFT_MOTOR_2);
-	TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
-	TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
+	private final TalonSRX leftMotor1 = new TalonSRX(RobotMap.LEFT_MOTOR_1);
+	private final TalonSRX leftMotor2 = new TalonSRX(RobotMap.LEFT_MOTOR_2);
+	private final TalonSRX rightMotor1 = new TalonSRX(RobotMap.RIGHT_MOTOR_1);
+	private final TalonSRX rightMotor2 = new TalonSRX(RobotMap.RIGHT_MOTOR_2);
 	
-	public Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
+	private final Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
 	
-	public static AHRS gyro = new AHRS(SerialPort.Port.kUSB);
+	public static final AHRS gyro = new AHRS(SerialPort.Port.kUSB);
 	
-	public static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-	public static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+	private static final Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+	private static final Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 
 private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
 	
@@ -66,7 +66,6 @@ private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_
     }
     
     public void changeGears() {
-
     	this.isInHighGear = !this.isInHighGear;
     	this.theSolenoid.set(this.isInHighGear);
     }

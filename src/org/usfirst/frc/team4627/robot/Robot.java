@@ -138,7 +138,7 @@ public class Robot extends IterativeRobot {
 	
 	private void driverButtons() {
 		if(Robot.oi.getDriverButton(RobotMap.BUTTON_A)) { // change gears
-			Robot.driveTrain.theSolenoid.set(Robot.driveTrain.isInHighGear);
+			Robot.driveTrain.changeGears();
 		}
 	}
 	

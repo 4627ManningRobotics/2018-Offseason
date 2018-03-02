@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Clamp extends Subsystem {
-	private VictorSPX leftMotor = new VictorSPX(RobotMap.LEFT_CLAMP_MOTOR);
-	private VictorSPX rightMotor = new VictorSPX(RobotMap.RIGHT_CLAMP_MOTOR);
+	private final VictorSPX leftMotor = new VictorSPX(RobotMap.LEFT_CLAMP_MOTOR);
+	private final VictorSPX rightMotor = new VictorSPX(RobotMap.RIGHT_CLAMP_MOTOR);
 	
 	private Solenoid muscle = new Solenoid(RobotMap.MUSCLE);
     

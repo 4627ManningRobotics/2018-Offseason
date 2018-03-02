@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class Wrist extends PIDSubsystem {
 
-	public final TalonSRX wrist = new TalonSRX(RobotMap.WRIST_MOTOR); //ppr = 1024
+	private final TalonSRX wrist = new TalonSRX(RobotMap.WRIST_MOTOR); //ppr = 1024
 	private final double OFFSET;
 	
     public Wrist(double P, double I, double D) {
