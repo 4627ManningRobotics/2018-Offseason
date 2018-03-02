@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4627.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -105,7 +106,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
     	DriveTrain.gyro.zeroYaw();
-		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
+		Robot.arm.wrist.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
 		Robot.arm.enable(); // make sure all PID systems are on
 
 		// This makes sure that the autonomous stops running when
@@ -123,7 +124,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		//System.out.println(Robot.arm.getHeight());
-		
+		Robot.arm.enable();
 		Scheduler.getInstance().run();
 	}
 
@@ -132,7 +133,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-		
+		System.out.println(Robot.arm.wrist.calculateAngle());
 	}
 	
 	
