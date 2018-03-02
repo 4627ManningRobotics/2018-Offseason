@@ -2,7 +2,7 @@ package org.usfirst.frc.team4627.robot.subsystems;
 
 import org.usfirst.frc.team4627.robot.RobotMap;
 
-import org.usfirst.frc.team4627.robot.commands.TankDrive;
+import org.usfirst.frc.team4627.robot.commands.DriverControls;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
@@ -52,7 +52,7 @@ private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_
 	}
 	
     public void initDefaultCommand() {
-    	super.setDefaultCommand(new TankDrive());
+    	super.setDefaultCommand(new DriverControls());
     }
         
     public void setLeftMotor(double motorSetting) {

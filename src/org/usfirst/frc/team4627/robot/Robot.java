@@ -122,9 +122,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		this.driverButtons();
-		this.operatorButtons();
-		System.out.println(Robot.arm.getHeight());
+		//System.out.println(Robot.arm.getHeight());
 		
 		Scheduler.getInstance().run();
 	}
@@ -137,31 +135,5 @@ public class Robot extends IterativeRobot {
 		
 	}
 	
-	private void driverButtons() {
-		if(Robot.oi.getDriverButton(RobotMap.BUTTON_A)) { // change gears
-			Robot.driveTrain.changeGears();
-		}
-	}
 	
-	private void operatorButtons() { // some buttons require a Command object to actually run
-		
-		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) { // open claw
-			Robot.arm.clamp.openClamp();
-		}
-		
-		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_Y)) { // scale position
-			Command c = (Command) new ArmController(RobotMap.SCALE);
-			c.start();
-		}
-		
-		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_B)) { // switch position
-			Command c = (Command) new ArmController(RobotMap.SWITCH);
-			c.start();
-		}
-	
-		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_A)) { // ground position
-			Command c = (Command) new ArmController(RobotMap.GROUND);
-			c.start();
-		}
-	}
 }

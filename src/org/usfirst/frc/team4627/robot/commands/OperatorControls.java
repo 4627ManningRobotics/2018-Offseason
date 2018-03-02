@@ -23,7 +23,25 @@ public class OperatorControls extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    		// buttons
+    		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) { // open claw
+    			Robot.arm.clamp.openClamp();
+    		}
+    		
+    		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_Y)) { // scale position
+    			Command c = (Command) new ArmController(RobotMap.SCALE);
+    			c.start();
+    		}
+    		
+    		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_B)) { // switch position
+    			Command c = (Command) new ArmController(RobotMap.SWITCH);
+    			c.start();
+    		}
     	
+    		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_A)) { // ground position
+    			Command c = (Command) new ArmController(RobotMap.GROUND);
+    			c.start();
+    		}
     	// intake/clamp controls
     	if(Robot.oi.getOperatorButton(RobotMap.RIGHT_BUMPER)) {
     		Robot.arm.clamp.setLeftMotor(RobotMap.CLAMP_MAX_SPEED);

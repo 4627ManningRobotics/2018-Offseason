@@ -1,15 +1,19 @@
 package org.usfirst.frc.team4627.robot.commands;
 
+import org.usfirst.frc.team4627.robot.Robot;
+import org.usfirst.frc.team4627.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class WristPID extends Command {
-	
-    public WristPID() {
+public class DriverControls extends Command {
+
+    public DriverControls() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -18,15 +22,17 @@ public class WristPID extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	/*
-    	if(!Robot.arm.wrist.isOnVoltagePID) {
-    		!Robot.arm.wrist.set
-    	}
-    	if(Robot.arm.wrist.onTarget()) {
-    		Robot.arm.wrist Robot.arm.wrist.calculateError() * Wrist.P;
-    	}
-    	*/
+    		double triggerVal = Robot.oi.getDriverRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getDriverRawAxis(RobotMap.LEFT_TRIGGER);
+    		double stick = Robot.oi.getDriverRawAxis(RobotMap.LEFT_STICK_X) * RobotMap.TURNING_RATE;
+    		Robot.driveTrain.setLeftMotor(triggerVal + stick);
+    		Robot.driveTrain.setRightMotor(triggerVal - stick);
+    		
+    		//buttons
+    		if(Robot.oi.getDriverButton(RobotMap.BUTTON_A)) { // change gears
+    			Robot.driveTrain.changeGears();
+    		}
     }
+    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
