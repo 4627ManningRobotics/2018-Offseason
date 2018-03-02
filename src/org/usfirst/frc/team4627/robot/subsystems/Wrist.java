@@ -25,7 +25,7 @@ public class Wrist extends PIDSubsystem {
 		
         int absolutePosition = this.wrist.getSensorCollection().getPulseWidthPosition();
 		/* mask out overflows, keep bottom 12 bits */
-		//absolutePosition &= 0xFFF; // mask/bitwise operator, filters out unnecessary data
+		absolutePosition &= 0xFFF; // mask/bitwise operator, filters out unnecessary data
 		
 		//if (Constants.kSensorPhase)
 			//absolutePosition *= -1;
@@ -51,6 +51,7 @@ public class Wrist extends PIDSubsystem {
     @Override
     protected void usePIDOutput(double output) {
     	this.wrist.set(this.wrist.getControlMode(), output);
+    	System.out.println(output);
     }
     
     public void setWrist(double speed) {
@@ -58,6 +59,10 @@ public class Wrist extends PIDSubsystem {
     }
     
     public double calculateAngle() {
-    	return -this.wrist.getSelectedSensorPosition(0) / 10d;
+    	return -this.wrist.getSensorCollection().getPulseWidthPosition() / 10d;
+    }
+    
+    public double wristAmperage() {
+    	return this.wrist.getOutputCurrent();
     }
 }
