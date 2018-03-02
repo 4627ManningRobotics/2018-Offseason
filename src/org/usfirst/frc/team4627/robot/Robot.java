@@ -133,11 +133,6 @@ public class Robot extends IterativeRobot {
 		/*if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) { // open claw
 			Robot.arm.clamp.openClamp();
 		}
-		*/
-<<<<<<< HEAD
-		
-=======
->>>>>>> parent of 6308b77... PID Testing of the wrist
 		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_B)) { // someone needs to add the directional pad id's to the RobotMap
 			Command c = (Command) new ArmController(RobotMap.SWITCH);
 			c.start();
