@@ -133,6 +133,7 @@ public class Robot extends IterativeRobot {
 		if(Robot.oi.driverController.getAButtonPressed()) {
 			new ChangeGears();
 		}
+		System.out.println(Robot.rightArm.calculatePosition());
 		
 		Scheduler.getInstance().run();
 	}
