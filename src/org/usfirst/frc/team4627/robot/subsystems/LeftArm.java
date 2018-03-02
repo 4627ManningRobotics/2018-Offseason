@@ -52,7 +52,6 @@ public class LeftArm extends PIDSubsystem {
 				this.liftingMotor.set(this.liftingMotor.getControlMode(), output);
 			}
 		}
-		//System.out.println(this.calculatePosition());
 	}
 	
 	public double calculatePosition() {

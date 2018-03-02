@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class WristPID extends Command {
-
+	
     public WristPID() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -18,6 +18,14 @@ public class WristPID extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	/*
+    	if(!Robot.arm.wrist.isOnVoltagePID) {
+    		!Robot.arm.wrist.set
+    	}
+    	if(Robot.arm.wrist.onTarget()) {
+    		Robot.arm.wrist Robot.arm.wrist.calculateError() * Wrist.P;
+    	}
+    	*/
     }
 
     // Make this return true when this Command no longer needs to run execute()

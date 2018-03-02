@@ -2,8 +2,6 @@ package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
 import org.usfirst.frc.team4627.robot.RobotMap;
-import org.usfirst.frc.team4627.robot.subsystems.Arm;
-import org.usfirst.frc.team4627.robot.subsystems.RightArm;
 
 import edu.wpi.first.wpilibj.command.Command;
 

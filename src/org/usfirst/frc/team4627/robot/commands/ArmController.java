@@ -25,17 +25,17 @@ public class ArmController extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	if(this.isInDeadzone()) {
-    		System.out.println("dead");
+    		//System.out.println("dead");
         	this.wasInDeadZone = true;
     		if(this.isWristStowed()) {
-    			//Robot.arm.wrist.setSetpointRelative(0); // do not move wrist inside the deadzone
+    			Robot.arm.wrist.setSetpointRelative(0); // do not move wrist inside the deadzone
     			this.setPosition(this.target);
     		}else {
     			this.chooseWristStore(); // if it is in the deadzone go to the proper wrist storing position
     		}
     		
     	}else{
-    		System.out.println("alive");
+    		//System.out.println("alive");
     		chooseStartMovment();
     	}
     }
@@ -63,7 +63,7 @@ public class ArmController extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.arm.setSetpointRelative(0); // stop all movement
-    	//Robot.arm.wrist.setSetpointRelative(0);
+    	Robot.arm.wrist.setSetpointRelative(0);
     	RobotMap.CURRENT_POSITION = this.target;
     }
 
@@ -78,10 +78,10 @@ public class ArmController extends Command {
     }
     
     private boolean isWristStowed() {
-    	return false; /*(RobotMap.WRIST_DOWN_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL &&
+    	return (RobotMap.WRIST_DOWN_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL &&
     			RobotMap.WRIST_DOWN_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL) || 
     		   (RobotMap.WRIST_UP_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL && 
-    			RobotMap.WRIST_UP_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL);*/
+    			RobotMap.WRIST_UP_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL);
     }
     
     private void chooseWristStore() {
@@ -155,11 +155,9 @@ public class ArmController extends Command {
     }
     
     private void chooseStartMovment() {
-
-		//System.out.println(RobotMap.CURRENT_POSITION + " " + this.target);
     	this.chooseWristPos(RobotMap.CURRENT_POSITION, this.target);
     	this.setPosition(this.target);
-    	/*
+    	/* obsolete
 		switch(RobotMap.CURRENT_POSITION){
 			case 0: // at ground
 				switch(this.target) {

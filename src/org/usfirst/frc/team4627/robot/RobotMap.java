@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4627.robot;
 
-import fullyconnectednetwork.NN;
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -44,7 +42,7 @@ public class RobotMap {
 	public static final double WRIST_GROUND = 200;
 	public static final double WRIST_SWITCH = 278;
 	public static final double WRIST_SCALE = 320;
-	public static final double WRIST_TOLERANCE_LEVEL = 0.5;
+	public static final double WRIST_TOLERANCE_LEVEL = 3;
 	
 	public static final double ARMS_GROUND = 5;
 	public static final double ARMS_SWITCH = 50;

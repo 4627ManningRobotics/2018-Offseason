@@ -19,33 +19,25 @@ public class Wrist extends PIDSubsystem {
         super("Wrist", P, I, D);
         this.wrist.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 		
-		super.getPIDController().setAbsoluteTolerance(3);
+		super.getPIDController().setAbsoluteTolerance(RobotMap.WRIST_TOLERANCE_LEVEL);
 		super.getPIDController().setContinuous(false); // does not wrap
 		super.getPIDController().setOutputRange(-RobotMap.WRIST_MAX_SPEED, RobotMap.WRIST_MAX_SPEED); // CBW- can use this to set min max motor speed?
 		super.getPIDController().setInputRange(-180, 180);
-		super.setSetpoint(90);
 		
         int absolutePosition = this.wrist.getSensorCollection().getPulseWidthPosition();
 		/* mask out overflows, keep bottom 12 bits */
 		absolutePosition &= 0xFFF; // mask/bitwise operator, filters out unnecessary data
-		absolutePosition = -absolutePosition / 10;
-		//if (Constants.kSensorPhase)
-			//absolutePosition *= -1;
-			//absolutePosition *= -1;
+		absolutePosition = -absolutePosition / 10; // negative value to account for reversed tracking
+												   // /10 for conversion from ticks to degrees
 		/* set the quadrature (relative) sensor to match absolute */
 		this.wrist.setSelectedSensorPosition(absolutePosition, 0, 10); //absolute position is the start position of the potentiometer
 		//																 2nd parameter is index (don't change it)
 		//																 3rd parameter is time in milliseconds for the calculation to be completed
         this.OFFSET = absolutePosition;
 		System.out.println(absolutePosition);
-		// Use these to get going:
-        // setSetpoint() -  Sets where the PID controller should move the system
-        //                  to
-        // enable() - Enables the PID controller.
     }
 
     public void initDefaultCommand() {
-    	// not needed
     }
 
     protected double returnPIDInput() {
@@ -54,7 +46,7 @@ public class Wrist extends PIDSubsystem {
 
     protected void usePIDOutput(double output) {
     	System.out.println(this.calculateAngle());
-    	this.wrist.set(this.wrist.getControlMode(), -output);
+    	this.wrist.set(this.wrist.getControlMode(), -output); // because the tracking is reversed the output is also reversed
     }
     
     public void setWrist(double speed) {
@@ -65,7 +57,9 @@ public class Wrist extends PIDSubsystem {
     	return (-this.wrist.getSensorCollection().getPulseWidthPosition() / 10d) - this.OFFSET;
     }
     
+    /*
     public double wristAmperage() {
     	return this.wrist.getOutputCurrent();
     }
+    */
 }

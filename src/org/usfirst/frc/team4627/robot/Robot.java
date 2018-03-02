@@ -1,12 +1,10 @@
 
 package org.usfirst.frc.team4627.robot;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -58,7 +56,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		Robot.arm.disable();
+		Robot.arm.disable(); // make sure all PID systems are off
 	}
 
 	@Override
@@ -80,7 +78,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
     	DriveTrain.gyro.zeroYaw();
-		Robot.arm.enable();
+		Robot.arm.enable(); // make sure all PID systems are on
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -108,7 +106,7 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
     	DriveTrain.gyro.zeroYaw();
 		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
-		Robot.arm.enable();
+		Robot.arm.enable(); // make sure all PID systems are on
 
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
@@ -124,34 +122,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-
-		//SmartDashboard.putNumber("left position", leftArm.calculatePosition());
-		if(Robot.oi.getDriverButton(RobotMap.BUTTON_A)) { // change gears
-			Robot.driveTrain.theSolenoid.set(Robot.driveTrain.isInHighGear);
-		}
-		
-		/*if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) { // open claw
-			Robot.arm.clamp.openClamp();
-		}
-		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_B)) { // someone needs to add the directional pad id's to the RobotMap
-			Command c = (Command) new ArmController(RobotMap.SWITCH);
-			c.start();
-			//Robot.arm.setSetpoint(100);
-		}
-		
-		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_A)) { // someone needs to add the directional pad id's to the RobotMap
-			Command c = (Command) new ArmController(RobotMap.GROUND);
-			c.start();
-			//Robot.arm.setSetpoint(100);
-		}
-		
-		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) {
-    		
-    		
-    	}
+		this.driverButtons();
+		this.operatorButtons();
 		
 		Scheduler.getInstance().run();
-		*/
 	}
 
 	/**
@@ -159,6 +133,34 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-		//SmartDashboard.putNumber("left position", leftArm.calculatePosition());
+		
+	}
+	
+	private void driverButtons() {
+		if(Robot.oi.getDriverButton(RobotMap.BUTTON_A)) { // change gears
+			Robot.driveTrain.theSolenoid.set(Robot.driveTrain.isInHighGear);
+		}
+	}
+	
+	private void operatorButtons() { // some buttons require a Command object to actually run
+		
+		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) { // open claw
+			Robot.arm.clamp.openClamp();
+		}
+		
+		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_Y)) { // scale position
+			Command c = (Command) new ArmController(RobotMap.SCALE);
+			c.start();
+		}
+		
+		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_B)) { // switch position
+			Command c = (Command) new ArmController(RobotMap.SWITCH);
+			c.start();
+		}
+	
+		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_A)) { // ground position
+			Command c = (Command) new ArmController(RobotMap.GROUND);
+			c.start();
+		}
 	}
 }

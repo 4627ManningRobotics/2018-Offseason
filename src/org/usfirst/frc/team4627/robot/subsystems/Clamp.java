@@ -13,10 +13,11 @@ public class Clamp extends Subsystem {
 	private VictorSPX leftMotor = new VictorSPX(RobotMap.LEFT_CLAMP_MOTOR);
 	private VictorSPX rightMotor = new VictorSPX(RobotMap.RIGHT_CLAMP_MOTOR);
 	
-	//private Solenoid muscle = new Solenoid(RobotMap.MUSCLE);
+	private Solenoid muscle = new Solenoid(RobotMap.MUSCLE);
     
 	@Override
 	protected void initDefaultCommand() {
+    	super.setDefaultCommand(new OperatorControls());
 	}
 	
     public void setLeftMotor(double motorSpeed) {
@@ -29,7 +30,7 @@ public class Clamp extends Subsystem {
     }
     
     public void openClamp() {
-    	//this.muscle.set(true);
+    	this.muscle.set(true); // naturally releases pressure over time
     }
     
 }

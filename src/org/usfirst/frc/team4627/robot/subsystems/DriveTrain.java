@@ -4,7 +4,6 @@ import org.usfirst.frc.team4627.robot.RobotMap;
 
 import org.usfirst.frc.team4627.robot.commands.TankDrive;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -35,7 +34,6 @@ private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_
 	
 	public double getGyroAngle() {
 		return gyro.getAngle();
-		//return 0.0;
 	}
 	
 	public void initEncoders() {
@@ -54,7 +52,6 @@ private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_
 	}
 	
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
     	super.setDefaultCommand(new TankDrive());
     }
         

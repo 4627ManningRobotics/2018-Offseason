@@ -19,43 +19,6 @@ public class OI {
 	XboxController driverController = new XboxController(RobotMap.DRIVER_CONTROLLER);
 	XboxController operatorController = new XboxController(RobotMap.OPERATOR_CONTROLLER);
 	
-	/*
-	public double getDriverRightTrigger() {
-		return driverController.getRawAxis(RobotMap.RIGHT_TRIGGER);
-	}
-	
-	public double getDriverLeftTrigger() {
-		return driverController.getRawAxis(RobotMap.LEFT_TRIGGER);
-	}
-	
-	public double getDriverLeftStickX() {
-		return driverController.getRawAxis(RobotMap.LEFT_STICK_X);
-	}
-	
-	public boolean getControllerBButton() {
-		return driverController.getRawButton(RobotMap.BUTTON_B);
-	}
-	
-	public double getDriverLeftStickY() {
-		return -(driverController.getRawAxis(RobotMap.LEFT_STICK_Y));
-	}
-	public double getDriverRightStickY() {
-		return -(driverController.getRawAxis(RobotMap.RIGHT_STICK_Y));
-	}
-	
-	public double getOperatorRightTrigger() {
-		return operatorController.getRawAxis(RobotMap.RIGHT_TRIGGER);
-	}
-	
-	public double getOperatorLeftTrigger() {
-		return operatorController.getRawAxis(RobotMap.LEFT_TRIGGER);
-	}
-	
-	public double getOperatorLeftStickX() {
-		return operatorController.getRawAxis(RobotMap.LEFT_STICK_X);
-	}
-	*/
-	
 	public boolean getOperatorButton(int axis) {
 		return this.operatorController.getRawButtonPressed(axis);
 	}
