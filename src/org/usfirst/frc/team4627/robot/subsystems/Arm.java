@@ -18,7 +18,6 @@ public class Arm extends Subsystem {
 
 	public final Clamp clamp = new Clamp();
 	public final Wrist wrist = new Wrist(0.007, 0, 0);
-
 	
     public void initDefaultCommand() {
     }

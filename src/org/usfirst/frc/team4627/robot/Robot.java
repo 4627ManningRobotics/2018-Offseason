@@ -134,7 +134,6 @@ public class Robot extends IterativeRobot {
 			Robot.arm.clamp.openClamp();
 		}
 		*/
-		//Robot.arm.wrist.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
 		
 		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_B)) { // someone needs to add the directional pad id's to the RobotMap
 			Command c = (Command) new ArmController(RobotMap.SWITCH);
