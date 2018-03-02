@@ -124,6 +124,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		this.driverButtons();
 		this.operatorButtons();
+		System.out.println(Robot.arm.getHeight());
 		
 		Scheduler.getInstance().run();
 	}

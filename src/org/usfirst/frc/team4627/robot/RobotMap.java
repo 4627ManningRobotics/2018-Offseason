@@ -46,11 +46,11 @@ public class RobotMap {
 	
 	public static final double ARMS_GROUND = 5;
 	public static final double ARMS_SWITCH = 50;
-	public static final double ARMS_SCALE = 120;
+	public static final double ARMS_SCALE = 130;
 	public static final double ARMS_DEADZONE_MIN = 70;
 	public static final double ARMS_DEADZONE_MAX = 90;
 	public static final double ARMS_MIN = 5;
-	public static final double ARMS_MAX = 140;
+	public static final double ARMS_MAX = 135;
 
 	
 	public static final int BUTTON_A = 1;
