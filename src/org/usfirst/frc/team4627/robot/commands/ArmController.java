@@ -28,7 +28,7 @@ public class ArmController extends Command {
     		//System.out.println("dead");
         	this.wasInDeadZone = true;
     		if(this.isWristStowed()) {
-    			Robot.arm.wrist.setSetpointRelative(0); // do not move wrist inside the deadzone
+    			//Robot.arm.wrist.setSetpointRelative(0); // do not move wrist inside the deadzone
     			this.setPosition(this.target);
     		}else {
     			this.chooseWristStore(); // if it is in the deadzone go to the proper wrist storing position
@@ -57,13 +57,13 @@ public class ArmController extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.arm.isOnTarget() && Robot.arm.wrist.onTarget();
+        return Robot.arm.isOnTarget(); //&& Robot.arm.wrist.onTarget();
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	Robot.arm.setSetpointRelative(0); // stop all movement
-    	Robot.arm.wrist.setSetpointRelative(0);
+    	//Robot.arm.wrist.setSetpointRelative(0);
     	RobotMap.CURRENT_POSITION = this.target;
     }
 
@@ -78,13 +78,14 @@ public class ArmController extends Command {
     }
     
     private boolean isWristStowed() {
-    	return (RobotMap.WRIST_DOWN_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL &&
+    	return true;/*(RobotMap.WRIST_DOWN_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL &&
     			RobotMap.WRIST_DOWN_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL) || 
     		   (RobotMap.WRIST_UP_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL && 
-    			RobotMap.WRIST_UP_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL);
+    			RobotMap.WRIST_UP_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL);*/
     }
     
     private void chooseWristStore() {
+    	/*
     	switch(RobotMap.CURRENT_POSITION) {  // 0 - ground, 1 - switch, 2 - scale
     		case 0:
     		case 1:
@@ -108,9 +109,11 @@ public class ArmController extends Command {
     			}
     			break;
     	}
+    	*/
     }
     
     private void chooseWristPos(short start, short end) {
+    	/*
     	switch(start) {  // 0 - ground, 1 - switch, 2 - scale
     		case 0:
     			switch(end) {
@@ -152,6 +155,7 @@ public class ArmController extends Command {
     			}
     			break;
     	}
+    	*/
     }
     
     private void chooseStartMovment() {
@@ -211,6 +215,7 @@ public class ArmController extends Command {
     }
     
     private void setPosition(short target) {
+    	/*
     	switch(target) {
 			case 0:
 				Robot.arm.wrist.setSetpoint(RobotMap.ARMS_GROUND);
@@ -222,5 +227,6 @@ public class ArmController extends Command {
 				Robot.arm.wrist.setSetpoint(RobotMap.ARMS_SCALE);
 				break;
     	}
+    	*/
     }
 }

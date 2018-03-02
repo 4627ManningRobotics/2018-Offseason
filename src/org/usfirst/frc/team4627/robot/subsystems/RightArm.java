@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 public class RightArm extends PIDSubsystem {
 
 	public final TalonSRX liftingMotor = new TalonSRX(RobotMap.RIGHT_LIFTING_MOTOR);
-	private final AnalogInput potentiometer = new AnalogInput(1);
+	public final AnalogInput potentiometer = new AnalogInput(2);
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

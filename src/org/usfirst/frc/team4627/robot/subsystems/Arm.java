@@ -11,7 +11,7 @@ public class Arm extends Subsystem {
 	public final RightArm rightArm = new RightArm(0.1, 0.02, 0);
 
 	public final Clamp clamp = new Clamp();
-	public final Wrist wrist = new Wrist(0.008, 0.00025, 0);
+	public final Wrist wrist = new Wrist();
 	
     public void initDefaultCommand() {
     	
@@ -28,13 +28,11 @@ public class Arm extends Subsystem {
     public void enable() {
     	this.leftArm.enable();
     	this.rightArm.enable();
-    	this.wrist.enable();
     }
     
     public void disable() {
     	this.leftArm.disable();
     	this.rightArm.disable();
-    	this.wrist.disable();
     }
 	
 	public boolean isOnTarget() {

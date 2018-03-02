@@ -19,7 +19,7 @@ public class OperatorControls extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.arm.wrist.enable();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -41,13 +41,13 @@ public class OperatorControls extends Command {
     	
     	//arms
     	if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') { // control of the arm using the left stick
-    		System.out.println(Robot.arm.leftArm.calculatePosition());
+    		System.out.println(Robot.arm.leftArm.potentiometer.getVoltage());
     		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), -Robot.oi.getDriverRawAxis(RobotMap.LEFT_STICK_Y));
 		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R') {
-    		System.out.println(Robot.arm.rightArm.calculatePosition());
+    		System.out.println(Robot.arm.rightArm.potentiometer.getVoltage());
     		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
 		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'B') {
-			System.out.println("Right: " + Robot.arm.rightArm.calculatePosition() + "\nLeft: " + Robot.arm.leftArm.calculatePosition());
+			System.out.println("Right: " + Robot.arm.rightArm.potentiometer.getVoltage() + "\nLeft: " + Robot.arm.leftArm.potentiometer.getVoltage());
     		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
     		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
 		}
