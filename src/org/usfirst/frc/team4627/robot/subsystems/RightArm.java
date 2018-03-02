@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class RightArm extends PIDSubsystem {
 
-	private final TalonSRX liftingMotor = new TalonSRX(RobotMap.RIGHT_LIFTING_MOTOR);
+	public final TalonSRX liftingMotor = new TalonSRX(RobotMap.RIGHT_LIFTING_MOTOR);
 	private final AnalogInput potentiometer = new AnalogInput(1);
 
     // Put methods for controlling this subsystem
@@ -54,7 +54,7 @@ public class RightArm extends PIDSubsystem {
 		}
 	}
 	
-	private double calculatePosition() {
+	public double calculatePosition() {
 		return this.potentiometer.getVoltage() * 72.906 + 3.1875;// A
 
 	}
