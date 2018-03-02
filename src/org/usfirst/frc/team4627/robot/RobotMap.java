@@ -44,7 +44,7 @@ public class RobotMap {
 	public static final double WRIST_GROUND = 200;
 	public static final double WRIST_SWITCH = 278;
 	public static final double WRIST_SCALE = 320;
-	public static final double WRIST_TOLERANCE_LEVEL = 1;
+	public static final double WRIST_TOLERANCE_LEVEL = 0.5;
 	
 	public static final double ARMS_GROUND = 5;
 	public static final double ARMS_SWITCH = 50;

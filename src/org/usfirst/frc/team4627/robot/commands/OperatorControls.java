@@ -35,6 +35,7 @@ public class OperatorControls extends Command {
     		Robot.arm.clamp.setLeftMotor(-RobotMap.CLAMP_MAX_SPEED);
     		Robot.arm.clamp.setRightMotor(-RobotMap.CLAMP_MAX_SPEED);
     	} else {
+<<<<<<< HEAD
     		//double triggerVal = Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER);
     		//double stick = Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_X) * RobotMap.TURNING_RATE;
         	//Robot.arm.clamp.setLeftMotor((triggerVal + stick) * RobotMap.CLAMP_MAX_SPEED);
@@ -45,6 +46,16 @@ public class OperatorControls extends Command {
     	//Robot.arm.wrist.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_X)*RobotMap.WRIST_MAX_SPEED);
     	//System.out.println(Robot.arm.wrist.wristAmperage());
     	/*if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') { // control of the arm using the left stick
+=======
+    		double triggerVal = Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER);
+    		double stick = Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_X) * RobotMap.TURNING_RATE;
+        	Robot.arm.clamp.setLeftMotor((triggerVal + stick) * RobotMap.CLAMP_MAX_SPEED);
+        	Robot.arm.clamp.setRightMotor((triggerVal - stick) * RobotMap.CLAMP_MAX_SPEED);
+    	}
+    	
+    	Robot.arm.wrist.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_X)*RobotMap.WRIST_MAX_SPEED);
+    	if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') { // control of the arm using the left stick
+>>>>>>> parent of 6308b77... PID Testing of the wrist
     		System.out.println(Robot.arm.leftArm.calculatePosition());
     		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
 		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R') {
@@ -53,10 +64,11 @@ public class OperatorControls extends Command {
 		}else {//if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'B') {
     		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
     		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
-		}*/
+		}
     	
     	//wrist controls
-    	
+    	Robot.arm.wrist.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y)); // temporary 
+    	*/
     	//System.out.println(Robot.arm.rightArm.potentiometer.getVoltage());
     	//System.out.println(Robot.arm.leftArm.potentiometer.getVoltage());
     }
