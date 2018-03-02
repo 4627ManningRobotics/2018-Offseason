@@ -42,7 +42,7 @@ public class OperatorControls extends Command {
     	//arms
     	if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') { // control of the arm using the left stick
     		System.out.println(Robot.arm.leftArm.potentiometer.getVoltage());
-    		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), -Robot.oi.getDriverRawAxis(RobotMap.LEFT_STICK_Y));
+    		Robot.arm.leftArm.liftingMotor.set(Robot.arm.leftArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
 		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R') {
     		System.out.println(Robot.arm.rightArm.potentiometer.getVoltage());
     		Robot.arm.rightArm.liftingMotor.set(Robot.arm.rightArm.liftingMotor.getControlMode(), -Robot.oi.getOperatorRawAxis(RobotMap.LEFT_STICK_Y));
