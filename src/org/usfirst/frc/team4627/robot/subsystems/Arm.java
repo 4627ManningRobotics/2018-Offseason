@@ -17,9 +17,10 @@ public class Arm extends Subsystem {
 	public final RightArm rightArm = new RightArm(0.1, 0.02, 0);
 
 	public final Clamp clamp = new Clamp();
-	public final Wrist wrist = new Wrist(0.005, 0, 0);
+	public final Wrist wrist = new Wrist(0.008, 0.00025, 0);
 	
     public void initDefaultCommand() {
+    	super.setDefaultCommand(new OperatorControls());
     }
     
     public void setSetpoint(double setpoint) { // only to be used in testing

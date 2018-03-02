@@ -14,7 +14,7 @@ public class OperatorControls extends Command {
     public OperatorControls() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.arm.clamp);
+    	requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
@@ -25,8 +25,9 @@ public class OperatorControls extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 
+    	//System.out.println(Robot.arm.wrist.wrist.getSensorCollection().getPulseWidthPosition());
 		//System.out.println(Robot.arm.getHeight()); //print out avg height
-    	System.out.println(Robot.arm.wrist.calculateAngle());
+    	//System.out.println(Robot.arm.wrist.calculateAngle());
     	//clamp controls
     	if(Robot.oi.getOperatorButton(RobotMap.RIGHT_BUMPER)) {
     		Robot.arm.clamp.setLeftMotor(RobotMap.CLAMP_MAX_SPEED);
