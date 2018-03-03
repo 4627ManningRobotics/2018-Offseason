@@ -26,8 +26,11 @@ import org.usfirst.frc.team4627.robot.subsystems.*;
 public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final Arm arm = new Arm();
-	//public static final String RobotMap = null;
+	public static final LeftArm leftArm = new LeftArm(RobotMap.ARM_P, RobotMap.ARM_I, RobotMap.ARM_D);
+	public static final RightArm rightArm = new RightArm(RobotMap.ARM_P, RobotMap.ARM_I, RobotMap.ARM_D);
+	public static final Clamp clamp = new Clamp();
+	public static final Wrist wrist = new Wrist(RobotMap.WRIST_P, RobotMap.WRIST_I, RobotMap.WRIST_D);
+	
 	public static OI oi;
 	Command autonomousCommand;
 	SendableChooser<CommandGroup> autoChooser;

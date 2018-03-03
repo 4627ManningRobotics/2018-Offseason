@@ -78,6 +78,13 @@ public class RobotMap {
 	public static final int ENCODER_PULSES_PER_REVOLUTION = 1440;
 	public static final int WHEEL_DIAMETER = 6;
 	public static final int ENCODER_GEAR_RATIO = 3;
+	
+	public static final double ARM_P = 0.1;
+	public static final double ARM_I = 0.02;
+	public static final double ARM_D = 0;
+	public static final double WRIST_P = 0.008;
+	public static final double WRIST_I = 0.00025;
+	public static final double WRIST_D = 0;
 
 	//public static final NN TURNING_NETWORK = new NN("/home/lvuser/Saves/turnNetSaveTest.txt", "/home/lvuser/Saves/turnSetSaveTest.txt"); 
 	
