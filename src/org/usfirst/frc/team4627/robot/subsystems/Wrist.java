@@ -48,9 +48,7 @@ public class Wrist extends PIDSubsystem {
     	this.wrist.set(this.wrist.getControlMode(), -output); // because the tracking is reversed the output is also reversed
     }
     
-    public void setWrist(double speed) {
-    	this.wrist.set(this.wrist.getControlMode(), speed);
-    }
+    
     
     public double calculateAngle() {
     	return (-this.wrist.getSensorCollection().getPulseWidthPosition() / 10d) - this.OFFSET;

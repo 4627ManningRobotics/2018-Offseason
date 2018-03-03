@@ -6,7 +6,9 @@ import org.usfirst.frc.team4627.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Controls the belts with the triggers and the left stick X
+ * 
+ * Is the default command for Clamp
  */
 public class BeltControls extends Command {
 

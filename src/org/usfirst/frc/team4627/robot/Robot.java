@@ -82,14 +82,9 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
     	DriveTrain.gyro.zeroYaw();
 		PIDenable(); // make sure all PID systems are on
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
+		
 		autonomousCommand = (Command) autoChooser.getSelected();
-		// schedule the autonomous command (example)
+
 		if ( this.autonomousCommand != null) {
 			this.autonomousCommand.start();
 			
@@ -111,10 +106,7 @@ public class Robot extends IterativeRobot {
 		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
 		PIDenable(); // make sure all PID systems are on
 
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
+		
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
@@ -125,7 +117,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		//System.out.println(Robot.arm.getHeight());
 		Scheduler.getInstance().run();
 	}
 
@@ -134,7 +125,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-		//System.out.println(Robot.arm.wrist.calculateAngle());
 	}
 	
 	public void PIDenable() {

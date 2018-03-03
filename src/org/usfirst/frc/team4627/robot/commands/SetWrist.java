@@ -5,9 +5,9 @@ import org.usfirst.frc.team4627.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Sets the wrist setpoint and ends immediately
+
  */
-//Sets the wrist setpoint and ends immediately
 
 public class SetWrist extends Command {
 	double m_setpoint;

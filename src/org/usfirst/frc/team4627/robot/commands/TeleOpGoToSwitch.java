@@ -6,7 +6,7 @@ import org.usfirst.frc.team4627.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * ONLY USE THIS FROM A BUTTON
  */
 public class TeleOpGoToSwitch extends CommandGroup {
 
