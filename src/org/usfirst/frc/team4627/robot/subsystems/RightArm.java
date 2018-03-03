@@ -21,10 +21,10 @@ public class RightArm extends PIDSubsystem {
 	
     public RightArm(double p, double i, double d) {
 		super("RightArm", p, i, d);
-		super.getPIDController().setAbsoluteTolerance(0.05);
-		super.getPIDController().setContinuous(false); // does not wrap
-		super.getPIDController().setOutputRange(-1, 1);
-		super.setSetpoint(this.calculatePosition());
+		this.getPIDController().setAbsoluteTolerance(0.05);
+		this.getPIDController().setContinuous(false); // does not wrap
+		this.getPIDController().setOutputRange(-1, 1);
+		this.setSetpoint(this.calculatePosition());
 	}
     
 

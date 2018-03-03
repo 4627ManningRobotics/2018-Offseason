@@ -60,7 +60,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		Robot.arm.disable(); // make sure all PID systems are off
+		PIDdisable(); // make sure all PID systems are off
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
     	DriveTrain.gyro.zeroYaw();
-		Robot.arm.enable(); // make sure all PID systems are on
+		PIDenable(); // make sure all PID systems are on
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -110,7 +110,7 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
     	DriveTrain.gyro.zeroYaw();
 		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
-		Robot.arm.enable(); // make sure all PID systems are on
+		PIDenable(); // make sure all PID systems are on
 
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
@@ -127,7 +127,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		//System.out.println(Robot.arm.getHeight());
-		Robot.arm.enable();
 		Scheduler.getInstance().run();
 	}
 
@@ -139,5 +138,16 @@ public class Robot extends IterativeRobot {
 		//System.out.println(Robot.arm.wrist.calculateAngle());
 	}
 	
+	public void PIDenable() {
+    	leftArm.enable();
+    	rightArm.enable();
+    	wrist.enable();
+    }
+    
+    public void PIDdisable() {
+    	leftArm.disable();
+    	rightArm.disable();
+    	wrist.disable();
+    }
 	
 }

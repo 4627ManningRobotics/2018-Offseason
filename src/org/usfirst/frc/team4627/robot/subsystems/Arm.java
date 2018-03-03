@@ -26,17 +26,17 @@ public class Arm extends Subsystem {
     	this.rightArm.setSetpointRelative(setpoint);
     }
     
-    public void enable() {
-    	this.leftArm.enable();
-    	this.rightArm.enable();
-    	this.wrist.enable();
-    }
-    
-    public void disable() {
-    	this.leftArm.disable();
-    	this.rightArm.disable();
-    	this.wrist.disable();
-    }
+//    public void enable() {
+//    	this.leftArm.enable();
+//    	this.rightArm.enable();
+//    	this.wrist.enable();
+//    }
+//    
+//    public void disable() {
+//    	this.leftArm.disable();
+//    	this.rightArm.disable();
+//    	this.wrist.disable();
+//    }
 	
 	public boolean isOnTarget() {
 		return this.leftArm.onTarget() && this.rightArm.onTarget();

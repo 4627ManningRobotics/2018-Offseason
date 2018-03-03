@@ -19,10 +19,10 @@ public class Wrist extends PIDSubsystem {
         super("Wrist", P, I, D);
         this.wrist.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 		
-		super.getPIDController().setAbsoluteTolerance(RobotMap.WRIST_TOLERANCE_LEVEL);
-		super.getPIDController().setContinuous(false); // does not wrap
-		super.getPIDController().setOutputRange(-RobotMap.WRIST_MAX_SPEED, RobotMap.WRIST_MAX_SPEED); // CBW- can use this to set min max motor speed?
-		super.getPIDController().setInputRange(0, 360);
+		this.getPIDController().setAbsoluteTolerance(RobotMap.WRIST_TOLERANCE_LEVEL);
+		this.getPIDController().setContinuous(false); // does not wrap
+		this.getPIDController().setOutputRange(-RobotMap.WRIST_MAX_SPEED, RobotMap.WRIST_MAX_SPEED); // CBW- can use this to set min max motor speed?
+		this.getPIDController().setInputRange(0, 360);
 		
         int absolutePosition = this.wrist.getSensorCollection().getPulseWidthPosition();
 		/* mask out overflows, keep bottom 12 bits */
