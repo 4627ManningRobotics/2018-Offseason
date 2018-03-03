@@ -106,7 +106,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
     	DriveTrain.gyro.zeroYaw();
-		Robot.arm.wrist.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
+		Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
 		Robot.arm.enable(); // make sure all PID systems are on
 
 		// This makes sure that the autonomous stops running when

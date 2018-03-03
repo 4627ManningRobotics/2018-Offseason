@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Auto extends CommandGroup {
 
     public Auto() {
-    	
+    	addSequential(new LiftArm(10));
     	addParallel(new ArmController(RobotMap.SWITCH)); // to run along side the sequential
     	addSequential(new DriveForward(0.2, 0.2, 1));
     	addSequential(new TurnToAngle(true, 45, RobotMap.TURN_SPEED, 2));
