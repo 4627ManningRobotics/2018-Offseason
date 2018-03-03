@@ -40,6 +40,27 @@ public class OI {
 		return this.driverController.getRawAxis(axis);
 	}
 	
+	public int getOperatorDPadX() {
+		int angle = operatorController.getPOV(0);
+		if(angle == 90) {
+			return 1;
+		}else if(angle == 270) {
+			return -1;
+		}else {
+			return 0;
+		}
+	}
+	
+	public int getOperatorDPadY() {
+		int angle = operatorController.getPOV(0);
+		if(angle == 0) {
+			return 1;
+		}else if(angle == 180) {
+			return -1;
+		}else {
+			return 0;
+		}
+	}
 
 	public OI () {
 		oButtonA.whenPressed(new TeleOpGoToGround());
