@@ -42,6 +42,9 @@ public class OperatorControls extends Command {
 		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R') {
     		System.out.println(Robot.rightArm.calculatePosition());
     		Robot.rightArm.liftingMotor.set(Robot.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
+		}else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'B') {
+    		Robot.rightArm.liftingMotor.set(Robot.rightArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
+    		Robot.leftArm.liftingMotor.set(Robot.leftArm.liftingMotor.getControlMode(), Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_TRIGGER) - Robot.oi.getOperatorRawAxis(RobotMap.LEFT_TRIGGER));
 		}
     }
 
