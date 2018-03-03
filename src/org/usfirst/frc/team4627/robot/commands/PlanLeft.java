@@ -17,7 +17,7 @@ public class PlanLeft extends CommandGroup {
     	//addSequential(new TurnToAngle(0, -0.25, 5, true));
     	//addSequential(new DriveForward(0.5, 0.5, 5));
 
-    	addParallel(new ArmController(RobotMap.GROUND)); // to run along side the sequential
+    	//addParallel(new ArmController(RobotMap.GROUND)); // to run along side the sequential
     	addSequential(new DriveForward(0.9, 0.9, 100));
     	
         // Add Commands here:
