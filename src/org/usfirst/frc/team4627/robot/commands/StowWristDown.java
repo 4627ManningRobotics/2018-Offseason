@@ -16,7 +16,10 @@ public class StowWristDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.wrist.setSetpoint(RobotMap.WRIST_DOWN_STOW);
+    	if((Robot.rightArm.calculatePosition() < RobotMap.ARMS_DEADZONE_MIN) || 
+    			(Robot.rightArm.calculatePosition() > RobotMap.ARMS_DEADZONE_MAX)) {  //Only stow arms if we aren't in the deadzone
+    		Robot.wrist.setSetpoint(RobotMap.WRIST_DOWN_STOW);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

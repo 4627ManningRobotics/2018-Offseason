@@ -64,9 +64,9 @@ public class OI {
 	}
 
 	public OI () {
-		oButtonA.whenPressed(new TeleOpGoToGround());
-		oButtonB.whenPressed(new TeleOpGoToSwitch());
-		oButtonY.whenPressed(new TeleOpGoToScale());
+		oButtonA.whenPressed(new GoToGround());
+		oButtonB.whenPressed(new GoToSwitch());
+		oButtonY.whenPressed(new GoToScale());
 		
 		oButtonX.whenPressed(new ToggleClamp());
 		oButtonBack.whenPressed(new ArmManualControl());
