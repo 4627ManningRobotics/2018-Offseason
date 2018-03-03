@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4627.robot.subsystems;
 
 import org.usfirst.frc.team4627.robot.RobotMap;
+import org.usfirst.frc.team4627.robot.commands.FollowRightArm;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -27,23 +28,22 @@ public class LeftArm extends PIDSubsystem {
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new FollowRightArm());
     }
 
 	@Override
 	protected double returnPIDInput() {
-		// TODO Auto-generated method stub
 		return this.calculatePosition();
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
-		// TODO Auto-generated method stub
+		//zero the motor if out of bounds
 		if((this.calculatePosition() < RobotMap.ARMS_MIN && output < 0) || (this.calculatePosition() > RobotMap.ARMS_MAX && output > 0)) {
-			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
+			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0); 
 		}else {
 			this.liftingMotor.set(liftingMotor.getControlMode(), output * RobotMap.ARM_SPEED);
-			
+			//TODO this should be handled by the PIDController setOutputRange
 			if(output > RobotMap.LIFTING_MAX_SPEED) {
 				this.liftingMotor.set(this.liftingMotor.getControlMode(), RobotMap.LIFTING_MAX_SPEED);
 			}else if(output < -RobotMap.LIFTING_MAX_SPEED) {

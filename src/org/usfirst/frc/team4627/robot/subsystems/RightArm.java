@@ -35,8 +35,6 @@ public class RightArm extends PIDSubsystem {
 
 	@Override
 	protected double returnPIDInput() {
-		Robot.arm.leftArm.setSetpoint(this.calculatePosition()); // set the left to follow the right
-		//System.out.println(this.calculatePosition());
 		return this.calculatePosition();
 	}
 
@@ -56,7 +54,7 @@ public class RightArm extends PIDSubsystem {
 		}
 	}
 	
-	private double calculatePosition() {
+	public double calculatePosition() {
 		return this.potentiometer.getVoltage() * 70.3510 - 6.667;// A
 
 	}
