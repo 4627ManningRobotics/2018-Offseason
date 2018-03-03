@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4627.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
 
 //import org.usfirst.frc.team4627.robot.commands.*;
 
@@ -46,7 +47,7 @@ public class OI {
 	// Start the command when the button is pressed and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	public OI () {
-	
+		
 	}
 
 	// Run the command while the button is being held down and interrupt it once
