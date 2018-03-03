@@ -22,6 +22,7 @@ public class OI {
 	Button oButtonA = new JoystickButton(operatorController, RobotMap.BUTTON_A);
 	Button oButtonB = new JoystickButton(operatorController, RobotMap.BUTTON_B);
 	Button oButtonY = new JoystickButton(operatorController, RobotMap.BUTTON_Y);
+	Button oButtonX = new JoystickButton(operatorController, RobotMap.BUTTON_X);
 
 	public boolean getOperatorButton(int axis) {
 		return this.operatorController.getRawButtonPressed(axis);
@@ -44,6 +45,8 @@ public class OI {
 		oButtonA.whenPressed(new TeleOpGoToGround());
 		oButtonB.whenPressed(new TeleOpGoToSwitch());
 		oButtonY.whenPressed(new TeleOpGoToScale());
+		
+		oButtonX.whenPressed(new ToggleClamp());
 
 	}
 

@@ -2,6 +2,7 @@
 package org.usfirst.frc.team4627.robot.subsystems;
 
 import org.usfirst.frc.team4627.robot.RobotMap;
+import org.usfirst.frc.team4627.robot.commands.BeltControls;
 import org.usfirst.frc.team4627.robot.commands.OperatorControls;
 
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -17,7 +18,7 @@ public class Clamp extends Subsystem {
     
 	@Override
 	protected void initDefaultCommand() {
-    	super.setDefaultCommand(new OperatorControls());
+    	super.setDefaultCommand(new BeltControls());
 	}
 	
     public void setLeftMotor(double motorSpeed) {
@@ -29,7 +30,7 @@ public class Clamp extends Subsystem {
     	this.rightMotor.set(this.rightMotor.getControlMode(), -motorSpeed);
     }
     
-    public void openClamp() {
+    public void toggleClamp() {
     	this.muscle.set(!this.muscle.get()); // naturally releases pressure over time
     }
     
