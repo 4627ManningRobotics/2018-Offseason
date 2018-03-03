@@ -23,6 +23,7 @@ public class OI {
 	Button oButtonB = new JoystickButton(operatorController, RobotMap.BUTTON_B);
 	Button oButtonY = new JoystickButton(operatorController, RobotMap.BUTTON_Y);
 	Button oButtonX = new JoystickButton(operatorController, RobotMap.BUTTON_X);
+	Button oButtonBack = new JoystickButton(operatorController, RobotMap.BACK_BUTTON);
 
 	public boolean getOperatorButton(int axis) {
 		return this.operatorController.getRawButtonPressed(axis);
@@ -40,7 +41,7 @@ public class OI {
 		return this.driverController.getRawAxis(axis);
 	}
 	
-	public int getOperatorDPadX() {
+	public double getOperatorDPadX() {
 		int angle = operatorController.getPOV(0);
 		if(angle == 90) {
 			return 1;
@@ -51,7 +52,7 @@ public class OI {
 		}
 	}
 	
-	public int getOperatorDPadY() {
+	public double getOperatorDPadY() {
 		int angle = operatorController.getPOV(0);
 		if(angle == 0) {
 			return 1;
@@ -68,6 +69,7 @@ public class OI {
 		oButtonY.whenPressed(new TeleOpGoToScale());
 		
 		oButtonX.whenPressed(new ToggleClamp());
+		oButtonBack.whenPressed(new ArmManualControl());
 
 	}
 

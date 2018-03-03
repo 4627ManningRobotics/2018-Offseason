@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
+import org.usfirst.frc.team4627.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -20,7 +21,13 @@ public class ArmManualControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double DPadY = Robot.oi.getOperatorDPadY();
+    	double scaledDPadY = DPadY * RobotMap.MANUAL_ARM_SCALING;
+    	Robot.rightArm.setSetpoint( Robot.rightArm.getSetpoint() + scaledDPadY);
     	
+    	double DPadX = Robot.oi.getOperatorDPadX();
+    	double scaledDPadX = DPadX * RobotMap.MANUAL_WRIST_SCALING;
+    	Robot.wrist.setSetpoint( Robot.wrist.getSetpoint() + scaledDPadX);
     }
 
     // Make this return true when this Command no longer needs to run execute()
