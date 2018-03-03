@@ -49,7 +49,6 @@ public class Wrist extends PIDSubsystem {
     }
     
     
-    
     public double calculateAngle() {
     	return (-this.wrist.getSensorCollection().getPulseWidthPosition() / 10d) - this.OFFSET;
     }
