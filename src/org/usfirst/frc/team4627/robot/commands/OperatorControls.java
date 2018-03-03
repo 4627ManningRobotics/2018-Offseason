@@ -23,7 +23,7 @@ public class OperatorControls extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println(Robot.arm.wrist.calculateAngle());
+    	//System.out.println(Robot.arm.wrist.calculateAngle());
     		// buttons
     		if(Robot.oi.getOperatorButton(RobotMap.BUTTON_X)) { // open claw
     			Robot.arm.clamp.openClamp();

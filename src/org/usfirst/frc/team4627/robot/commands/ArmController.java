@@ -19,7 +19,7 @@ public class ArmController extends Command {
         // eg. requires(chassis);
     	this.target = targetPosition;
     	this.wasInDeadZone = false;
-    	requires(Robot.arm);
+    	//requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
@@ -38,6 +38,7 @@ public class ArmController extends Command {
     		//System.out.println("alive");
     		chooseStartMovment();
     	}
+    	System.out.println(RobotMap.CURRENT_POSITION + " " + this.target);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -46,6 +47,7 @@ public class ArmController extends Command {
     		//System.out.println("dead");
         	this.wasInDeadZone = true;
     		Robot.arm.setSetpoint(Robot.arm.getHeight()); // stop moving
+    		System.out.println("is in deadzone");
     		this.chooseWristStore(); // store wrist
     	}else{
     		if(this.wasInDeadZone) { // only runs once, after leaving the dead zone
@@ -62,6 +64,7 @@ public class ArmController extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	System.out.println("Its Done");
     	Robot.arm.setSetpointRelative(0); // stop all movement
     	Robot.arm.wrist.setSetpointRelative(0);
     	RobotMap.CURRENT_POSITION = this.target;
@@ -78,7 +81,7 @@ public class ArmController extends Command {
     }
     
     private boolean isWristStowed() {
-    	return (RobotMap.WRIST_DOWN_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL &&
+    	return false && (RobotMap.WRIST_DOWN_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL &&
     			RobotMap.WRIST_DOWN_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL) || 
     		   (RobotMap.WRIST_UP_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL && 
     			RobotMap.WRIST_UP_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL);
