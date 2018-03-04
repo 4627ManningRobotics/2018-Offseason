@@ -20,6 +20,7 @@ public class ArmController extends Command {
     	this.target = targetPosition;
     	this.wasInDeadZone = false;
     	//requires(Robot.arm);
+    	System.out.println(RobotMap.CURRENT_POSITION + " " + this.target);
     }
 
     // Called just before this Command runs the first time
@@ -38,7 +39,6 @@ public class ArmController extends Command {
     		//System.out.println("alive");
     		chooseStartMovment();
     	}
-    	System.out.println(RobotMap.CURRENT_POSITION + " " + this.target);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -46,7 +46,7 @@ public class ArmController extends Command {
     	if(this.isInDeadzone()) {
     		//System.out.println("dead");
         	this.wasInDeadZone = true;
-    		Robot.arm.setSetpoint(Robot.arm.getHeight()); // stop moving
+    		Robot.arm.setSetpointRelative(0); // stop moving
     		System.out.println("is in deadzone");
     		this.chooseWristStore(); // store wrist
     	}else{
@@ -81,7 +81,7 @@ public class ArmController extends Command {
     }
     
     private boolean isWristStowed() {
-    	return false && (RobotMap.WRIST_DOWN_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL &&
+    	return (RobotMap.WRIST_DOWN_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL &&
     			RobotMap.WRIST_DOWN_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL) || 
     		   (RobotMap.WRIST_UP_STOW <= Robot.arm.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL && 
     			RobotMap.WRIST_UP_STOW >= Robot.arm.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL);
@@ -90,15 +90,17 @@ public class ArmController extends Command {
     private void chooseWristStore() {
     	switch(RobotMap.CURRENT_POSITION) {  // 0 - ground, 1 - switch, 2 - scale
     		case 0:
-    		case 1:
     			switch(this.target) {
-    				case 2: 
-    					Robot.arm.wrist.setSetpoint(RobotMap.WRIST_UP_STOW);
-    					break;
-    				default: 
-    					Robot.arm.wrist.setSetpoint(RobotMap.WRIST_DOWN_STOW);
-    					break;
-    			}
+				case 2: 
+					Robot.arm.wrist.setSetpoint(RobotMap.WRIST_UP_STOW);
+					break;
+				default: 
+					Robot.arm.wrist.setSetpoint(RobotMap.WRIST_DOWN_STOW);
+					break;
+			}
+			break;
+    		case 1:
+    			Robot.arm.wrist.setSetpoint(RobotMap.WRIST_DOWN_STOW); // always down stow
     			break;
     		case 2:
     			switch(this.target) {
@@ -216,13 +218,13 @@ public class ArmController extends Command {
     private void setPosition(short target) {
     	switch(target) {
 			case 0:
-				Robot.arm.wrist.setSetpoint(RobotMap.ARMS_GROUND);
+				Robot.arm.setSetpoint(RobotMap.ARMS_GROUND);
 				break;
 			case 1:
-				Robot.arm.wrist.setSetpoint(RobotMap.ARMS_SWITCH);
+				Robot.arm.setSetpoint(RobotMap.ARMS_SWITCH);
 				break;
 			case 2:
-				Robot.arm.wrist.setSetpoint(RobotMap.ARMS_SCALE);
+				Robot.arm.setSetpoint(RobotMap.ARMS_SCALE);
 				break;
     	}
     }
