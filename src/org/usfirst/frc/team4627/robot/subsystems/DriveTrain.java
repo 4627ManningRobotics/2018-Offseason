@@ -25,16 +25,11 @@ public class DriveTrain extends Subsystem {
 	private final Solenoid theSolenoid = new Solenoid(RobotMap.SOLENOID);
 	public boolean isInHighGear = false;
 	
-	public static final AHRS gyro = new AHRS(SerialPort.Port.kUSB);
-	
 	private static final Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	private static final Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 
 private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
 	
-	public double getGyroAngle() {
-		return gyro.getAngle();
-	}
 	
 	public void initEncoders() {
 		leftEncoder.setDistancePerPulse(this.distancePerPulse);

@@ -28,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static final RightArm rightArm = new RightArm(RobotMap.ARM_P, RobotMap.ARM_I, RobotMap.ARM_D);
 	public static final Clamp clamp = new Clamp();
 	public static final Wrist wrist = new Wrist(RobotMap.WRIST_P, RobotMap.WRIST_I, RobotMap.WRIST_D);
+	public static final Sensors sensors = new Sensors();
 	private static final Compressor comp = new Compressor(0);
 	
 	public static OI oi;
@@ -42,8 +43,8 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		Robot.comp.setClosedLoopControl(true);
 		Robot.oi = new OI();
-		DriveTrain.gyro.reset();
-		DriveTrain.gyro.zeroYaw();
+		Sensors.gyro.reset();
+		Sensors.gyro.zeroYaw();
 		this.autoChooser = new SendableChooser<CommandGroup>();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
 		this.autoChooser.addDefault("Plan Left: ", new Left());
@@ -81,7 +82,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-    	DriveTrain.gyro.zeroYaw();
+		Sensors.gyro.zeroYaw();
 		PIDenable(); // make sure all PID systems are on
 		
 		autonomousCommand = (Command) autoChooser.getSelected();
@@ -103,7 +104,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-    	DriveTrain.gyro.zeroYaw();
+		Sensors.gyro.zeroYaw();
 		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
 		PIDenable(); // make sure all PID systems are on
 

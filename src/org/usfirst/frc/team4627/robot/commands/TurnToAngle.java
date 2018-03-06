@@ -2,6 +2,7 @@ package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
 import org.usfirst.frc.team4627.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4627.robot.subsystems.Sensors;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
@@ -85,15 +86,15 @@ public class TurnToAngle extends Command {
 		    	}
 	    
 	    	this.isDone  = false;
-	    	DriveTrain.gyro.zeroYaw();
-	    	while(Robot.driveTrain.getGyroAngle() < -0.02 || Robot.driveTrain.getGyroAngle() > 0.02) {
+	    	Sensors.gyro.zeroYaw();
+	    	while(Robot.sensors.getGyroAngle() < -0.02 || Robot.sensors.getGyroAngle() > 0.02) {
 	    		
 	    	}
 	    }
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	double angle = Robot.driveTrain.getGyroAngle();
+	    	double angle = Robot.sensors.getGyroAngle();
 	    	System.out.println(angle);
 	    	if(this.isNetworkTraining) {
 	    		if(angle < this.angleWanted) {

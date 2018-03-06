@@ -54,7 +54,7 @@ public class TurnAndAddData extends Command {
     			while(time + timeInterval > System.currentTimeMillis()) {
     				//wait
     			}
-    			in[index] = new double[] {Robot.driveTrain.getGyroAngle(), speed / 5};
+    			in[index] = new double[] {Robot.sensors.getGyroAngle(), speed / 5};
     			out[index] = degree * 5;
     			NN.addTrainDataToFile(in[index], new double[] {out[index]}, "/home/lvuser/turnSetSaveTest.txt");
     		}
