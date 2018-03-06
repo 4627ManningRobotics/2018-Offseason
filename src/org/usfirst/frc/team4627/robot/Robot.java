@@ -50,7 +50,7 @@ public class Robot extends IterativeRobot {
 		this.autoChooser.addDefault("Plan Right: ", new Right());
 		//this.autoChooser.addDefault("Auto Training: ", new NNtraining());
 		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);
-		
+		SmartDashboard.putBoolean("Is in high gear: ", Robot.driveTrain.isInHighGear);
 	}
 
 	/**

@@ -19,11 +19,13 @@ public class OI {
 	XboxController driverController = new XboxController(RobotMap.DRIVER_CONTROLLER);
 	XboxController operatorController = new XboxController(RobotMap.OPERATOR_CONTROLLER);
 	
-	Button oButtonA = new JoystickButton(operatorController, RobotMap.BUTTON_A);
-	Button oButtonB = new JoystickButton(operatorController, RobotMap.BUTTON_B);
-	Button oButtonY = new JoystickButton(operatorController, RobotMap.BUTTON_Y);
-	Button oButtonX = new JoystickButton(operatorController, RobotMap.BUTTON_X);
-	Button oButtonBack = new JoystickButton(operatorController, RobotMap.BACK_BUTTON);
+	Button dButtonA = new JoystickButton(this.driverController, RobotMap.BUTTON_A);
+	
+	Button oButtonA = new JoystickButton(this.operatorController, RobotMap.BUTTON_A);
+	Button oButtonB = new JoystickButton(this.operatorController, RobotMap.BUTTON_B);
+	Button oButtonY = new JoystickButton(this.operatorController, RobotMap.BUTTON_Y);
+	Button oButtonX = new JoystickButton(this.operatorController, RobotMap.BUTTON_X);
+	Button oButtonBack = new JoystickButton(this.operatorController, RobotMap.BACK_BUTTON);
 
 	public boolean getOperatorButton(int axis) {
 		return this.operatorController.getRawButtonPressed(axis);
@@ -42,7 +44,7 @@ public class OI {
 	}
 	
 	public double getOperatorDPadX() {
-		int angle = operatorController.getPOV(0);
+		int angle = this.operatorController.getPOV(0);
 		if(angle == 90) {
 			return 1;
 		}else if(angle == 270) {
@@ -53,7 +55,7 @@ public class OI {
 	}
 	
 	public double getOperatorDPadY() {
-		int angle = operatorController.getPOV(0);
+		int angle = this.operatorController.getPOV(0);
 		if(angle == 0) {
 			return 1;
 		}else if(angle == 180) {
@@ -64,6 +66,8 @@ public class OI {
 	}
 
 	public OI () {
+		this.dButtonA.whenPressed(new SwitchGears());
+		
 		oButtonA.whenPressed(new GoToGround());
 		oButtonB.whenPressed(new GoToSwitch());
 		oButtonY.whenPressed(new GoToScale());
