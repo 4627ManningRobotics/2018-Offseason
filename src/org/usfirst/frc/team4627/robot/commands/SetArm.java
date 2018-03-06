@@ -27,16 +27,17 @@ public class SetArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(this.isWristStowed() && !this.wDead1) {
+    	
+    	if(this.isWristStowed() && !this.isInDeadzone() && !this.wDead1) { // just left
     		this.wDead1 = true;
     	}
+    	
     	if(this.isInDeadzone() && !this.isWristStowed()) {
     		Robot.rightArm.setSetpointRelative(0); // if in dead zone stop moving
     	}else if(this.wDead1){
     		Robot.rightArm.setSetpoint(this.m_setpoint);
-    	}else if(!this.isInDeadzone() && !this.wDead1){
-    		this.wDead1 = true;
     	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

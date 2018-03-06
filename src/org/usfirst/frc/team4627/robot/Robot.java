@@ -2,7 +2,6 @@
 package org.usfirst.frc.team4627.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -11,9 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4627.robot.commands.Auto;
-import org.usfirst.frc.team4627.robot.commands.NNtraining;
-import org.usfirst.frc.team4627.robot.commands.PlanLeft;
-import org.usfirst.frc.team4627.robot.commands.PlanRight;
+import org.usfirst.frc.team4627.robot.commands.Left;
+import org.usfirst.frc.team4627.robot.commands.Right;
 import org.usfirst.frc.team4627.robot.subsystems.*;
 
 /**
@@ -48,9 +46,9 @@ public class Robot extends IterativeRobot {
 		DriveTrain.gyro.zeroYaw();
 		this.autoChooser = new SendableChooser<CommandGroup>();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
-		this.autoChooser.addDefault("Plan Left: ", new PlanLeft());
-		this.autoChooser.addDefault("Plan Right: ", new PlanRight());
-		this.autoChooser.addDefault("Auto Training: ", new NNtraining());
+		this.autoChooser.addDefault("Plan Left: ", new Left());
+		this.autoChooser.addDefault("Plan Right: ", new Right());
+		//this.autoChooser.addDefault("Auto Training: ", new NNtraining());
 		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);
 		
 	}
@@ -109,6 +107,7 @@ public class Robot extends IterativeRobot {
 		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
 		PIDenable(); // make sure all PID systems are on
 
+		Robot.clamp.setClamp(false); // make sure the clamp starts closed
 		
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();

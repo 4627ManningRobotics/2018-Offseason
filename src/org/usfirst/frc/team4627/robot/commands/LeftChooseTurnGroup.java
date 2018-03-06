@@ -1,32 +1,44 @@
 package org.usfirst.frc.team4627.robot.commands;
 
-import org.usfirst.frc.team4627.robot.Robot;
-
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class ClampOpen extends Command {
+public class LeftChooseTurnGroup extends Command {
 
-    public ClampOpen() {
+	private boolean isDone;
+	private CommandGroup c;
+	
+    public LeftChooseTurnGroup() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	super.requires(Robot.clamp);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.clamp.setClamp(true);
+    	this.isDone = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
+    	if(!fmsData.equals(null)){
+    		if(fmsData.charAt(1) == 'L') {
+    			this.c = new PlanLeftLeft();
+    		}else if(fmsData.charAt(1) == 'R') {
+    			this.c = new PlanLeftRight();
+    		}
+			this.c.start();
+			this.isDone = true;
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return this.isDone;
     }
 
     // Called once after isFinished returns true
