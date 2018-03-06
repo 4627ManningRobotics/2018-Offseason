@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ArmManualControl extends Command {
 
     public ArmManualControl() {
-        requires(Robot.rightArm);
+        //requires(Robot.rightArm);
         requires(Robot.wrist);
     }
 

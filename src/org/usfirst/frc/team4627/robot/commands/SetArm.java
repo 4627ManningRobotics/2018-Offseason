@@ -21,40 +21,30 @@ public class SetArm extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	//Robot.rightArm.setSetpoint(m_setpoint);
-    	this.wDead1 = false;
+    	Robot.rightArm.setSetpoint(m_setpoint);
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(this.isWristStowed() && !this.isInDeadzone() && !this.wDead1) { // just left
-    		this.wDead1 = true;
-    	}
     	
-    	if(this.isInDeadzone() && !this.isWristStowed()) {
-    		Robot.rightArm.setSetpointRelative(0); // if in dead zone stop moving
-    	}else if(this.wDead1){
-    		Robot.rightArm.setSetpoint(this.m_setpoint);
-    	}
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.rightArm.onTarget() && Robot.leftArm.onTarget();
+        return true;//Robot.rightArm.onTarget() && Robot.leftArm.onTarget();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.rightArm.disable();
-    	Robot.leftArm.disable();
+    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	this.end();
     }
     
     private boolean isInDeadzone() {
