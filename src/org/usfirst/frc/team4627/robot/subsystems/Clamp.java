@@ -26,7 +26,7 @@ public class Clamp extends Subsystem {
     }
     
     public void setRightMotor(double motorSpeed) {
-    	this.rightMotor.set(this.rightMotor.getControlMode(), -motorSpeed);
+    	this.rightMotor.set(this.rightMotor.getControlMode(), -motorSpeed); // reversed motor to make sure a positive value for both represents the same direction
     }
     
     public void toggleClamp() {

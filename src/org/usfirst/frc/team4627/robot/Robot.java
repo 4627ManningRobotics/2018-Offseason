@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4627.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -29,6 +30,7 @@ public class Robot extends IterativeRobot {
 	public static final RightArm rightArm = new RightArm(RobotMap.ARM_P, RobotMap.ARM_I, RobotMap.ARM_D);
 	public static final Clamp clamp = new Clamp();
 	public static final Wrist wrist = new Wrist(RobotMap.WRIST_P, RobotMap.WRIST_I, RobotMap.WRIST_D);
+	private static final Compressor comp = new Compressor(0);
 	
 	public static OI oi;
 	Command autonomousCommand;
@@ -40,6 +42,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		Robot.comp.setClosedLoopControl(true);
 		Robot.oi = new OI();
 		DriveTrain.gyro.reset();
 		DriveTrain.gyro.zeroYaw();
