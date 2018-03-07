@@ -44,7 +44,7 @@ public class TurnAndAddData extends Command {
     			
     			int index = (speed - 1) * 36 + (degree - 1);
     			
-    			c = (Command) new TurnToAngle(degree * 5, speed / 5, 0, true); // start turning
+    			c = (Command) new TurnToAngle(degree * 5, speed / 5, 0); // start turning
     			c.start();
     			while(c.isRunning()) {
     				

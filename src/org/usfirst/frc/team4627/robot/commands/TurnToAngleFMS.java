@@ -3,18 +3,23 @@ package org.usfirst.frc.team4627.robot.commands;
 import org.usfirst.frc.team4627.robot.Robot;
 import org.usfirst.frc.team4627.robot.subsystems.Sensors;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
-public class TurnToAngle extends Command {
+public class TurnToAngleFMS extends Command {
 	
 		public double angleWanted, speed, threshold;
 		public boolean isDone, isDefaultAuto, isNetworkTraining;
 		
-	    public TurnToAngle(double wantedAngle, double speed, double i) {
+	    public TurnToAngleFMS(double wantedAngle, double speed, double i) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
+		    String fmsData = DriverStation.getInstance().getGameSpecificMessage();
 	    	this.speed = speed;
 	    	this.threshold = i;
 	    	this.angleWanted = wantedAngle;
+	    	if(fmsData.charAt(0) == 'L') {
+	    		this.angleWanted *= -1;
+	    	}
 	    	this.isDefaultAuto = false;
 	    	this.isNetworkTraining = false;
 	    	requires(Robot.driveTrain);
