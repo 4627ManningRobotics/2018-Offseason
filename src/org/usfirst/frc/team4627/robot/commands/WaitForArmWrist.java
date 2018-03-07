@@ -24,7 +24,7 @@ public class WaitForArmWrist extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.leftArm.onTarget() && Robot.rightArm.onTarget() && Robot.wrist.onTarget();
+        return Robot.rightArm.onTarget() && Robot.wrist.onTarget();
     }
 
     // Called once after isFinished returns true

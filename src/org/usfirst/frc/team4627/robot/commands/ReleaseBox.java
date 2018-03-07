@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class ReleaseBox extends CommandGroup {
 
     public ReleaseBox() {
-    	addSequential(new ClampOpen()); // open clamp
+    	//addSequential(new ClampOpen()); // open clamp
     	addSequential(new SetIntake(1)); // drop box
-    	addSequential(new Wait(0.2)); // wait for the box to be released
+    	addSequential(new Wait(1)); // wait for the box to be released
     	addSequential(new SetIntake(0)); // stop intake
         // Add Commands here:
         // e.g. addSequential(new Command1());

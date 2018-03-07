@@ -13,7 +13,7 @@ public class SetIntake extends Command {
 	
 	public SetIntake(double intakeValue) {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.clamp);
 		this.inVal = intakeValue;
     }
 

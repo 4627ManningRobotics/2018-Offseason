@@ -21,7 +21,7 @@ public class DriveForward extends Command {
     }*/
     
     public DriveForward(double leftSpeed, double rightSpeed, double distance) {
-    	setTimeout(this.distance);//this.isDone = false;
+    	this.m_time = distance;
     	this.leftM_speed = leftSpeed;
     	this.rightM_speed = rightSpeed;
     	this.distance = distance;
@@ -63,7 +63,7 @@ public class DriveForward extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	//setTimeout(m_time);
+    	setTimeout(m_time);
     	Robot.driveTrain.resetEncoders();
     	Robot.driveTrain.initEncoders();
     	Robot.driveTrain.setLeftMotor(this.leftM_speed);
