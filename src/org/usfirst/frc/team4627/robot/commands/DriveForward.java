@@ -21,7 +21,7 @@ public class DriveForward extends Command {
     }*/
     
     public DriveForward(double leftSpeed, double rightSpeed, double distance) {
-    	this.isDone = false;
+    	setTimeout(this.distance);//this.isDone = false;
     	this.leftM_speed = leftSpeed;
     	this.rightM_speed = rightSpeed;
     	this.distance = distance;
@@ -83,7 +83,7 @@ public class DriveForward extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return this.isDone;
+        return isTimedOut();//this.isDone;
     }
 
     // Called once after isFinished returns true
