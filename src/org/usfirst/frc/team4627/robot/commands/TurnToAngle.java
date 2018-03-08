@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TurnToAngle extends Command {
 	
 		public double angleWanted, speed, threshold;
-		public boolean isDone, isDefaultAuto, isNetworkTraining;
+		public boolean isDone;
 		
 	    public TurnToAngle(double wantedAngle, double speed, double i) {
 	        // Use requires() here to declare subsystem dependencies
@@ -15,8 +15,6 @@ public class TurnToAngle extends Command {
 	    	this.speed = speed;
 	    	this.threshold = i;
 	    	this.angleWanted = wantedAngle;
-	    	this.isDefaultAuto = false;
-	    	this.isNetworkTraining = false;
 	    	requires(Robot.driveTrain);
 	    }
 
@@ -24,7 +22,7 @@ public class TurnToAngle extends Command {
 	    protected void initialize() {
 	    	this.isDone  = false;
 	    	Sensors.gyro.zeroYaw();
-	    	while(Robot.sensors.getGyroAngle() < -0.02 || Robot.sensors.getGyroAngle() > 0.02) {
+	    	while(Robot.sensors.getGyroAngle() < -0.02 || Robot.sensors.getGyroAngle() > 0.02) { // while not zeroed
 	    		
 	    	}
 	    }

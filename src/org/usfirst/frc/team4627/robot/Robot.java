@@ -10,8 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4627.robot.commands.Auto;
-import org.usfirst.frc.team4627.robot.commands.Left;
-import org.usfirst.frc.team4627.robot.commands.Right;
+import org.usfirst.frc.team4627.robot.commands.LeftChooseTurnGroup;
 import org.usfirst.frc.team4627.robot.subsystems.*;
 
 /**
@@ -24,8 +23,8 @@ import org.usfirst.frc.team4627.robot.subsystems.*;
 public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final LeftArm leftArm = new LeftArm(RobotMap.ARM_P, RobotMap.ARM_I, RobotMap.ARM_D);
-	public static final RightArm rightArm = new RightArm(RobotMap.ARM_P, RobotMap.ARM_I, RobotMap.ARM_D);
+	public static final LeftArm leftArm = new LeftArm(RobotMap.LEFT_ARM_P, RobotMap.LEFT_ARM_I, RobotMap.LEFT_ARM_D);
+	public static final RightArm rightArm = new RightArm(RobotMap.RIGHT_ARM_P, RobotMap.RIGHT_ARM_I, RobotMap.RIGHT_ARM_D);
 	public static final Clamp clamp = new Clamp();
 	public static final Wrist wrist = new Wrist(RobotMap.WRIST_P, RobotMap.WRIST_I, RobotMap.WRIST_D);
 	public static final Sensors sensors = new Sensors();
@@ -33,7 +32,7 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	Command autonomousCommand;
-	SendableChooser<CommandGroup> autoChooser;
+	SendableChooser<Command> autoChooser;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -45,10 +44,10 @@ public class Robot extends IterativeRobot {
 		Robot.oi = new OI();
 		Sensors.gyro.reset();
 		Sensors.gyro.zeroYaw();
-		this.autoChooser = new SendableChooser<CommandGroup>();
+		this.autoChooser = new SendableChooser<Command>();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
-		this.autoChooser.addDefault("Plan Left: ", new Left());
-		this.autoChooser.addDefault("Plan Right: ", new Right());
+		this.autoChooser.addObject("Plan Left: ", (Command) new LeftChooseTurnGroup());
+		this.autoChooser.addObject("Plan Right: ", (Command) new LeftChooseTurnGroup());
 		//this.autoChooser.addDefault("Auto Training: ", new NNtraining());
 		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);
 		SmartDashboard.putBoolean("Is in high gear: ", Robot.driveTrain.isInHighGear);
