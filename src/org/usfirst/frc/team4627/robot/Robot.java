@@ -47,8 +47,8 @@ public class Robot extends IterativeRobot {
 		Sensors.gyro.zeroYaw();
 		this.autoChooser = new SendableChooser<CommandGroup>();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
-		this.autoChooser.addDefault("Plan Left: ", new Left());
-		this.autoChooser.addDefault("Plan Right: ", new Right());
+		//this.autoChooser.addObject("Plan Left: ", new Left());
+		//this.autoChooser.addObject("Plan Right: ", new Right());
 		//this.autoChooser.addDefault("Auto Training: ", new NNtraining());
 		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);
 		SmartDashboard.putBoolean("Is in high gear: ", Robot.driveTrain.isInHighGear);
@@ -128,6 +128,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		System.out.println("Angle " + Robot.wrist.calculateAngle() + " Setpoint " + Robot.wrist.getSetpoint());
 	}
 	
 	public void PIDenable() {

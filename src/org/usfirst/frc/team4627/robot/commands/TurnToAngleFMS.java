@@ -20,7 +20,7 @@ public class TurnToAngleFMS extends Command {
 	    	if(fmsData.charAt(0) == 'L') {
 	    		this.angleWanted *= -1;
 	    	}
-	    	this.isDefaultAuto = false;
+	    	this.isDefaultAuto = true;
 	    	this.isNetworkTraining = false;
 	    	requires(Robot.driveTrain);
 	    }
