@@ -21,8 +21,7 @@ public class Clamp extends Subsystem {
 	}
 	
     public void setLeftMotor(double motorSpeed) {
-    	this.leftMotor.set(this.leftMotor.getControlMode(), motorSpeed);
-    			
+    	this.leftMotor.set(this.leftMotor.getControlMode(), motorSpeed);		
     }
     
     public void setRightMotor(double motorSpeed) {
