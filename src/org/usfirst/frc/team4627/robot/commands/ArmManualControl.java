@@ -22,6 +22,7 @@ public class ArmManualControl extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.wrist.disable();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -39,10 +40,9 @@ public class ArmManualControl extends Command {
     	double newWristSetpoint= Robot.wrist.getSetpoint() + scaledDPadX;
     	newWristSetpoint = constrain(newWristSetpoint, RobotMap.WRIST_DOWN_STOW, RobotMap.WRIST_UP_STOW);
     	Robot.wrist.setSetpoint( newWristSetpoint );
-    	*/
-    	Robot.wrist.disable();
-    	Robot.wrist.setWrist(Robot.oi.getDriverRawAxis(RobotMap.RIGHT_STICK_Y));
     	
+    	*/
+    	Robot.wrist.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y));
     	//System.out.println("Setpoint: " + newWristSetpoint);
     	//System.out.println("Position: " + Robot.wrist.calculateAngle());
     }
