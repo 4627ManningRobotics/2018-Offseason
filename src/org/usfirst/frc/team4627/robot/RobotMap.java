@@ -83,17 +83,17 @@ public class RobotMap {
 	public static final double LEFT_ARM_P = 0.1;
 	public static final double LEFT_ARM_I = 0.02;
 	public static final double LEFT_ARM_D = 0;
-	public static final double LEFT_ARM_OFFSET = 0.2;
+	public static final double LEFT_ARM_OFFSET = 0.0;
 	public static final double RIGHT_ARM_P = 0.1;
 	public static final double RIGHT_ARM_I = 0.02;
 	public static final double RIGHT_ARM_D = 0;
-	public static final double WRIST_P = 0.006;
-	public static final double WRIST_I = 0.00015;
+	public static final double WRIST_P = 0.0075;
+	public static final double WRIST_I = 0.00007;
 	public static final double WRIST_D = 0;
 	
 	
 	public static final double MANUAL_ARM_SCALING = 0.5;
-	public static final double MANUAL_WRIST_SCALING = 0.5;
+	public static final double MANUAL_WRIST_SCALING = 2;
 
 	//public static final NN TURNING_NETWORK = new NN("/home/lvuser/Saves/turnNetSaveTest.txt", "/home/lvuser/Saves/turnSetSaveTest.txt"); 
 	

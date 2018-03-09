@@ -53,6 +53,10 @@ public class Wrist extends PIDSubsystem {
     	return (-this.wrist.getSensorCollection().getPulseWidthPosition() / 10d) - this.OFFSET;
     }
     
+    public void setWrist(double set){
+    	this.wrist.set(this.wrist.getControlMode(), set * RobotMap.WRIST_MAX_SPEED);
+    }
+    
     /*
     public double wristAmperage() {
     	return this.wrist.getOutputCurrent();

@@ -97,6 +97,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		System.out.println("Angle " + Robot.wrist.calculateAngle() + " Setpoint " + Robot.wrist.getSetpoint());
+
 		//SmartDashboard.putNumber("left position", leftArm.calculatePosition());
 		Scheduler.getInstance().run();
 	}
@@ -119,6 +121,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		System.out.println("Angle " + Robot.wrist.calculateAngle() + " Setpoint " + Robot.wrist.getSetpoint());
+
 		Scheduler.getInstance().run();
 	}
 

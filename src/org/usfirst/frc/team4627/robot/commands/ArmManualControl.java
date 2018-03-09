@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ArmManualControl extends Command {
 
     public ArmManualControl() {
-        //requires(Robot.rightArm);
+        requires(Robot.rightArm);
         requires(Robot.wrist);
     }
 
@@ -34,12 +34,17 @@ public class ArmManualControl extends Command {
     	Robot.rightArm.setSetpoint( newArmSetpoint );
     	
     	//Get the DPadX value, scale it and increment the wrist setpoint, constraining to downStow and upStow
-    	double DPadX = Robot.oi.getOperatorDPadX();
+    	/*double DPadX = Robot.oi.getOperatorDPadX();
     	double scaledDPadX = DPadX * RobotMap.MANUAL_WRIST_SCALING;
     	double newWristSetpoint= Robot.wrist.getSetpoint() + scaledDPadX;
     	newWristSetpoint = constrain(newWristSetpoint, RobotMap.WRIST_DOWN_STOW, RobotMap.WRIST_UP_STOW);
     	Robot.wrist.setSetpoint( newWristSetpoint );
-    	System.out.println(newWristSetpoint);
+    	*/
+    	Robot.wrist.disable();
+    	Robot.wrist.setWrist(Robot.oi.getDriverRawAxis(RobotMap.RIGHT_STICK_Y));
+    	
+    	//System.out.println("Setpoint: " + newWristSetpoint);
+    	//System.out.println("Position: " + Robot.wrist.calculateAngle());
     }
 
     private double constrain(double value, double min, double max) {

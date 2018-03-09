@@ -16,6 +16,7 @@ public class StowWristUp extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.wrist.enable();
     	if((Robot.rightArm.calculatePosition() < RobotMap.ARMS_DEADZONE_MIN) || 
     			(Robot.rightArm.calculatePosition() > RobotMap.ARMS_DEADZONE_MAX)) {  //Only stow arms if we aren't in the deadzone
     		Robot.wrist.setSetpoint(RobotMap.WRIST_UP_STOW);
