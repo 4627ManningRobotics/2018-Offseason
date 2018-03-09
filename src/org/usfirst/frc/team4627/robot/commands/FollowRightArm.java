@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
+import org.usfirst.frc.team4627.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -20,7 +21,7 @@ public class FollowRightArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.leftArm.setSetpoint(Robot.rightArm.calculatePosition());
+    	Robot.leftArm.setSetpoint(Robot.rightArm.calculatePosition() + RobotMap.LEFT_ARM_OFFSET);
     }
 
     // Make this return true when this Command no longer needs to run execute()

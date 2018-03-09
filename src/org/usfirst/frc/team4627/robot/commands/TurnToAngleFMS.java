@@ -13,7 +13,7 @@ public class TurnToAngleFMS extends Command {
 	    public TurnToAngleFMS(double wantedAngle, double speed, double i) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
-		    String fmsData = DriverStation.getInstance().getGameSpecificMessage();
+		    String fmsData = DriverStation.getInstance().getGameSpecificMessage().toUpperCase();
 	    	this.speed = speed;
 	    	this.threshold = i;
 	    	this.angleWanted = wantedAngle;

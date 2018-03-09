@@ -24,7 +24,7 @@ public class LeftChooseTurnGroup extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
+    	String fmsData = DriverStation.getInstance().getGameSpecificMessage().toUpperCase();
     	if(!fmsData.equals(null)){
     		if(fmsData.charAt(1) == 'L') {
     			this.c = new PlanLeftLeft();
