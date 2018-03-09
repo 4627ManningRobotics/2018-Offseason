@@ -79,6 +79,7 @@ public class RobotMap {
 	public static final int WHEEL_DIAMETER = 6;
 	public static final int ENCODER_GEAR_RATIO = 3;
 
+	public static final double ARMS_TOLLERANCE_LEVEL = 1;
 	public static final double LEFT_ARM_P = 0.1;
 	public static final double LEFT_ARM_I = 0.02;
 	public static final double LEFT_ARM_D = 0;

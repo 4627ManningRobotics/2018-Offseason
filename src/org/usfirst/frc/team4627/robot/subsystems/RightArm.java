@@ -20,7 +20,7 @@ public class RightArm extends PIDSubsystem {
 	
     public RightArm(double p, double i, double d) {
 		super("RightArm", p, i, d);
-		this.getPIDController().setAbsoluteTolerance(0.05);
+		this.getPIDController().setAbsoluteTolerance(RobotMap.ARMS_TOLLERANCE_LEVEL);
 		this.getPIDController().setContinuous(false); // does not wrap
 		this.getPIDController().setOutputRange(-1, 1);
 		this.setSetpoint(this.calculatePosition());

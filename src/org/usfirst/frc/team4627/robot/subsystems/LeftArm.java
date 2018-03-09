@@ -21,7 +21,7 @@ public class LeftArm extends PIDSubsystem {
 	
     public LeftArm(double p, double i, double d) {
 		super("LeftArm", p, i, d);
-		super.getPIDController().setAbsoluteTolerance(0.05);
+		super.getPIDController().setAbsoluteTolerance(RobotMap.ARMS_TOLLERANCE_LEVEL);
 		super.getPIDController().setContinuous(false); // does not wrap
 		super.getPIDController().setOutputRange(-1, 1);
 	}
