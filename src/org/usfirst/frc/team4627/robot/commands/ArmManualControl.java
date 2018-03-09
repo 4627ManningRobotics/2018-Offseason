@@ -39,6 +39,7 @@ public class ArmManualControl extends Command {
     	double newWristSetpoint= Robot.wrist.getSetpoint() + scaledDPadX;
     	newWristSetpoint = constrain(newWristSetpoint, RobotMap.WRIST_DOWN_STOW, RobotMap.WRIST_UP_STOW);
     	Robot.wrist.setSetpoint( newWristSetpoint );
+    	System.out.println(newWristSetpoint);
     }
 
     private double constrain(double value, double min, double max) {
