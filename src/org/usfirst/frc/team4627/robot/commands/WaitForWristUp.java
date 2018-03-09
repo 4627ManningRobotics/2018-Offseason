@@ -1,26 +1,22 @@
 package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
+import org.usfirst.frc.team4627.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Sets the wrist setpoint and ends immediately
-
+ *
  */
+public class WaitForWristUp extends Command {
 
-public class SetWrist extends Command {
-	double m_setpoint;
-
-    public SetWrist(double setpoint) {
-    	m_setpoint = setpoint;
-        requires(Robot.wrist);
+    public WaitForWristUp() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.wrist.enable();
-    	Robot.wrist.setSetpoint(m_setpoint);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,7 +25,7 @@ public class SetWrist extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return Robot.wrist.calculateAngle() >= RobotMap.WRIST_DIRECTLY_UP;
     }
 
     // Called once after isFinished returns true

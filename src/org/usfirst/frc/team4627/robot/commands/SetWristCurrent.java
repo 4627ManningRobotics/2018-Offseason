@@ -5,22 +5,22 @@ import org.usfirst.frc.team4627.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Sets the wrist setpoint and ends immediately
-
+ *
  */
+public class SetWristCurrent extends Command {
 
-public class SetWrist extends Command {
-	double m_setpoint;
-
-    public SetWrist(double setpoint) {
-    	m_setpoint = setpoint;
-        requires(Robot.wrist);
+	private double C;
+	
+    public SetWristCurrent(double current) {
+        // Use requires() here to declare subsystem dependencies
+        super.requires(Robot.wrist);
+        this.C = current;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.wrist.enable();
-    	Robot.wrist.setSetpoint(m_setpoint);
+    	Robot.wrist.disable();
+    	Robot.wrist.setCurrent(this.C);
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -2,6 +2,7 @@ package org.usfirst.frc.team4627.robot.subsystems;
 
 import org.usfirst.frc.team4627.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -45,7 +46,7 @@ public class Wrist extends PIDSubsystem {
     }
 
     protected void usePIDOutput(double output) {
-    	this.wrist.set(this.wrist.getControlMode(), -output); // because the tracking is reversed the output is also reversed
+    	this.wrist.set(ControlMode.PercentOutput, -output); // because the tracking is reversed the output is also reversed
     }
     
     
@@ -54,9 +55,12 @@ public class Wrist extends PIDSubsystem {
     }
     
     public void setWrist(double set){
-    	this.wrist.set(this.wrist.getControlMode(), set * RobotMap.WRIST_MAX_SPEED);
+    	this.wrist.set(ControlMode.PercentOutput, set * RobotMap.WRIST_MAX_SPEED);
     }
     
+    public void setCurrent(double c) {
+    	this.wrist.set(ControlMode.Current, c);
+    }
     /*
     public double wristAmperage() {
     	return this.wrist.getOutputCurrent();
