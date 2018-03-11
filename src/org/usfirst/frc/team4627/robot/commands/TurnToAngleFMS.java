@@ -13,13 +13,11 @@ public class TurnToAngleFMS extends Command {
 	    public TurnToAngleFMS(double wantedAngle, double speed, double i) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
-		    String fmsData = DriverStation.getInstance().getGameSpecificMessage().toUpperCase();
+		   
 	    	this.speed = speed;
 	    	this.threshold = i;
 	    	this.angleWanted = wantedAngle;
-	    	if(fmsData.charAt(0) == 'L') {
-	    		this.angleWanted *= -1;
-	    	}
+	    	
 	    	this.isDefaultAuto = true;
 	    	this.isNetworkTraining = false;
 	    	requires(Robot.driveTrain);
@@ -27,6 +25,13 @@ public class TurnToAngleFMS extends Command {
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
+
+	    	Robot.driveTrain.setLeftMotor(0);
+	    	Robot.driveTrain.setRightMotor(0);
+	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage().toUpperCase();
+	    	if(fmsData.charAt(0) == 'L') {
+	    		this.angleWanted *= -1;
+	    	}
 	    	this.isDone  = false;
 	    	Sensors.gyro.zeroYaw();
 	    	while(Robot.sensors.getGyroAngle() < -0.02 || Robot.sensors.getGyroAngle() > 0.02) {
