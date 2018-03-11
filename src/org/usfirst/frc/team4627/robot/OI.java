@@ -20,6 +20,9 @@ public class OI {
 	XboxController operatorController = new XboxController(RobotMap.OPERATOR_CONTROLLER);
 	
 	Button dButtonA = new JoystickButton(this.driverController, RobotMap.BUTTON_A);
+	Button dButtonB = new JoystickButton(this.driverController, RobotMap.BUTTON_B);
+	Button dButtonX = new JoystickButton(this.driverController, RobotMap.BUTTON_X);
+	Button dButtonY = new JoystickButton(this.driverController, RobotMap.BUTTON_Y);
 	
 	Button oButtonA = new JoystickButton(this.operatorController, RobotMap.BUTTON_A);
 	Button oButtonB = new JoystickButton(this.operatorController, RobotMap.BUTTON_B);
@@ -68,12 +71,16 @@ public class OI {
 	public OI () {
 		this.dButtonA.whenPressed(new SwitchGears());
 		
-		oButtonA.whenPressed(new GoToGround());
-		oButtonB.whenPressed(new GoToSwitch());
-		oButtonY.whenPressed(new GoToScale());
+		this.dButtonX.whenPressed(new SetTurningSpeed(0.2)); // low 
+		this.dButtonY.whenPressed(new SetTurningSpeed(0.5)); // medium
+		this.dButtonB.whenPressed(new SetTurningSpeed(0.9)); // high 
 		
-		oButtonX.whenPressed(new ToggleClamp());
-		oButtonBack.whenPressed(new ArmManualControl());
+		this.oButtonA.whenPressed(new GoToGround());
+		this.oButtonB.whenPressed(new GoToSwitch());
+		this.oButtonY.whenPressed(new GoToScale());
+		
+		this.oButtonX.whenPressed(new ToggleClamp());
+		this.oButtonBack.whenPressed(new ArmManualControl());
 
 	}
 
