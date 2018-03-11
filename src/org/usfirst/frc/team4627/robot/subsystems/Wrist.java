@@ -25,6 +25,7 @@ public class Wrist extends PIDSubsystem {
 		this.getPIDController().setOutputRange(-RobotMap.WRIST_MAX_SPEED, RobotMap.WRIST_MAX_SPEED); // CBW- can use this to set min max motor speed?
 		this.getPIDController().setInputRange(0, 360);
 		
+		
         int absolutePosition = this.wrist.getSensorCollection().getPulseWidthPosition();
 		/* mask out overflows, keep bottom 12 bits */
 		absolutePosition &= 0xFFF; // mask/bitwise operator, filters out unnecessary data
@@ -36,6 +37,7 @@ public class Wrist extends PIDSubsystem {
 		//																 3rd parameter is time in milliseconds for the calculation to be completed
         this.OFFSET = absolutePosition;
 		System.out.println(absolutePosition);
+		
     }
 
     public void initDefaultCommand() {

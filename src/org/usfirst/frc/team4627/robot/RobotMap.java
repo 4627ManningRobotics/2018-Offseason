@@ -27,7 +27,7 @@ public class RobotMap {
 	public static final int SOLENOID = 0;
 	public static final int MUSCLE = 1;
 	public static final double WRIST_MAX_SPEED = 0.5;
-	public static final double WRIST_HOLDING_SPEED = 0.3;
+	public static final double WRIST_HOLDING_SPEED = 0.2;
 	public static final double CLAMP_MAX_SPEED = 0.9;
 	public static final double LIFTING_MAX_SPEED = 0.5;
 	public static double TURNING_RATE = 0.5;
@@ -41,11 +41,11 @@ public class RobotMap {
 	public static final short SCALE = 2;
 	
 	public static final double WRIST_DOWN_STOW = 35; // degree positions
-	public static final double WRIST_UP_STOW = 290;
+	public static final double WRIST_UP_STOW = 287;
 	public static final double WRIST_GROUND = 180;
 	public static final double WRIST_SWITCH = 60;
 	public static final double WRIST_SCALE = 245;
-	public static final double WRIST_DIRECTLY_UP = 190;
+	public static final double WRIST_DIRECTLY_UP = 260;
 	public static final double WRIST_TOLERANCE_LEVEL = 4;
 	
 	public static final double ARMS_GROUND = 3;
@@ -54,7 +54,7 @@ public class RobotMap {
 	public static final double ARMS_DEADZONE_MIN = 70; 
 	public static final double ARMS_DEADZONE_MAX = 90;
 	public static final double ARMS_MIN = 3;
-	public static final double ARMS_MAX = 135;
+	public static final double ARMS_MAX = 130;
 
 	
 	public static final int BUTTON_A = 1;
@@ -87,7 +87,7 @@ public class RobotMap {
 	public static final double LEFT_ARM_P = 0.1;
 	public static final double LEFT_ARM_I = 0.02;
 	public static final double LEFT_ARM_D = 0;
-	public static final double LEFT_ARM_OFFSET = 0.0;
+	public static final double LEFT_ARM_OFFSET =-5.0;
 	public static final double RIGHT_ARM_P = 0.1;
 	public static final double RIGHT_ARM_I = 0.02;
 	public static final double RIGHT_ARM_D = 0;

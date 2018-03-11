@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class GoToScale extends CommandGroup {
 
     public GoToScale() {
-    	addParallel(new StowWristUp());
+    	addParallel(new StowWristDown());
     	addParallel(new SetArm( RobotMap.ARMS_SCALE )); 	//Set the arms to scale position
     	addSequential(new WaitForDZHigh());	
     	addSequential(new SetWrist( RobotMap.WRIST_SCALE ));//Only start setting the wrist when we are passed the deadzone
