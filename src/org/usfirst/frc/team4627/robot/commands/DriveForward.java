@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
+import org.usfirst.frc.team4627.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,9 +23,9 @@ public class DriveForward extends Command {
     
     public DriveForward(double leftSpeed, double rightSpeed, double distance) {
     	this.m_time = distance;
+    	this.distance = distance;
     	this.leftM_speed = leftSpeed;
     	this.rightM_speed = rightSpeed;
-    	this.distance = distance;
     	requires(Robot.driveTrain);
     }
     
@@ -63,7 +64,9 @@ public class DriveForward extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(m_time);
+    	if(!RobotMap.isEncoderChassis) {
+    		setTimeout(m_time);
+    	}
     	Robot.driveTrain.resetEncoders();
     	Robot.driveTrain.initEncoders();
     	Robot.driveTrain.setLeftMotor(this.leftM_speed);
@@ -83,7 +86,11 @@ public class DriveForward extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();//this.isDone;
+    	if(RobotMap.isEncoderChassis) {
+    		return this.isDone;
+    	}else{
+    		return super.isTimedOut();
+    	}
     }
 
     // Called once after isFinished returns true

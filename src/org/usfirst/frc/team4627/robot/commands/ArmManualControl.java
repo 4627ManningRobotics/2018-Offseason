@@ -40,6 +40,7 @@ public class ArmManualControl extends Command {
     	double newWristSetpoint= Robot.wrist.getSetpoint() + scaledDPadX;
     	newWristSetpoint = constrain(newWristSetpoint, RobotMap.WRIST_DOWN_STOW, RobotMap.WRIST_UP_STOW);
     	Robot.wrist.setSetpoint( newWristSetpoint );
+    	System.out.println(Robot.wrist.calculateAngle());
 
     	//Robot.wrist.setWrist(Robot.oi.getOperatorRawAxis(RobotMap.RIGHT_STICK_Y));
     	//System.out.println("Setpoint: " + newWristSetpoint);
