@@ -85,7 +85,7 @@ public class RobotMap {
 	public static final double ARMS_TOLLERANCE_LEVEL = 5;
 	public static final double WRIST_TOLERANCE_LEVEL = 7;
 	
-	public static final double LEFT_ARM_P = 0.1;
+	public static final double LEFT_ARM_P = 0.075;
 	public static final double LEFT_ARM_I = 0.02;
 	public static final double LEFT_ARM_D = 0;
 	public static final double LEFT_ARM_OFFSET = 0;
