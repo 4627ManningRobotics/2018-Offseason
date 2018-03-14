@@ -88,7 +88,7 @@ public class RobotMap {
 	public static final double LEFT_ARM_P = 0.1;
 	public static final double LEFT_ARM_I = 0.02;
 	public static final double LEFT_ARM_D = 0;
-	public static final double LEFT_ARM_OFFSET =-5.0;
+	public static final double LEFT_ARM_OFFSET = 0;
 	public static final double RIGHT_ARM_P = 0.1;
 	public static final double RIGHT_ARM_I = 0.02;
 	public static final double RIGHT_ARM_D = 0;
