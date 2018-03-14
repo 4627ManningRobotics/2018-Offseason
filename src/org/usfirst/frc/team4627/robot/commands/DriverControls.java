@@ -28,9 +28,9 @@ public class DriverControls extends Command {
     		Robot.driveTrain.setRightMotor(triggerVal - stick);
     		
     		//buttons
-    		if(Robot.oi.getDriverButton(RobotMap.BUTTON_A)) { // change gears
-    			Robot.driveTrain.changeGears();
-    		}
+    		//if(Robot.oi.getDriverButton(RobotMap.BUTTON_A)) { // change gears
+    			//Robot.driveTrain.changeGears();
+    		//}
     }
     
 
