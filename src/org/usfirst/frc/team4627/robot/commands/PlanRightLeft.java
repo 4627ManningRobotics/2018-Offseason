@@ -11,7 +11,9 @@ public class PlanRightLeft extends CommandGroup {
     	
     	addParallel(new GoToScale());
     	
-    	addSequential(new DriveForward(0.9, 0.9, 100)); // drive
+    	addSequential(new DriveForward(-0.9, -0.9, 100)); // drive
+    	
+    	/*
     	addSequential(new TurnToAngle(-90, .9, 3)); // 90 degrees, 90% speed, 3 degree acceptable error 
     	addSequential(new DriveForward(0.9, 0.9, 90)); // drive
     	addSequential(new TurnToAngle(90, .9, 3)); // turn back to forward
@@ -21,6 +23,7 @@ public class PlanRightLeft extends CommandGroup {
     	addSequential(new DriveForward(-0.9, -0.9, 5)); // back into scale
     	
     	addSequential(new ReleaseBox());
+    	*/
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

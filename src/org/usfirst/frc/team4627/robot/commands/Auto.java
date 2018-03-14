@@ -19,6 +19,7 @@ public class Auto extends CommandGroup {
     	addSequential(new WaitForArmWrist()); // make sure the GoToSwitch has finished
     	addSequential(new DriveForward(0.3, 0.3, 1.1)); //1.47
     	
+    	addSequential(new Wait(1)); // wait for the robot to stop
     	addSequential(new ReleaseBox());    
     	
     }

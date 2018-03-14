@@ -10,12 +10,15 @@ public class PlanLeftLeft extends CommandGroup {
     public PlanLeftLeft() {
     	addParallel(new GoToScale());
     	
-    	addSequential(new DriveForward(0.9, 0.9, 130)); // drive directly to switch
+    	addSequential(new DriveForward(-0.9, -0.9, 130)); // drive directly backwards to scale
+    	
+    	/* untested
     	addSequential(new TurnToAngle(-90, .9, 3)); // turn away from scale
     	addSequential(new WaitForArmWrist()); // make sure the GoToScale has finished
     	addSequential(new DriveForward(-0.9, -0.9, 10)); // back into scale
     	
     	addSequential(new ReleaseBox());
+    	*/
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());
