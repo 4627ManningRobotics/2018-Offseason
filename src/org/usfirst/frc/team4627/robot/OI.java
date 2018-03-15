@@ -29,6 +29,7 @@ public class OI {
 	Button oButtonY = new JoystickButton(this.operatorController, RobotMap.BUTTON_Y);
 	Button oButtonX = new JoystickButton(this.operatorController, RobotMap.BUTTON_X);
 	Button oButtonBack = new JoystickButton(this.operatorController, RobotMap.BACK_BUTTON);
+	Button oButtonStart = new JoystickButton(this.operatorController, RobotMap.START_BUTTON);
 
 	public boolean getOperatorButton(int axis) {
 		return this.operatorController.getRawButtonPressed(axis);
@@ -71,8 +72,8 @@ public class OI {
 	public OI () {
 		this.dButtonA.whenPressed(new SwitchGears());
 		
-		this.dButtonX.whenPressed(new SetTurningSpeed(0.2)); // low 
-		this.dButtonY.whenPressed(new SetTurningSpeed(0.5)); // medium
+		this.dButtonX.whenPressed(new SetTurningSpeed(0.3)); // low 
+		this.dButtonY.whenPressed(new SetTurningSpeed(0.7)); // medium
 		this.dButtonB.whenPressed(new SetTurningSpeed(0.9)); // high 
 		
 		this.oButtonA.whenPressed(new GoToGround());
@@ -81,6 +82,7 @@ public class OI {
 		
 		this.oButtonX.whenPressed(new ToggleClamp());
 		this.oButtonBack.whenPressed(new ArmManualControl());
+		this.oButtonStart.whenPressed(new GoToStow());
 
 	}
 

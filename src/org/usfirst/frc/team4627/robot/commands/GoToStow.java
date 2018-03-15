@@ -1,29 +1,23 @@
 package org.usfirst.frc.team4627.robot.commands;
 
+import org.usfirst.frc.team4627.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class PlanLeftLeft extends CommandGroup {
+public class GoToStow extends CommandGroup {
 
-    public PlanLeftLeft() {
-    	addParallel(new GoToScale());
-    	
-    	addSequential(new DriveForward(-0.3, -0.3, 130)); // drive directly backwards to scale
-    	
-    	/* untested
-    	addSequential(new TurnToAngle(-90, .9, 3)); // turn away from scale
-    	addSequential(new WaitForArmWrist()); // make sure the GoToScale has finished
-    	addSequential(new DriveForward(-0.9, -0.9, 10)); // back into scale
-    	
-    	addSequential(new ReleaseBox());
-    	*/
-    	
+    public GoToStow() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
+    	
+    	addSequential(new SetArm(RobotMap.ARMS_DEADZONE_MIN));
+    	addSequential(new SetWrist(0));
+    	addSequential(new SetArm(RobotMap.ARMS_MIN));
 
         // To run multiple commands at the same time,
         // use addParallel()

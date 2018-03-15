@@ -25,15 +25,15 @@ public class RobotMap {
 	public static final int DRIVER_CONTROLLER = 0;
 	public static final int OPERATOR_CONTROLLER = 1;
 	public static final int SOLENOID = 0;
-	public static final int MUSCLE = 1;
+	public static final int MUSCLE = 3;
 	public static final double WRIST_MAX_SPEED = 0.5;
 	public static final double WRIST_HOLDING_SPEED = 0.2;
 	public static final double CLAMP_MAX_SPEED = 0.9;
 	public static final double LIFTING_MAX_SPEED = 0.5;
-	public static double TURNING_RATE = 0.5;
-	public static final double ARM_SPEED = .75; // .75 minimum to go up from ground
+	public static double TURNING_RATE = 0.7;
+	public static final double ARM_SPEED = 1.0;
 
-	public static final double TURN_SPEED = 0.2;
+	public static final double TURN_SPEED = 0.35;
 	
 	public static short CURRENT_POSITION = 0;
 	public static final short GROUND = 0; 
@@ -42,13 +42,13 @@ public class RobotMap {
 	
 	public static final double WRIST_DOWN_STOW = 35; // degree positions
 	public static final double WRIST_UP_STOW = 287;
-	public static final double WRIST_GROUND = 180;
-	public static final double WRIST_SWITCH = 60;
+	public static final double WRIST_GROUND = 140;
+	public static final double WRIST_SWITCH = 100;
 	public static final double WRIST_SCALE = 245;
 	public static final double WRIST_DIRECTLY_UP = 260;
 	
-	public static final double ARMS_GROUND = 3;
-	public static final double ARMS_SWITCH = 60; // 50 is level with the ground
+	public static final double ARMS_GROUND = 11;
+	public static final double ARMS_SWITCH = 65; // 50 is level with the ground
 	public static final double ARMS_SCALE = 130;
 	public static final double ARMS_DEADZONE_MIN = 70; 
 	public static final double ARMS_DEADZONE_MAX = 90;
@@ -82,13 +82,13 @@ public class RobotMap {
 	public static final int WHEEL_DIAMETER = 6;
 	public static final int ENCODER_GEAR_RATIO = 3;
 
-	public static final double ARMS_TOLLERANCE_LEVEL = 5;
+	public static final double ARMS_TOLLERANCE_LEVEL = 6;
 	public static final double WRIST_TOLERANCE_LEVEL = 7;
 	
-	public static final double LEFT_ARM_P = 0.075;
+	public static final double LEFT_ARM_P = 0.1;
 	public static final double LEFT_ARM_I = 0.02;
 	public static final double LEFT_ARM_D = 0;
-	public static final double LEFT_ARM_OFFSET = 0;
+	public static final double LEFT_ARM_OFFSET = 2;
 	public static final double RIGHT_ARM_P = 0.1;
 	public static final double RIGHT_ARM_I = 0.02;
 	public static final double RIGHT_ARM_D = 0;

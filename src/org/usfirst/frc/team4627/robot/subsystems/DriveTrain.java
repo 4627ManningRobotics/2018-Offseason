@@ -30,6 +30,9 @@ public class DriveTrain extends Subsystem {
 
 	private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
 	
+	public DriveTrain() {
+		this.theSolenoid.set(!this.isInHighGear);
+	}
 	
 	public void initEncoders() {
 		leftEncoder.setDistancePerPulse(this.distancePerPulse);
@@ -62,7 +65,7 @@ public class DriveTrain extends Subsystem {
     
     public void changeGears() {
     	this.isInHighGear = !this.isInHighGear;
-    	this.theSolenoid.set(this.isInHighGear);
+    	this.theSolenoid.set(!this.isInHighGear);
     }
 }
 

@@ -21,6 +21,8 @@ public class SetArm extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.rightArm.enable();
+    	Robot.leftArm.enable();
     	Robot.rightArm.setSetpoint(m_setpoint);
     	
     }
@@ -34,19 +36,21 @@ public class SetArm extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return Robot.rightArm.onTarget();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	
+    	Robot.rightArm.disable();
+    	Robot.leftArm.disable();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	this.end();
     }
-    
+    /*
     private boolean isInDeadzone() {
     	return Robot.rightArm.getPosition() > RobotMap.ARMS_DEADZONE_MIN && Robot.rightArm.getPosition() < RobotMap.ARMS_DEADZONE_MAX;
     }
@@ -57,4 +61,5 @@ public class SetArm extends Command {
     		   (RobotMap.WRIST_UP_STOW <= Robot.wrist.getPosition() + RobotMap.WRIST_TOLERANCE_LEVEL && 
     			RobotMap.WRIST_UP_STOW >= Robot.wrist.getPosition() - RobotMap.WRIST_TOLERANCE_LEVEL);
     }
+    */
 }

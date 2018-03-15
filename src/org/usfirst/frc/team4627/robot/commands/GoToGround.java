@@ -13,8 +13,8 @@ public class GoToGround extends CommandGroup {
     	
     	addParallel(new StowWristDown());
     	addSequential(new Wait(1));
-    	addSequential(new SetArm( RobotMap.ARMS_GROUND )); 	//Set the arms to scale position
-    	addSequential(new Wait(1));
+    	addSequential(new SetArm( RobotMap.ARMS_DEADZONE_MIN - 5)); 	//Set the arms to scale position
     	addSequential(new SetWrist( RobotMap.WRIST_GROUND ));//Only start setting the wrist when we are passed the deadzone
+    	addSequential(new SetArm(RobotMap.ARMS_GROUND));
     }
 }

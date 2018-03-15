@@ -11,8 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveForward extends Command {
 
-	double leftM_speed, rightM_speed, m_time, distance;
-	boolean isDone;
+	private double leftM_speed, rightM_speed, m_time, distance;
+	private double lastDistance, newDistance;
+	private boolean isDone;
     /*public DriveForward(double leftSpeed, double rightSpeed, double time) {
     	this.leftM_speed = leftSpeed;
     	this.rightM_speed = rightSpeed;
@@ -64,13 +65,18 @@ public class DriveForward extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if(!RobotMap.isEncoderChassis) {
-    		setTimeout(m_time);
+    	if(RobotMap.isEncoderChassis) {
+    		super.setTimeout(2);
+    	}else{
+    		super.setTimeout(m_time);
     	}
     	Robot.driveTrain.resetEncoders();
     	Robot.driveTrain.initEncoders();
     	Robot.driveTrain.setLeftMotor(this.leftM_speed);
     	Robot.driveTrain.setRightMotor(this.rightM_speed);
+    	
+    	this.newDistance = Robot.driveTrain.getDistance();
+    	this.lastDistance = Robot.driveTrain.getDistance();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -82,6 +88,13 @@ public class DriveForward extends Command {
     			Robot.driveTrain.setRightMotor(0);
     			this.isDone = true;
     		}
+    		this.lastDistance = this.newDistance;
+    		this.newDistance = Robot.driveTrain.getDistance();
+    		
+    		if(this.lastDistance != this.newDistance) {
+    			super.setTimeout(2);
+    		}
+    		
     	}
     	
     	
@@ -90,7 +103,7 @@ public class DriveForward extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if(RobotMap.isEncoderChassis) {
-    		return this.isDone;
+    		return this.isDone || super.isTimedOut();
     	}else{
     		return super.isTimedOut();
     	}

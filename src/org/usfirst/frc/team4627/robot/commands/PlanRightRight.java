@@ -10,7 +10,7 @@ public class PlanRightRight extends CommandGroup {
     public PlanRightRight() {
     	addParallel(new GoToScale());
     	
-    	addSequential(new DriveForward(-0.9, -0.9, 130)); // drive directly backwards to switch
+    	addSequential(new DriveForward(-0.3, -0.3, 130)); // drive directly backwards to switch
     	/* untested
     	addSequential(new TurnToAngle(90, .9, 3)); // turn away from scale
     	addSequential(new WaitForArmWrist()); // make sure the GoToScale has finished
