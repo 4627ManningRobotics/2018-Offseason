@@ -43,12 +43,12 @@ public class RobotMap {
 	public static final double WRIST_DOWN_STOW = 35; // degree positions
 	public static final double WRIST_UP_STOW = 287;
 	public static final double WRIST_GROUND = 140;
-	public static final double WRIST_SWITCH = 100;
+	public static final double WRIST_SWITCH = 120;
 	public static final double WRIST_SCALE = 245;
 	public static final double WRIST_DIRECTLY_UP = 260;
 	
 	public static final double ARMS_GROUND = 11;
-	public static final double ARMS_SWITCH = 65; // 50 is level with the ground
+	public static final double ARMS_SWITCH = 70; // 50 is level with the ground
 	public static final double ARMS_SCALE = 130;
 	public static final double ARMS_DEADZONE_MIN = 70; 
 	public static final double ARMS_DEADZONE_MAX = 90;

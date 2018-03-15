@@ -11,7 +11,7 @@ public class ReleaseBox extends CommandGroup {
     	//addSequential(new ClampOpen()); // open clamp
     	
     	addSequential(new SetIntake(1)); // drop box
-    	addSequential(new Wait(2)); // wait for the box to be released
+    	addSequential(new Wait(3)); // wait for the box to be released
     	addSequential(new SetIntake(0)); // stop intake
     	
         // Add Commands here:
