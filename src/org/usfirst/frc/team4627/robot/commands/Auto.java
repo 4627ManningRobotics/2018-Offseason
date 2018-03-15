@@ -14,7 +14,7 @@ public class Auto extends CommandGroup {
     	
     	addSequential(new DriveForward(0.25, 0.25, 4)); //1s
     	addSequential(new TurnToAngleFMS(43, RobotMap.TURN_SPEED, 2));
-    	addSequential(new DriveForward(0.25, 0.25, 76.5)); //1s
+    	addSequential(new DriveForwardFMS(0.25, 0.25, 76.5, 7)); //1s
     	addSequential(new TurnToAngleFMS(-43, RobotMap.TURN_SPEED, 2));
     	//addSequential(new WaitForArmWrist()); // make sure the GoToSwitch has finished
     	addSequential(new DriveForward(0.3, 0.3, 74)); //1.2s
