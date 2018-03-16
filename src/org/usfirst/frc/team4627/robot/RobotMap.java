@@ -52,7 +52,7 @@ public class RobotMap {
 	public static final double ARMS_SCALE = 130;
 	public static final double ARMS_DEADZONE_MIN = 70; 
 	public static final double ARMS_DEADZONE_MAX = 90;
-	public static final double ARMS_MIN = 3;
+	public static final double ARMS_MIN = 2;
 	public static final double ARMS_MAX = 130;
 
 	

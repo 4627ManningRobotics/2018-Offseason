@@ -9,7 +9,7 @@ public class PlanLeftRight extends CommandGroup {
 
     public PlanLeftRight() {
     	
-    	addParallel(new GoToScale());
+    	//addParallel(new GoToScale());
     	
     	addSequential(new DriveForward(-0.3, -0.3, 100)); // drive
     	/* untested

@@ -44,6 +44,8 @@ public class Robot extends IterativeRobot {
 		Robot.oi = new OI();
 		Sensors.gyro.reset();
 		Sensors.gyro.zeroYaw();
+    	Robot.driveTrain.initEncoders();
+		Robot.driveTrain.resetEncoders();
 		this.autoChooser = new SendableChooser<Command>();
 		this.autoChooser.addDefault("Default Auto: ", new Auto());
 		this.autoChooser.addObject("Plan Left: ", (Command) new LeftChooseTurnGroup());

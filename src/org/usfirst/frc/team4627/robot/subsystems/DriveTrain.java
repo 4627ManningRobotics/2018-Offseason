@@ -48,6 +48,11 @@ public class DriveTrain extends Subsystem {
 		double distance = (leftEncoder.getDistance() + rightEncoder.getDistance()/2);
 		return distance;
 	}
+
+	public double getRightPulse() {
+		double distance = rightEncoder.getRaw();
+		return distance;
+	}
 	
     public void initDefaultCommand() {
     	super.setDefaultCommand(new DriverControls());

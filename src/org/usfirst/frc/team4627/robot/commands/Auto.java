@@ -14,12 +14,12 @@ public class Auto extends CommandGroup {
     	
     	addSequential(new DriveForward(0.25, 0.25, 4)); //1s
     	addSequential(new TurnToAngleFMS(43, RobotMap.TURN_SPEED, 2));
-    	addSequential(new DriveForwardFMS(0.25, 0.25, 76.5, 7)); //1s
+    	addSequential(new DriveForwardFMS(0.25, 0.25, 72.5, 11)); //1s
     	addSequential(new TurnToAngleFMS(-43, RobotMap.TURN_SPEED, 2));
     	//addSequential(new WaitForArmWrist()); // make sure the GoToSwitch has finished
     	addSequential(new DriveForward(0.3, 0.3, 74)); //1.2s
     	
-    	addSequential(new Wait(0.5)); // wait for the robot to stop
+    	addSequential(new Wait(0.25)); // wait for the robot to stop
     	addSequential(new ReleaseBox());    
     	addSequential(new TurnToAngleFMS(-10, RobotMap.TURN_SPEED, 2));
     	

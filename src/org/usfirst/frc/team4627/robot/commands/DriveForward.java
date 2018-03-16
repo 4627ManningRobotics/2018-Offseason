@@ -66,7 +66,7 @@ public class DriveForward extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	if(RobotMap.isEncoderChassis) {
-    		super.setTimeout(2);
+    		super.setTimeout(1);
     	}else{
     		super.setTimeout(m_time);
     	}
@@ -82,7 +82,7 @@ public class DriveForward extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(RobotMap.isEncoderChassis) {
-    		System.out.println(Robot.driveTrain.getDistance());
+    		System.out.println(Robot.driveTrain.getRightPulse());
     		if(Robot.driveTrain.getDistance() > this.distance) {
     			Robot.driveTrain.setLeftMotor(0);
     			Robot.driveTrain.setRightMotor(0);
@@ -92,7 +92,7 @@ public class DriveForward extends Command {
     		this.newDistance = Robot.driveTrain.getDistance();
     		
     		if(this.lastDistance != this.newDistance) {
-    			super.setTimeout(2);
+    			super.setTimeout(1);
     		}
     		
     	}

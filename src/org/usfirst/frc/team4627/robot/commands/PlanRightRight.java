@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class PlanRightRight extends CommandGroup {
 
     public PlanRightRight() {
-    	addParallel(new GoToScale());
+    	//addParallel(new GoToScale());
     	
     	addSequential(new DriveForward(-0.3, -0.3, 130)); // drive directly backwards to switch
     	/* untested
