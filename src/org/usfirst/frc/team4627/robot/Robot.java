@@ -2,6 +2,7 @@
 package org.usfirst.frc.team4627.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -112,6 +113,11 @@ public class Robot extends IterativeRobot {
 		PIDenable(); // make sure all PID systems are on
 
 		Robot.clamp.setClamp(false); // make sure the clamp starts closed
+		
+		while( DriverStation.getInstance().getGameSpecificMessage() == null) { // wait to get fms
+			
+		}
+		RobotMap.FMSData =  DriverStation.getInstance().getGameSpecificMessage();
 		
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();

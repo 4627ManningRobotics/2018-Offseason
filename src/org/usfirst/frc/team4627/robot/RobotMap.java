@@ -9,6 +9,7 @@ package org.usfirst.frc.team4627.robot;
 public class RobotMap {
 	
 	public static final boolean isEncoderChassis = true;
+	public static String FMSData;
 
 	//0,7,8 victors
 	public static final int LEFT_MOTOR_1 = 5;

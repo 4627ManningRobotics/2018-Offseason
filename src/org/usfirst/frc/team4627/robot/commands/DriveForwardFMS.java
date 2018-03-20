@@ -67,8 +67,7 @@ public class DriveForwardFMS extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	if(RobotMap.isEncoderChassis) {
-        	String fmsData = DriverStation.getInstance().getGameSpecificMessage().toUpperCase();
-    		if(fmsData.charAt(0) == 'L') {
+    		if(RobotMap.FMSData.charAt(0) == 'L') {
         		super.setTimeout(2.2);
         	}else {
         		super.setTimeout(2);
@@ -85,8 +84,7 @@ public class DriveForwardFMS extends Command {
     	this.newDistance = Robot.driveTrain.getDistance();
     	this.lastDistance = Robot.driveTrain.getDistance();
 
-    	String fmsData = DriverStation.getInstance().getGameSpecificMessage().toUpperCase();
-    	if(fmsData.charAt(0) == 'L') {
+    	if(RobotMap.FMSData.charAt(0) == 'L') {
     		this.distance += this.offset;
     	}else {
     		this.distance -= this.offset;

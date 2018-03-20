@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4627.robot.commands;
 
 import org.usfirst.frc.team4627.robot.Robot;
+import org.usfirst.frc.team4627.robot.RobotMap;
 import org.usfirst.frc.team4627.robot.subsystems.Sensors;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -28,8 +29,7 @@ public class TurnToAngleFMS extends Command {
 
 	    	Robot.driveTrain.setLeftMotor(0);
 	    	Robot.driveTrain.setRightMotor(0);
-	    	String fmsData = DriverStation.getInstance().getGameSpecificMessage().toUpperCase();
-	    	if(fmsData.charAt(0) == 'L') {
+	    	if(RobotMap.FMSData.charAt(0) == 'L') {
 	    		this.angleWanted *= -1;
 	    	}
 	    	this.isDone  = false;

@@ -49,12 +49,11 @@ public class DriveForward extends Command {
     public DriveForward(double leftSpeed, double rightSpeed, double distance, boolean PlanB) {
     	this.isDone = false;
     	this.distance = distance;
-    	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
     	if (PlanB) {
-    		if(fmsData.charAt(0) == 'L') {
+    		if(RobotMap.FMSData.charAt(0) == 'L') {
     			this.leftM_speed = 0;
     			this.rightM_speed = 0;
-    		} else if(fmsData.charAt(0) == 'R') {
+    		} else if(RobotMap.FMSData.charAt(0) == 'R') {
     			this.leftM_speed = leftSpeed;
     	    	this.rightM_speed = rightSpeed;
     		}
