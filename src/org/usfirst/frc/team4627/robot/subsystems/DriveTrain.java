@@ -31,6 +31,10 @@ public class DriveTrain extends Subsystem {
 	private double distancePerPulse = (2*RobotMap.WHEEL_DIAMETER)/(RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.ENCODER_GEAR_RATIO);
 	
 	public DriveTrain() {
+		this.leftMotor1.configOpenloopRamp(RobotMap.RAMP_RATE, 0); // configure the time it takes for the motors to reach max speed
+		this.leftMotor2.configOpenloopRamp(RobotMap.RAMP_RATE, 0); 
+		this.rightMotor1.configOpenloopRamp(RobotMap.RAMP_RATE, 0); 
+		this.rightMotor2.configOpenloopRamp(RobotMap.RAMP_RATE, 0); 
 		this.theSolenoid.set(!this.isInHighGear);
 	}
 	
@@ -59,11 +63,13 @@ public class DriveTrain extends Subsystem {
     }
         
     public void setLeftMotor(double motorSetting) {
+    	motorSetting *= RobotMap.DRIVER_MAX_SPEED;
     	leftMotor1.set(leftMotor1.getControlMode(), motorSetting);
     	leftMotor2.set(leftMotor2.getControlMode(), motorSetting);
     }
     
     public void setRightMotor(double motorSetting) {
+    	motorSetting *= RobotMap.DRIVER_MAX_SPEED;
     	rightMotor1.set(rightMotor1.getControlMode(), -motorSetting); //reverse setting 
     	rightMotor2.set(rightMotor2.getControlMode(), -motorSetting);
     }
