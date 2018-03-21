@@ -4,11 +4,10 @@ import org.usfirst.frc.team4627.robot.Robot;
 import org.usfirst.frc.team4627.robot.RobotMap;
 import org.usfirst.frc.team4627.robot.subsystems.Sensors;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 public class TurnToAngleFMS extends Command {
 	
-		public double angleWanted, speed, threshold;
+		public double angleWanted, speed, threshold, offset;
 		public boolean isDone, isDefaultAuto, isNetworkTraining;
 		
 	    public TurnToAngleFMS(double wantedAngle, double speed, double i) {
@@ -18,7 +17,20 @@ public class TurnToAngleFMS extends Command {
 	    	this.speed = speed;
 	    	this.threshold = i;
 	    	this.angleWanted = wantedAngle;
-	    	
+	    	this.offset = 0;
+	    	this.isDefaultAuto = true;
+	    	this.isNetworkTraining = false;
+	    	requires(Robot.driveTrain);
+	    }
+	    
+	    public TurnToAngleFMS(double wantedAngle, double speed, double speedSideOffset, double i) {
+	        // Use requires() here to declare subsystem dependencies
+	        // eg. requires(chassis);
+		   
+	    	this.speed = speed;
+	    	this.threshold = i;
+	    	this.angleWanted = wantedAngle;
+	    	this.offset = speedSideOffset; // is only ever used to subtract from one side
 	    	this.isDefaultAuto = true;
 	    	this.isNetworkTraining = false;
 	    	requires(Robot.driveTrain);
@@ -46,9 +58,9 @@ public class TurnToAngleFMS extends Command {
 	    		double minAngle = this.angleWanted - this.threshold;
 	    		if(angle < minAngle) {
 	    			Robot.driveTrain.setLeftMotor(this.speed);
-	    			Robot.driveTrain.setRightMotor(-this.speed);
+	    			Robot.driveTrain.setRightMotor(-this.speed - this.offset);
 	    		} else if(angle > maxAngle) {
-	   				Robot.driveTrain.setLeftMotor(-this.speed);
+	   				Robot.driveTrain.setLeftMotor(-this.speed - this.offset);
 	   				Robot.driveTrain.setRightMotor(this.speed);
 	   			} else {
 	   				Robot.driveTrain.setLeftMotor(0);

@@ -3,7 +3,6 @@ package org.usfirst.frc.team4627.robot.commands;
 import org.usfirst.frc.team4627.robot.Robot;
 import org.usfirst.frc.team4627.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -27,7 +26,7 @@ public class DriveForward extends Command {
     	this.distance = distance;
     	this.leftM_speed = leftSpeed;
     	this.rightM_speed = rightSpeed;
-    	requires(Robot.driveTrain);
+    	super.requires(Robot.driveTrain);
     }
     
     /*public DriveForward(double leftSpeed, double rightSpeed, double time, boolean PlanB) {
@@ -58,8 +57,7 @@ public class DriveForward extends Command {
     	    	this.rightM_speed = rightSpeed;
     		}
     	}
-    	// Use requires() here to declare subsystem dependencies
-        requires(Robot.driveTrain);
+        super.requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time

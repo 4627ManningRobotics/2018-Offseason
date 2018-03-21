@@ -6,13 +6,24 @@ import org.usfirst.frc.team4627.robot.subsystems.Sensors;
 import edu.wpi.first.wpilibj.command.Command;
 public class TurnToAngle extends Command {
 	
-		public double angleWanted, speed, threshold;
+		public double angleWanted, leftSpeed, rightSpeed, threshold;
 		public boolean isDone;
 		
 	    public TurnToAngle(double wantedAngle, double speed, double i) {
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
-	    	this.speed = speed;
+	    	this.leftSpeed = speed;
+	    	this.rightSpeed = speed;
+	    	this.threshold = i;
+	    	this.angleWanted = wantedAngle;
+	    	requires(Robot.driveTrain);
+	    }
+	    
+	    public TurnToAngle(double wantedAngle, double left, double right, double i) {
+	        // Use requires() here to declare subsystem dependencies
+	        // eg. requires(chassis);
+	    	this.leftSpeed = left;
+	    	this.rightSpeed = right;
 	    	this.threshold = i;
 	    	this.angleWanted = wantedAngle;
 	    	requires(Robot.driveTrain);
@@ -33,11 +44,11 @@ public class TurnToAngle extends Command {
 	    		double maxAngle = this.angleWanted + this.threshold;
 	    		double minAngle = this.angleWanted - this.threshold;
 	    		if(angle < minAngle) {
-	    			Robot.driveTrain.setLeftMotor(this.speed);
-	    			Robot.driveTrain.setRightMotor(-this.speed);
+	    			Robot.driveTrain.setLeftMotor(this.leftSpeed);
+	    			Robot.driveTrain.setRightMotor(-this.rightSpeed);
 	    		} else if(angle > maxAngle) {
-	   				Robot.driveTrain.setLeftMotor(-this.speed);
-	   				Robot.driveTrain.setRightMotor(this.speed);
+	   				Robot.driveTrain.setLeftMotor(-this.leftSpeed);
+	   				Robot.driveTrain.setRightMotor(this.rightSpeed);
 	   			} else {
 	   				Robot.driveTrain.setLeftMotor(0);
 	   				Robot.driveTrain.setRightMotor(0);

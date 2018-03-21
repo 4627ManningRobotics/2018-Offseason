@@ -8,7 +8,7 @@ package org.usfirst.frc.team4627.robot;
  */
 public class RobotMap {
 	
-	public static final boolean isEncoderChassis = true;
+	public static final boolean isEncoderChassis = false;
 	public static String FMSData;
 
 	//0,7,8 victors

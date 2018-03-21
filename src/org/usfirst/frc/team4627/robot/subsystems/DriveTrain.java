@@ -4,10 +4,8 @@ import org.usfirst.frc.team4627.robot.RobotMap;
 
 import org.usfirst.frc.team4627.robot.commands.DriverControls;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -49,6 +47,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public double getDistance() {
+		System.out.println(leftEncoder + " " + rightEncoder);
 		double distance = (leftEncoder.getDistance() + rightEncoder.getDistance()/2);
 		return distance;
 	}

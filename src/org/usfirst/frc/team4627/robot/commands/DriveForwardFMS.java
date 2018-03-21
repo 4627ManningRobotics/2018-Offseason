@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveForwardFMS extends Command {
 
+	public static final double leftDefaultTimeout = 2.2, rightDefaultTimeout = 2.0; // these are also the timed values for auto if the encoder is broken
 	private double leftM_speed, rightM_speed, m_time, distance, offset;
 	private double lastDistance, newDistance;
 	private boolean isDone;
@@ -68,9 +69,9 @@ public class DriveForwardFMS extends Command {
     protected void initialize() {
     	if(RobotMap.isEncoderChassis) {
     		if(RobotMap.FMSData.charAt(0) == 'L') {
-        		super.setTimeout(2.2);
+        		super.setTimeout(DriveForwardFMS.leftDefaultTimeout);
         	}else {
-        		super.setTimeout(2);
+        		super.setTimeout(DriveForwardFMS.rightDefaultTimeout);
         	}
     		
     	}else{
@@ -106,9 +107,9 @@ public class DriveForwardFMS extends Command {
     		if(this.lastDistance != this.newDistance) {
     			String fmsData = DriverStation.getInstance().getGameSpecificMessage().toUpperCase();
         		if(fmsData.charAt(0) == 'L') {
-            		super.setTimeout(2.2);
+            		super.setTimeout(DriveForwardFMS.leftDefaultTimeout);
             	}else {
-            		super.setTimeout(2);
+            		super.setTimeout(DriveForwardFMS.rightDefaultTimeout);
             	}
     		}
     		
