@@ -3,6 +3,7 @@ package org.usfirst.frc.team4627.robot.subsystems;
 import org.usfirst.frc.team4627.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -39,7 +40,7 @@ public class LeftArm extends PIDSubsystem {
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		if((this.calculatePosition() < 10 && output < 0) || (this.calculatePosition() > 150 && output > 0)) {
+		if((this.calculatePosition() < 15 && output < 0) || (this.calculatePosition() > 145 && output > 0)) {
 			this.liftingMotor.set(this.liftingMotor.getControlMode(), 0);
 		}else{
 			this.liftingMotor.set(liftingMotor.getControlMode(), output);
@@ -50,10 +51,14 @@ public class LeftArm extends PIDSubsystem {
 	public double calculatePosition() {
 		return this.potentiometer.getVoltage() * 71.469 - 7.7851;//-72.53217414 + 340.55633; // B
 	}
+	
+	public void setMotors(double input) {
+		this.liftingMotor.set(this.liftingMotor.getControlMode(), input);
+	}
 
 /*
 	public void Wrist(double motorSetting) {
-		double liftSpeed = liftingMotor.getMotorOutputPercent();
+		double liftSpeed = leftLiftingMotor.getMotorOutputPercent();
 		if (liftSpeed >= 0.3) {
 			motorSetting = 0.3;
 		} else if (liftSpeed < 0.3) {
