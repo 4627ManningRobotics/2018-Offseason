@@ -53,8 +53,11 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public double getRightPulse() {
-		double distance = rightEncoder.getRaw();
-		return distance;
+		return rightEncoder.getRaw();
+	}
+	
+	public double getLeftPulse() {
+		return leftEncoder.getRaw();
 	}
 	
     public void initDefaultCommand() {

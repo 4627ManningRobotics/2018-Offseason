@@ -98,7 +98,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		System.out.println("Angle: " + Robot.wrist.calculateAngle() + " Arm: " + Robot.rightArm.calculatePosition());
+		//System.out.println("Angle: " + Robot.wrist.calculateAngle() + " Arm: " + Robot.rightArm.calculatePosition());
 
 		SmartDashboard.putBoolean("Is in high gear: ", Robot.driveTrain.isInHighGear);
 		//SmartDashboard.putNumber("left position", leftArm.calculatePosition());
@@ -128,7 +128,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		System.out.println("Angle: " + Robot.wrist.calculateAngle() + " Arm: " + Robot.rightArm.calculatePosition());
+		//System.out.println("Angle: " + Robot.wrist.calculateAngle() + " Arm: " + Robot.rightArm.calculatePosition());
 
 		SmartDashboard.putBoolean("Is in high gear: ", Robot.driveTrain.isInHighGear);
 		Scheduler.getInstance().run();
@@ -139,7 +139,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-		System.out.println("Angle: " + Robot.wrist.calculateAngle() + " Arm: " + Robot.rightArm.calculatePosition());
+		//System.out.println("Angle: " + Robot.wrist.calculateAngle() + " Arm: " + Robot.rightArm.calculatePosition());
 	}
 	
 	public void PIDenable() {
