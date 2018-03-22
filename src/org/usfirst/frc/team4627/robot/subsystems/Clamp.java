@@ -29,7 +29,7 @@ public class Clamp extends Subsystem {
     }
     
     public void toggleClamp() {
-    	this.muscle.set(!this.muscle.get()); // naturally releases pressure over time
+    	this.muscle.set(!this.muscle.get());
     }
     
     public void setClamp(boolean open) {

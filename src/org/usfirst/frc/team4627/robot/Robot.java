@@ -85,6 +85,8 @@ public class Robot extends IterativeRobot {
 		Sensors.gyro.zeroYaw();
 		PIDenable(); // make sure all PID systems are on
 		
+		Robot.clamp.setClamp(true); // make sure the clamp starts closed
+		
 		autonomousCommand = (Command) autoChooser.getSelected();
 
 		if ( this.autonomousCommand != null) {
@@ -111,7 +113,7 @@ public class Robot extends IterativeRobot {
 		//Robot.arm.setSetpoint(Double.parseDouble(DriverStation.getInstance().getGameSpecificMessage()));
 		PIDenable(); // make sure all PID systems are on
 
-		Robot.clamp.setClamp(false); // make sure the clamp starts closed
+		Robot.clamp.setClamp(true); // make sure the clamp starts closed
 		
 		while( DriverStation.getInstance().getGameSpecificMessage() == null) { // wait to get fms
 			
