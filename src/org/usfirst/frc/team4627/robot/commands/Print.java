@@ -21,7 +21,7 @@ public class Print extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	long i = 0;
-    	if(i % 20 == 0) { // reduce amount of total prints, easier to read feed
+    	if(i % 100 == 0) { // reduce amount of total prints, easier to read feed
     		//put prints here
     		System.out.println("right: " + Robot.driveTrain.getRightPulse() + " left: " + Robot.driveTrain.getLeftPulse());
     		System.out.println("Angle: " + Robot.wrist.calculateAngle() + " Arm: " + Robot.rightArm.calculatePosition());
