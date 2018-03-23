@@ -13,6 +13,7 @@ public class WaitForWristUp extends Command {
     public WaitForWristUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	super.requires(Robot.wrist);//allows us to interrupt this command in case it doesn't finish
     }
 
     // Called just before this Command runs the first time
