@@ -12,13 +12,13 @@ public class Auto extends CommandGroup {
     public Auto() { // currently time based
     	addParallel(new GoToSwitch()); // move the arm/wrist as the robot moves
     	
-    	addSequential(new DriveForward(0.4, 0.3));
-    	//addSequential(new TurnToAngleFMS(45,  0.2,  0.5,  3));
-    	addSequential(new TurnToAngleTimeFMS(0.4, 0.5)); // turn
-    	addSequential(new DriveForwardFMS(0.5, 0.9, 0.2));
-    	//addSequential(new TurnToAngleFMS(-47,  0.2,  0.5,  3));
-    	addSequential(new TurnToAngleTimeFMS(0.4, -0.5)); // turn
-    	addSequential(new DriveForwardFMS(0.7, .2, .1));
+    	addSequential(new  DriveForward(0.5, 0.3));
+    	//addSequential(new  TurnToAngleFMS(30,  0.2,  0.5,  3));
+    	addSequential(new TurnToAngleTimeFMS(0.5, 0.75)); // turn
+    	addSequential(new DriveForwardFMS(0.75, 1.6, 0.2));
+    	//addSequential(new  TurnToAngleFMS(-30,  0.2,  0.5,  3));
+    	addSequential(new TurnToAngleTimeFMS(0.6, -0.75)); // turn
+    	addSequential(new  DriveForwardFMS(0.75, .65, .1));
     	/*
     	addSequential(new DriveForward(0.25, 0.25, 4)); //1s
     	addSequential(new TurnToAngleFMS(43, RobotMap.TURN_SPEED, 2));
