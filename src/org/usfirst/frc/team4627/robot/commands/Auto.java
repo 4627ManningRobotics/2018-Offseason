@@ -18,7 +18,7 @@ public class Auto extends CommandGroup {
     	addSequential(new DriveForwardFMS(0.75, 1.6, 0.2));
     	//addSequential(new  TurnToAngleFMS(-30,  0.2,  0.5,  3));
     	addSequential(new TurnToAngleTimeFMS(0.6, -0.75)); // turn
-    	addSequential(new  DriveForward(0.75, .75));
+    	addSequential(new  DriveForwardFMS(0.75, .65, .1));
     	/*
     	addSequential(new DriveForward(0.25, 0.25, 4)); //1s
     	addSequential(new TurnToAngleFMS(43, RobotMap.TURN_SPEED, 2));
