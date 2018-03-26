@@ -12,6 +12,11 @@ public class Auto extends CommandGroup {
     public Auto() {
     	addParallel(new GoToSwitch()); // move the arm/wrist as the robot moves
     	
+    	addSequential(new  TurnToAngleFMS(30,  0.2,  0.5,  3));
+    	addSequential(new DriveForwardFMS(0.3, 2.2, 0.2));
+    	addSequential(new  TurnToAngleFMS(-30,  0.2,  0.5,  3));
+    	addSequential(new  DriveForward(0.5, 1.5));
+    	/*
     	addSequential(new DriveForward(0.25, 0.25, 4)); //1s
     	addSequential(new TurnToAngleFMS(43, RobotMap.TURN_SPEED, 2));
     	addSequential(new DriveForwardFMS(0.25, 0.25, 74.5, 12)); //1s
@@ -19,7 +24,7 @@ public class Auto extends CommandGroup {
     	//addSequential(new WaitForArmWrist()); // make sure the GoToSwitch has finished
     	addSequential(new DriveForward(0.3, 0.3, 80)); //1.2s
     	addSequential(new DriveForward(0.3, 0.3, 80)); //1.2s
-    	
+    	*/
     	addSequential(new Wait(0.25)); // wait for the robot to stop
     	addSequential(new ReleaseBox());    
     	addSequential(new TurnToAngleFMS(-10, RobotMap.TURN_SPEED, 2));

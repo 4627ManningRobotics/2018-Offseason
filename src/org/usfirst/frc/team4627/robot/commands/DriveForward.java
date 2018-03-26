@@ -28,6 +28,13 @@ public class DriveForward extends Command {
     	this.rightM_speed = rightSpeed;
     	super.requires(Robot.driveTrain);
     }
+    public DriveForward(double speed, double distance) {
+    	this.m_time = distance;
+    	this.distance = distance;
+    	this.leftM_speed = speed;
+    	this.rightM_speed = speed;
+    	super.requires(Robot.driveTrain);
+    }
     
     /*public DriveForward(double leftSpeed, double rightSpeed, double time, boolean PlanB) {
     	this.m_time=time;

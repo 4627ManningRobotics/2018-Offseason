@@ -32,6 +32,15 @@ public class DriveForwardFMS extends Command {
     	requires(Robot.driveTrain);
     }
     
+    public DriveForwardFMS(double speed, double distance, double offset) {
+    	this.m_time = distance;
+    	this.distance = distance;
+    	this.leftM_speed = speed;
+    	this.rightM_speed = speed;
+    	this.offset = offset;
+    	requires(Robot.driveTrain);
+    }
+    
     /*public DriveForward(double leftSpeed, double rightSpeed, double time, boolean PlanB) {
     	this.m_time=time;
     	String fmsData = DriverStation.getInstance().getGameSpecificMessage();
