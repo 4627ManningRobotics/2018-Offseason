@@ -36,7 +36,11 @@ public class Auto extends CommandGroup {
     	addSequential(new TurnToAngleTimeFMS(0.4, 0.5)); // turn
     	addSequential(new DriveForwardFMS(-0.75, 0.5, 0.2));
     	addSequential(new TurnToAngleTimeFMS(0.5, -0.5)); // turn
+    	addParallel(new GoToGround());
     	addSequential(new DriveForward(-0.5, 0.3));
+    	addSequential(new Wait(0.25)); // wait for the robot to stop
+    	addSequential(new DriveForward(0.5, 0.5));
+    	addSequential(new IntakeBox());
     	
     }
 }
