@@ -86,6 +86,12 @@ public class Robot extends IterativeRobot {
 		PIDenable(); // make sure all PID systems are on
 		
 		Robot.clamp.setClamp(false); // make sure the clamp starts closed
+
+		
+		while( DriverStation.getInstance().getGameSpecificMessage() == null) { // wait to get fms
+			
+		}
+		RobotMap.FMSData =  DriverStation.getInstance().getGameSpecificMessage();
 		
 		autonomousCommand = (Command) autoChooser.getSelected();
 
