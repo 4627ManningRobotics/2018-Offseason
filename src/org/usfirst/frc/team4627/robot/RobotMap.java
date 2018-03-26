@@ -34,8 +34,8 @@ public class RobotMap {
 	public static double TURNING_RATE = 0.7;
 	public static final double ARM_SPEED = 1.0;
 	public static final double TURN_SPEED = 0.35;
-	public static final double DRIVER_MAX_SPEED = 0.5;
-	public static final double RAMP_RATE = 1.0;
+	public static final double DRIVER_MAX_SPEED = 0.98;
+	public static final double RAMP_RATE = 0.5;
 	
 	public static short CURRENT_POSITION = 0;
 	public static final short GROUND = 0; 
