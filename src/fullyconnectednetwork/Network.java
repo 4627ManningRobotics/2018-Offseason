@@ -99,7 +99,34 @@ public class Network{
 
     public double[] calculate(double... input) {
         if(input.length != this.INPUT_SIZE) return null;
-        this.output[0] = input;
+                switch(this.ACTIVATION_FUNCTION) {
+                	case 0:
+                		this.unitStepLoops(input);
+                		break;
+                	case 1:
+                		this.signumLoops(input);
+                		break;
+                	case 2:
+                		this.sigmoidLoops(input);
+                		break;
+                	case 3:
+                		this.hyperbolicTangentLoops(input);
+                		break;
+                	case 4:
+                		this.jumpStepLoops(input);
+                		break;
+                	case 5:
+                		this.jumpSignumLoops(input);
+                		break;
+                	case 6:
+                		this.rectifierLoops(input);
+                    break;
+        }
+        return output[NETWORK_SIZE-1];
+    }
+    
+    private void unitStepLoops(double... input) {
+    	this.output[0] = input;
         for(int layer = 1; layer < NETWORK_SIZE; layer ++) {
             for(int neuron = 0; neuron < NETWORK_LAYER_SIZES[layer]; neuron ++) {
 
@@ -107,42 +134,102 @@ public class Network{
                 for(int prevNeuron = 0; prevNeuron < NETWORK_LAYER_SIZES[layer-1]; prevNeuron ++) {
                     sum += output[layer-1][prevNeuron] * weights[layer][neuron][prevNeuron];
                 }
-                switch(this.ACTIVATION_FUNCTION) {
-                case 0:
-                		output[layer][neuron] = this.unitStep(sum);
-                		output_derivative[layer][neuron] = output[layer][neuron];
-                	break;
-                case 1:
-                	output[layer][neuron] = this.signum(sum);
-                    output_derivative[layer][neuron] = output[layer][neuron];
-                	break;
-                case 2:
-                	output[layer][neuron] = this.sigmoid(sum);
-                    output_derivative[layer][neuron] = (this.multiplier * Math.exp(-sum)) / Math.pow(1 + Math.exp(-sum), 2);
-                	break;
-                case 3:
-                	output[layer][neuron] = this.hyperbolicTangent(sum);
-                    output_derivative[layer][neuron] = this.multiplier * ((Math.exp(2 * sum / this.multiplier) - 1) / (Math.exp(2 * sum / this.multiplier) + 1));
-                	break;
-                case 4:
-                	output[layer][neuron] = this.jumpStep(sum);
+                	output[layer][neuron] = this.unitStep(sum);
                 	output_derivative[layer][neuron] = output[layer][neuron];
-                	break;
-                case 5:
-                	output[layer][neuron] = this.jumpSignum(sum);
-                	output_derivative[layer][neuron] = output[layer][neuron];
-                	break;
-                case 6:
-                    output[layer][neuron] = this.rectifier(sum);
-                    output_derivative[layer][neuron] = output[layer][neuron];
-                    break;
-                //System.out.println(output_derivative[layer][neuron]);
                 }
             }
-        }
-        return output[NETWORK_SIZE-1];
     }
+    
+    private void signumLoops(double... input) {
+    	this.output[0] = input;
+        for(int layer = 1; layer < NETWORK_SIZE; layer ++) {
+            for(int neuron = 0; neuron < NETWORK_LAYER_SIZES[layer]; neuron ++) {
 
+                double sum = bias[layer][neuron];
+                for(int prevNeuron = 0; prevNeuron < NETWORK_LAYER_SIZES[layer-1]; prevNeuron ++) {
+                    sum += output[layer-1][prevNeuron] * weights[layer][neuron][prevNeuron];
+                }
+                	output[layer][neuron] = this.signum(sum);
+                	output_derivative[layer][neuron] = output[layer][neuron];
+                }
+            }
+    }
+    
+    private void sigmoidLoops(double... input) {
+    	this.output[0] = input;
+        for(int layer = 1; layer < NETWORK_SIZE; layer ++) {
+            for(int neuron = 0; neuron < NETWORK_LAYER_SIZES[layer]; neuron ++) {
+
+                double sum = bias[layer][neuron];
+                for(int prevNeuron = 0; prevNeuron < NETWORK_LAYER_SIZES[layer-1]; prevNeuron ++) {
+                    sum += output[layer-1][prevNeuron] * weights[layer][neuron][prevNeuron];
+                }
+        			output[layer][neuron] = this.sigmoid(sum);
+        			output_derivative[layer][neuron] = (this.multiplier * Math.exp(-sum)) / Math.pow(1 + Math.exp(-sum), 2);
+                }
+            }
+    }
+    
+    private void hyperbolicTangentLoops(double... input) {
+    	this.output[0] = input;
+        for(int layer = 1; layer < NETWORK_SIZE; layer ++) {
+            for(int neuron = 0; neuron < NETWORK_LAYER_SIZES[layer]; neuron ++) {
+
+                double sum = bias[layer][neuron];
+                for(int prevNeuron = 0; prevNeuron < NETWORK_LAYER_SIZES[layer-1]; prevNeuron ++) {
+                    sum += output[layer-1][prevNeuron] * weights[layer][neuron][prevNeuron];
+                }
+        			output[layer][neuron] = this.hyperbolicTangent(sum);
+        			output_derivative[layer][neuron] = this.multiplier * ((Math.exp(2 * sum / this.multiplier) - 1) / (Math.exp(2 * sum / this.multiplier) + 1));
+        		}
+            }
+    }
+    
+    private void jumpStepLoops(double... input) {
+    	this.output[0] = input;
+        for(int layer = 1; layer < NETWORK_SIZE; layer ++) {
+            for(int neuron = 0; neuron < NETWORK_LAYER_SIZES[layer]; neuron ++) {
+
+                double sum = bias[layer][neuron];
+                for(int prevNeuron = 0; prevNeuron < NETWORK_LAYER_SIZES[layer-1]; prevNeuron ++) {
+                    sum += output[layer-1][prevNeuron] * weights[layer][neuron][prevNeuron];
+                }
+                	output[layer][neuron] = this.jumpStep(sum);
+                	output_derivative[layer][neuron] = output[layer][neuron];
+                }
+            }
+    }
+    
+    private void jumpSignumLoops(double... input) {
+    	this.output[0] = input;
+        for(int layer = 1; layer < NETWORK_SIZE; layer ++) {
+            for(int neuron = 0; neuron < NETWORK_LAYER_SIZES[layer]; neuron ++) {
+
+                double sum = bias[layer][neuron];
+                for(int prevNeuron = 0; prevNeuron < NETWORK_LAYER_SIZES[layer-1]; prevNeuron ++) {
+                    sum += output[layer-1][prevNeuron] * weights[layer][neuron][prevNeuron];
+                }
+                	output[layer][neuron] = this.jumpSignum(sum);
+                	output_derivative[layer][neuron] = output[layer][neuron];
+                }
+            }
+    }
+    
+    private void rectifierLoops(double... input) {
+    	this.output[0] = input;
+        for(int layer = 1; layer < NETWORK_SIZE; layer ++) {
+            for(int neuron = 0; neuron < NETWORK_LAYER_SIZES[layer]; neuron ++) {
+
+                double sum = bias[layer][neuron];
+                for(int prevNeuron = 0; prevNeuron < NETWORK_LAYER_SIZES[layer-1]; prevNeuron ++) {
+                    sum += output[layer-1][prevNeuron] * weights[layer][neuron][prevNeuron];
+                }
+                	output[layer][neuron] = this.rectifier(sum);
+                	output_derivative[layer][neuron] = output[layer][neuron];
+                }
+            }
+    }
+    
     public void train(TrainSet set, int loops, int batch_size) {
         if(set.INPUT_SIZE != INPUT_SIZE || set.OUTPUT_SIZE != OUTPUT_SIZE) return;
         for(int i = 0; i < loops; i++) {
