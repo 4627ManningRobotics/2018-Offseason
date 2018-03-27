@@ -9,8 +9,10 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4627.robot.commands.Auto;
+import org.usfirst.frc.team4627.robot.commands.TimedAuto;
 import org.usfirst.frc.team4627.robot.commands.LeftChooseTurnGroup;
+import org.usfirst.frc.team4627.robot.commands.NNDistanceTraining;
+import org.usfirst.frc.team4627.robot.commands.SensorAuto;
 import org.usfirst.frc.team4627.robot.subsystems.*;
 
 /**
@@ -47,10 +49,11 @@ public class Robot extends IterativeRobot {
     	Robot.driveTrain.initEncoders();
 		Robot.driveTrain.resetEncoders();
 		this.autoChooser = new SendableChooser<Command>();
-		this.autoChooser.addDefault("Default Auto: ", new Auto());
+		this.autoChooser.addDefault("Timed Auto: ", new TimedAuto());
+		this.autoChooser.addObject("Sensor Auto: ", new SensorAuto());
 		this.autoChooser.addObject("Plan Left: ", (Command) new LeftChooseTurnGroup());
 		this.autoChooser.addObject("Plan Right: ", (Command) new LeftChooseTurnGroup());
-		//this.autoChooser.addDefault("Auto Training: ", new NNtraining());
+		this.autoChooser.addObject("Auto Distance Training: ", (Command) new NNDistanceTraining(0.2));
 		SmartDashboard.putData("Auto Chooser: ", this.autoChooser);
 	}
 
@@ -92,7 +95,9 @@ public class Robot extends IterativeRobot {
 			
 		}
 		RobotMap.FMSData =  DriverStation.getInstance().getGameSpecificMessage();
-		
+		if(this.containsANumber(RobotMap.FMSData)) {
+			RobotMap.timesIndex = Integer.parseInt(RobotMap.FMSData);
+		}
 		autonomousCommand = (Command) autoChooser.getSelected();
 
 		if ( this.autonomousCommand != null) {
@@ -162,4 +167,8 @@ public class Robot extends IterativeRobot {
     	wrist.disable();
     }
 	
+
+ private boolean containsANumber(String s){
+	return s.contains("0") || s.contains("1") || s.contains("2") || s.contains("3") || s.contains("4") || s.contains("5") || s.contains("6") || s.contains("7") || s.contains("8") || s.contains("9");
+ }
 }

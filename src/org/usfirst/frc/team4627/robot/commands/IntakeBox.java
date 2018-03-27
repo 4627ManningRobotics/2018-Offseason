@@ -9,7 +9,6 @@ public class IntakeBox extends CommandGroup {
 
     public IntakeBox() {
     	
-    	addSequential(new ClampOpen()); // open clamp
     	addSequential(new SetIntake(-1)); // start intake
     	addSequential(new Wait(0.5)); // wait for the box to be released
     	addSequential(new ClampClose()); // close clamp

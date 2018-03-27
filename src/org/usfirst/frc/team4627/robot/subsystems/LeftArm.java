@@ -54,7 +54,7 @@ public class LeftArm extends PIDSubsystem {
 		}
 	}
 	
-	private double calculatePosition() {
+	public double calculatePosition() {
 		return this.potentiometer.getVoltage() * 71.4668 - 11.840;// B
 	}
 

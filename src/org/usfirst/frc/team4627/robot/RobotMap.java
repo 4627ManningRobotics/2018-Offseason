@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4627.robot;
 
+import fullyconnectednetwork.NN;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -44,7 +46,7 @@ public class RobotMap {
 	
 	public static final double WRIST_DOWN_STOW = 35; // degree positions
 	public static final double WRIST_UP_STOW = 287;
-	public static final double WRIST_GROUND = 140;
+	public static final double WRIST_GROUND = 160;
 	public static final double WRIST_SWITCH = 120;
 	public static final double WRIST_SCALE = 245;
 	public static final double WRIST_DIRECTLY_UP = 260;
@@ -84,13 +86,13 @@ public class RobotMap {
 	public static final int WHEEL_DIAMETER = 6;
 	public static final int ENCODER_GEAR_RATIO = 3;
 
-	public static final double ARMS_TOLLERANCE_LEVEL = 6;
-	public static final double WRIST_TOLERANCE_LEVEL = 7;
+	public static final double ARMS_TOLLERANCE_LEVEL = 3;
+	public static final double WRIST_TOLERANCE_LEVEL = 5;
 	
 	public static final double LEFT_ARM_P = 0.1;
 	public static final double LEFT_ARM_I = 0.02;
 	public static final double LEFT_ARM_D = 0;
-	public static final double LEFT_ARM_OFFSET = 8; //2
+	public static final double LEFT_ARM_OFFSET = 6; //2
 	public static final double RIGHT_ARM_P = 0.1;
 	public static final double RIGHT_ARM_I = 0.02;
 	public static final double RIGHT_ARM_D = 0;
@@ -103,6 +105,10 @@ public class RobotMap {
 	public static final double MANUAL_WRIST_SCALING = 2;
 
 	//public static final NN TURNING_NETWORK = new NN("/home/lvuser/Saves/turnNetSaveTest.txt", "/home/lvuser/Saves/turnSetSaveTest.txt"); 
+	public static final NN DISTANCE_NETWORK = new NN("/home/lvuser/Saves/distanceNetSaveTest.txt", "/home/lvuser/Saves/distanceSetSaveTest.txt");
+	
+	public static final double[] TIMES = new double[]{0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.25, 1.5, 1.75, 2.0 , 2.5, 3.0, 3.5, 4.0};
+	public static int timesIndex;
 	
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

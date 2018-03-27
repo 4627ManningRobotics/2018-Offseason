@@ -1,37 +1,40 @@
 package org.usfirst.frc.team4627.robot.commands;
 
-import org.usfirst.frc.team4627.robot.Robot;
+import org.usfirst.frc.team4627.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Print extends Command {
-
-    public Print() { // entirely for all system prints
+public class NNDistanceTraining extends Command {
+	
+	private double speed;
+	
+    public NNDistanceTraining(double speed) {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.sensors);
+        // eg. requires(chassis);
+    	this.speed = speed;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	if(!RobotMap.isEncoderChassis) { // we have to make sure DriveForward is time based
+    		System.out.println(RobotMap.TIMES[RobotMap.timesIndex]);
+    		RobotMap.DISTANCE_NETWORK.addData(new double[]{this.speed, 0.0000000000001}, new double[] {RobotMap.TIMES[RobotMap.timesIndex]});
+    		Command c = (Command) new DriveForward(this.speed, RobotMap.TIMES[RobotMap.timesIndex]);
+    		c.start();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	long i = 0;
-    	if(i % 100 == 0) { // reduce amount of total prints, easier to read feed
-    		//put prints here
-    		System.out.println("right: " + Robot.driveTrain.getRightPulse() + " left: " + Robot.driveTrain.getLeftPulse());
-    		System.out.println("Angle: " + Robot.wrist.calculateAngle());
-    		System.out.println("A: " + Robot.rightArm.calculatePosition() + " B: " + Robot.leftArm.calculatePosition());
-    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
