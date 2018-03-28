@@ -11,6 +11,7 @@ import TrainSet.TrainSet;
 
 /**
  * Created by Luecx on 30.05.2017.
+ * Modified by Lucas on 3/27/2018.
  */
 public class Network {
 

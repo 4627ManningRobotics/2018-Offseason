@@ -15,7 +15,7 @@ public class TimedAuto extends CommandGroup {
     	addSequential(new DriveForward(0.5, 0.3));
     	//addSequential(new  TurnToAngleFMS(45,  0.2,  0.5,  3));
     	addSequential(new TurnToAngleTimeFMS(0.35, 0.5)); // turn
-    	addSequential(new DriveForwardFMS(0.75, 0.75, 0.2));
+    	addSequential(new DriveForwardFMS(0.75, 0.7, 0.2));
     	//addSequential(new  TurnToAngleFMS(-47,  0.2,  0.5,  3));
     	addSequential(new TurnToAngleTimeFMS(0.4, -0.5)); // turn
     	addSequential(new  DriveForwardFMS(0.7, .3, .1));
@@ -36,7 +36,7 @@ public class TimedAuto extends CommandGroup {
     	addParallel(new GoToGround());
     	addSequential(new TurnToAngleTimeFMS(0.4, 0.5)); // turn
     	addSequential(new DriveForwardFMS(-0.75, 0.5, 0.2));
-    	addSequential(new TurnToAngleTimeFMS(0.55, -0.5)); // turn
+    	addSequential(new TurnToAngleTimeFMS(0.6, -0.5)); // turn
     	addSequential(new DriveForward(-0.5, 0.3));
     	addSequential(new Wait(2)); // wait for the robot to stop
     	addSequential(new ClampOpen()); // open clamp
