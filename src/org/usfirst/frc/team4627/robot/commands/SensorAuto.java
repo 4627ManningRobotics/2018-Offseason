@@ -13,10 +13,10 @@ public class SensorAuto extends CommandGroup {
     	addParallel(new GoToSwitch()); // move the arm/wrist as the robot moves
     	
     	addSequential(new DriveForward(0.5, 0.3));
-    	addSequential(new TurnToAngleFMS(35,  0.2,  0.5,  3));
+    	addSequential(new TurnToAngleFMS(35,  0.25,  0.25,  3));
     	//addSequential(new TurnToAngleTimeFMS(0.35, 0.5)); // turn
     	addSequential(new DriveForwardFMS(0.75, 0.6, 0.2));
-    	addSequential(new  TurnToAngleFMS(-37,  0.2,  0.5,  3));
+    	addSequential(new  TurnToAngleFMS(-37,  0.25,  0.25,  3));
     	//addSequential(new TurnToAngleTimeFMS(0.4, -0.5)); // turn
     	addSequential(new  DriveForwardFMS(0.75, .3, .1));
     	/*
@@ -34,10 +34,10 @@ public class SensorAuto extends CommandGroup {
     	
     	addSequential(new DriveForward(-0.5, 0.5));
     	//addSequential(new TurnToAngleTimeFMS(0.4, 0.5)); // turn
-    	addSequential(new TurnToAngleFMS(35,  0.2,  0.5,  3));
+    	addSequential(new TurnToAngleFMS(35,  0.75,  0.25,  3));
     	addSequential(new DriveForwardFMS(-0.75, 0.5, 0.2));
     	//addSequential(new TurnToAngleTimeFMS(0.5, -0.5)); // turn
-    	addSequential(new TurnToAngleFMS(-37,  0.2,  0.5,  3));
+    	addSequential(new TurnToAngleFMS(-37,  0.75,  0.25,  3));
     	addParallel(new GoToGround());
     	addSequential(new DriveForward(-0.5, 0.3));
     	addSequential(new Wait(0.25)); // wait for the robot to stop

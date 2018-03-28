@@ -24,9 +24,10 @@ public class Print extends Command {
     	if(i % 100 == 0) { // reduce amount of total prints, easier to read feed
     		//put prints here
     		System.out.println("right: " + Robot.driveTrain.getRightPulse() + " left: " + Robot.driveTrain.getLeftPulse());
-    		System.out.println("Angle: " + Robot.wrist.calculateAngle());
+    		System.out.println("Angle: " + Robot.wrist.calculateAngle() + " Degree: " + Robot.sensors.getGyroAngle());
     		System.out.println("A: " + Robot.rightArm.calculatePosition() + " B: " + Robot.leftArm.calculatePosition());
     	}
+    	i++;
     }
 
     // Make this return true when this Command no longer needs to run execute()

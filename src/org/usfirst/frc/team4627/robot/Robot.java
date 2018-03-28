@@ -49,8 +49,8 @@ public class Robot extends IterativeRobot {
     	Robot.driveTrain.initEncoders();
 		Robot.driveTrain.resetEncoders();
 		this.autoChooser = new SendableChooser<Command>();
-		this.autoChooser.addDefault("Timed Auto: ", new TimedAuto());
-		this.autoChooser.addObject("Sensor Auto: ", new SensorAuto());
+		this.autoChooser.addDefault("Defaut Auto: ", new TimedAuto());
+		//this.autoChooser.addObject("Sensor Auto: ", new SensorAuto());
 		this.autoChooser.addObject("Plan Left: ", (Command) new LeftChooseTurnGroup());
 		this.autoChooser.addObject("Plan Right: ", (Command) new LeftChooseTurnGroup());
 		this.autoChooser.addObject("Auto Distance Training: ", (Command) new NNDistanceTraining(0.2));
